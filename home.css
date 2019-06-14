@@ -8,15 +8,23 @@ header {
     height: 85px;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 .header {
     max-width: 1300px;
     position: relative;
     margin: 0 auto;
-    overflow: hidden;
     padding: 0 50px;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .headerLeft a {
@@ -25,21 +33,27 @@ header {
 
 .headerLeft img {
     width: 180px;
+    height: auto;
 }
 
 .headerRight {
-    width: 60%;
-    height: 100%;
-    display: inline-flex;
     position: absolute;
     right: 50px;
+    width: 60%;
+    height: 100%;
 }
 
-.headerRight li {
+.headerRightUl {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+}
+
+.headerRightUl li {
     flex: 1 1;
 }
 
-.headerRight a {
+.headerRightUl a {
     color: black;
     display: inline-flex;
     height: 100%;
@@ -48,9 +62,65 @@ header {
     justify-content: center;
 }
 
+.headerRightImg {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.headerRightImg img {
+    width: 50px;
+    height: 45px;
+}
+
+.mbList {
+    width: 100%;
+    height: 340px;
+    position: absolute;
+    bottom: -340px;
+    left: 150%;
+    background-color: #f1f7fb;
+}
+
+.mbListOne {
+    padding: 20px 30px;
+}
+
+.mbListOneContent {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 15px;
+    font-size: 14px;
+    color: black;
+}
+
+.mbListOneContent img {
+    width: 15px;
+    height: 15px;
+}
+
+.mbListOneContent::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    background-color: rgba(0, 0, 0, 0.068);
+}
+
 .banner {
     position: relative;
     margin-top: 85px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
 }
 
 .banner div {
@@ -69,6 +139,11 @@ header {
     margin-left: 5px;
 }
 
+.banner i:nth-child(2),
+.banner i:nth-child(3) {
+    opacity: 0.5;
+}
+
 .content {
     width: 100%;
 }
@@ -82,6 +157,10 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.aboutLeft {
+    width: 40%;
 }
 
 .aboutLeft img {
@@ -327,9 +406,10 @@ header {
 }
 
 .telImg {
-    width: 840px;
+    width: 100%;
     height: 200px;
     background-image: url('./images/tel-img.jpg');
+    background-size: 100% 100%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -372,7 +452,11 @@ header {
     text-align: center;
 }
 
-.contrastTitle span:nth-child(2) {
+.contrastTitle img:nth-child(2) {
+    display: none;
+}
+
+.contrastTitle span:nth-child(3) {
     position: absolute;
     display: inline-block;
     top: 32%;
@@ -384,7 +468,7 @@ header {
     padding-right: 35px;
 }
 
-.contrastTitle span:nth-child(2):after {
+.contrastTitle span:nth-child(3):after {
     content: '';
     position: absolute;
     top: 0;
@@ -394,7 +478,7 @@ header {
     border-color: red red transparent transparent;
 }
 
-.contrastTitle span:nth-child(3) {
+.contrastTitle span:nth-child(4) {
     position: absolute;
     display: inline-block;
     top: 32%;
@@ -406,7 +490,7 @@ header {
     padding-left: 35px;
 }
 
-.contrastTitle span:nth-child(3):after {
+.contrastTitle span:nth-child(4):after {
     content: '';
     position: absolute;
     top: 0;
@@ -416,7 +500,7 @@ header {
     border-color: red transparent transparent red;
 }
 
-.contrastTitle span:nth-child(4) {
+.contrastTitle span:nth-child(5) {
     position: absolute;
     display: inline-block;
     bottom: 0;
@@ -500,7 +584,7 @@ header {
     position: relative;
 }
 
-.advantageTitle span:nth-child(2) {
+.advantageTitle span:nth-child(3) {
     color: white;
     background: red;
     font-weight: 500px;
@@ -509,9 +593,10 @@ header {
     left: 50%;
     top: 38%;
     transform: translateX(-50%);
+    white-space: nowrap;
 }
 
-.advantageTitle span:nth-child(3) {
+.advantageTitle span:nth-child(4) {
     padding: 5px 10px;
     position: absolute;
     color: #cccbcb;
@@ -564,7 +649,7 @@ header {
     position: relative;
 }
 
-.partnerTitle span:nth-child(2) {
+.partnerTitle span:nth-child(3) {
     position: absolute;
     left: 50%;
     top: 40%;
@@ -576,7 +661,7 @@ header {
     padding: 1px 60px;
 }
 
-.partnerTitle span:nth-child(3) {
+.partnerTitle span:nth-child(4) {
     position: absolute;
     left: 50%;
     top: 73%;
@@ -666,14 +751,146 @@ header {
     font-size: 22px;
     font-weight: 500;
     color: black;
+    margin-top: 30px;
 }
 
 .newsContentLeftTwo {
-    margin-top: 20px;
+    margin-top: 40px;
     color: #b9b6b6;
 }
 
 .newsContentLeftThree {
-    margin-top: 30px;
+    margin-top: 40px;
     color: #463d3d;
+}
+
+.newsContentLeftFour {
+    display: flex;
+}
+
+.newsContentLeftFour i {
+    display: block;
+    width: 40px;
+    height: 5px;
+    background-color: red;
+    margin-left: 10px;
+    margin-top: 80px;
+}
+
+.contentFooter {
+    margin-top: 60px;
+    height: 720px;
+    background-image: url('./images/fhxc_bottom_bg.png');
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+.contentFooterW {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.contentFooterTop {
+    text-align: center;
+    position: relative;
+}
+
+.contentFooterTop span:nth-child(2) {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    color: red;
+    font-weight: bold;
+}
+
+.contentFooterTop img:nth-child(3) {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+}
+
+.contentFooterTop span:nth-child(4) {
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    font-size: 38px;
+    color: red;
+    font-weight: bold;
+}
+
+.contentFooterCenter {
+    margin-top: 50px;
+}
+
+.contentFooterCenter p {
+    margin-top: 10px;
+}
+
+.contentFooterBottom {
+    margin-top: 50px;
+}
+
+.contentFooterBottom img {
+    margin-left: 30px;
+}
+
+.footer {
+    width: 100%;
+    background: black;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerContainer {
+    margin: 40px 60px;
+}
+
+.footerContainerTop {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.footerContainerTop a {
+    color: white;
+    position: relative;
+    margin-left: 30px;
+}
+
+.footerContainerTop a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    background-color: white;
+    display: block;
+}
+
+.footerContainerCenter {
+    color: white;
+    text-align: center;
+}
+
+.footerContainerCenter a {
+    color: white;
+    margin-left: 20px;
+}
+
+.footerContainerBottom {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.footerContainerBottom a {
+    color: white;
 }

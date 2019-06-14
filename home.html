@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="medias.css">
 </head>
 
 <body>
@@ -16,32 +17,109 @@
             <a href="#" class="headerLeft">
                 <img src="./images/logo.png" alt="">
             </a>
-            <ul class="headerRight">
-                <li>
-                    <a href="#"><span>首页</span></a>
-                </li>
-                <li>
-                    <a href="#"><span>产品中心</span></a>
-                </li>
-                <li>
-                    <a href="#"><span>成功案列</span></a>
-                </li>
-                <li>
-                    <a href="#"><span>新闻中心</span></a>
-                </li>
-                <li>
-                    <a href="#"><span>关于我们</span></a>
-                </li>
-                <li>
-                    <a href="#"><span>联系我们</span></a>
-                </li>
-            </ul>
+            <div class="headerRight">
+                <ul class="headerRightUl">
+                    <li>
+                        <a href="#"><span>首页</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>产品中心</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>成功案列</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>新闻中心</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>关于我们</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>联系我们</span></a>
+                    </li>
+                </ul>
+                <div class="headerRightImg hide">
+                    <img src="./images/app-list.png" alt="">
+                    <img src="./images/cha.png" alt="" class="hide">
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <nav class="mbList">
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-home.png" alt="">
+                                <span>首页</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-book.png" alt="">
+                                <span>产品中心</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-bl.png" alt="">
+                                <span>成功案列</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-boad.png" alt="">
+                                <span>新闻中心</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-pro.png" alt="">
+                                <span>关于我们</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mbListOne">
+                    <a href="">
+                        <div class="mbListOneContent">
+                            <div>
+                                <img src="./images/app-news.png" alt="">
+                                <span>联系我们</span>
+                            </div>
+                            <span>&gt;</span>
+                        </div>
+                    </a>
+                </div>
+            </nav>
         </div>
     </header>
     <!-- 轮播 -->
     <div class="banner">
         <a href="">
             <img src="./images/index-banner.jpg" alt="">
+            <img src="./images/index-banner.jpg" alt="" class="hide">
+            <img src="./images/index-banner.jpg" alt="" class="hide">
         </a>
         <div>
             <i></i>
@@ -182,6 +260,7 @@
         <div class="contrast">
             <div class="contrastTitle">
                 <img src="./images/contrast-title.jpg" alt="">
+                <img src="./images/contrast-title-other.png" alt="">
                 <span>普通质量竹胶板</span>
                 <span>花园竹木竹胶板</span>
                 <span>products contrast</span>
@@ -269,6 +348,7 @@
             <div class="advantageContent">
                 <div class="advantageTitle">
                     <img src="./images/title-bg.jpg" alt="">
+                    <img src="./images/title-bg-other.jpg" alt="" class="hide">
                     <span>为什么花园竹木能做到高性价比？</span>
                     <span>APPLY CASES</span>
                 </div>
@@ -292,6 +372,7 @@
         <div class="partner">
             <div class="partnerTitle">
                 <img src="./images/title-bg.jpg" alt="">
+                <img src="./images/title-bg-other.jpg" alt="" class="hide">
                 <span>他们也在用花园竹木</span>
                 <span>OUR ADVATAGES</span>
             </div>
@@ -320,14 +401,60 @@
                     <div class="newsContentLeftTwo">2019-5-30</div>
                     <div class="newsContentLeftThree">8年的用心服务让我们赢得了众多客户的尊重和赞誉，也让我们更加贴近客户，了解客户。在帮助越来越多的企业使用我们的产品，开辟了一个新的市场之后，我们更加坚信：质量就是生命！ </div>
                     <div class="newsContentLeftFour">
-
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
                     </div>
                 </div>
                 <div class="newsContentRight"><img src="./images/news-index-01.jpg" alt=""></div>
             </div>
         </div>
+        <div class="contentFooter">
+            <div class="contentFooterW">
+                <div class="contentFooterTop">
+                    <img src="./images/footer-tel-bg.png" alt="">
+                    <span>更耐用当然更省钱</span>
+                    <img src="./images/sever_hot.png" alt="">
+                    <span>150-8073-8688</span>
+                </div>
+                <div class="contentFooterCenter">
+                    <p>地址：湖南省益阳市桃江县鲊埠回族乡花园台村大桥村民组</p>
+                    <p>主营：竹胶板加工、销售</p>
+                    <p>邮箱：8360739@163.com</p>
+                </div>
+                <div class="contentFooterBottom">
+                    <img src="./images/blog.png" alt="">
+                    <img src="./images/wechat.png" alt="">
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <div class="footer"></div> -->
+    <div class="footer">
+        <div class="footerContainer">
+            <div class="footerContainerTop">
+                <a href="">首页</a>
+                <a href="">竹胶板</a>
+                <a href="">建筑模板</a>
+                <a href="">成功案列</a>
+                <a href="">新闻中心</a>
+                <a href="">关于我们</a>
+                <a href="">联系我们</a>
+            </div>
+            <div class="footerContainerCenter">
+                <span>友情链接</span>
+                <a href="">花园竹木地板</a>
+                <a href="">花园竹木家居</a>
+            </div>
+            <div class="footerContainerBottom">
+                <span>copyright 2019-2029</span>
+                <span>湖南益阳花园竹木有限公司 版权所有 All Rights Reserved 湘ICP备18003028号丨</span>
+                <a href="">中网科技提供技术支持</a>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="./jquery.1.9.1.js"></script>
+<script src="./home.js"></script>
 
 </html>
