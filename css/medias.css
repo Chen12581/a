@@ -183,9 +183,6 @@
     .advantageNav ul {
         flex-wrap: wrap;
     }
-    .advantageNav li {
-        width: 33%;
-    }
     .advantageDes span {
         margin-top: 20px;
         font-size: 20px;
@@ -412,6 +409,14 @@
     .advantageDes p {
         font-size: 12px;
         margin-top: 15px;
+    }
+    .advantageNav ul {
+        height: auto;
+    }
+    .advantageNav li {
+        flex: none !important;
+        width: 32%;
+        padding: 1px;
     }
     .partner {
         margin-top: 250px;

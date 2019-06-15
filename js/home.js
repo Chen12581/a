@@ -1,17 +1,4 @@
 $(document).ready(function() {
-    var swiper = new Swiper('.swiper-container', {
-        //循坏轮播图
-        loop: true,
-        //是否自动播放默认false
-        autoplay: {
-            //触摸后是否停止自动滑动，默认true
-            disableOnInteraction: false,
-        },
-        //分页器
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
     wrap.init();
 
 })
@@ -19,6 +6,7 @@ $(document).ready(function() {
 var wrap = {
     init: function() {
         this.mbList();
+        this.banner();
     },
     mbList: function() {
         $(".headerRightImg").on("click", function() {
@@ -35,5 +23,20 @@ var wrap = {
                 $(this).toggle();
             })
         })
+    },
+    banner: function() {
+        var swiper = new Swiper('.swiper-container', {
+            //循坏轮播图
+            loop: true,
+            //是否自动播放默认false   autoplay:true
+            autoplay: {
+                //触摸后是否停止自动滑动，默认true
+                disableOnInteraction: false,
+            },
+            //分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
     }
 }

@@ -138,30 +138,6 @@ header {
     border-radius: 0;
 }
 
-
-/* .bannerI {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    top: 85%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.banner i {
-    display: inline-block;
-    width: 40px;
-    height: 4px;
-    margin-left: 8px;
-    background-color: white;
-    opacity: 0.5;
-} */
-
-
-/* .banner i:nth-child(1) {
-    opacity: 1;
-} */
-
 .content {
     width: 100%;
 }
