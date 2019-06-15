@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="medias.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/medias.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
 </head>
 
-<body>
+<body style="overflow-x: hidden">
     <header>
         <div class="header">
             <a href="#" class="headerLeft">
@@ -116,16 +117,26 @@
     </header>
     <!-- 轮播 -->
     <div class="banner">
-        <a href="">
-            <img src="./images/index-banner.jpg" alt="">
-            <img src="./images/index-banner.jpg" alt="" class="hide">
-            <img src="./images/index-banner.jpg" alt="" class="hide">
-        </a>
-        <div>
-            <i></i>
-            <i></i>
-            <i></i>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="./images/index-banner.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="./images/index-banner.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="./images/index-banner.jpg" alt="">
+                    </a>
+                </div>
+            </div>
         </div>
+        <div class="swiper-pagination bannerPaging"></div>
     </div>
     <!-- 主体内容 -->
     <div class="content">
@@ -399,7 +410,7 @@
                 <div class="newsContentLeft">
                     <div class="newsContentLeftOne">竹胶板质量过硬，浸水一个月不开胶</div>
                     <div class="newsContentLeftTwo">2019-5-30</div>
-                    <div class="newsContentLeftThree">8年的用心服务让我们赢得了众多客户的尊重和赞誉，也让我们更加贴近客户，了解客户。在帮助越来越多的企业使用我们的产品，开辟了一个新的市场之后，我们更加坚信：质量就是生命！ </div>
+                    <div class="newsContentLeftThree">桥梁所在的特定环境和其特别用处，决议了其防水应该是一个整体性、系统化的概念，而桥面防水仅仅一个首要部分。假如忽视其防水整体性的特色，咱们依旧无法作好桥梁防水的文章，桥梁耐久性概念就不完好。 </div>
                     <div class="newsContentLeftFour">
                         <i></i>
                         <i></i>
@@ -453,8 +464,9 @@
             </div>
         </div>
     </div>
+    <script src="./js/jquery.1.9.1.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/home.js"></script>
 </body>
-<script src="./jquery.1.9.1.js"></script>
-<script src="./home.js"></script>
 
 </html>
