@@ -24,9 +24,10 @@ var wrap = {
             })
         })
     },
+
     banner: function() {
         var swiper = new Swiper('.swiper-container', {
-            //循坏轮播图
+            //循环轮播图
             loop: true,
             //是否自动播放默认false   autoplay:true
             autoplay: {

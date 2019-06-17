@@ -114,8 +114,7 @@ header {
     position: relative;
     margin-top: 85px;
     width: 100%;
-    /* overflow: hidden; */
-    /* height: 500px; */
+    overflow: hidden;
 }
 
 .banner img {
