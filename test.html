@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn {
+            margin: 5vw;
+            padding: 1rem 3rem;
+            border: 1px solid var(--color, black);
+            color: green;
+        }
+        
+        .btn:hover {
+            background-color: var(--color, black);
+        }
+        
+        .btn.red {
+            --color: red;
+        }
+        
+        .btn.gray {
+            --color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">hellow</button>
+    <button class="btn red">hellow red</button>
+    <button class="btn gray">hellow gray</button>
+</body>
+
+</html>

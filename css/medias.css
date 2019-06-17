@@ -150,8 +150,9 @@
         width: 80px;
         height: 80px;
         position: absolute;
-        top: 22.5%;
-        left: 43.5%;
+        top: calc(50% - 80px);
+        left: 50%;
+        transform: translateX(-50%);
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
         display: flex;
@@ -237,6 +238,7 @@
     }
     .partnerContentRight img {
         padding-bottom: 10px;
+        height: 48%;
     }
     .news {
         padding: 5px 5px;
@@ -366,8 +368,9 @@
         padding: 10px;
     }
     .contrastCenter {
-        left: 38%;
-        top: 9.5%;
+        top: calc(50% - 70px);
+        left: 50%;
+        transform: translateX(-50%);
         width: 70px;
         height: 70px;
         font-size: 14px;
@@ -450,17 +453,18 @@
     }
     .partnerContentRight {
         width: 50%;
-        height: 200px;
+        height: 290px;
         padding-left: 10px;
     }
     .partnerContentRight img {
         padding-right: 10px;
+        height: 48%;
     }
     .partnerContentCenter div {
         left: 0;
     }
     .partnerContentCenter img {
-        bottom: 0;
+        bottom: -4%;
     }
     .news {
         margin-top: 60px;
