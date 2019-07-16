@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7af47214-3793-456f-ac58-025f3cbca40a" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="siteMap.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/siteMap.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5580">
+              <caret line="279" column="28" lean-forward="false" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+              <folding>
+                <element signature="e#2114#2120#0" expanded="true" />
+                <element signature="e#2120#2126#0" expanded="true" />
+                <element signature="e#2924#2930#0" expanded="true" />
+                <element signature="e#2931#2937#0" expanded="true" />
+                <element signature="e#3535#3541#0" expanded="true" />
+                <element signature="e#3541#3547#0" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="siteMap.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/siteMap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qyfw/news/news.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="siteMap.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/siteMap.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5780">
+              <caret line="289" column="12" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/news.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="40" column="52" lean-forward="false" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news_detail.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news/news_detail.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3480">
+              <caret line="174" column="13" lean-forward="false" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wqt_index.ftl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wqt_index.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="165" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="about.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpcenter/about.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="165" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpcenter.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpcenter/helpcenter.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="108" lean-forward="false" selection-start-line="8" selection-start-column="108" selection-end-line="8" selection-end-column="108" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>content_rt</find>
+      <find>天猫转让</find>
+      <find>ajax</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/usercenter/css/security.css" />
+        <option value="$PROJECT_DIR$/usercenter/payment/payment.ftl" />
+        <option value="$PROJECT_DIR$/register.html" />
+        <option value="$PROJECT_DIR$/sitemap.xml" />
+        <option value="$PROJECT_DIR$/usercenter/js/address.js" />
+        <option value="$PROJECT_DIR$/usercenter/wdBuyerOrderRecord.html" />
+        <option value="$PROJECT_DIR$/usercenter/wdSellerShopRecord.html" />
+        <option value="$PROJECT_DIR$/cases/cases_list.ftl" />
+        <option value="$PROJECT_DIR$/cases/cases.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/aboutus.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/password_back.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/problem.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/problemkind.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/problemSearch.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/recruit.ftl" />
+        <option value="$PROJECT_DIR$/news/news_detail.ftl" />
+        <option value="$PROJECT_DIR$/notfind/404.html" />
+        <option value="$PROJECT_DIR$/usercenter/address.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/capital.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/email.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/esBuyerOrderRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/eShopBuyerOrderRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/esSellerShopRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/iprBuyerOrderRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/iprSellerShopRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/login.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/modify_mobile.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/modify_password.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/personalinfo.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/postAdd.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/recharge.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/security.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/suggest.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/suggestlist.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/threeuser_checke.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/threeuser_oauth.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/userbank.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/userbill.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/usercenter.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/usercollection.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/usercontract.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/withdraw.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/wdBuyerOrderRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/wdSellerShopRecord.ftl" />
+        <option value="$PROJECT_DIR$/usercenter/js/cmprecord.js" />
+        <option value="$PROJECT_DIR$/siteMap.html" />
+        <option value="$PROJECT_DIR$/siteMap.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/about.ftl" />
+        <option value="$PROJECT_DIR$/helpcenter/helpcenter.ftl" />
+        <option value="$PROJECT_DIR$/news/news.ftl" />
+        <option value="$PROJECT_DIR$/wqt_index.ftl" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WebContent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../eShop" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7af47214-3793-456f-ac58-025f3cbca40a" name="Default" comment="" />
+      <created>1534930454169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1534930454169</updated>
+      <workItem from="1534930455407" duration="449000" />
+      <workItem from="1535595049888" duration="34000" />
+      <workItem from="1542157771193" duration="1998000" />
+      <workItem from="1542243787771" duration="1198000" />
+      <workItem from="1542330058289" duration="857000" />
+      <workItem from="1542417689759" duration="2956000" />
+      <workItem from="1542591987040" duration="10245000" />
+      <workItem from="1542675731332" duration="1135000" />
+      <workItem from="1542694404428" duration="135000" />
+      <workItem from="1542694663982" duration="3095000" />
+      <workItem from="1542762103482" duration="1199000" />
+      <workItem from="1542848432567" duration="159000" />
+      <workItem from="1542848947202" duration="1809000" />
+      <workItem from="1542934977561" duration="21000" />
+      <workItem from="1542935203197" duration="18503000" />
+      <workItem from="1543107906297" duration="8798000" />
+      <workItem from="1543130488348" duration="1082000" />
+      <workItem from="1543193745864" duration="9015000" />
+      <workItem from="1543280683018" duration="17520000" />
+      <workItem from="1543366741646" duration="9671000" />
+      <workItem from="1543453232030" duration="6930000" />
+      <workItem from="1543539338172" duration="346000" />
+      <workItem from="1544585658757" duration="2943000" />
+      <workItem from="1546497341462" duration="5928000" />
+      <workItem from="1546760834146" duration="3196000" />
+      <workItem from="1546822904537" duration="884000" />
+      <workItem from="1547017267297" duration="3488000" />
+      <workItem from="1554861762684" duration="1645000" />
+      <workItem from="1554944602464" duration="3304000" />
+      <workItem from="1555033734386" duration="2833000" />
+      <workItem from="1555203307921" duration="1922000" />
+      <workItem from="1555308182617" duration="3178000" />
+      <workItem from="1555377001159" duration="796000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="127272000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17913593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/helpcenter/aboutus.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/password_back.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="111" column="17" lean-forward="false" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/problem.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="169" column="17" lean-forward="false" selection-start-line="169" selection-start-column="17" selection-end-line="169" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/problemkind.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="154" column="17" lean-forward="true" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/problemSearch.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="163" column="17" lean-forward="false" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/recruit.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="348" column="17" lean-forward="false" selection-start-line="348" selection-start-column="17" selection-end-line="348" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notfind/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-846">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/footer.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-810">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pay_header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user_header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/wqt_header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/address.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="238" column="13" lean-forward="true" selection-start-line="238" selection-start-column="13" selection-end-line="238" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/capital.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="490" column="13" lean-forward="false" selection-start-line="490" selection-start-column="13" selection-end-line="490" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/email.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="92" column="36" lean-forward="false" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/eShopBuyerOrderRecord.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="1725" column="13" lean-forward="false" selection-start-line="1725" selection-start-column="13" selection-end-line="1725" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/login.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/modify_mobile.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/modify_password.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="134" column="13" lean-forward="false" selection-start-line="134" selection-start-column="13" selection-end-line="134" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/personalinfo.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="301" column="13" lean-forward="false" selection-start-line="301" selection-start-column="13" selection-end-line="301" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/postAdd.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="122" column="13" lean-forward="false" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/recharge.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="222" column="13" lean-forward="false" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/security.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/suggest.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="97" column="13" lean-forward="false" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/suggestlist.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="128" column="13" lean-forward="false" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/threeuser_checke.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="68" column="13" lean-forward="false" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/threeuser_oauth.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/userbank.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3680">
+          <caret line="184" column="13" lean-forward="false" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/userbill.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4560">
+          <caret line="228" column="13" lean-forward="false" selection-start-line="228" selection-start-column="13" selection-end-line="228" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/usercenter.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29140">
+          <caret line="1457" column="13" lean-forward="false" selection-start-line="1457" selection-start-column="13" selection-end-line="1457" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/usercollection.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4860">
+          <caret line="243" column="13" lean-forward="false" selection-start-line="243" selection-start-column="13" selection-end-line="243" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/usercontract.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10880">
+          <caret line="544" column="13" lean-forward="false" selection-start-line="544" selection-start-column="13" selection-end-line="544" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/withdraw.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3380">
+          <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/wdBuyerOrderRecord.ftl" />
+    <entry file="file://$PROJECT_DIR$/usercenter/wdSellerShopRecord.ftl" />
+    <entry file="file://$PROJECT_DIR$/qyfw/shangbiaoxiangqing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qyfw/qyfu_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7540">
+          <caret line="377" column="0" lean-forward="false" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/js/cmprecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="38" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/iprBuyerOrderRecord.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25580">
+          <caret line="1279" column="7" lean-forward="false" selection-start-line="1279" selection-start-column="7" selection-end-line="1279" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/iprSellerShopRecord.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1540">
+          <caret line="77" column="31" lean-forward="false" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/esSellerShopRecord.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5380">
+          <caret line="269" column="7" lean-forward="false" selection-start-line="269" selection-start-column="7" selection-end-line="269" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usercenter/esBuyerOrderRecord.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17140">
+          <caret line="857" column="7" lean-forward="false" selection-start-line="857" selection-start-column="7" selection-end-line="857" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qyfw/news/news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/helpcenter.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="108" lean-forward="false" selection-start-line="8" selection-start-column="108" selection-end-line="8" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpcenter/about.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="165" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/news_detail.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3480">
+          <caret line="174" column="13" lean-forward="false" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news/news.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="40" column="52" lean-forward="false" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/siteMap.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5780">
+          <caret line="289" column="12" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/siteMap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5580">
+          <caret line="279" column="28" lean-forward="false" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+          <folding>
+            <element signature="e#2114#2120#0" expanded="true" />
+            <element signature="e#2120#2126#0" expanded="true" />
+            <element signature="e#2924#2930#0" expanded="true" />
+            <element signature="e#2931#2937#0" expanded="true" />
+            <element signature="e#3535#3541#0" expanded="true" />
+            <element signature="e#3541#3547#0" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/siteMap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wqt_index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="165" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

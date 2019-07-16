@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>业务员挂卖的知识产权交易订单</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/ipr_order_shop_list.js"></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 90px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+				 <form id="dictDataForm" class="easyui-form" method="get" >
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>订单编号:</th>
+							<td><input id="ordercode" class="easyui-textbox" style="width:100%"/></td>
+							<th>企业类型:</th>
+							<td>
+							   <select style="width:200px;" id="companytype"  class="easyui-combobox">
+							     	
+							     </select>
+							</td>
+							<th valign="middle">服务类型：</th>
+							<td style="width:220px;height:50px;">
+							     <select style="width:200px;" id="servicekind"  class="easyui-combobox">
+							     	
+							     </select>
+							</td>
+							<th>选择状态:</th>
+							<td>
+							 <select id="state"  class="easyui-combobox" style="width: 100%; margin: 0px; padding: 0;">
+							    <option value="">请选择</option>
+							    <option value="1">提交待付款</option>	
+							    <option value="2">已付定金</option>	
+								<option value="3">已付全款，办理中</option>	
+								<option value="4">办理完成</option>
+								<option value="5">订单取消</option>
+								<option value="6">订单退款</option>
+								<option value="7">订单失效</option>
+							  </select >
+						    </td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			 </div>
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			</div>
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'我挂的知识产权交易订单', 
+					              iconCls      :'icon-ex-grid' ,
+								        url          :'sysIprShop_selectIprOrderShopList.action',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :50,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'startvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'endvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'shopid',width:120  ,halign:'center' ,align:'center'">交易商品ID</th>
+							<th data-options="field:'ordertime',width:100  ,halign:'center' ,align:'center'">订单时间</th>
+							<th data-options="field:'orderkind',width:100  ,halign:'center' ,align:'center',formatter:formatkind">订单类别</th>
+							<th data-options="field:'ordercode',width:100  ,halign:'center' ,align:'center'">订单编码</th>
+							<th data-options="field:'sellerid',width:120  ,halign:'center' ,align:'center'">卖家ID</th>
+							<th data-options="field:'buyerid',width:100 ,halign:'center' ,align:'center'">买家ID</th>
+							<th data-options="field:'ordermoney',width:120 ,halign:'center' ,align:'center'">交易商品价格</th>
+							<th data-options="field:'buycommisionratio',width:150  ,halign:'center' ,align:'center'">买方的佣金比例</th>
+							<th data-options="field:'commisionbuy',width:100  ,halign:'center' ,align:'center'">买方的佣金</th>
+							<th data-options="field:'sailcommisionratio',width:150  ,halign:'center' ,align:'center'">卖方佣金比例</th>
+							<th data-options="field:'commisionsail',width:150  ,halign:'center' ,align:'center'">卖方佣金</th>
+							<th data-options="field:'transferfee',width:150 ,halign:'center' ,align:'center'">过户费(商标)</th>
+							<th data-options="field:'reservepayratio',width:100 ,halign:'center' ,align:'center'">买方预定付款比例</th>
+							<th data-options="field:'reservemoney',width:100 ,halign:'center' ,align:'center'">买方预定付款金额</th>
+							<th data-options="field:'sailordermoney',width:150  ,halign:'center' ,align:'center'">卖家订单总金额</th>
+							<th data-options="field:'buyordermoney',width:150 ,halign:'center' ,align:'center'">买家订单总金额</th>
+							<th data-options="field:'favourablemoney',width:100 ,halign:'center' ,align:'center'">买家优惠金额</th>
+							<th data-options="field:'buytrueordermoney',width:100 ,halign:'center' ,align:'center'">买家订单实际金额</th>
+							<th data-options="field:'paymoney',width:100 ,halign:'center' ,align:'center'">已付金额</th>
+							<th data-options="field:'workerid',width:120 ,halign:'center' ,align:'center'">工作人员ID</th>
+							<th data-options="field:'suctime',width:150  ,halign:'center' ,align:'center'">完成时间</th>
+							<th data-options="field:'remark',width:100  ,halign:'center' ,align:'center'">备注</th>
+							<th data-options="field:'state',width:100 ,halign:'center' ,align:'center',formatter:formatstate">状态</th>
+							<th data-options="field:'_oper',width:200,align:'center',formatter:formatOper">操作</th> 
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="doAdd()">新增</a>
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a>
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

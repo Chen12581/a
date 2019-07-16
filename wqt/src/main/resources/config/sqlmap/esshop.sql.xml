@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="esShop"> 
+       
+       <!--查询卖家的企业服务商品-->
+	   <select id="selectEsShopPage" 
+		        parameterType="com.wqt.user.pojo.UEsShop" 
+		        resultType="com.wqt.user.pojo.UEsShop">
+		    select 
+             a.*
+             from v_es_shop  a
+             where 1=1
+			<if test="null!= shopid and ''!= shopid">
+			    and  a.shopid=#{shopid}
+			</if>
+			<if test="null!= shopcode and ''!= shopcode">
+			    and  a.shopcode=#{shopcode}
+			</if>
+			<if test="null!= shopuser and ''!= shopuser">
+			   and  a.shopuser=#{shopuser}
+			</if>
+			<if test="null!= shopstate and ''!= shopstate">
+			   and  a.shopstate=#{shopstate}
+			</if>
+			order by shopdeveloptime desc
+	   </select>
+</mapper>

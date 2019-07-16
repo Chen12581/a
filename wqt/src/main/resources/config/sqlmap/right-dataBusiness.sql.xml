@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.dataBusiness">
+	<cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+	
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.DataBusiness">
+		insert into DP_DATABIZ(BIZCODE,BIZNAME,VALUETYPE,DATATYPE)
+		values(#{bizCode},#{bizName:VARCHAR},#{valueType},#{dataType})
+	</insert>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.DataBusiness">
+		update DP_DATABIZ 
+		<set>
+			<if test="bizName!=null">
+				BIZNAME = #{bizName},
+			</if>
+			<if test="valueType!=null">
+				VALUETYPE = #{valueType},
+			</if>
+			<if test="dataType!=null">
+				DATATYPE = #{dataType},
+			</if>
+		</set>
+		where BIZCODE = #{bizCode}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from DP_DATABIZ where BIZCODE = #{bizCode}
+	</delete>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.DataBusiness">
+		select * from DP_DATABIZ
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="String" resultType="com.talkweb.twdpe.base.right.pojo.DataBusiness">
+		select * from DP_DATABIZ where BIZCODE = #{bizCode}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.DataBusiness" resultType="com.talkweb.twdpe.base.right.pojo.DataBusiness" >
+		select * from DP_DATABIZ 
+		<where>
+			<if test="bizName!=null">
+				and BIZNAME = #{bizName}
+			</if>
+		</where>
+	</select>
+</mapper>

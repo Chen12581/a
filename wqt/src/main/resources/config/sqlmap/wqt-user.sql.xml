@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtuser">
+        
+        
+        <!--用户收藏 -->
+        <select id="selectUserCollectList" 
+	        parameterType="com.wqt.user.pojo.UserCollect" 
+	        resultType="com.wqt.user.pojo.UserCollect">
+		     select 
+             a.*
+             from v_usercollection a
+		     where 1=1
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			order by collecttime desc
+	   </select>
+	   
+        <!--用户绑定银行卡 -->
+        <select id="selectListUserBank" 
+	        parameterType="com.wqt.user.pojo.WqtUserBank" 
+	        resultType="com.wqt.user.pojo.WqtUserBank">
+		     select 
+             a.*,
+             b.bankname
+             from wqt_user_bank a,wqt_bank b
+		     where a.bankid=b.id
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			<if test="null!= bankid and ''!= bankid">
+			   and   a.bankid=#{bankid}
+			</if>
+			<if test="null!= accountno and ''!= accountno">
+			   and   a.accountno=#{accountno}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and   a.state=#{state}
+			</if>
+			order by createtime desc
+	   </select>
+        
+       <!--用户绑定银行卡 -->
+       <insert id="insertUserBank" parameterType="com.wqt.user.pojo.WqtUserBank">
+		insert into wqt_user_bank
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= bankid and ''!= bankid">bankid,</if>
+				<if test="null!= createtime and ''!= createtime">createtime,</if>
+				<if test="null!= accountname and ''!= accountname">accountname,</if>
+				<if test="null!= accountno and ''!= accountno">accountno,</if>
+				<if test="null!= state and ''!= state">state,</if>
+				<if test="null!= provinceid and ''!= provinceid">provinceid,</if>
+				<if test="null!= cityid and ''!= cityid">cityid,</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno,</if>
+				<if test="null!= bindtime and ''!= bindtime">bindtime,</if>
+				<if test="null!= unbindtime and ''!= unbindtime">unbindtime,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= bankid and ''!= bankid">#{bankid},</if>
+				<if test="null!= createtime and ''!= createtime">#{createtime},</if>
+				<if test="null!= accountname and ''!= accountname">#{accountname},</if>
+				<if test="null!= accountno and ''!= accountno">#{accountno},</if>
+				<if test="null!= state and ''!= state">#{state},</if>
+				<if test="null!= provinceid and ''!= provinceid">#{provinceid},</if>
+				<if test="null!= cityid and ''!= cityid">#{cityid},</if>
+				<if test="null!= mobileno and ''!= mobileno">#{mobileno},</if>
+				<if test="null!= bindtime and ''!= bindtime">#{bindtime},</if>
+				<if test="null!= unbindtime and ''!= unbindtime">#{unbindtime},</if>
+			</trim>
+		)
+	   </insert>
+	   
+	  <update id="updateUserBank" parameterType="com.wqt.user.pojo.WqtUserBank">
+		update wqt_user_bank
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= bankid and ''!= bankid">bankid=#{bankid},</if>
+				<if test="null!= accountname and ''!= accountname">accountname=#{accountname},</if>
+				<if test="null!= accountno and ''!= accountno">accountno=#{accountno},</if>
+				<if test="null!= bindtime and ''!= bindtime">bindtime=#{bindtime},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= unbindtime and ''!= unbindtime">unbindtime=#{unbindtime},</if>
+				<if test="null!= provinceid and ''!= provinceid">provinceid=#{provinceid},</if>
+				<if test="null!= cityid and ''!= cityid">cityid=#{cityid},</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno=#{mobileno},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	   <delete id="deleteUserBank" parameterType="com.wqt.user.pojo.WqtUserBank">
+		    delete from wqt_user_bank where id=#{id}
+	   </delete>
+	   
+       <!--查询知识产权订单-->
+	   <select id="selectUserCenterOrderPage" 
+		        parameterType="com.wqt.user.pojo.UsercenterOrder" 
+		        resultType="com.wqt.user.pojo.UsercenterOrder">
+		    select 
+             a.*
+             from v_usercenter_order  a
+             where 1=1
+			<if test="null!= orderid and ''!= orderid">
+			    and  a.orderid=#{orderid}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			    and  a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= orderkind and ''!= orderkind">
+			   and  a.orderkind=#{orderkind}
+			</if>
+			<if test="null!= buyerid and ''!= buyerid">
+			   and  a.buyerid=#{buyerid}
+			</if>
+			<if test="null!= orderstate and ''!= orderstate">
+			   and  a.orderstate=#{orderstate}
+			</if>
+	   </select>
+	   
+       <!--用户资金明细 -->
+       <insert id="insertCapitalAccount" parameterType="com.wqt.user.pojo.WqtCapitalAccount">
+		insert into wqt_capital_account
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= streamno and ''!= streamno">streamno,</if>
+				<if test="null!= orderid and ''!= orderid">orderid,</if>
+				<if test="null!= ordercode and ''!= ordercode">ordercode,</if>
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= accounttime and ''!= accounttime">accounttime,</if>
+				<if test="null!= kind and ''!= kind">kind,</if>
+				<if test="null!= channel and ''!= channel">channel,</if>
+				<if test="null!= state and ''!= state">state,</if>
+				<if test="null!= resultcode and ''!= resultcode">resultcode,</if>
+				<if test="null!= money and ''!= money">money,</if>
+				<if test="null!= channelstreamno and ''!= channelstreamno">channelstreamno,</if>
+				<if test="null!= returncode and ''!= returncode">returncode,</if>
+				<if test="null!= returnmsg and ''!= returnmsg">returnmsg,</if>
+				<if test="null!= paysuctime and ''!= paysuctime">paysuctime,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= streamno and ''!= streamno">#{streamno},</if>
+				<if test="null!= orderid and ''!= orderid">#{orderid},</if>
+				<if test="null!= ordercode and ''!= ordercode">#{ordercode},</if>
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= accounttime and ''!= accounttime">#{accounttime},</if>
+				<if test="null!= kind and ''!= kind">#{kind},</if>
+				<if test="null!= channel and ''!= channel">#{channel},</if>
+				<if test="null!= state and ''!= state">#{state},</if>
+				<if test="null!= resultcode and ''!= resultcode">#{resultcode},</if>
+				<if test="null!= money and ''!= money">#{money},</if>
+				<if test="null!= channelstreamno and ''!= channelstreamno">#{channelstreamno},</if>
+				<if test="null!= returncode and ''!= returncode">#{returncode},</if>
+				<if test="null!= returnmsg and ''!= returnmsg">#{returnmsg},</if>
+				<if test="null!= paysuctime and ''!= paysuctime">#{paysuctime},</if>
+			</trim>
+		)
+	   </insert>
+	   
+	   <update id="updateCapitalAccount" parameterType="com.wqt.user.pojo.WqtCapitalAccount">
+		update wqt_capital_account
+		<set>
+			<trim suffix="" suffixOverrides=",">
+			    <if test="null!= streamno and ''!= streamno">streamno=#{streamno},</if>
+				<if test="null!= orderid and ''!= orderid">orderid=#{orderid},</if>
+				<if test="null!= ordercode and ''!= ordercode">ordercode=#{ordercode},</if>
+				<if test="null!= userid and ''!= userid">userid=#{userid},</if>
+				<if test="null!= kind and ''!= kind">kind=#{kind},</if>
+				<if test="null!= channel and ''!= channel">channel=#{channel},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= resultcode and ''!= resultcode">resultcode=#{resultcode},</if>
+				<if test="null!= money and ''!= money">money=#{money},</if>
+				<if test="null!= channelstreamno and ''!= channelstreamno">channelstreamno=#{channelstreamno},</if>
+				<if test="null!= returncode and ''!= returncode">returncode=#{returncode},</if>
+				<if test="null!= returnmsg and ''!= returnmsg">returnmsg=#{returnmsg},</if>
+				<if test="null!= paysuctime and ''!= paysuctime">paysuctime=#{paysuctime},</if>
+				<if test="null!= remark and ''!= remark">remark=#{remark},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	   <select id="selectCapitalAccountList" 
+	        parameterType="com.wqt.user.pojo.WqtCapitalAccount" 
+	        resultType="com.wqt.user.pojo.WqtCapitalAccount">
+		     select 
+             *
+             from wqt_capital_account a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and   a.state=#{state}
+			</if>
+			<if test="null!= orderid and ''!= orderid">
+			   and   a.orderid=#{orderid}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			   and   a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			   and   a.kind=#{ordercode}kind
+			</if>
+			<if test="null!= channel and ''!= channel">
+			   and   a.channel=#{channel}
+			</if>
+			order by accounttime desc
+	   </select>
+	   
+	   <select id="selectCapitalAccountById" useCache="false" parameterType="string" resultType="com.wqt.user.pojo.WqtCapitalAccount" >
+		   select * from wqt_capital_account where id = #{id}
+	   </select>
+	   
+	   <delete id="deleteCapitalAccount" parameterType="string">
+		    delete from wqt_capital_account where id=#{id}
+	   </delete>
+	   
+       <!--用户建议 -->
+       <insert id="insertUserSuggest" parameterType="com.wqt.user.pojo.WqtUserSuggest">
+		insert into wqt_user_suggest
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= suggest and ''!= suggest">suggest,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= suggest and ''!= suggest">#{suggest},</if>
+			</trim>
+		)
+	   </insert>
+	   
+	   <update id="updateUserSuggest" parameterType="com.wqt.user.pojo.WqtUserSuggest">
+		update wqt_user_suggest
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= suggest and ''!= suggest">suggest=#{suggest},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= workerid and ''!= workerid">workerid=#{workerid},</if>
+				<if test="null!= answertime and ''!= answertime">answertime=#{answertime},</if>
+				<if test="null!= answer and ''!= answer">answer=#{answer},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	   <select id="selectUserSuggestList" 
+	        parameterType="com.wqt.user.pojo.WqtUserSuggest" 
+	        resultType="com.wqt.user.pojo.WqtUserSuggest">
+		     select 
+             *
+             from wqt_user_suggest a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and   a.state=#{state}
+			</if>
+			<if test="null!= workerid and ''!= workerid">
+			   and   a.workerid=#{workerid}
+			</if>
+			order by inserttime desc
+	   </select>
+	   
+	   <select id="selectUserSuggestById" useCache="false" parameterType="string" resultType="com.wqt.user.pojo.WqtUserSuggest" >
+		   select * from wqt_user_suggest where id = #{id}
+	   </select>
+	   
+	    <delete id="deleteUserSuggest" parameterType="string">
+		    delete from wqt_user_suggest where id=#{id}
+	   </delete>
+	   
+	   
+       <!--用户基础信息 -->
+       <insert id="insertUserBasic" parameterType="com.user.pojo.UserBasic">
+		insert into wqt_user_basic
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userkind and ''!= userkind">userkind,</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno,</if>
+				<if test="null!= username and ''!= username">username,</if>
+				<if test="null!= email and ''!= email">email,</if>
+				<if test="null!= emailcode and ''!= emailcode">emailcode,</if>
+				<if test="null!= checkemail and ''!= checkemail">checkemail,</if>
+				<if test="null!= nickname and ''!= nickname">nickname,</if>
+				<if test="null!= qq and ''!= qq">qq,</if>
+				<if test="null!= weixin and ''!= weixin">weixin,</if>
+				<if test="null!= password and ''!= password">password,</if>
+				<if test="null!= sex and ''!= sex">sex,</if>
+				<if test="null!= birthday and ''!= birthday">birthday,</if>
+				<if test="null!= regdate and ''!= regdate">regdate,</if>
+				<if test="null!= lastlogindate and ''!= lastlogindate">lastlogindate,</if>
+				<if test="null!= user_level and ''!= user_level">user_level,</if>
+				<if test="null!= remark and ''!= remark">remark,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userkind and ''!= userkind">#{userkind},</if>
+				<if test="null!= mobileno and ''!= mobileno">#{mobileno},</if>
+				<if test="null!= username and ''!= username">#{username},</if>
+				<if test="null!= email and ''!= email">#{email},</if>
+				<if test="null!= emailcode and ''!= emailcode">#{emailcode},</if>
+				<if test="null!= checkemail and ''!= checkemail">#{checkemail},</if>
+				<if test="null!= nickname and ''!= nickname">#{nickname},</if>
+				<if test="null!= qq and ''!= qq">#{qq},</if>
+				<if test="null!= weixin and ''!= weixin">#{weixin},</if>
+				<if test="null!= password and ''!= password">#{password},</if>
+				<if test="null!= sex and ''!= sex">#{sex},</if>
+				<if test="null!= birthday and ''!= birthday">#{birthday},</if>
+				<if test="null!= regdate and ''!= regdate">#{regdate},</if>
+				<if test="null!= lastlogindate and ''!= lastlogindate">#{lastlogindate},</if>
+				<if test="null!= user_level and ''!= user_level">#{user_level},</if>
+				<if test="null!= remark and ''!= remark">#{remark},</if>
+			</trim>
+		)
+	  </insert>
+	  
+	  <update id="updateUserBasic" parameterType="com.user.pojo.UserBasic">
+		update wqt_user_basic
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userkind and ''!= userkind">userkind=#{userkind},</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno=#{mobileno},</if>
+				<if test="null!= username and ''!= username">username=#{username},</if>
+				<if test="null!= email and ''!= email">email=#{email},</if>
+				<if test="null!= emailcode and ''!= emailcode">emailcode=#{emailcode},</if>
+				<if test="null!= checkemail and ''!= checkemail">checkemail=#{checkemail},</if>
+				<if test="null!= nickname and ''!= nickname">nickname=#{nickname},</if>
+				<if test="null!= weixin and ''!= weixin">weixin=#{weixin},</if>
+				<if test="null!= qq and ''!= qq">qq=#{qq},</if>
+				<if test="null!= password and ''!= password">password=#{password},</if>
+				<if test="null!= sex and ''!= sex">sex=#{sex},</if>
+				<if test="null!= birthday and ''!= birthday">birthday=#{birthday},</if>
+				<if test="null!= lastlogindate and ''!= lastlogindate">lastlogindate=#{lastlogindate},</if>
+				<if test="null!= user_level and ''!= user_level">user_level=#{user_level},</if>
+				<if test="null!= remark and ''!= remark">remark=#{remark},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	   
+	  
+	 <select id="userLogin" 
+	        parameterType="com.user.pojo.UserBasic" 
+	        resultType="com.user.pojo.UserBasic">
+		     select 
+             *
+             from wqt_user_basic a
+		     where a.mobileno=#{mobileno}
+			   or   a.username=upper(#{username})
+			   or   a.email=#{email}
+	   </select>
+	    
+	  <select id="selectListUserBasic" 
+	        parameterType="com.user.pojo.UserBasic" 
+	        resultType="com.user.pojo.UserBasic">
+		     select 
+             *
+             from wqt_user_basic a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= mobileno and ''!= mobileno">
+			   and   a.mobileno=#{mobileno}
+			</if>
+			<if test="null!= username and ''!= username">
+			   and   a.username=upper(#{username})
+			</if>
+			<if test="null!= email and ''!= email">
+			   and   a.email=#{email}
+			</if>
+			<if test="null!= emailcode and ''!= emailcode">
+			   and   a.emailcode=#{emailcode}
+			</if>
+			order by regdate desc
+	   </select>
+	   
+	   <select id="selectUserById" useCache="false" parameterType="string" resultType="com.user.pojo.UserBasic" >
+		   select * from wqt_user_basic where id = #{id}
+	   </select>
+	   
+	   <select id="selectUserByUsername" useCache="false" parameterType="string" resultType="com.user.pojo.UserBasic" >
+		   select * from wqt_user_basic where username = upper(#{username})
+	   </select>
+	   
+	   <select id="selectUserByMobileNo" useCache="false" parameterType="string" resultType="com.user.pojo.UserBasic" >
+		   select * from wqt_user_basic where mobileno =#{mobileno}
+	   </select>
+	   
+	   
+	   <delete id="deleteUserBasic" parameterType="string">
+		    delete from t_wqt_user_basic where id=#{id}
+	   </delete>
+	   
+	   <!--合同主体-->
+       <insert id="insertWqtUserContract" parameterType="com.wqt.user.pojo.WqtUserContract">
+		insert into wqt_user_contract
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= kind and ''!= kind">kind,</if>
+				<if test="null!= name and ''!= name">name,</if>
+				<if test="null!= certificatecode and ''!= certificatecode">certificatecode,</if>
+				<if test="null!= province and ''!= province">province,</if>
+				<if test="null!= city and ''!= city">city,</if>
+				<if test="null!= area and ''!= area">area,</if>
+				<if test="null!= explicitaddr and ''!= explicitaddr">explicitaddr,</if>
+				<if test="null!= connector and ''!= connector">connector,</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno,</if>
+				<if test="null!= tel and ''!= tel">tel,</if>
+				<if test="null!= email and ''!= email">email,</if>
+				<if test="null!= isdefault and ''!= isdefault">isdefault,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= kind and ''!= kind">#{kind},</if>
+				<if test="null!= name and ''!= name">#{name},</if>
+				<if test="null!= certificatecode and ''!= certificatecode">#{certificatecode},</if>
+				<if test="null!= province and ''!= province">#{province},</if>
+				<if test="null!= city and ''!= city">#{city},</if>
+				<if test="null!= area and ''!= area">#{area},</if>
+				<if test="null!= explicitaddr and ''!= explicitaddr">#{explicitaddr},</if>
+				<if test="null!= connector and ''!= connector">#{connector},</if>
+				<if test="null!= mobileno and ''!= mobileno">#{mobileno},</if>
+				<if test="null!= tel and ''!= tel">#{tel},</if>
+				<if test="null!= email and ''!= email">#{email},</if>
+				<if test="null!= isdefault and ''!= isdefault">#{isdefault},</if>
+			</trim>
+		)
+	  </insert>
+	 
+	  <update id="updateWqtUserContract" parameterType="com.wqt.user.pojo.WqtUserContract">
+		update wqt_user_contract
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid=#{userid},</if>
+				<if test="null!= kind and ''!= kind">kind=#{kind},</if>
+				<if test="null!= name and ''!= name">name=#{name},</if>
+				<if test="null!= certificatecode and ''!= certificatecode">certificatecode=#{certificatecode},</if>
+				<if test="null!= province and ''!= province">province=#{province},</if>
+				<if test="null!= city and ''!= city">city=#{city},</if>
+				<if test="null!= area and ''!= area">area=#{area},</if>
+				<if test="null!= explicitaddr and ''!= explicitaddr">explicitaddr=#{explicitaddr},</if>
+				<if test="null!= connector and ''!= connector">connector=#{connector},</if>
+				<if test="null!= mobileno and ''!= mobileno">mobileno=#{mobileno},</if>
+				<if test="null!= tel and ''!= tel">tel=#{tel},</if>
+				<if test="null!= email and ''!= email">email=#{email},</if>
+				<if test="null!= isdefault and ''!= isdefault">isdefault=#{isdefault},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	  </update>
+	  
+	  <select id="selectOneWqtUserContract" useCache="false" parameterType="string" resultType="com.wqt.user.pojo.WqtUserContract" >
+		   select * from wqt_user_contract where id = #{id}
+	  </select>
+	    
+	  <select id="selectListWqtUserContract" 
+		        parameterType="com.wqt.user.pojo.WqtUserContract" 
+		        resultType="com.wqt.user.pojo.WqtUserContract">
+		     select 
+		        *
+		     from wqt_user_contract a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			   and   a.kind=#{kind}
+			</if>
+			<if test="null!= mobileno and ''!= mobileno">
+			   and   a.mobileno=#{mobileno}
+			</if>
+			<if test="null!= certificatecode and ''!= certificatecode">
+			   and   a.certificatecode=#{certificatecode}
+			</if>
+			order by insertdate desc
+	   </select>
+	   
+	   <delete id="deleteWqtUserContract" parameterType="string">
+		    delete from wqt_user_contract where id=#{id}
+	   </delete>
+	   
+	    
+       <!--邮寄地址-->
+       <insert id="insertWqtUserPost" parameterType="com.wqt.user.pojo.WqtUserPost">
+		insert into wqt_user_post
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= recvname and ''!= recvname">recvname,</if>
+				<if test="null!= recvprovice and ''!= recvprovice">recvprovice,</if>
+				<if test="null!= recvcity and ''!= recvcity">recvcity,</if>
+				<if test="null!= recvarea and ''!= recvarea">recvarea,</if>
+				<if test="null!= recvaddr and ''!= recvaddr">recvaddr,</if>
+				<if test="null!= postcode and ''!= postcode">postcode,</if>
+				<if test="null!= connecttel and ''!= connecttel">connecttel,</if>
+				<if test="null!= isdefault and ''!= isdefault">isdefault,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= recvname and ''!= recvname">#{recvname},</if>
+				<if test="null!= recvprovice and ''!= recvprovice">#{recvprovice},</if>
+				<if test="null!= recvcity and ''!= recvcity">#{recvcity},</if>
+				<if test="null!= recvarea and ''!= recvarea">#{recvarea},</if>
+				<if test="null!= recvaddr and ''!= recvaddr">#{recvaddr},</if>
+				<if test="null!= postcode and ''!= postcode">#{postcode},</if>
+				<if test="null!= connecttel and ''!= connecttel">#{connecttel},</if>
+				<if test="null!= isdefault and ''!= isdefault">#{isdefault},</if>
+			</trim>
+		)
+	 </insert>
+	 
+	 <update id="updateWqtUserPost" parameterType="com.wqt.user.pojo.WqtUserPost">
+		update wqt_user_post
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid=#{userid},</if>
+				<if test="null!= recvname and ''!= recvname">recvname=#{recvname},</if>
+				<if test="null!= recvprovice and ''!= recvprovice">recvprovice=#{recvprovice},</if>
+				<if test="null!= recvcity and ''!= recvcity">recvcity=#{recvcity},</if>
+				<if test="null!= recvarea and ''!= recvarea">recvarea=#{recvarea},</if>
+				<if test="null!= recvaddr and ''!= recvaddr">recvaddr=#{recvaddr},</if>
+				<if test="null!= postcode and ''!= postcode">postcode=#{postcode},</if>
+				<if test="null!= connecttel and ''!= connecttel">connecttel=#{connecttel},</if>
+				<if test="null!= isdefault and ''!= isdefault">isdefault=#{isdefault},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	 </update>
+     
+     <delete id="deleteWqtUserPost" parameterType="string">
+		    delete from wqt_user_post where id=#{id}
+	 </delete>
+	   
+     <select id="selectOneWqtUserPost" useCache="false" parameterType="string" resultType="com.wqt.user.pojo.WqtUserPost" >
+		   select * from wqt_user_post where id = #{id}
+	 </select>
+	 
+	 <select id="selectListWqtUserPost" 
+		        parameterType="com.wqt.user.pojo.WqtUserPost" 
+		        resultType="com.wqt.user.pojo.WqtUserPost">
+		   select *
+		     from wqt_user_post d
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  d.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   userid=#{userid}
+			</if>
+			<if test="null!= isdefault and ''!= isdefault">
+			   and   isdefault=#{isdefault}
+			</if>
+			order by insertdate desc
+	  </select>
+	  
+	   <!--开票信息-->
+       <insert id="insertWqtUserBill" parameterType="com.wqt.user.pojo.WqtUserBill">
+		insert into wqt_user_bill
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= orderid and ''!= orderid">orderid,</if>
+				<if test="null!= billtitle and ''!= billtitle">billtitle,</if>
+				<if test="null!= billmoney and ''!= billmoney">billmoney,</if>
+				<if test="null!= billcontent and ''!= billcontent">billcontent,</if>
+				<if test="null!= kind and ''!= kind">kind,</if>
+				<if test="null!= dutycode and ''!= dutycode">dutycode,</if>
+				<if test="null!= provinceid and ''!= provinceid">provinceid,</if>
+				<if test="null!= cityid and ''!= cityid">cityid,</if>
+				<if test="null!= recvaddr and ''!= recvaddr">recvaddr,</if>
+				<if test="null!= recvname and ''!= recvname">recvname,</if>
+				<if test="null!= recvmobile and ''!= recvmobile">recvmobile,</if>
+				<if test="null!= state and ''!= state">state,</if>
+				<if test="null!= succtime and ''!= succtime">succtime,</if>
+				<if test="null!= billcode and ''!= billcode">billcode,</if>
+				<if test="null!= postcompany and ''!= postcompany">postcompany,</if>
+				<if test="null!= postcode and ''!= postcode">postcode,</if>
+				<if test="null!= remark and ''!= remark">remark,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= orderid and ''!= orderid">#{orderid},</if>
+				<if test="null!= billtitle and ''!= billtitle">#{billtitle},</if>
+				<if test="null!= billmoney and ''!= billmoney">#{billmoney},</if>
+				<if test="null!= billcontent and ''!= billcontent">#{billcontent},</if>
+				<if test="null!= kind and ''!= kind">#{kind},</if>
+				<if test="null!= dutycode and ''!= dutycode">#{dutycode},</if>
+				<if test="null!= provinceid and ''!= provinceid">#{provinceid},</if>
+				<if test="null!= cityid and ''!= cityid">#{cityid},</if>
+				<if test="null!= recvaddr and ''!= recvaddr">#{recvaddr},</if>
+				<if test="null!= recvname and ''!= recvname">#{recvname},</if>
+				<if test="null!= recvmobile and ''!= recvmobile">#{recvmobile},</if>
+				<if test="null!= state and ''!= state">#{state},</if>
+				<if test="null!= succtime and ''!= succtime">#{succtime},</if>
+				<if test="null!= billcode and ''!= billcode">#{billcode},</if>
+				<if test="null!= postcompany and ''!= postcompany">#{postcompany},</if>
+				<if test="null!= postcode and ''!= postcode">#{postcode},</if>
+				<if test="null!= remark and ''!= remark">#{remark},</if>
+			</trim>
+		)
+	 </insert>
+	 
+	 <update id="updateWqtUserBill" parameterType="com.wqt.user.pojo.WqtUserBill">
+		update wqt_user_bill
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid=#{userid},</if>
+				<if test="null!= orderid and ''!= orderid">orderid=#{orderid},</if>
+				<if test="null!= billtitle and ''!= billtitle">billtitle=#{billtitle},</if>
+				<if test="null!= billmoney and ''!= billmoney">billmoney=#{billmoney},</if>
+				<if test="null!= billcontent and ''!= billcontent">billcontent=#{billcontent},</if>
+				<if test="null!= kind and ''!= kind">kind=#{kind},</if>
+				<if test="null!= dutycode and ''!= dutycode">dutycode=#{dutycode},</if>
+				<if test="null!= provinceid and ''!= provinceid">provinceid=#{provinceid},</if>
+				<if test="null!= cityid and ''!= cityid">cityid=#{cityid},</if>
+				<if test="null!= recvaddr and ''!= recvaddr">recvaddr=#{recvaddr},</if>
+				<if test="null!= recvname and ''!= recvname">recvname=#{recvname},</if>
+				<if test="null!= recvmobile and ''!= recvmobile">recvmobile=#{recvmobile},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= succtime and ''!= succtime">succtime=#{succtime},</if>
+				<if test="null!= billcode and ''!= billcode">billcode=#{billcode},</if>
+				<if test="null!= postcompany and ''!= postcompany">postcompany=#{postcompany},</if>
+				<if test="null!= postcode and ''!= postcode">postcode=#{postcode},</if>
+				<if test="null!= remark and ''!= remark">remark=#{remark},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	 </update>
+     
+     <delete id="deleteWqtUserBill" parameterType="string">
+		    delete from wqt_user_bill where id=#{id}
+	 </delete>
+	   
+     <select id="selectOneWqtUserBill" useCache="false" parameterType="string" resultType="com.wqt.user.pojo.WqtUserBill" >
+		   select * from wqt_user_bill where id = #{id}
+	 </select>
+	 
+	 <select id="selectListWqtUserBill" 
+		        parameterType="com.wqt.user.pojo.WqtUserBill" 
+		        resultType="com.wqt.user.pojo.WqtUserBill">
+		   select *
+		     from wqt_user_bill d
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  d.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   userid=#{userid}
+			</if>
+			order by billtime desc
+	  </select>
+	
+</mapper>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>批量上传的商标</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/brandBatchSail_hanging.js"></script>
+<script type="text/javascript" src="../../layDate/laydate/laydate.js"></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 90px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+				 <form id="dictDataForm" class="easyui-form" method="get" >
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>用户id:</th>
+							<td><input id="userid" class="easyui-textbox" style="width:100%"/></td>
+							<th>联系人:</th>
+							<td><input id="connect"  class="easyui-textbox" style="width:100%"/></td>
+							<th>发布时间:</th>
+							<td>
+							 <input id="developtime"  class="easyui-textbox" style="width:100%"/>
+						    </td>
+						    <th>选择状态:</th>
+							<td>
+							 <select id="state" name="brandBatchSail.state" class="easyui-combobox" style="width: 100%; margin: 0px; padding: 0;">
+							    <option value="">请选择</option>
+							   	<option value="1">用户提交信息</option>
+							   	<option value="2">业务员已受理</option>
+							   	<option value="3">处理完成</option>
+							  </select >
+						    </td>
+						    <th>员工id:</th>
+					    	<td>
+					    		<input id="workerid"  class="easyui-textbox" style="width:100%"/>
+					    	</td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			 </div>
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			</div>
+		    
+			  
+			
+
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'批量上传商标列表', 
+					              iconCls      :'icon-ex-grid' ,
+								        url          :'sysBrand_selectBrandBatchsail?iprBrandBatchsail.states=1,2,3',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :50,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'startvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'endvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'userid',width:100  ,halign:'center' ,align:'center'">用户id</th>
+							<th data-options="field:'connect',width:100 ,halign:'center' ,align:'center'">联系人</th>
+							<th data-options="field:'developtime',width:120 ,halign:'center' ,align:'center'">发布时间</th>
+						    <th data-options="field:'state',width:100 ,halign:'center' ,align:'center',formatter:formatstate">状态</th>
+							<th data-options="field:'workerid',width:150  ,halign:'center' ,align:'center'">业务员id</th>
+							<th data-options="field:'_operate',width:200,align:'center',formatter:formatOper">操作</th> 
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a>
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDown()">下载</a>
+					<!-- <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ex-add'" ></a>  
+					<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ex-delete'">刪除</a> -->
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

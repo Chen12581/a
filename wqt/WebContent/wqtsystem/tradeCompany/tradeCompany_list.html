@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>业务员挂卖的公司</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/tradeCompany_list.js"></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 90px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+				 <form id="dictDataForm" class="easyui-form" method="get" >
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>公司名称:</th>
+							<td><input id="companytruename" class="easyui-textbox" style="width:100%"/></td>
+							<th>企业行业:</th>
+							<td>
+							   <input class="easyui-combobox" 
+									  id="companyindustry"
+									  style="width:200px;"
+									  data-options="
+												url:'sysEscompany_selEsTradeCompanyIndustry.action',
+												method:'get',
+											    valueField:'value',
+							                    textField:'text',
+												panelHeight:'auto'
+								">
+							</td>
+							<th valign="middle">注册资金：</th>
+							<td style="width:220px;height:50px;">
+							     <select style="width:200px;" id="regcapital"  class="easyui-combobox">
+							     	<option value="">不限</option>
+								   	<option value="1">50万以下</option>
+								   	<option value="2">50万-100万</option>
+								   	<option value="3">100万-500万</option>
+								   	<option value="4">500万-1000万</option>
+								   	<option value="5">1000万以上</option>
+							     </select>
+							</td>
+							<th>选择状态:</th>
+							<td>
+							 <select id="state"  class="easyui-combobox" style="width: 100%; margin: 0px; padding: 0;">
+							    <option value="">请选择</option>
+							    <option value="1">编辑</option>	
+							    <option value="2">在售</option>	
+								<option value="3">已预订</option>	
+								<option value="4">交接中</option>
+								<option value="5">已售</option>
+								<option value="6">审核不通过</option>
+								<option value="7">待完善</option>
+								<option value="8">审核通过</option>	
+								<option value="9">停售</option>
+							  </select >
+						    </td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			 </div>
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			</div>
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'我挂的公司列表', 
+					              iconCls      :'icon-ex-grid' ,
+								        url          :'sysEscompany_selectEsTradeCompanyShopList.action',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :50,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'startvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'endvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'companytruename',width:100  ,halign:'center' ,align:'center'">公司真实名称</th>
+							<th data-options="field:'industryname',width:120  ,halign:'center' ,align:'center'">企业行业</th>
+							<th data-options="field:'holddate',width:100  ,halign:'center' ,align:'center',formatter:formatholddate">经营年限</th>
+							<th data-options="field:'establishdate',width:100  ,halign:'center' ,align:'center'">公司成立日期</th>
+							<th data-options="field:'dutytype',width:120  ,halign:'center' ,align:'center',formatter:formatdutytype">纳税类型</th>
+							<th data-options="field:'regcapitalmoney',width:100 ,halign:'center' ,align:'center'">注册资本金额</th>
+							<th data-options="field:'creditcode',width:120 ,halign:'center' ,align:'center'">工商信用代码</th>
+							<th data-options="field:'companytype',width:150  ,halign:'center' ,align:'center',formatter:formattype">企业类型</th>
+							<th data-options="field:'price',width:100  ,halign:'center' ,align:'center'">出售价格</th>
+							<th data-options="field:'provincename',width:150  ,halign:'center' ,align:'center'">省份</th>
+							<th data-options="field:'cityname',width:150  ,halign:'center' ,align:'center'">城市</th>
+							<th data-options="field:'areaname',width:150 ,halign:'center' ,align:'center'">区县</th>
+							<th data-options="field:'areacodename',width:100 ,halign:'center' ,align:'center'">所在地区</th>
+							<th data-options="field:'bankaccount',width:120 ,halign:'center' ,align:'center',formatter:formatWhether">是否开户</th>
+							<th data-options="field:'applybill',width:150  ,halign:'center' ,align:'center',formatter:formatWhether1">是否带发票</th>
+							<th data-options="field:'netbank',width:100  ,halign:'center' ,align:'center',formatter:formatWhether2">是否带网银</th>
+							<th data-options="field:'operaterange',width:150  ,halign:'center' ,align:'center'">经营范围</th>
+							<th data-options="field:'lawername',width:150  ,halign:'center' ,align:'center'">法人姓名</th>
+							<th data-options="field:'debtissue',width:120 ,halign:'center' ,align:'center',formatter:formatHaveNo">债务纠纷</th>
+							<th data-options="field:'rightsissue',width:150  ,halign:'center' ,align:'center',formatter:formatHaveNo1">债权纠纷</th>
+							<th data-options="field:'businessissue',width:100  ,halign:'center' ,align:'center',formatter:formatHaveNo2">工商问题</th>
+							<th data-options="field:'lawissue',width:120 ,halign:'center' ,align:'center',formatter:formatHaveNo3">法律纠纷</th>
+							<th data-options="field:'dutyissue',width:150  ,halign:'center' ,align:'center',formatter:formatHaveNo4">税务问题</th>
+							<th data-options="field:'loanissue',width:100  ,halign:'center' ,align:'center',formatter:formatHaveNo5">贷款问题</th>
+							<th data-options="field:'tangiblecapital',width:120 ,halign:'center' ,align:'center'">有形资产</th>
+							<th data-options="field:'intangiblecapital',width:150  ,halign:'center' ,align:'center'">无形资产</th>
+							<th data-options="field:'connector',width:100  ,halign:'center' ,align:'center'">联系人</th>
+							<th data-options="field:'mobileno',width:120 ,halign:'center' ,align:'center'">联系电话</th>
+							<th data-options="field:'address',width:150  ,halign:'center' ,align:'center'">公司地址</th>
+							<th data-options="field:'createtime',width:150 ,halign:'center' ,align:'center'">创建时间</th>
+							<th data-options="field:'state',width:100 ,halign:'center' ,align:'center',formatter:formatstate">状态</th>
+							<th data-options="field:'_oper',width:200,align:'center',formatter:formatOper">操作</th> 
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="doAdd()">新增</a>
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a>
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+@CHARSET "UTF-8";
+/*
+.form-table  {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	padding: 0;
+	margin: 0;
+} 
+
+.form-table th {
+    background-color: #f5fafa;
+	font: 12px "宋体","Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	text-align:right;
+	height:24px;
+    border-top: 1px solid #C1DAD7;
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;
+	padding: 5px 3px 5px 2px;	
+}
+
+ 
+.form-table td {
+	border-top: 1px solid #C1DAD7;
+	background: #fff;
+	font-size:11px;
+	padding: 5px 3px 5px 3px;
+	color: #4f6b72;
+} 
+*/
+
+
+body {
+     overflow : hidden;   
+} 
+
+
+
+
+.dg-red-star {
+	color: red;
+	font-size: 14px;
+}
+
+div .btn-separator {  
+  float: left;  
+  height: 24px;  
+  border-left: 1px solid LightGrey;  
+  border-right: 0px solid LightGrey;  
+  margin: 1px 1px;  
+} 
+
+
+.tablebody {
+	padding: 5px 5px; 
+	width: 90%; 
+	margin: 0px 0px 5px 0px; 
+	overflow: hidden;
+}
+.north {
+	top:5px; 
+	margin-bottom: 5px; 
+	overflow: hidden; 
+	border: none;
+}
+.dg-formtable-btn{
+	position:absolute;
+	top:1px;
+	right:5px;
+	float:right;
+}
+.dg-100{
+	width:100%;
+}
+.dg-formtable-title{
+	/*position:absolute;
+	float:left;
+	top:8px;
+	left:100px;*/
+	position:absolute;
+	float:left;
+	top:8px;
+	opacity:0;
+}
+.dg-formtable {
+	table-layout: fixed;
+	margin: 0;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.dg-formtable th {
+	margin-right: 4px;
+	padding: 1px 4px;
+	width: 100px;
+	background: #f5fafa none repeat scroll 0% 0%;
+	border: 1px solid #D8E2EB;
+	font: 12px Arial, Helvetica, sans-serif, "宋体";
+	text-align: right;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+.dg-formtable td {
+	padding: 3px 10px 3px 5px;
+	margin:0;
+	vertical-align: middle;
+	border: 1px solid #D8E2EB;
+	word-wrap: break-word;
+	word-break: normal;
+	white-space: normal;                                                                            
+}
+
+
+/*.chktextbox{                                         
+	width:100%;
+}*/
+.toolbar {
+	margin: 4px;
+	border-color: transparent;
+	background: transparent none repeat scroll 0% 0%;
+}
+
+
+/*easyui*/
+.tabs-header,
+.tabs-tool {
+  background-color: #fff;
+}

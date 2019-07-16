@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户中心常见问题</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/wqtProblem_list.js"></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 90px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+				 <form id="dictDataForm" class="easyui-form" method="get" >
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>标题:</th>
+							<td><input id="title" class="easyui-textbox" style="width:100%"/></td>
+							<th>问题分类:</th>
+							<td>
+								<input class="easyui-combobox" 
+								     id="problemkind"
+								     name="wqtProblem.problemkind"
+									 style="width:150px;"
+									 data-options="
+											url:'sysProblem_distSelectWqtProblemKind.action',
+											method:'get',
+											valueField:'value',
+						                    textField:'text',
+											panelHeight:'180'">
+							</td>
+							<th valign="middle">分类：</th>
+							<td style="height:50px;">
+								<select style="width:150px;" id="sonproblemkind" name="wqtProblem.sonproblemkind" class="easyui-combobox">
+								</select>
+								
+							</td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			 </div>
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			</div>
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'用户中心常见问题列表', 
+					              iconCls      :'icon-ex-grid' ,
+								        url          :'sysProblem_selectWqtProblemPage.action',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :50,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'title',width:200  ,halign:'center' ,align:'center'">标题</th>
+							<th data-options="field:'problemkind',width:120  ,halign:'center' ,align:'center',formatter:formatproblemkind">问题分类</th>
+							<th data-options="field:'sonproblemkind',width:120  ,halign:'center' ,align:'center',formatter:formatsonproblemkind">分类</th>
+							<th data-options="field:'simpledesc',width:120  ,halign:'center' ,align:'center'">简单描述</th>
+							<th data-options="field:'pathkey',width:100  ,halign:'center' ,align:'center'">虚拟关键字</th>
+							<th data-options="field:'htmlpath',width:100  ,halign:'center' ,align:'center'">链接地址</th>
+							<th data-options="field:'createtime',width:100  ,halign:'center' ,align:'center'">建立时间</th>
+							<th data-options="field:'_oper',width:200,align:'center',formatter:formatOper">操作</th> 
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="doAdd()">新增</a>
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a>
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

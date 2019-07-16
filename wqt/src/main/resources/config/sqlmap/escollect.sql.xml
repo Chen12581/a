@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="escollect"> 
+      
+	
+	  <!--查询交易产品用户收藏-->
+	  <select id="selectEsCollectShopList" 
+		        parameterType="com.wqt.user.pojo.EsCollectShop" 
+		        resultType="com.wqt.user.pojo.EsCollectShop">
+		    select 
+             *
+             from es_collect_shop a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= shopid and ''!= shopid">
+			    and  a.shopid=#{shopid}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			order by collecttime desc
+	   </select>
+	   
+	  
+	   <!-- 删除交易产品用户收藏-->
+	   <delete id="delEsCollectShop" parameterType="com.wqt.user.pojo.EsCollectShop">
+			 delete  from es_collect_shop
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+		</delete>
+	  
+	  <!--查询交易产品用户收藏-->
+	  <select id="selectEsCollectProductList" 
+		        parameterType="com.wqt.user.pojo.EsCollectProduct" 
+		        resultType="com.wqt.user.pojo.EsCollectProduct">
+		    select 
+             *
+             from es_collect_product a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= productid and ''!= productid">
+			    and  a.productid=#{productid}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			order by collecttime desc
+	   </select>
+	   
+	   <!-- 删除用户收藏-->
+	   <delete id="delEsCollectProduct" parameterType="com.wqt.user.pojo.EsCollectProduct">
+			 delete  from es_collect_product
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+		</delete>	
+</mapper>

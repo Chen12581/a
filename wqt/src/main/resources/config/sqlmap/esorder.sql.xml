@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="esOrder"> 
+       
+       <!--查询企业服务的订单(服务和交易的)-->
+	   <select id="selectEsOrderPage" 
+		        parameterType="com.wqt.user.pojo.UEsOrder" 
+		        resultType="com.wqt.user.pojo.UEsOrder">
+		    select 
+             a.*
+             from v_es_order  a
+             where 1=1
+			<if test="null!= orderid and ''!= orderid">
+			    and  a.orderid=#{orderid}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			    and  a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= orderkind and ''!= orderkind">
+			   and  a.orderkind=#{orderkind}
+			</if>
+			<if test="null!= ordershopid and ''!= ordershopid">
+			   and  a.ordershopid=#{ordershopid}
+			</if>
+			<if test="null!= sellerid and ''!= sellerid">
+			   and  a.sellerid=#{sellerid}
+			</if>
+			<if test="null!= buyerid and ''!= buyerid">
+			   and  a.buyerid=#{buyerid}
+			</if>
+			<if test="null!= orderstate and ''!= orderstate">
+			   and  a.orderstate=#{orderstate}
+			</if>
+	   </select>
+	   
+       <!--查询企业服务订单-->
+	   <select id="selectEsOrderServiceList" 
+		        parameterType="com.wqt.es.order.pojo.EsOrderServices" 
+		        resultType="com.wqt.es.order.pojo.EsOrderServices">
+		    select 
+             a.*,
+             (select provincename from wqt_province p where p.id=a.provinceid) provincename,
+			 (select cityname from wqt_city c where c.id=a.cityid) cityname,
+			 (select areaname from wqt_area ar where ar.id=a.areaid) areaname
+             from es_order_service a
+             where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			    and  a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and  a.userid=#{userid}
+			</if>
+			<if test="null!= servicekind and ''!= servicekind">
+			   and  a.servicekind=#{servicekind}
+			</if>
+			<if test="null!= companytype and ''!= companytype">
+			   and  a.companytype=#{companytype}
+			</if>
+<!-- 			<if test="null!= servcieuserid and ''!= servcieuserid"> -->
+<!-- 			   and  a.servcieuserid=#{servcieuserid} -->
+<!-- 			</if> -->
+			<if test="null!= productid and ''!= productid">
+			   and  a.productid=#{productid}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and  a.state=#{state}
+			</if>
+			<if test="null!= workerid and ''!= workerid">
+			   and  a.workerid=#{workerid}
+			</if>
+			order by id 
+	   </select>
+	   
+	   <select id="selectOneEsOrderService" 
+	           parameterType="com.wqt.es.order.pojo.EsOrderServices" 
+	           resultType="com.wqt.es.order.pojo.EsOrderServices" >
+		       select a.*,b.productname,b.producticon,b.htmlpath from es_order_service a,es_service_product b
+		        where  1=1 and a.productid=b.id
+				<if test="id != null and id != ''">
+				    and a.id =#{id}
+				</if>
+				<if test="ordercode != null and ordercode != ''">
+				    and a.ordercode =#{ordercode}
+				</if>
+	   </select>
+	   
+	  <!--修改企业服务订单-->
+	  <update id="updateEsOrderService" parameterType="com.wqt.es.order.pojo.EsOrderServices">
+		update es_order_service
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= orderallmoney and ''!= orderallmoney">orderallmoney=#{orderallmoney},</if>
+				<if test="null!= productid and ''!= productid">productid=#{productid},</if>
+				<if test="null!= favourablemoney and ''!= favourablemoney">favourablemoney=#{favourablemoney},</if>
+				<if test="null!= ordermoney and ''!= ordermoney">ordermoney=#{ordermoney},</if>
+				<if test="null!= paymoney and ''!= paymoney">paymoney=#{paymoney},</if>
+				<if test="null!= provinceid and ''!= provinceid">provinceid=#{provinceid},</if>
+				<if test="null!= cityid and ''!= cityid">cityid=#{cityid},</if>
+				<if test="null!= areaid and ''!= areaid">areaid=#{areaid},</if>
+				<if test="null!= servicekind and ''!= servicekind">servicekind=#{servicekind},</if>
+				<if test="null!= companytype and ''!= companytype">companytype=#{companytype},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= workerid and ''!= workerid">workerid=#{workerid},</if>
+				<if test="null!= remark and ''!= remark">remark=#{remark},</if>
+				<if test="null!= suctime and ''!= suctime">suctime=#{suctime},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	  <!-- 删除企业服务订单-->
+	  <delete id="deleteEsOrderService" parameterType="com.wqt.es.order.pojo.EsOrderServices">
+			 delete  from es_order_service a
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and a.id =#{id}
+			</if>
+			<if test="ordercode != null and ordercode != ''">
+			    and a.ordercode =#{ordercode}
+			</if>
+	  </delete>
+	  
+	  
+	  <!--查询企业交易订单-->
+	  <select id="selectEsOrderTradeList" 
+		        parameterType="com.wqt.es.order.pojo.EsOrderTrade" 
+		        resultType="com.wqt.es.order.pojo.EsOrderTrade">
+		    select 
+             a.*
+             from es_order_trade a
+             where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			    and  a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= sellerid and ''!= sellerid">
+			   and  a.sellerid=#{sellerid}
+			</if>
+			<if test="null!= buyerid and ''!= buyerid">
+			   and  a.buyerid=#{buyerid}
+			</if>
+			<if test="null!= companyshopid and ''!= companyshopid">
+			   and  a.companyshopid=#{companyshopid}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and  a.state=#{state}
+			</if>
+			<if test="null!= workerid and ''!= workerid">
+			   and  a.workerid=#{workerid}
+			</if>
+			order by id 
+	  </select>
+	  
+	  <!--查询企业交易订单-->
+	  <select id="selectOneEsOrderTrade" 
+	           parameterType="com.wqt.es.order.pojo.EsOrderTrade" 
+	           resultType="com.wqt.es.order.pojo.EsOrderTrade" >
+		       select * from es_order_trade a
+		        where  1=1
+				<if test="id != null and id != ''">
+				    and a.id =#{id}
+				</if>
+				<if test="ordercode != null and ordercode != ''">
+				    and a.ordercode =#{ordercode}
+				</if>
+	   </select>
+	   
+	   <!--修改企业交易订单-->
+	  <update id="updateEsOrderTrade" parameterType="com.wqt.es.order.pojo.EsOrderTrade">
+		update es_order_trade
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= companyshopid and ''!= companyshopid">ordermoney=#{companyshopid},</if>
+				<if test="null!= sellerid and ''!= sellerid">sellerid=#{sellerid},</if>
+				<if test="null!= buyerid and ''!= buyerid">buyerid=#{buyerid},</if>
+				<if test="null!= ordermoney and ''!= ordermoney">ordermoney=#{ordermoney},</if>
+				<if test="null!= ordermoney and ''!= ordermoney">ordermoney=#{ordermoney},</if>
+				<if test="null!= buycommisionratio and ''!= buycommisionratio">buycommisionratio=#{buycommisionratio},</if>
+				<if test="null!= commisionbuy and ''!= commisionbuy">commisionbuy=#{commisionbuy},</if>
+				<if test="null!= sailcommisionratio and ''!= sailcommisionratio">sailcommisionratio=#{sailcommisionratio},</if>
+				<if test="null!= commisionsail and ''!= commisionsail">commisionsail=#{commisionsail},</if>
+				<if test="null!= reservepayratio and ''!= reservepayratio">reservepayratio=#{reservepayratio},</if>
+				<if test="null!= reservemoney and ''!= reservemoney">reservemoney=#{reservemoney},</if>
+				<if test="null!= sailordermoney and ''!= sailordermoney">sailordermoney=#{sailordermoney},</if>
+				<if test="null!= buyordermoney and ''!= buyordermoney">buyordermoney=#{buyordermoney},</if>
+				<if test="null!= favourablemoney and ''!= favourablemoney">favourablemoney=#{favourablemoney},</if>
+				<if test="null!= buytrueordermoney and ''!= buytrueordermoney">buytrueordermoney=#{buytrueordermoney},</if>
+				<if test="null!= paymoney and ''!= paymoney">paymoney=#{paymoney},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= workerid and ''!= workerid">workerid=#{workerid},</if>
+				<if test="null!= remark and ''!= remark">remark=#{remark},</if>
+				<if test="null!= suctime and ''!= suctime">suctime=#{suctime},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+	   
+	  <!-- 删除企业交易订单-->
+	  <delete id="deleteEsOrderTrade" parameterType="com.wqt.es.order.pojo.EsOrderTrade">
+			 delete  from es_order_trade a
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and a.id =#{id}
+			</if>
+			<if test="ordercode != null and ordercode != ''">
+			    and a.ordercode =#{ordercode}
+			</if>
+	  </delete>
+</mapper>

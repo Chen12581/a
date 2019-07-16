@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="struts-wqtcompany"   extends="twdpe-common-default">
+	     <global-allowed-methods>regex:.*</global-allowed-methods>
+	  <!-- 获得出售公司列表 -->
+	   <action name="getCompanyList" class="com.wqt.company.action.CompanyAction" method="getCompanyList">
+	    	<result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+	    </action>
+	    <!-- 获得推荐公司列表 -->
+	    <action name="getCompanyRecommendList" class="com.wqt.company.action.CompanyAction" method="getCompanyRecommendList">
+	    	<result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+	    </action>
+	    <!-- 增加出售公司 -->
+	     <action name="InsertCompany" class="com.wqt.sys.company.action.SysCompanyAction" method="InsertCompany">
+	    	<result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+	    </action>
+	    <!-- 修改出售公司 -->
+	     <action name="UpdateCompany" class="com.wqt.sys.company.action.SysCompanyAction" method="UpdateCompany">
+	    	<result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+	    </action>
+	    <!-- 删除出售公司 -->
+	     <action name="DeleteCompany" class="com.wqt.sys.company.action.SysCompanyAction" method="DeleteCompany">
+	    	<result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+	    </action>
+	    
+	</package>
+</struts>

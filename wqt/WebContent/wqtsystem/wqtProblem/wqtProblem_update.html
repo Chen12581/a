@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改用户中心常见问题 </title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/icon-extend.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/form-table.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../support/easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../common/js/jquery.validate.extend.js'></script>
+<script  type="text/javascript" src='../common/js/common.js'></script>
+<script  type="text/javascript" src='../support/layer/layer.js'></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="../../ueditor/ueditor.all.js"></script>
+<link rel="stylesheet"  href="../../ueditor/themes/default/css/ueditor.css" />
+<link rel="stylesheet"  href="../../ueditor/themes/default/css/ueditor.min.css" />
+<script  type="text/javascript" src="../../js/ajaxfileupload.js" ></script>
+<script  type="text/javascript" src="js/wqtProblem_update.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+       <form id="wqtProblemForm" action="sysProblem_updateWqtProblem.action" class="easyui-form" method="get" > 
+        <input  style="display: none;" id="simpledesc" name="wqtProblem.simpledesc"></input> 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle">标题：</th>
+				<td style="width:350px;height:50px;">
+				     <input id="title" name="wqtProblem.title" class="easyui-textbox" style="width:320px;"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">问题分类：</th>
+				<td style="width:220px;">
+					<input class="easyui-combobox" 
+					     id="problemkind"
+					     name="wqtProblem.problemkind"
+						 style="width:150px;"
+						 data-options="
+								url:'sysProblem_distSelectWqtProblemKind.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'">
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">分类：</th>
+				<td style="width:220px;height:50px;">
+					<select style="width:150px;" id="sonproblemkind" name="wqtProblem.sonproblemkind" class="easyui-combobox">
+						<option>全部</option>
+					</select>
+					
+				</td>
+			</tr>
+			
+<!-- 			<tr> -->
+<!-- 				<th valign="middle">简单描述：</th> -->
+<!-- 				<td style="width:350px;"> -->
+<!-- 				     <input id="simpledesc" name="wqtProblem.simpledesc" class="easyui-textbox" style="width:320px;"/> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			
+			<tr>
+				<th>
+				        问题内容：
+				 </th>
+				<td>
+				     <div align="center" style="width:80%;">  
+				          
+				            <!-- <textarea id="newsEditor" name="wqtnews.content" style="height: 88%"></textarea>  -->
+                             <textarea id="uecontent" name="uecontent" style="height: 88%"></textarea> 
+                            <br/>  
+                             <script type="text/javascript">
+                                //UE.getEditor('newsEditor');
+                                UE.getEditor('uecontent');
+                            </script> 
+                        </div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input  style="display: none;" id="id" name="wqtProblem.id"></input>
+					<input  style="display: none;" id="content" name="wqtProblem.content"></input> 
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

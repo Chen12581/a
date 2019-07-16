@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>申请人商标</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/brandApplySail_update.js"></script>
+<script type="text/javascript" src="../../layDate/laydate/laydate.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+    <div>
+       <form id="brandForm" action="sysBrand_updateBrandApplysail" class="easyui-form" method="get"> 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle">用户名称：</th>
+				<td style="width:220px;">
+				     <input id="userid" name="iprBrandApplysail.userid" class="easyui-textbox" style="width:200px;" />
+				     <input id="id" name="iprBrandApplysail.id" style="width:200px;display:none;"/>
+				</td>
+				<th valign="middle">申请人：</th>
+				<td style="width:220px;">
+				     <input id="applyname" name="iprBrandApplysail.applyname" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">申请地址：</th>
+				<td style="width:220px;">
+				     <input id="applyaddr" name="iprBrandApplysail.applyaddr" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+				         联系人：
+				 </th>
+				<td style="width:220px;">
+				     <input id="connect" name="iprBrandApplysail.connect" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">发布时间：</th>
+				<td style="width:220px;">
+				     <input id="developtime" name="iprBrandApplysail.developtime" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">状态：</th>
+				<td style="width:220px;">
+				     <select id="state" name="iprBrandApplysail.state">
+				     	<option value="">请选择</option>
+					   	<option value="1">用户提交信息</option>
+					   	<option value="2">业务员已受理</option>
+					   	<option value="3">处理完成</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					业务员：
+				 </th>
+				<td style="height:140px;">
+				    <input id="workerid" name="iprBrandApplysail.workerid" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th>
+					备注：
+				 </th>
+				<td style="height:140px;">
+				    <input id="remark" name="iprBrandApplysail.remark" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

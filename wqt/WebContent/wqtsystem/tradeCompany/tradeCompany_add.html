@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增交易公司</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/tradeCompany_add.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<style type="text/css">
+	th{
+		text-align: right;
+	}
+	.redStar{
+		 color: red;
+		 position: absolute;
+		 top: 0px;
+		 display: inline
+	}
+</style>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+
+       <form id="estradeForm" action="sysEscompany_insertEsTradeCompanyShop.action" class="easyui-form" method="get" > 
+				<div valign="middle" style="position: relative;"><b>注<span class="redStar">*</span>：<span style="color: red;">以下全是必填项</span></b></div>
+					
+		<table class="ui-table">
+		
+			<tr>
+				<th valign="middle">公司名称：</th>
+				<td style="width:220px; ">
+				     <input id="companyname" name="esTradeCompanyShop.companyname" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+				<th valign="middle" >公司真实名称：</th>
+				<td style="width:220px; ">
+				     <input id="companytruename" name="esTradeCompanyShop.companytruename" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle" >企业行业：</th>
+				<td style="width:220px;">
+					<input class="easyui-combobox allInput" 
+					     id="companyindustry"
+					     name="esTradeCompanyShop.companyindustry"
+						 style="width:200px;"
+						 data-options="
+								url:'sysEscompany_selEsTradeCompanyIndustry.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'">
+				</td>
+				<th  valign="middle">经营年限：</th>
+				<td style="width:220px;">
+				     <select style="width:200px;" id="holddate" name="esTradeCompanyShop.holddate" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">1年以下</option>
+					   	<option value="2">1-2年</option>
+					   	<option value="3">2-3年</option>
+					   	<option value="4">3年以上</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">公司成立日期：</th>
+				<td style="width:220px;">
+				     <input id="establishdate" name="esTradeCompanyShop.establishdate" class="easyui-datebox allInput" style="width:200px;"/>
+				</td>
+				
+				<th valign="middle">纳税类型：</th>
+				<td style="width:220px;">
+				     <select style="width:200px;" id="dutytype" name="esTradeCompanyShop.dutytype" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">小规模纳税人</option>
+					   	<option value="2">一般纳税人</option>
+					   	<option value="3">出口纳税人</option>
+					   	<option value="4">未核税</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">注册资本类型：</th>
+				<td style="width:220px;height:30px;">
+				     <select style="width:200px;" id="regcapital" name="esTradeCompanyShop.regcapital" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">50万以下</option>
+					   	<option value="2">50万-100万</option>
+					   	<option value="3">100万-500万</option>
+					   	<option value="4">500万-1000万</option>
+					   	<option value="5">1000万以上</option>
+				     </select>
+				</td>
+				<th valign="middle">注册资本金额：</th>
+				<td style="width:220px;">
+				     <input id="regcapitalmoney" name="esTradeCompanyShop.regcapitalmoney" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">实缴资本：</th>
+				<td style="width:220px;">
+				     <input id="truecapital" name="esTradeCompanyShop.truecapital" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+				<th valign="middle">工商信用代码：</th>
+				<td style="width:220px;">
+				     <input id="creditcode" name="esTradeCompanyShop.creditcode" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">省份：</th>
+				<td style="width:220px;" colspan="3">
+				     <input class="easyui-combobox allInput" 
+					     id="provinceid"
+					     name="esTradeCompanyShop.provinceid"
+						 style="width:120px;"
+						 data-options="
+								url:'sysEscompany_selEsTradeCompanyProvince.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'" onchange="onProvince()">
+				     <span style="margin-left: 32px;"><b>城市：</b></span>
+				     <select style="width:120px;" id="cityid" name="esTradeCompanyShop.cityid" class="easyui-combobox" onchange="onCity()">
+				     	<option value="">请选择</option>
+				     </select>
+				     <span  style="margin-left: 32px;"><b>区县：</b></span>
+				     <select style="width:120px;" id="areaid" name="esTradeCompanyShop.areaid" class="easyui-combobox" >
+				     	<option value="">请选择</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th >所在地区：</th>
+				<td style="width:220px;">
+				     <input id="areaCode" name="esTradeCompanyShop.areaCode" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+				<th valign="middle">企业类型：</th>
+				<td style="width:220px;height:30px;">
+				     <select style="width:200px;" id="companytype" name="esTradeCompanyShop.companytype" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">有限责任公司</option>
+					   	<option value="2">个人独资公司</option>
+					   	<option value="3">集团公司</option>
+					   	<option value="4">港澳台公司</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th >是否开户：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="bankaccount" name="esTradeCompanyShop.bankaccount" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">已经开户</option>
+					   	<option value="2">没有开户</option>
+				     </select>
+				</td>
+				<th >是否带发票：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="applybill" name="esTradeCompanyShop.applybill" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">带发票</option>
+					   	<option value="2">不带发票</option>
+				     </select>
+				</td>
+				
+			</tr>
+			<tr>
+				<th >是否带网银：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="netbank" name="esTradeCompanyShop.netbank" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">带网银</option>
+					   	<option value="2">不带网银</option>
+				     </select>
+				</td>
+				<th >价格：</th>
+				<td style="width:220px;">
+				     <input id="price" name="esTradeCompanyShop.price" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th >经营范围：</th>
+				<td style="width:220px;">
+				     <input id="operaterange" name="esTradeCompanyShop.operaterange" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+				<th >法人姓名：</th>
+				<td style="width:220px;">
+				     <input id="lawername" name="esTradeCompanyShop.lawername" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th >债务纠纷：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="debtissue" name="esTradeCompanyShop.debtissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+				<th >债权纠纷：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="rightsissue" name="esTradeCompanyShop.rightsissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th >工商问题：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="businessissue" name="esTradeCompanyShop.businessissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+				<th >法律纠纷：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="lawissue" name="esTradeCompanyShop.lawissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th >税务问题：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="dutyissue" name="esTradeCompanyShop.dutyissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+				<th >贷款问题：</th>
+				<td style="width:220px;">
+   				     <select style="width:200px;" id="loanissue" name="esTradeCompanyShop.loanissue" class="easyui-combobox allInput">
+				     	<option value="">请选择</option>
+					   	<option value="1">无</option>
+					   	<option value="2">有</option>
+				     </select>
+				</td>
+			</tr>
+			<tr >
+				<th >资产类型：</th>
+				<td style="width:220px;" id="capital" colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th >联系人：</th>
+				<td style="width:220px;">
+				     <input id="connector"  name="esTradeCompanyShop.connector" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+				<th >联系电话：</th>
+				<td style="width:220px;">
+				     <input id="mobileno" name="esTradeCompanyShop.mobileno" class="easyui-textbox allInput" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr >
+				<th >公司地址：</th>
+				<td style="width:510px;" colspan="3">
+				     <input id="address" name="esTradeCompanyShop.address" class="easyui-textbox allInput" style="width:510px;"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="provincename" name="esTradeCompanyShop.provincename" class="easyui-textbox" style="width:200px; display: none;"/>
+					<input id="cityname" name="esTradeCompanyShop.cityname" class="easyui-textbox" style="width:200px;"/>
+					<input id="areaname" name="esTradeCompanyShop.areaname" class="easyui-textbox" style="width:200px;"/>
+					<input id="areacode" name="esTradeCompanyShop.areacode" class="easyui-textbox" style="width:200px;"/>
+					<input id="capitalid" name="capitalid" type="hidden" style="width:200px;"/>
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" id="id" name="esTradeCompanyShop.id" value=""> 
+		<input type="hidden" id="companyphoto" name="companyphoto"/> <input type="hidden" value="1" id="kind" name="kind">
+		<input type="hidden" id="companyphoto1" name="companyphoto1"/> <input type="hidden" value="2" id="kind1" name="kind1">
+		<input type="hidden" id="companyphoto2" name="companyphoto2"/> <input type="hidden" value="3" id="kind" name="kind2">
+		<input type="hidden" id="companyphoto3" name="companyphoto3"/> <input type="hidden" value="4" id="kind1" name="kind3">
+	</form>
+	
+	<table class="ui-table" border="0">
+       		<tr style="height:30px;">
+				<th valign="middle">营业执照正本：</th>
+				<td style="width:220px;" >
+				   <form  id="upload" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 200px"   buttonText="选择图片"  
+					  data-options="onChange:function(){fileup(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName" name="uploadName" />
+				   </form>
+				</td>
+				
+				<th valign="middle">营业执照副本：</th>
+				<td style="width:220px;" >
+				   <form  id="upload1" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 200px"  buttonText="选择图片"  
+					  data-options="onChange:function(){fileup1(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName1" name="uploadName1" />
+				   </form>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">营业执照正本：</th>
+				<td style="width:200px;" >
+				   <img alt="" id="viewimg" name="viewimg" src="" style="width:200px;height:200px;">
+				</td>
+				<th valign="middle">营业执照副本：</th>
+				<td style="width:220px;">
+				   <img alt="" id="viewimg1" name="viewimg1" src="" style="width:200px;height:200px;" >
+				</td>
+			</tr>
+			<tr style="height:30px;">
+				<th valign="middle">税务登记证正本：</th>
+				<td style="width:220px;" >
+				   <form  id="upload2" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 200px"   buttonText="选择图片"  
+					  data-options="onChange:function(){fileup2(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName2" name="uploadName2" />
+				   </form>
+				</td>
+				
+				<th valign="middle" >税务登记证副本：</th>
+				<td style="width:220px;" >
+				   <form  id="upload3" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 200px"  buttonText="选择图片"  
+					  data-options="onChange:function(){fileup3(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName3" name="uploadName3"  />
+				   </form>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">税务登记证正本：</th>
+				<td style="width:200px;" >
+				   <img alt="" id="viewimg2" name="viewimg2" src="" style="width:200px;height:200px;">
+				</td>
+				<th valign="middle">税务登记证副本：</th>
+				<td style="width:220px;">
+				   <img alt="" id="viewimg3" name="viewimg3" src="" style="width:200px;height:200px;" >
+				</td>
+			</tr>
+       	</table>
+	
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="uploadfile()" style="width:80px">上传</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

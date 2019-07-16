@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org">
+	<!-- User -->
+	<select id="getUserId" resultType="long">
+		select SEQ_USER.nextval from dual
+	</select>
+	
+	<insert id="insertUser" parameterType="com.talkweb.twdpe.base.org.pojo.User" >
+	    insert into DP_USER
+	      (userId,
+	       userCode,
+	       password,
+	       invalDate,
+	       displayName,
+	       authMode,
+	       status,
+	       menuType,
+	       lastLogin,
+	       errCount,
+	       startDate,
+	       endDate,
+	       validTime,
+	       macCode,
+	       ipAddress,
+	       email,
+	       staffId,
+	       positionId,
+	       accountusId,
+	       orgId,
+	       orgCode,
+	       dutyType,
+	       userType,
+	       orderby,
+	       isDelete,
+	       upUserId,
+	       backup1,
+	       backup2,
+	       backup3,
+	       backup4,
+	       backup5)
+	    values
+	      (#{userId},
+	       #{userCode},
+	       #{password},
+	       #{invalDate},
+	       #{displayName},
+	       #{authMode:VARCHAR},
+	       #{status},
+	       #{menuType:VARCHAR},
+	       #{lastLogin},
+	       #{errCount},
+	       #{startDate},
+	       #{endDate},
+	       #{validTime:VARCHAR},
+	       #{macCode:VARCHAR},
+	       #{ipAddress:VARCHAR},
+	       #{email:VARCHAR},
+	       #{staffId},
+	       #{positionId:NUMERIC},
+	       #{accountusId},
+	       #{orgId},
+	       #{orgCode},
+	       #{dutyType},
+	       #{userType},
+	       #{orderby},
+	       #{isDelete},
+	       #{upUserId:NUMERIC},
+	       #{backup1:VARCHAR},
+	       #{backup2:VARCHAR},
+	       #{backup3:VARCHAR},
+	       #{backup4:VARCHAR},
+	       #{backup5:VARCHAR})
+	</insert>
+	
+	<select id="findUserByExample" parameterType="com.talkweb.twdpe.base.org.pojo.User" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		select u.*,
+				s.STAFFID			as 	 "staff.staffId"	,			 	
+				s.STAFFCODE			as   "staff.staffCode"	,
+				s.USERCODE          as   "staff.userCode"   ,
+				s.STAFFNAME         as   "staff.staffName"  ,
+				s.REALNAME          as   "staff.realName"   ,
+				s.GENDER	        as   "staff.gender"	    ,
+				s.BIRTHDATE	        as   "staff.birthdate"	,
+				s.STATUS            as   "staff.status"     ,
+				s.CARDTYPE	        as   "staff.cardType"   ,
+				s.CARDNO	        as   "staff.cardno"	    ,
+				s.INDATE	        as   "staff.indate"	    ,
+				s.OUTDATE	        as   "staff.outdate"	,
+				s.OTEL	            as   "staff.otel"	    ,
+				s.OADDRESS	        as   "staff.oaddress"	,
+				s.OZIPCODE	        as   "staff.ozipCode"	,
+				s.OEMAIL            as   "staff.oemail"	    ,
+				s.FAXNO	            as   "staff.faxNo"		,
+				s.MOBILENO	        as   "staff.mobileNo"	,
+				s.MSN	            as   "staff.msn"		,
+				s.HTEL	            as   "staff.htel"		,
+				s.HADDRESS	        as   "staff.haddress"	,
+				s.HZIPCODE	        as   "staff.hzipCode"	,
+				s.PEMAIL	        as   "staff.pemail"		,
+				s.PARTY	            as   "staff.party"		,
+				s.DEGREE	        as   "staff.degree"		,
+				s.MAJOR	            as   "staff.major"		,
+				s.WORKEXP	        as   "staff.workexp"	,
+				s.REGDATE	        as   "staff.regdate"	,
+				s.CREATETIME        as   "staff.createTime"	,
+				s.LASTMODYTIME      as   "staff.lastModyTime",
+				s.ORGID             as   "staff.orgId"	    ,
+				s.ORGCODE	        as   "staff.orgCode"	,
+				s.USERTYPE	        as   "staff.userType"	,
+				s.ORDERBY	        as   "staff.orderby"	,
+				s.ISDELETE          as   "staff.isDelete"	,
+				s.BACKUP1	        as   "staff.backup1"	,
+				s.BACKUP2	        as   "staff.backup2"	,
+				s.BACKUP3	        as   "staff.backup3"	,
+				s.BACKUP4	        as   "staff.backup4"	,
+				s.BACKUP5	        as   "staff.backup5"	,
+				s.REMARK			as   "staff.remark"		
+		
+			  from DP_USER u,DP_STAFF s 
+			 where u.staffid = s.staffid
+			<if test="userId!=null">
+				and u.userId = #{userId}
+			</if>
+			<if test="displayName!=null">
+				and u.displayName like '%${displayName}%'
+			</if>
+			<if test="userCode!=null">
+				and u.userCode like '%${userCode}%'
+			</if>
+			<if test="authMode!=null">
+				and u.authMode = #{authMode}
+			</if>
+			<if test="status!=null">
+				and u.status = #{status}
+			</if>
+			<if test="menuType!=null">
+				and u.menuType = #{menuType}
+			</if>
+			<if test="macCode!=null">
+				and u.macCode = #{macCode}
+			</if>
+			<if test="ipAddress!=null">
+				and u.ipAddress = #{ipAddress}
+			</if>
+			<if test="email!=null">
+				and u.email = #{email}
+			</if>
+			<if test="staffId!=null">
+				and u.staffId = #{staffId}
+			</if>
+			<if test="positionId!=null">
+				and u.positionId = #{positionId}
+			</if>
+			<if test="accountusId!=null">
+				and u.accountusId = #{accountusId}
+			</if>
+			<if test="orgId!=null">
+				and u.orgId = #{orgId}
+			</if>
+			<if test="orgCode!=null">
+				and  u.orgCode = #{orgCode}
+			</if>
+			<if test="dutyType!=null">
+				and u.dutyType = #{dutyType}
+			</if>
+			<if test="userType!=null">
+				and u.userType = #{userType}
+			</if>
+			<if test="isDelete!=null">
+				and u.isDelete = #{isDelete}
+			</if>
+			<if test="upUserId!=null">
+				and u.upUserId = #{upUserId}
+			</if>
+			<if test="backup1!=null">
+				and u.backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and u.backup2 = #{backup2}
+			</if>
+			<if test="backup3!=null">
+				and u.backup3 = #{backup3}
+			</if>
+			<if test="backup4!=null">
+				and u.backup4 = #{backup4}
+			</if>
+			<if test="backup5!=null">
+				and u.backup5 = #{backup5}
+			</if>
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>
+			order by u.orderby,u.userId
+	</select>
+	
+	<select id="findUserByStaffRelation" parameterType="com.talkweb.twdpe.base.org.pojo.Staff" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		select u.* ,o.orgName,
+				s.STAFFID			as 	 "staff.staffId"	,			 	
+				s.STAFFCODE			as   "staff.staffCode"	,
+				s.USERCODE          as   "staff.userCode"   ,
+				s.STAFFNAME         as   "staff.staffName"  ,
+				s.REALNAME          as   "staff.realName"   ,
+				s.GENDER	        as   "staff.gender"	    ,
+				s.BIRTHDATE	        as   "staff.birthdate"	,
+				s.STATUS            as   "staff.status"     ,
+				s.CARDTYPE	        as   "staff.cardType"   ,
+				s.CARDNO	        as   "staff.cardno"	    ,
+				s.INDATE	        as   "staff.indate"	    ,
+				s.OUTDATE	        as   "staff.outdate"	,
+				s.OTEL	            as   "staff.otel"	    ,
+				s.OADDRESS	        as   "staff.oaddress"	,
+				s.OZIPCODE	        as   "staff.ozipCode"	,
+				s.OEMAIL            as   "staff.oemail"	    ,
+				s.FAXNO	            as   "staff.faxNo"		,
+				s.MOBILENO	        as   "staff.mobileNo"	,
+				s.MSN	            as   "staff.msn"		,
+				s.HTEL	            as   "staff.htel"		,
+				s.HADDRESS	        as   "staff.haddress"	,
+				s.HZIPCODE	        as   "staff.hzipCode"	,
+				s.PEMAIL	        as   "staff.pemail"		,
+				s.PARTY	            as   "staff.party"		,
+				s.DEGREE	        as   "staff.degree"		,
+				s.MAJOR	            as   "staff.major"		,
+				s.WORKEXP	        as   "staff.workexp"	,
+				s.REGDATE	        as   "staff.regdate"	,
+				s.CREATETIME        as   "staff.createTime"	,
+				s.LASTMODYTIME      as   "staff.lastModyTime",
+				s.ORGID             as   "staff.orgId"	    ,
+				s.ORGCODE	        as   "staff.orgCode"	,
+				s.USERTYPE	        as   "staff.userType"	,
+				s.ORDERBY	        as   "staff.orderby"	,
+				s.ISDELETE          as   "staff.isDelete"	,
+				s.BACKUP1	        as   "staff.backup1"	,
+				s.BACKUP2	        as   "staff.backup2"	,
+				s.BACKUP3	        as   "staff.backup3"	,
+				s.BACKUP4	        as   "staff.backup4"	,
+				s.BACKUP5	        as   "staff.backup5"	,
+				s.REMARK			as   "staff.remark"		
+
+			from DP_USER u ,DP_STAFF s,DP_ORGANIZATION o where u.staffid = s.staffid 
+			and u.orgid = o.orgid
+			and ( 
+			<trim prefix="" prefixOverrides="and|or">
+			<if test="staffCode!=null">
+				${others.relation} s.staffCode = #{staffCode}
+			</if>
+			<if test="userCode!=null">
+				${others.relation} s.userCode = #{userCode}
+			</if>
+			<if test="staffName!=null">
+				${others.relation} s.staffName like '%${staffName}%'
+			</if>
+			<if test="realName!=null">
+				${others.relation} s.realName like '%${realName}%'
+			</if>
+			<if test="otel!=null">
+				${others.relation} s.otel like '%${otel}%'
+			</if>
+			<if test="oemail!=null">
+				${others.relation} s.oemail like '%${oemail}%'
+			</if>	
+			</trim>					
+			)
+			<if test="isDelete!=null">
+				and u.isDelete = #{isDelete} and s.isDelete = #{isDelete}
+			</if>
+			order by u.orderby,u.userId
+	</select>	
+	
+	<select id="findUserByExampleWithCascade" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.User" >
+    	select 
+    		u.*,
+			s.STAFFID			as 	 "staff.staffId"	,			 	
+			s.STAFFCODE			as   "staff.staffCode"	,
+			s.USERCODE          as   "staff.userCode"   ,
+			s.STAFFNAME         as   "staff.staffName"  ,
+			s.REALNAME          as   "staff.realName"   ,
+			s.GENDER	        as   "staff.gender"	    ,
+			s.BIRTHDATE	        as   "staff.birthdate"	,
+			s.STATUS            as   "staff.status"     ,
+			s.CARDTYPE	        as   "staff.cardType"   ,
+			s.CARDNO	        as   "staff.cardno"	    ,
+			s.INDATE	        as   "staff.indate"	    ,
+			s.OUTDATE	        as   "staff.outdate"	,
+			s.OTEL	            as   "staff.otel"	    ,
+			s.OADDRESS	        as   "staff.oaddress"	,
+			s.OZIPCODE	        as   "staff.ozipCode"	,
+			s.OEMAIL            as   "staff.oemail"	    ,
+			s.FAXNO	            as   "staff.faxNo"		,
+			s.MOBILENO	        as   "staff.mobileNo"	,
+			s.MSN	            as   "staff.msn"		,
+			s.HTEL	            as   "staff.htel"		,
+			s.HADDRESS	        as   "staff.haddress"	,
+			s.HZIPCODE	        as   "staff.hzipCode"	,
+			s.PEMAIL	        as   "staff.pemail"		,
+			s.PARTY	            as   "staff.party"		,
+			s.DEGREE	        as   "staff.degree"		,
+			s.MAJOR	            as   "staff.major"		,
+			s.WORKEXP	        as   "staff.workexp"	,
+			s.REGDATE	        as   "staff.regdate"	,
+			s.CREATETIME        as   "staff.createTime"	,
+			s.LASTMODYTIME      as   "staff.lastModyTime",
+			s.ORGID             as   "staff.orgId"	    ,
+			s.ORGCODE	        as   "staff.orgCode"	,
+			s.USERTYPE	        as   "staff.userType"	,
+			s.ORDERBY	        as   "staff.orderby"	,
+			s.ISDELETE          as   "staff.isDelete"	,
+			s.BACKUP1	        as   "staff.backup1"	,
+			s.BACKUP2	        as   "staff.backup2"	,
+			s.BACKUP3	        as   "staff.backup3"	,
+			s.BACKUP4	        as   "staff.backup4"	,
+			s.BACKUP5	        as   "staff.backup5"	,
+			s.REMARK			as   "staff.remark"		    	
+    	
+    	 from DP_USER u
+     	 left join DP_STAFF s on u.staffid = s.staffid
+     	 where ${orgIdsInCondition} 
+     	 	<if test="user.status!=null">
+     	 		and u.status = #{user.status}
+     	 	</if>
+     	 	<if test="user.userCode!=null">
+     	 		and u.userCode like '%${user.userCode}%'
+     	 	</if>
+     	 	<if test="user.userId!=null">
+     	 		and u.userId = #{user.userId}
+     	 	</if>
+     	 	<if test="user.displayName!=null">
+     	 		and u.displayName like '%${user.displayName}%'
+     	 	</if>
+     	 	<if test="user.email!=null">
+     	 		and u.email = #{user.email}
+     	 	</if>
+     	 	<if test="user.dutyType!=null">
+     	 		and u.dutyType = #{user.dutyType}
+     	 	</if>
+     	 	<if test="user.userType!=null">
+     	 		and u.userType = #{user.userType}
+     	 	</if>
+     	 	<if test="user.isDelete!=null">
+     	 		and u.isDelete = #{user.isDelete}
+     	 	</if>
+     	 	<if test="user.upUserId!=null">
+     	 		and u.upUserId = #{user.upUserId}
+     	 	</if>
+     	 	<if test="user.backup1!=null">
+     	 		and u.backup1 = #{user.backup1}
+     	 	</if>
+     	 	<if test="user.backup2!=null">
+     	 		and u.backup2 = #{user.backup2}
+     	 	</if>
+     	 	<if test="user.backup3!=null">
+     	 		and u.backup3 = #{user.backup3}
+     	 	</if>
+     	 	<if test="user.backup4!=null">
+     	 		and u.backup4 = #{user.backup4}
+     	 	</if>
+     	 	<if test="user.backup5!=null">
+     	 		and u.backup5 = #{user.backup5}
+     	 	</if> 
+     	 	<if test="user.dataSql!=null">
+     	 		and ${user.dataSql}
+     	 	</if>    	 	     	 	     	 	     	 	
+     	 order by u.orderby,u.userId
+	</select>
+
+	<select id="findUserByExampleWithCascade2" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.User" >
+      select 
+      	u.* ,
+      	s.STAFFID			as 	 "staff.staffId"	,			 	
+		s.STAFFCODE			as   "staff.staffCode"	,
+		s.USERCODE          as   "staff.userCode"   ,
+		s.STAFFNAME         as   "staff.staffName"  ,
+		s.REALNAME          as   "staff.realName"   ,
+		s.GENDER	        as   "staff.gender"	    ,
+		s.BIRTHDATE	        as   "staff.birthdate"	,
+		s.STATUS            as   "staff.status"     ,
+		s.CARDTYPE	        as   "staff.cardType"   ,
+		s.CARDNO	        as   "staff.cardno"	    ,
+		s.INDATE	        as   "staff.indate"	    ,
+		s.OUTDATE	        as   "staff.outdate"	,
+		s.OTEL	            as   "staff.otel"	    ,
+		s.OADDRESS	        as   "staff.oaddress"	,
+		s.OZIPCODE	        as   "staff.ozipCode"	,
+		s.OEMAIL            as   "staff.oemail"	    ,
+		s.FAXNO	            as   "staff.faxNo"		,
+		s.MOBILENO	        as   "staff.mobileNo"	,
+		s.MSN	            as   "staff.msn"		,
+		s.HTEL	            as   "staff.htel"		,
+		s.HADDRESS	        as   "staff.haddress"	,
+		s.HZIPCODE	        as   "staff.hzipCode"	,
+		s.PEMAIL	        as   "staff.pemail"		,
+		s.PARTY	            as   "staff.party"		,
+		s.DEGREE	        as   "staff.degree"		,
+		s.MAJOR	            as   "staff.major"		,
+		s.WORKEXP	        as   "staff.workexp"	,
+		s.REGDATE	        as   "staff.regdate"	,
+		s.CREATETIME        as   "staff.createTime"	,
+		s.LASTMODYTIME      as   "staff.lastModyTime",
+		s.ORGID             as   "staff.orgId"	    ,
+		s.ORGCODE	        as   "staff.orgCode"	,
+		s.USERTYPE	        as   "staff.userType"	,
+		s.ORDERBY	        as   "staff.orderby"	,
+		s.ISDELETE          as   "staff.isDelete"	,
+		s.BACKUP1	        as   "staff.backup1"	,
+		s.BACKUP2	        as   "staff.backup2"	,
+		s.BACKUP3	        as   "staff.backup3"	,
+		s.BACKUP4	        as   "staff.backup4"	,
+		s.BACKUP5	        as   "staff.backup5"	,
+		s.REMARK			as   "staff.remark"		
+		
+      	from DP_USER u
+        left join DP_STAFF s on u.staffid = s.staffid
+     	where ${orgIdsInCondition}
+     	 	<if test="staff.status!=null">
+     	 		and s.status = #{staff.status}
+     	 	</if>
+     	 	<if test="staff.staffCode!=null">
+     	 		and s.staffCode = #{staff.staffCode}
+     	 	</if>     
+     	 	<if test="staff.userCode!=null">
+     	 		and s.userCode = #{staff.userCode}
+     	 	</if>     
+     	 	<if test="staff.staffName!=null">
+     	 		and s.staffName like '%${staff.staffName}%'
+     	 	</if>     
+     	 	<if test="staff.oemail!=null">
+     	 		and s.oemail = #{staff.oemail}
+     	 	</if>     
+     	 	<if test="staff.mobileNo!=null">
+     	 		and s.mobileNo = #{staff.mobileNo}
+     	 	</if>     
+     	 	<if test="staff.userType!=null">
+     	 		and s.userType = #{staff.userType}
+     	 	</if>    
+     	 	<if test="staff.isDelete!=null">
+     	 		and s.isDelete = #{staff.isDelete}
+     	 	</if>
+     	 order by u.orderby,u.userId
+	</select>	
+
+	<select id="findUserMembersByExample" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		select 
+			u.*, 
+			s.STAFFID			as 	 "staff.staffId"	,			 	
+			s.STAFFCODE			as   "staff.staffCode"	,
+			s.USERCODE          as   "staff.userCode"   ,
+			s.STAFFNAME         as   "staff.staffName"  ,
+			s.REALNAME          as   "staff.realName"   ,
+			s.GENDER	        as   "staff.gender"	    ,
+			s.BIRTHDATE	        as   "staff.birthdate"	,
+			s.STATUS            as   "staff.status"     ,
+			s.CARDTYPE	        as   "staff.cardType"   ,
+			s.CARDNO	        as   "staff.cardno"	    ,
+			s.INDATE	        as   "staff.indate"	    ,
+			s.OUTDATE	        as   "staff.outdate"	,
+			s.OTEL	            as   "staff.otel"	    ,
+			s.OADDRESS	        as   "staff.oaddress"	,
+			s.OZIPCODE	        as   "staff.ozipCode"	,
+			s.OEMAIL            as   "staff.oemail"	    ,
+			s.FAXNO	            as   "staff.faxNo"		,
+			s.MOBILENO	        as   "staff.mobileNo"	,
+			s.MSN	            as   "staff.msn"		,
+			s.HTEL	            as   "staff.htel"		,
+			s.HADDRESS	        as   "staff.haddress"	,
+			s.HZIPCODE	        as   "staff.hzipCode"	,
+			s.PEMAIL	        as   "staff.pemail"		,
+			s.PARTY	            as   "staff.party"		,
+			s.DEGREE	        as   "staff.degree"		,
+			s.MAJOR	            as   "staff.major"		,
+			s.WORKEXP	        as   "staff.workexp"	,
+			s.REGDATE	        as   "staff.regdate"	,
+			s.CREATETIME        as   "staff.createTime"	,
+			s.LASTMODYTIME      as   "staff.lastModyTime",
+			s.ORGID             as   "staff.orgId"	    ,
+			s.ORGCODE	        as   "staff.orgCode"	,
+			s.USERTYPE	        as   "staff.userType"	,
+			s.ORDERBY	        as   "staff.orderby"	,
+			s.ISDELETE          as   "staff.isDelete"	,
+			s.BACKUP1	        as   "staff.backup1"	,
+			s.BACKUP2	        as   "staff.backup2"	,
+			s.BACKUP3	        as   "staff.backup3"	,
+			s.BACKUP4	        as   "staff.backup4"	,
+			s.BACKUP5	        as   "staff.backup5"	,
+			s.REMARK			as   "staff.remark"				
+		
+		from DP_USER u ,DP_USERROLE r,DP_STAFF s
+		where u.userid = r.userid
+		and r.roleid = #{roleId}
+		and u.staffid = s.staffid
+		and u.STATUS = 0
+		<if test="user.userId!=null">
+			and u.userId = #{user.userId}
+		</if>
+		<if test="user.userCode!=null">
+			and u.userCode like '%${user.userCode}%'
+		</if>
+		<if test="user.displayName!=null">
+			and u.displayName like '%${user.displayName}%'
+		</if>		
+		<if test="user.authMode!=null">
+			and u.authMode = #{user.authMode}
+		</if>
+		<if test="user.status!=null">
+			and u.status = #{user.status}
+		</if>
+		<if test="user.menuType!=null">
+			and u.menuType = #{user.menuType}
+		</if>
+		<if test="user.macCode!=null">
+			and u.macCode = #{user.macCode}
+		</if>
+		<if test="user.ipAddress!=null">
+			and u.ipAddress = #{user.ipAddress}
+		</if>
+		<if test="user.email!=null">
+			and u.email = #{user.email}
+		</if>
+		<if test="user.staffId!=null">
+			and u.staffId = #{user.staffId}
+		</if>
+		<if test="user.positionId!=null">
+			and u.positionId = #{user.positionId}
+		</if>
+		<if test="user.accountusId!=null">
+			and u.accountusId = #{user.accountusId}
+		</if>
+		<if test="user.orgId!=null">
+			and u.orgId = #{user.orgId}
+		</if>
+		<if test="user.orgCode!=null">
+			and  u.orgCode = #{user.orgCode}
+		</if>
+		<if test="user.dutyType!=null">
+			and u.dutyType = #{user.dutyType}
+		</if>
+		<if test="user.userType!=null">
+			and u.userType = #{user.userType}
+		</if>
+		<if test="user.isDelete!=null">
+			and u.isDelete = #{user.isDelete}
+		</if>
+		<if test="user.backup1!=null">
+			and u.backup1 = #{user.backup1}
+		</if>
+		<if test="user.backup2!=null">
+			and u.backup2 = #{user.backup2}
+		</if>
+		<if test="user.backup3!=null">
+			and u.backup3 = #{user.backup3}
+		</if>
+		<if test="user.backup4!=null">
+			and u.backup4 = #{user.backup4}
+		</if>
+		<if test="user.backup5!=null">
+			and u.backup5 = #{user.backup5}
+		</if>
+		order by u.orderby,u.userId
+	</select>	
+	
+	<select id="findNoUserMembersByExample" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		  select 
+		  	u.*,
+			s.STAFFID			as 	 "staff.staffId"	,			 	
+			s.STAFFCODE			as   "staff.staffCode"	,
+			s.USERCODE          as   "staff.userCode"   ,
+			s.STAFFNAME         as   "staff.staffName"  ,
+			s.REALNAME          as   "staff.realName"   ,
+			s.GENDER	        as   "staff.gender"	    ,
+			s.BIRTHDATE	        as   "staff.birthdate"	,
+			s.STATUS            as   "staff.status"     ,
+			s.CARDTYPE	        as   "staff.cardType"   ,
+			s.CARDNO	        as   "staff.cardno"	    ,
+			s.INDATE	        as   "staff.indate"	    ,
+			s.OUTDATE	        as   "staff.outdate"	,
+			s.OTEL	            as   "staff.otel"	    ,
+			s.OADDRESS	        as   "staff.oaddress"	,
+			s.OZIPCODE	        as   "staff.ozipCode"	,
+			s.OEMAIL            as   "staff.oemail"	    ,
+			s.FAXNO	            as   "staff.faxNo"		,
+			s.MOBILENO	        as   "staff.mobileNo"	,
+			s.MSN	            as   "staff.msn"		,
+			s.HTEL	            as   "staff.htel"		,
+			s.HADDRESS	        as   "staff.haddress"	,
+			s.HZIPCODE	        as   "staff.hzipCode"	,
+			s.PEMAIL	        as   "staff.pemail"		,
+			s.PARTY	            as   "staff.party"		,
+			s.DEGREE	        as   "staff.degree"		,
+			s.MAJOR	            as   "staff.major"		,
+			s.WORKEXP	        as   "staff.workexp"	,
+			s.REGDATE	        as   "staff.regdate"	,
+			s.CREATETIME        as   "staff.createTime"	,
+			s.LASTMODYTIME      as   "staff.lastModyTime",
+			s.ORGID             as   "staff.orgId"	    ,
+			s.ORGCODE	        as   "staff.orgCode"	,
+			s.USERTYPE	        as   "staff.userType"	,
+			s.ORDERBY	        as   "staff.orderby"	,
+			s.ISDELETE          as   "staff.isDelete"	,
+			s.BACKUP1	        as   "staff.backup1"	,
+			s.BACKUP2	        as   "staff.backup2"	,
+			s.BACKUP3	        as   "staff.backup3"	,
+			s.BACKUP4	        as   "staff.backup4"	,
+			s.BACKUP5	        as   "staff.backup5"	,
+			s.REMARK			as   "staff.remark"				  	
+		   
+		   from DP_USER u,DP_STAFF s
+		   where u.staffid = s.staffid  
+		   		and u.userid not in (select r.userid from DP_USERROLE r where r.roleid = #{roleId})
+		   		and u.STATUS = 0
+		<if test="user.userId!=null">
+			and u.userId = #{user.userId}
+		</if>
+		<if test="user.userCode!=null">
+			and u.userCode = #{user.userCode}
+		</if>
+		<if test="user.displayName!=null">
+			and u.displayName like '%${user.displayName}%'
+		</if>		
+		<if test="user.authMode!=null">
+			and u.authMode = #{user.authMode}
+		</if>
+		<if test="user.status!=null">
+			and u.status = #{user.status}
+		</if>
+		<if test="user.menuType!=null">
+			and u.menuType = #{user.menuType}
+		</if>
+		<if test="user.macCode!=null">
+			and u.macCode = #{user.macCode}
+		</if>
+		<if test="user.ipAddress!=null">
+			and u.ipAddress = #{user.ipAddress}
+		</if>
+		<if test="user.email!=null">
+			and u.email = #{user.email}
+		</if>
+		<if test="user.staffId!=null">
+			and u.staffId = #{user.staffId}
+		</if>
+		<if test="user.positionId!=null">
+			and u.positionId = #{user.positionId}
+		</if>
+		<if test="user.accountusId!=null">
+			and u.accountusId = #{user.accountusId}
+		</if>
+		<if test="user.orgId!=null">
+			and u.orgId = #{user.orgId}
+		</if>
+		<if test="user.orgCode!=null">
+			and  u.orgCode = #{user.orgCode}
+		</if>
+		<if test="user.dutyType!=null">
+			and u.dutyType = #{user.dutyType}
+		</if>
+		<if test="user.userType!=null">
+			and u.userType = #{user.userType}
+		</if>
+		<if test="user.isDelete!=null">
+			and u.isDelete = #{user.isDelete}
+		</if>
+		<if test="user.backup1!=null">
+			and u.backup1 = #{user.backup1}
+		</if>
+		<if test="user.backup2!=null">
+			and u.backup2 = #{user.backup2}
+		</if>
+		<if test="user.backup3!=null">
+			and u.backup3 = #{user.backup3}
+		</if>
+		<if test="user.backup4!=null">
+			and u.backup4 = #{user.backup4}
+		</if>
+		<if test="user.backup5!=null">
+			and u.backup5 = #{user.backup5}
+		</if>
+		<if test="user.dataSql!=null">
+				and ${user.dataSql}
+		</if>
+		order by u.orderby,u.userId
+	</select>	
+		
+	<select id="findUserById" parameterType="long" resultType="com.talkweb.twdpe.base.org.pojo.User" >
+			select 
+				u.* ,
+				s.STAFFID			as 	 "staff.staffId"	,			 	
+				s.STAFFCODE			as   "staff.staffCode"	,
+				s.USERCODE          as   "staff.userCode"   ,
+				s.STAFFNAME         as   "staff.staffName"  ,
+				s.REALNAME          as   "staff.realName"   ,
+				s.GENDER	        as   "staff.gender"	    ,
+				s.BIRTHDATE	        as   "staff.birthdate"	,
+				s.STATUS            as   "staff.status"     ,
+				s.CARDTYPE	        as   "staff.cardType"   ,
+				s.CARDNO	        as   "staff.cardno"	    ,
+				s.INDATE	        as   "staff.indate"	    ,
+				s.OUTDATE	        as   "staff.outdate"	,
+				s.OTEL	            as   "staff.otel"	    ,
+				s.OADDRESS	        as   "staff.oaddress"	,
+				s.OZIPCODE	        as   "staff.ozipCode"	,
+				s.OEMAIL            as   "staff.oemail"	    ,
+				s.FAXNO	            as   "staff.faxNo"		,
+				s.MOBILENO	        as   "staff.mobileNo"	,
+				s.MSN	            as   "staff.msn"		,
+				s.HTEL	            as   "staff.htel"		,
+				s.HADDRESS	        as   "staff.haddress"	,
+				s.HZIPCODE	        as   "staff.hzipCode"	,
+				s.PEMAIL	        as   "staff.pemail"		,
+				s.PARTY	            as   "staff.party"		,
+				s.DEGREE	        as   "staff.degree"		,
+				s.MAJOR	            as   "staff.major"		,
+				s.WORKEXP	        as   "staff.workexp"	,
+				s.REGDATE	        as   "staff.regdate"	,
+				s.CREATETIME        as   "staff.createTime"	,
+				s.LASTMODYTIME      as   "staff.lastModyTime",
+				s.ORGID             as   "staff.orgId"	    ,
+				s.ORGCODE	        as   "staff.orgCode"	,
+				s.USERTYPE	        as   "staff.userType"	,
+				s.ORDERBY	        as   "staff.orderby"	,
+				s.ISDELETE          as   "staff.isDelete"	,
+				s.BACKUP1	        as   "staff.backup1"	,
+				s.BACKUP2	        as   "staff.backup2"	,
+				s.BACKUP3	        as   "staff.backup3"	,
+				s.BACKUP4	        as   "staff.backup4"	,
+				s.BACKUP5	        as   "staff.backup5"	,
+				s.REMARK			as   "staff.remark"						
+			
+				from DP_USER u,DP_STAFF s
+				where u.staffid = s.staffid and userid = #{userId}
+	</select>
+	
+	<update id="updateUser" parameterType="com.talkweb.twdpe.base.org.pojo.User" >
+		update DP_USER 
+		<set>
+			<if test="userCode!=null">
+				userCode = #{userCode},
+			</if>
+			<if test="password!=null">
+				password = #{password},
+			</if>
+			<if test="invalDate!=null">
+				invalDate = #{invalDate},
+			</if>
+			<if test="displayName!=null">
+				displayName  = #{displayName},
+			</if>
+			<if test="authMode!=null">
+				authMode = #{authMode},
+			</if>
+			<if test="status!=null">
+				status = #{status},
+			</if>
+			<if test="menuType!=null">
+				menuType = #{menuType},
+			</if>
+			<if test="lastLogin!=null">
+				lastLogin = #{lastLogin},
+			</if>
+			<if test="errCount!=null">
+				errCount = #{errCount},
+			</if>
+			<if test="startDate!=null">
+				startDate  = #{startDate},
+			</if>
+			<if test="endDate!=null">
+				endDate = #{endDate},
+			</if>
+			<if test="validTime!=null">
+				validTime = #{validTime},
+			</if>
+			<if test="macCode!=null">
+				macCode = #{macCode},
+			</if>
+			<if test="ipAddress!=null">
+				ipAddress = #{ipAddress},
+			</if>
+			<if test="email!=null">
+				email = #{email},
+			</if>
+			<if test="staffId!=null">
+				staffId = #{staffId},
+			</if>
+			<if test="positionId!=null">
+				positionId = #{positionId},
+			</if>
+			<if test="accountusId!=null">
+				accountusId = #{accountusId},
+			</if>
+			<if test="orgId!=null">
+				orgId = #{orgId},
+			</if>
+			<if test="orgCode!=null">
+				orgCode = #{orgCode},
+			</if>
+			<if test="dutyType!=null">
+				dutyType = #{dutyType},
+			</if>
+			<if test="userType!=null">
+				userType = #{userType},
+			</if>
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>
+			<if test="upUserId!=null">
+				upUserId = #{upUserId},
+			</if>
+			<if test="orderby!=null">
+				orderby = #{orderby},
+			</if>
+			<if test="backup1!=null">
+				backup1 = #{backup1},
+			</if>
+			<if test="backup2!=null">
+				backup2 = #{backup2},
+			</if>
+			<if test="backup3!=null">
+				backup3 = #{backup3},
+			</if>
+			<if test="backup4!=null">
+				backup4 = #{backup4},
+			</if>
+			<if test="backup5!=null">
+				backup5 = #{backup5},
+			</if>
+		</set>
+		where userId = #{userId}
+	</update>
+
+	<update id="updateUserByStaffId" parameterType="com.talkweb.twdpe.base.org.pojo.User" >
+		update DP_USER 
+		<set>
+			<if test="userCode!=null">
+				userCode = #{userCode},
+			</if>
+			<if test="password!=null">
+				password = #{password},
+			</if>
+			<if test="invalDate!=null">
+				invalDate = #{invalDate},
+			</if>
+			<if test="displayName!=null">
+				displayName  = #{displayName},
+			</if>
+			<if test="authMode!=null">
+				authMode = #{authMode},
+			</if>
+			<if test="status!=null">
+				status = #{status},
+			</if>
+			<if test="menuType!=null">
+				menuType = #{menuType},
+			</if>
+			<if test="lastLogin!=null">
+				lastLogin = #{lastLogin},
+			</if>
+			<if test="errCount!=null">
+				errCount = #{errCount},
+			</if>
+			<if test="startDate!=null">
+				startDate  = #{startDate},
+			</if>
+			<if test="endDate!=null">
+				endDate = #{endDate},
+			</if>
+			<if test="validTime!=null">
+				validTime = #{validTime},
+			</if>
+			<if test="macCode!=null">
+				macCode = #{macCode},
+			</if>
+			<if test="ipAddress!=null">
+				ipAddress = #{ipAddress},
+			</if>
+			<if test="email!=null">
+				email = #{email},
+			</if>
+			<if test="positionId!=null">
+				positionId = #{positionId},
+			</if>
+			<if test="accountusId!=null">
+				accountusId = #{accountusId},
+			</if>
+			<if test="orgId!=null">
+				orgId = #{orgId},
+			</if>
+			<if test="orgCode!=null">
+				orgCode = #{orgCode},
+			</if>
+			<if test="dutyType!=null">
+				dutyType = #{dutyType},
+			</if>
+			<if test="userType!=null">
+				userType = #{userType},
+			</if>
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>
+			<if test="upUserId!=null">
+				upUserId = #{upUserId},
+			</if>
+			<if test="orderby!=null">
+				orderby = #{orderby},
+			</if>
+			<if test="backup1!=null">
+				backup1 = #{backup1},
+			</if>
+			<if test="backup2!=null">
+				backup2 = #{backup2},
+			</if>
+			<if test="backup3!=null">
+				backup3 = #{backup3},
+			</if>
+			<if test="backup4!=null">
+				backup4 = #{backup4},
+			</if>
+			<if test="backup5!=null">
+				backup5 = #{backup5},
+			</if>
+		</set>
+		where  staffId = #{staffId}
+	</update>
+	
+	<!-- Staff -->
+	<select id="getStaffId" resultType="long">
+		select SEQ_STAFF.nextval from dual
+	</select>
+	
+	<insert id="insertStaff" parameterType="com.talkweb.twdpe.base.org.pojo.Staff" >
+	    insert into DP_STAFF
+	      (staffId,
+	       staffCode,
+	       userCode,
+	       staffName,
+	       realName,
+	       gender,
+	       birthdate,
+	       status,
+	       cardType,
+	       cardno,
+	       inDate,
+	       outDate,
+	       otel,
+	       oaddress,
+	       ozipcode,
+	       oemail,
+	       faxNo,
+	       mobileNo,
+	       msn,
+	       htel,
+	       haddress,
+	       hzipcode,
+	       pemail,
+	       party,
+	       degree,
+	       major,
+	       workexp,
+	       regdate,
+	       createTime,
+	       lastModyTime,
+	       orgId,
+	       orgCode,
+	       remark,
+	       isDelete,
+	       userType,
+	       orderby,
+	       backup1,
+	       backup2,
+	       backup3,
+	       backup4,
+	       backup5)
+	    values
+	      (#{staffId},
+	       #{staffCode},
+	       #{userCode},
+	       #{staffName:VARCHAR},
+	       #{realName:VARCHAR},
+	       #{gender:VARCHAR},
+	       #{birthdate:DATE},
+	       #{status},
+	       #{cardType:VARCHAR},
+	       #{cardno:VARCHAR},
+	       #{inDate:DATE},
+	       #{outDate:DATE},
+	       #{otel:VARCHAR},
+	       #{oaddress:VARCHAR},
+	       #{ozipCode:VARCHAR},
+	       #{oemail:VARCHAR},
+	       #{faxNo:VARCHAR},
+	       #{mobileNo:VARCHAR},
+	       #{msn:VARCHAR},
+	       #{htel:VARCHAR},
+	       #{haddress:VARCHAR},
+	       #{hzipCode:VARCHAR},
+	       #{pemail:VARCHAR},
+	       #{party:VARCHAR},
+	       #{degree:VARCHAR},
+	       #{major:NUMERIC},
+	       #{workexp:VARCHAR},
+	       #{regdate:VARCHAR},
+	       #{createTime},
+	       #{lastModyTime},
+	       #{orgId},
+	       #{orgCode},
+	       #{remark:VARCHAR},
+	       #{isDelete},
+	       #{userType},
+	       #{orderby},
+	       #{backup1:VARCHAR},
+	       #{backup2:VARCHAR},
+	       #{backup3:VARCHAR},
+	       #{backup4:VARCHAR},
+	       #{backup5:VARCHAR})
+	</insert>
+	
+	<select id="findStaffById" parameterType="long" resultType="com.talkweb.twdpe.base.org.pojo.Staff" >
+		select * from DP_STAFF
+		where staffid = #{staffId}
+	</select>
+	
+	<select id="findStaffByExample" parameterType="com.talkweb.twdpe.base.org.pojo.Staff" resultType="com.talkweb.twdpe.base.org.pojo.Staff"  >
+		select * from DP_STAFF
+		<where>
+			<if test="staffId!=null">
+				and staffId = #{staffId}
+			</if>
+			<if test="staffCode!=null">
+				and staffCode  = #{staffCode}
+			</if>
+			<if test="userCode!=null">
+				and userCode = #{userCode}
+			</if>
+			<if test="staffName!=null">
+				and staffName like '%${staffName}%'
+			</if>
+			<if test="realName!=null">
+				and realName like '%${realName}%'
+			</if>
+			<if test="gender!=null">
+				and gender = #{gender}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="cardType!=null">
+				and cardType = #{cardType}
+			</if>
+			<if test="party!=null">
+				and party = #{party}
+			</if>
+			<if test="degree!=null">
+				and degree = #{degree}
+			</if>
+			<if test="major!=null">
+				and major = #{major}
+			</if>
+			<if test="orgId!=null">
+				and orgId = #{orgId}
+			</if>
+			<if test="orgCode!=null">
+				and orgCode = #{orgCode}
+			</if>
+			<if test="isDelete!=null">
+				and isDelete = #{isDelete}
+			</if>
+			<if test="userType!=null">
+				and userType = #{userType}
+			</if>
+			<if test="backup1!=null">
+				and backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and backup2 = #{backup2}
+			</if>
+			<if test="backup3!=null">
+				and backup3 = #{backup3}
+			</if>
+			<if test="backup4!=null">
+				and backup4 = #{backup4}
+			</if>
+			<if test="backup5!=null">
+				and backup5 = #{backup5}
+			</if>
+		</where>	
+		order by orderby,staffId
+	</select>
+	
+	<update id="updateStaff" parameterType="com.talkweb.twdpe.base.org.pojo.Staff" >
+			update DP_STAFF
+			<set>
+				<if test="staffCode!=null">
+					staffCode = #{staffCode},
+				</if>
+				<if test="userCode!=null">
+					userCode  = #{userCode},
+				</if>
+				<if test="staffName!=null">
+					staffName = #{staffName},
+				</if>
+				<if test="realName!=null">
+					realName = #{realName},
+				</if>
+				<if test="gender!=null">
+					gender = #{gender},
+				</if>
+				<if test="birthdate!=null">
+					birthdate = #{birthdate},
+				</if>
+				<if test="status!=null">
+					 status = #{status},
+				</if>
+				<if test="cardType!=null">
+					cardType = #{cardType},
+				</if>
+				<if test="cardno!=null">
+					cardno = #{cardno},
+				</if>
+				<if test="inDate!=null">
+					inDate = #{inDate},
+				</if>
+				<if test="outDate!=null">
+					outDate = #{outDate},
+				</if>
+				<if test="otel!=null">
+					otel = #{otel},
+				</if>
+				<if test="oaddress!=null">
+					oaddress = #{oaddress},
+				</if>
+				<if test="ozipCode!=null">
+					ozipCode = #{ozipCode},
+				</if>
+				<if test="oemail!=null">
+					oemail = #{oemail},
+				</if>
+				<if test="faxNo!=null">
+					faxNo = #{faxNo},
+				</if>
+				<if test="mobileNo!=null">
+					mobileNo = #{mobileNo},
+				</if>
+				<if test="msn!=null">
+					msn = #{msn},
+				</if>
+				<if test="htel!=null">
+					htel = #{htel},
+				</if>
+				<if test="haddress!=null">
+					haddress = #{haddress},
+				</if>
+				<if test="hzipCode!=null">
+					hzipCode = #{hzipCode},
+				</if>
+				<if test="pemail!=null">
+					pemail = #{pemail},
+				</if>
+				<if test="party!=null">
+					party = #{party},
+				</if>
+				<if test="degree!=null">
+					degree = #{degree},
+				</if>
+				<if test="major!=null">
+					major = #{major},
+				</if>
+				<if test="workexp!=null">
+					workexp = #{workexp},
+				</if>
+				<if test="regdate!=null">
+					regdate = #{regdate},
+				</if>
+				<if test="createTime!=null">
+					createTime = #{createTime},
+				</if>
+				<if test="lastModyTime!=null">
+					lastModyTime = #{lastModyTime},
+				</if>
+				<if test="orgId!=null">
+					orgId = #{orgId},
+				</if>
+				<if test="orgCode!=null">
+					orgCode = #{orgCode},
+				</if>
+				<if test="remark!=null">
+					remark = #{remark},
+				</if>
+				<if test="isDelete!=null">
+					isDelete = #{isDelete},
+				</if>
+				<if test="userType!=null">
+					 userType= #{userType},
+				</if>
+				<if test="orderby!=null">
+					orderby = #{orderby},
+				</if>
+				<if test="backup1!=null">
+					backup1 = #{backup1},
+				</if>
+				<if test="backup2!=null">
+					backup2 = #{backup2},
+				</if>
+				<if test="backup3!=null">
+					backup3 = #{backup3},
+				</if>
+				<if test="backup4!=null">
+					backup4 = #{backup4},
+				</if>
+				<if test="backup5!=null">
+					backup5 = #{backup5},
+				</if>
+			</set>
+			where staffId = #{staffId}
+	</update>
+    
+    <delete id="org.deleteUser" parameterType="long">
+    	delete from DP_USER where userId = #{userId}
+    </delete>
+    
+    <delete id="org.deleteStaff" parameterType="long">
+    	delete from DP_STAFF where staffId = #{staffId}
+    </delete>
+    
+	<select id="findLoginUserByExample" parameterType="com.talkweb.twdpe.base.org.pojo.User" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		select u.*,
+				s.STAFFID			as 	 "staff.staffId"	,
+				s.STAFFCODE			as   "staff.staffCode"	,
+				s.USERCODE          as   "staff.userCode"   ,
+				s.STAFFNAME         as   "staff.staffName"  ,
+				s.REALNAME          as   "staff.realName"   ,
+				s.GENDER	        as   "staff.gender"	    ,
+				s.BIRTHDATE	        as   "staff.birthdate"	,
+				s.STATUS            as   "staff.status"     ,
+				s.CARDTYPE	        as   "staff.cardType"   ,
+				s.CARDNO	        as   "staff.cardno"	    ,
+				s.INDATE	        as   "staff.indate"	    ,
+				s.OUTDATE	        as   "staff.outdate"	,
+				s.OTEL	            as   "staff.otel"	    ,
+				s.OADDRESS	        as   "staff.oaddress"	,
+				s.OZIPCODE	        as   "staff.ozipCode"	,
+				s.OEMAIL            as   "staff.oemail"	    ,
+				s.FAXNO	            as   "staff.faxNo"		,
+				s.MOBILENO	        as   "staff.mobileNo"	,
+				s.MSN	            as   "staff.msn"		,
+				s.HTEL	            as   "staff.htel"		,
+				s.HADDRESS	        as   "staff.haddress"	,
+				s.HZIPCODE	        as   "staff.hzipCode"	,
+				s.PEMAIL	        as   "staff.pemail"		,
+				s.PARTY	            as   "staff.party"		,
+				s.DEGREE	        as   "staff.degree"		,
+				s.MAJOR	            as   "staff.major"		,
+				s.WORKEXP	        as   "staff.workexp"	,
+				s.REGDATE	        as   "staff.regdate"	,
+				s.CREATETIME        as   "staff.createTime"	,
+				s.LASTMODYTIME      as   "staff.lastModyTime",
+				s.ORGID             as   "staff.orgId"	    ,
+				s.ORGCODE	        as   "staff.orgCode"	,
+				o.ORGNAME,
+				s.USERTYPE	        as   "staff.userType"	,
+				s.ORDERBY	        as   "staff.orderby"	,
+				s.ISDELETE          as   "staff.isDelete"	,
+				s.BACKUP1	        as   "staff.backup1"	,
+				s.BACKUP2	        as   "staff.backup2"	,
+				s.BACKUP3	        as   "staff.backup3"	,
+				s.BACKUP4	        as   "staff.backup4"	,
+				s.BACKUP5	        as   "staff.backup5"	,
+				s.REMARK			as   "staff.remark"		
+		
+			  from DP_USER u
+			 left join DP_STAFF s on u.staffid = s.staffid  
+			 left join DP_ORGANIZATION o on u.ORGID = o.ORGID
+			where u.userCode = #{userCode} and u.ISDELETE=0
+			order by u.orderby,u.userid
+	</select>
+</mapper>

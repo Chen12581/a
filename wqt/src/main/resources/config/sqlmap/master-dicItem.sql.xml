@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="master.dicItem">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />  
+	<sql id="addDictEntryColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=parentId "> parentid,</if>
+		<if test="null!=dicttypeid "> dicttypeid,</if>
+		<if test="null!=dictid "> dictid,</if>
+		<if test="null!=value "> value,</if>
+		<if test="null!=name "> name,</if>
+		<if test="null!=fullname "> fullname,</if>
+		<if test="null!=type "> type,</if>
+		<if test="null!=isshow "> isshow,</if>
+		<if test="null!=allownull "> allownull,</if>
+		<if test="null!=allowmodify "> allowmodify,</if>
+		<if test="null!=allowdelete "> allowdelete,</if>
+		<if test="null!=sortno "> sortno,</if>
+		<if test="null!=pro1 "> pro1,</if>
+		<if test="null!=pro2 "> pro2,</if>
+		<if test="null!=pro3 "> pro3,</if>
+		<if test="null!=pro4 "> pro4,</if>
+		<if test="null!=pro5 "> pro5,</if>
+		<if test="null!=pro6 "> pro6,</if>
+		<if test="null!=pro7 "> pro7,</if>
+		<if test="null!=pro8 "> pro8,</if>
+		<if test="null!=memo "> memo,</if>
+	</trim>
+	</sql>
+	<sql id="addDictEntryValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=parentId "> #{parentId},</if>
+		<if test="null!=dicttypeid "> #{dicttypeid},</if>
+		<if test="null!=dictid "> #{dictid},</if>
+		<if test="null!=value "> #{value},</if>
+		<if test="null!=name "> #{name},</if>
+		<if test="null!=fullname "> #{fullname},</if>
+		<if test="null!=type "> #{type},</if>
+		<if test="null!=isshow "> #{isshow},</if>
+		<if test="null!=allownull "> #{allownull},</if>
+		<if test="null!=allowmodify "> #{allowmodify},</if>
+		<if test="null!=allowdelete "> #{allowdelete},</if>
+		<if test="null!=sortno "> #{sortno},</if>
+		<if test="null!=pro1 "> #{pro1},</if>
+		<if test="null!=pro2 "> #{pro2},</if>
+		<if test="null!=pro3 "> #{pro3},</if>
+		<if test="null!=pro4 "> #{pro4},</if>
+		<if test="null!=pro5 "> #{pro5},</if>
+		<if test="null!=pro6 "> #{pro6},</if>
+		<if test="null!=pro7 "> #{pro7},</if>
+		<if test="null!=pro8 "> #{pro8},</if>
+		<if test="null!=memo "> #{memo},</if>
+	</trim>
+	</sql>
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo">
+		insert into DP_DICT_ENTRY
+		(<include refid="addDictEntryColumn"/>)
+		values(<include refid="addDictEntryValue"/>)
+	</insert>
+	
+	<delete id="delete" parameterType="map">
+		delete from DP_DICT_ENTRY where DICTTYPEID=#{dicId} and DICTID =#{dicItemId}
+	</delete>
+	
+	<delete id="deleteByDic" parameterType="string">
+		delete from DP_DICT_ENTRY where DICTTYPEID=#{dicId}
+	</delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo">
+		update DP_DICT_ENTRY 
+		<set>
+			<if test="null!=parentId">         
+					parentid=#{parentId},
+			</if>
+			<if test="null!=dicttypeid">         
+					dicttypeid=#{dicttypeid},
+			</if>
+			<if test="null!=dictid">             
+					dictid=#{dictid},
+			</if>
+			<if test="null!=value">           
+					value=#{value},
+			</if>
+			<if test="null!=name">               
+					name=#{name},
+			</if>
+			<if test="null!=fullname">           
+					fullname=#{fullname},
+			</if>
+			<if test="null!=type">               
+					type=#{type},
+			</if>
+			<if test="null!=isshow">             
+					isshow=#{isshow},
+			</if>
+			<if test="null!=allownull">             
+					allownull=#{allownull},
+			</if>
+			<if test="null!=allowmodify">           
+					allowmodify=#{allowmodify},
+			</if>
+			<if test="null!=allowdelete">           
+					allowdelete=#{allowdelete},
+			</if>
+			<if test="null!=sortno">             
+					sortno=#{sortno},
+			</if>
+			<if test="null!=pro1">               
+					pro1=#{pro1},
+			</if>
+			<if test="null!=pro2">               
+					pro2=#{pro2},
+			</if>
+			<if test="null!=pro3">               
+					pro3=#{pro3},
+			</if>
+			<if test="null!=pro4">               
+					pro4=#{pro4},
+			</if>
+			<if test="null!=pro5">               
+					pro5=#{pro5},
+			</if>
+			<if test="null!=pro6">               
+					pro6=#{pro6},
+			</if>
+			<if test="null!=pro7">               
+					pro7=#{pro7},
+			</if>
+			<if test="null!=pro8">               
+					pro8=#{pro8},
+			</if>
+			<if test="null!=memo">               
+					memo=#{memo} 
+			</if>
+		</set>
+			where dicttypeid=#{dicttypeid} and dictid=#{dictid}
+	</update>
+	
+	<select id="selectAllByDic" parameterType="string" resultType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo">
+		select a.dictid, a.dicttypeid, b.dicttypename, a.value, a.name,
+		a.fullname, a.type, a.isshow, a.allownull, a.allowmodify,a.allowdelete, a.sortno, 
+		a.pro1, a.pro2, a.pro3, a.pro4, a.pro5, a.pro6, a.pro7, a.pro8, a.memo
+		from DP_DICT_ENTRY a
+		left join DP_DICT_TYPE b on a.dicttypeid=b.dicttypeid
+		where a.dicttypeid=#{dicId}
+		order by a.sortno 
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="map"
+		resultType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo">
+		select a.dictid, a.parentId, a.dicttypeid, b.dicttypename, a.value, a.name,
+		a.fullname, a.type, a.isshow, a.allownull, a.allowmodify, a.allowdelete,a.sortno, 
+		a.pro1, a.pro2, a.pro3, a.pro4, a.pro5, a.pro6, a.pro7, a.pro8, 
+		(select name from DP_DICT_ENTRY where dictid = a.parentid ) as parentname, 
+		a.memo from DP_DICT_ENTRY a
+		left join DP_DICT_TYPE b on a.dicttypeid=b.dicttypeid
+		 where a.DICTTYPEID=#{dicId} and a.DICTID =#{dicItemId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo"
+		resultType="com.talkweb.twdpe.base.dict.pojo.DictEntryInfo">
+		select a.dictid, a.dicttypeid, b.dicttypename, a.value, a.name,
+		a.fullname, a.type, a.isshow, a.allownull, a.allowmodify,a.allowdelete, a.sortno, 
+		a.pro1, a.pro2, a.pro3, a.pro4, a.pro5, a.pro6, a.pro7, a.pro8, a.memo
+		from DP_DICT_ENTRY a
+		left join DP_DICT_TYPE b on a.dicttypeid=b.dicttypeid
+		<where>
+			<if test="null!=dicttypeid and ''!=dicttypeid">
+				a.dicttypeid=#{dicttypeid} 
+			</if>
+			<if test="null!=dictid and ''!=dictid">
+				and a.dictid like '%${dictid}%'
+			</if>
+			<if test="null!=value and ''!=value">
+				and a.value like '%${value}%'
+			</if>
+			<if test="null!=name and ''!=name">
+				and a.name like '%${name}%'
+			</if>
+			<if test="null!=fullname and ''!=fullname">
+				and a.fullname like '%${fullname}%'
+			</if>
+			<if test="null!=type and ''!=type">
+				and	a.type=#{type} 
+			</if>
+			<if test="null!=isshow and ''!=isshow">
+				and	a.isshow=#{isshow} 
+			</if>
+			<if test="null!=allownull and ''!=allownull">
+				and	a.allownull=#{allownull} 
+			</if>
+			<if test="null!=allowmodify and ''!=allowmodify">
+				and	a.allowmodify=#{allowmodify} 
+			</if>
+			<if test="null!=allowdelete and ''!=allowdelete">
+				and	a.allowdelete=#{allowdelete} 
+			</if>
+			<if test="null!=sortno">
+				and	a.sortno=#{sortno} 
+			</if>
+			<if test="null!=memo and ''!=memo">
+				and a.memo like '%${memo}%'
+			</if>
+			<if test="null!=pro1 and ''!=pro1">
+				and	a.pro1=#{pro1} 
+			</if>
+			<if test="null!=pro2 and ''!=pro2">
+				and	a.pro2=#{pro2} 
+			</if>
+			<if test="null!=pro3 and ''!=pro3">
+				and	a.pro3=#{pro3} 
+			</if>
+			<if test="null!=pro4 and ''!=pro4">
+				and	a.pro4=#{pro4} 
+			</if>
+			<if test="null!=pro5 and ''!=pro5">
+				and	a.pro5=#{pro5} 
+			</if>
+			<if test="null!=pro6 and ''!=pro6">
+				and	a.pro6=#{pro6} 
+			</if>
+			<if test="null!=pro7 and ''!=pro7">
+				and	a.pro7=#{pro7} 
+			</if>
+			<if test="null!=pro8 and ''!=pro8">
+				and	a.pro8=#{pro8} 
+			</if>
+		</where>
+		 order by a.dicttypeid,a.sortno,a.dictid
+	</select>
+</mapper>

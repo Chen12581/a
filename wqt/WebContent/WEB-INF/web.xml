@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<display-name>wqt</display-name>
+
+	<!-- Encoding filter -->
+	<filter>
+	<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+    <filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	<!-- 扩展spring bean的作用域有request,session,global session等 -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+	
+	<!--防止SQL注入 -->
+	<!-- <listener>
+		<listener-class>com.ipr.common.litener.IllegalCharacterInterceptor</listener-class>	
+	</listener> -->
+	
+	<!-- 配置监听器：twdpe 用于 web 的配置入口 -->
+	<listener>
+		<listener-class>com.talkweb.twdpe.core.config.ConfigListener</listener-class>	
+	</listener>
+	
+	<!--虚拟地址静态-->
+	<filter>
+        <filter-name>urlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>WARN</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>urlRewriteFilter</filter-name>
+        <url-pattern>*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <!--虚拟地址静态-->
+
+	<!-- struts2 filter -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				struts-default.xml,struts-plugin.xml,config/struts/struts.xml
+			</param-value>
+		</init-param>
+	</filter>
+   
+   <!-- 定时加载数据 -->
+ <!--   <listener>
+		<listener-class>com.ipr.common.util.ParameterInitManager</listener-class>
+	</listener>
+	 -->
+   <!-- 加载自定义参数文件 -->
+   <listener>
+	  <listener-class>com.wqt.listener.IniParameterListener</listener-class>
+   </listener>
+   
+  
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+	    <servlet-name>fileUploadServlet</servlet-name>
+	    <servlet-class>com.wqt.servlet.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+	    <servlet-name>fileUploadServlet</servlet-name>
+	    <url-pattern>/upload/fileUploadServlet</url-pattern>
+    </servlet-mapping>
+  
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+</web-app>

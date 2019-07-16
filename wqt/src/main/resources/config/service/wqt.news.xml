@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+
+	<bean id="newsDao" class="com.wqt.news.dal.NewsDao"/>
+	<bean id="newsService" class="com.wqt.news.service.impl.NewsServiceImpl"/>
+	
+	<bean id="newsKindDao" class="com.wqt.news.dal.NewsKindDao"/>
+	<bean id="newsKindService" class="com.wqt.news.service.impl.NewsKindServiceImpl"/>
+	
+    <bean id="newsNewsLabelDao" class="com.wqt.news.dal.NewsNewsLabelDao" />
+	<bean id="newsNewsLabelService" class="com.wqt.news.service.impl.NewsNewsLabelServiceImpl" /> 
+	
+</beans>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>City</title>
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+	<script>
+            //百度自动推送代码
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            //百度统计代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?42488dceee05409d65f7bf2d164133d9";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            //360浏览器推送代码
+            (function(){
+              var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?7333e036a851641d0a404fac1617c6de":"https://jspassport.ssl.qhimg.com/11.0.1.js?7333e036a851641d0a404fac1617c6de";
+                  document.write('<script src="' + src + '" id="sozz"><\/script>');
+            })();
+        </script>
+    </head>
+    <body>
+        <script>
+            //百度信誉代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?3d82d1abf6ac0fc3c192d9c07c32fa89";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+		<div id="city"></div>
+
+		<script type="text/javascript" src="plugins/layui/layui.js" ></script>
+		<script>
+			layui.config({
+				base: 'js/'
+			}).use('city', function() {
+				var city = layui.city,
+					$ = layui.jquery;
+
+				$('#city').citys({
+					code: 110000
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newuser">
+<!-- 查询所有故障信息 -->
+	<select id="queryStaffUser" parameterType="Map" resultType="Map">
+	select * from dp_staff where staffid = #{STAFFID}
+</select>
+
+	<select id="queryUserById" parameterType="com.talkweb.twdpe.base.org.pojo.User" resultType="com.talkweb.twdpe.base.org.pojo.User">
+	select u.* from dp_user u,dp_organization d  where u.orgid = d.orgid 
+	<if test="orgId != null">
+		and d.orgid = #{orgId}
+	</if>
+		<if test="displayName != null">
+		and u.displayName like '%${displayName}%'
+	</if>
+		<if test="userType != null">
+		and u.userType = #{userType}
+	</if>
+		<if test="status != null">
+		and u.status = #{status}
+	</if>
+			<if test="userCode != null">
+		and u.userCode like '%${userCode}%'
+	</if>
+</select>
+
+<delete id="deleteUserInfo" parameterType="Map" >
+	delete from dp_user where userid in (${USERCODES})
+</delete>
+</mapper>

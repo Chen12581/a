@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtcollect"> 
+
+       <insert id="insertCollect" parameterType="com.collect.pojo.Collect">
+       		insert into wqt_collect
+       		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">userid,</if>
+				<if test="null!= collectid and ''!= collectid">collectid,</if>
+				<if test="null!= collectkind and ''!= collectkind">collectkind,</if>
+			</trim>
+			)
+			values
+			(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= userid and ''!= userid">#{userid},</if>
+				<if test="null!= collectid and ''!= collectid">#{collectid},</if>
+				<if test="null!= collectkind and ''!= collectkind">#{collectkind},</if>
+			</trim>
+			)
+       </insert>
+       
+       <select id="selectCollectList" 
+       		   parameterType="com.collect.pojo.Collect"
+       		   resultType="com.collect.pojo.Collect">
+       		select * from wqt_collect
+       		where 1=1
+       		<if test="null!= id and ''!= id">and id=#{id}</if>
+			<if test="null!= collectkind and ''!= collectkind">and collectkind=#{collectkind}</if>
+			<if test="null!= userid and ''!= userid">and userid=#{userid}</if>
+			<if test="null!= collectid and ''!= collectid">and collectid=#{collectid}</if>
+       </select>
+       
+       
+       <delete id="delCollect" 
+       		 	parameterType="com.collect.pojo.Collect">
+       		delete from wqt_collect
+       		where id=#{id}
+       </delete>
+</mapper>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>【天猫商城转让|店铺转让】_淘宝网店转让_网店转让|购买网店|过户|出售 - 设置自动上线</title>
+<link href='../support/easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../support/easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/icon-extend.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/form-table.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../support/easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../support/layer/layer.js'></script>
+<script  type="text/javascript" src='../common/js/common.js'></script>
+<script  type="text/javascript" src="js/timeonline.js"></script>
+
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 400px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+				<form id="linetimeForm" action="sysnew_updateTSysNews.action" class="easyui-form" method="post" > 
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+					    <input  style="display: none;" id="id" name="sysnews.id" ></input>
+					    <input  style="display: none;" id="state" name="sysnews.state" ></input>
+					    <input  style="display: none;" id="developtime" name="sysnews.developtime" ></input>
+						<tr>
+							<th>上线时间:</th>
+							<td>
+	                           <input class="easyui-datetimebox" id="jobtime" name="sysnews.jobtime" required style="width:200px">
+							</td> 
+						</tr> 
+						<tr>
+							<td style="height:80px;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+							    <a style="margin-left:30px;"  id="linetimebtn" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="doSubmitForm()">保存</a> 
+				                <a class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="margin-left: 105px;"  onclick="doClose()">关闭</a>
+						    </td>
+						</tr>				
+					</table>
+					</form>
+				</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="struts-wqtthreeuser"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods> 
+	    
+	    <!--支付宝第三方登录-->
+	    <action name="authredirect" class="com.wqt.three.alipay.login.AlipayLoginAction" method="authredirect">
+		    <result name="success" type="redirect">
+				${serviceurl}
+		    </result>
+		    <result name="404">
+				/404.html
+		    </result>
+		</action>
+		
+		<!--微信第三方登录-->
+	    <action name="wxAuthredirect" class="com.wqt.three.wx.login.WxLoginAction" method="wxAuthredirect">
+			 <result name="success" type="redirect">
+				${serviceurl}
+		    </result>
+		    <result name="404">
+				/404.html
+		    </result>
+		</action>
+		
+		<!--qq第三方登录-->
+	    <action name="qqAuthRedirect" class="com.wqt.three.qq.login.QqLoginAction" method="qqAuthRedirect">
+			 <result name="success" type="redirect">
+				${serviceurl}
+		    </result>
+		    <result name="404">
+				/404.html
+		    </result>
+		</action>
+		
+	    <!--第三方用户登录主页面-->
+	    <action name="threeLoginCheck" class="com.wqt.three.action.ThreeLoginAction" method="threeLoginCheck">
+		   <result name="success" type="freemarker">
+			  /usercenter/threeuser_checke.ftl
+	       </result>
+	       <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<!--第三方用户关联已有账号页面-->
+	    <action name="threeLoginOauth" class="com.wqt.three.action.ThreeLoginAction" method="threeLoginOauth">
+		   <result name="success" type="freemarker">
+			  /usercenter/threeuser_oauth.ftl
+	       </result>
+	       <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--第三方用户和平台已有账号关联-->
+		<action name="relateW7tongUser" class="com.wqt.three.action.ThreeLoginAction" method="relateW7tongUser">
+		   <result name="success" type="json">
+			  <param name="root">data</param>
+			  <param name="excludeNullProperties">true</param>
+	       </result>
+	       <result name="404" >
+			  /404.html
+	       </result>
+		</action>
+		
+	</package>
+</struts>

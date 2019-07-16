@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改版权服务</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/copyrightProduct_update.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+       <form id="productForm" action="sysCopyright_updateCopyrightProduct.action" class="easyui-form" method="get" > 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle">版权分类：</th>
+				<td style="width:220px;">
+					<input class="easyui-combobox" 
+						  id="kindid"
+						  readonly="readonly"
+						  name="iprCopyrightProduct.kindid"
+						  style="width:200px;"
+						  data-options="
+									url:'sysCopyright_selectCopyrightProductkind.action',
+									method:'get',
+								    valueField:'value',
+				                    textField:'text',
+									panelHeight:'auto'">
+				</td>
+				
+				<th valign="middle">标签：</th>
+				<td style="width:220px;">
+				     <input id="bookmark" name="iprCopyrightProduct.bookmark" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">服务产品名称：</th>
+				<td style="width:220px;height: 50px">
+				     <input readonly="readonly" id="productname" name="iprCopyrightProduct.productname" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">版权产品描述：</th>
+				<td style="width:220px;">
+					<input id="productdesc" name="iprCopyrightProduct.productdesc" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				
+			</tr>
+			<tr>
+				<th valign="middle">价格：</th>
+				<td style="width:220px;">
+				     <input id="price" name="iprCopyrightProduct.price" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">优惠价格：</th>
+				<td style="width:220px;">
+				     <input id="rebateprice" name="iprCopyrightProduct.rebateprice" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				
+			</tr>
+			<tr>
+				<th valign="middle">虚拟关键字：</th>
+				<td style="width:220px;height: 50px">
+				     <input readonly="readonly" id="simplename" name="iprCopyrightProduct.simplename" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">虚拟静态地址：</th>
+				<td style="width:220px;">
+				     <input readonly="readonly" id="htmlpath" name="iprCopyrightProduct.htmlpath" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

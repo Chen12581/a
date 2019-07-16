@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right">
+	<!-- Authority -->
+	<insert id="insertNormalAuth" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		insert into DP_ROLEPERM(ROLEID,PERMISSIONID)
+		values(#{roleId},#{permissionId})
+	</insert>
+	
+	<delete id="deleteNormalAuth" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		delete from DP_ROLEPERM
+		where 1=1
+		<if test="roleId!=null">
+			and roleId = #{roleId}
+		</if>
+		<if test="permissionId!=null">
+			and permissionId = #{permissionId}
+		</if>
+	</delete>
+	
+	<insert id="insertLimitAuth" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		insert into DP_LIMITPERM(ROLEID,PERMISSIONID)
+		values(#{roleId},#{permissionId})
+	</insert>
+	
+	<delete id="deleteLimitAuth" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		delete from DP_LIMITPERM
+		where 1=1
+		<if test="roleId!=null">
+			and roleId = #{roleId}
+		</if>
+		<if test="permissionId!=null">
+			and permissionId = #{permissionId}
+		</if>		
+	</delete>
+	
+	<insert id="insertScope" parameterType="com.talkweb.twdpe.base.right.pojo.Scope" >
+		insert into DP_ROLERULE(PERMISSIONID,ROLEID,RULEID)
+		values(#{permissionId},#{roleId},#{ruleId})
+	</insert>
+	
+	<select id="findScopeByExapmle" parameterType="com.talkweb.twdpe.base.right.pojo.Scope" resultMap="ScopeResultMap">
+		select r.roleId as A_ROLEID,r.permissionid as A_PERMISSIONID,r.ruleid as A_RULEID,t.* from DP_ROLERULE r,DP_ROLERULE t 
+		where r.ruleid = t.ruleid  
+		<if test="permissionId!=null">
+			and r.permissionId = #{permissionId}
+		</if>
+		<if test="roleId!=null">
+			and r.roleId = #{roleId}
+		</if>
+		<if test="ruleId!=null">
+			and r.ruleId = #{ruleId}
+		</if>
+	</select>
+	
+	<resultMap type="com.talkweb.twdpe.base.right.pojo.Scope" id="ScopeResultMap">
+		<result column="A_PERMISSIONID" property="permissionId"  />
+		<result column="A_ROLEID" property="roleId"  />
+		<result column="A_RULEID" property="ruleId"  />
+		<result column="ruleId" property="rule.ruleId"  />
+		<result column="ruleName" property="rule.ruleName"  />
+		<result column="bizCode" property="rule.bizCode"  />
+		<result column="sourceType" property="rule.sourceType"  />
+		<result column="dataType" property="rule.dataType"  />
+		<result column="ruleValue" property="rule.ruleValue"  />
+	</resultMap>
+		
+	<select id="findScopesByRoles" parameterType="map" resultMap="ScopeResultMap">
+		select r.roleId as A_ROLEID,r.permissionid as A_PERMISSIONID,r.ruleid as A_RULEID,t.* from DP_ROLERULE r,DP_RULE t 
+    	where r.ruleid = t.ruleid  
+		<if test="roleIds!=null">
+			and r.roleId in (${roleIds})
+		</if>
+		<if test="permissionId!=null">
+			and r.permissionId = #{permissionId}
+		</if>
+	</select>
+	
+	<select id="findScopeRulesByRoles" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Rule">
+		select r.* from
+			(select distinct ruleid from DP_ROLERULE
+			<where>
+				<if test="roleIds!=null">
+					and roleId in (${roleIds})
+				</if>
+				<if test="permissionId!=null">
+					and permissionId = #{permissionId}
+				</if>			
+			</where>) t 
+			left join DP_RULE r on t.ruleid=r.ruleid order by bizcode
+	</select>	
+	
+	<delete id="deleteScope" parameterType="com.talkweb.twdpe.base.right.pojo.Scope" >
+		delete from DP_ROLERULE
+		where 1=1
+		<if test="permissionId!=null">
+			and permissionId = #{permissionId}
+		</if>
+		<if test="roleId!=null">
+			and roleId = #{roleId}
+		</if>
+		<if test="ruleId!=null">
+			and ruleId = #{ruleId}
+		</if>
+	</delete>
+	
+	<select id="findAuthByExapmle" resultType="com.talkweb.twdpe.base.right.pojo.Authorization" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		select * from DP_ROLEPERM
+		<where>
+			<if test="roleId!=null">
+				and roleId = #{roleId}
+			</if>
+			<if test="permissionId!=null">
+				and permissionId = #{permissionId}
+			</if>	
+		</where>
+	</select>
+	
+	<select id="findLimitAuthByExapmle" resultType="com.talkweb.twdpe.base.right.pojo.Authorization" parameterType="com.talkweb.twdpe.base.right.pojo.Authorization" >
+		select * from DP_LIMITPERM
+		<where>
+			<if test="roleId!=null">
+				and roleId = #{roleId}
+			</if>
+			<if test="permissionId!=null">
+				and permissionId = #{permissionId}
+			</if>	
+		</where>
+	</select>
+	
+	<select id="findAuthViewByRoleIds" resultType="com.talkweb.twdpe.base.right.pojo.Authorization" parameterType="map" >
+		select permissionId,roleId from DP_ROLEPERM where roleId in (${roleIds})
+	</select>	
+	
+	<select id="findAuthByRoleIds" resultType="com.talkweb.twdpe.base.right.pojo.Authorization" parameterType="map" >
+		select distinct permissionId, -1 as roleId from DP_ROLEPERM where roleId in (${roleIds})
+	</select>	
+	
+	<select id="findLimitAuthByRoleIds" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Authorization">
+		select * from DP_LIMITPERM where roleid=(select roleId from DP_ROLE where roletype='1' and extid=${userId})
+	</select>
+	
+	<select id="selectDataLimitList">
+		${sql}
+	</select>
+</mapper>

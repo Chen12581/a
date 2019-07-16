@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.role">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+	
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.Role" >
+		insert into DP_ROLE(roleId,roleName,roleDesc,parentRoleId,
+		appId,orgId,roleCode,roleType,extId,classify)
+		values(#{roleId},#{roleName},#{roleDesc:VARCHAR},#{parentRoleId},#{appId},#{orgId:NUMERIC},
+		#{roleCode},#{roleType},#{extId:NUMERIC},#{classify:INTEGER})
+	</insert>
+	
+	<delete id="delete" parameterType="long" >
+		delete from DP_ROLE where roleid = #{roleId}
+	</delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.Role" >
+		update DP_ROLE
+		<set>
+			<if test="roleName!=null">
+				roleName = #{roleName},
+			</if>
+			<if test="roleDesc!=null">
+				roleDesc = #{roleDesc},
+			</if>	
+			<if test="parentRoleId!=null">
+				parentRoleId = #{parentRoleId},
+			</if>	
+			<if test="appId!=null">
+				appId = #{appId},
+			</if>	
+			<if test="orgId!=null">
+				orgId = #{orgId},
+			</if>	
+			<if test="roleCode!=null">
+				roleCode = #{roleCode},
+			</if>	
+			<if test="roleType!=null">
+				roleType = #{roleType},
+			</if>	
+			<if test="extId!=null">
+				extId = #{extId},
+			</if>	
+			<if test="classify!=null">
+				classify = #{classify},
+			</if>							
+		</set>
+		where roleId = #{roleId}
+	</update>
+	
+	<select id="selectAll" useCache="true" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select * from DP_ROLE
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select * from DP_ROLE where roleId = #{roleId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.Role" resultType="com.talkweb.twdpe.base.right.pojo.Role">
+		select t.*,r.rolename as parentrolename from DP_ROLE t left join DP_ROLE r on t.parentroleid=r.roleid 
+		<where>
+			<if test="roleName!=null">
+				and t.roleName like '%${roleName}%'
+			</if>
+			<if test="roleDesc!=null">
+				and t.roleDesc like '%${roleDesc}%'
+			</if>	
+			<if test="parentRoleId!=null">
+				and t.parentRoleId = #{parentRoleId}
+			</if>	
+			<if test="appId!=null">
+				and t.appId = #{appId}
+			</if>	
+			<if test="orgId!=null">
+				and t.orgId = #{orgId}
+			</if>	
+			<if test="roleCode!=null">
+				and t.roleCode = #{roleCode}
+			</if>	
+			<if test="roleType!=null">
+				and t.roleType = #{roleType}
+			</if>	
+			<if test="extId!=null">
+				and t.extId = #{extId}
+			</if>	
+			<if test="classify!=null">
+				and t.classify = #{classify}
+			</if>	
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>
+		</where>
+		order by t.roleCode
+	</select>
+	
+	<select id="selectByUser" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select t.* from DP_ROLE t,DP_USERROLE u
+		where t.roleid = u.roleid
+		and u.userid= #{objectId}
+		<if test="role.roleId!=null">
+			and t.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and t.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and t.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and t.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and t.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and t.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and t.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and t.classify = #{role.classify}
+		</if>
+		order by t.roleid
+	</select>
+
+	<select id="selectByNoUser" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select * from DP_ROLE t where t.roleid not in (select roleid from DP_USERROLE where userid= #{objectId})
+		<if test="role.roleId!=null">
+			and t.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and t.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and t.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and t.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and t.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and t.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and t.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and t.classify = #{role.classify}
+		</if>
+		<if test="role.dataSql!=null">
+			and ${role.dataSql}
+		</if>
+		order by t.roleid
+	</select>
+	
+	<select id="selectByOrg" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select r.*,o.INHERIT as orgInherit from DP_ROLE r,DP_ORGROLE o
+		where r.roleid = o.roleid
+		and o.orgid = #{objectId}
+		<if test="role.roleId!=null">
+			and r.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and r.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and r.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and r.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and r.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and r.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and r.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and r.classify = #{role.classify}
+		</if>
+		order by r.roleid
+	</select>
+	
+	<select id="selectByNoOrg" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select t.* from DP_ROLE t where t.roleid not in(select o.roleid from DP_ORGROLE o where o.orgid = #{objectId} )
+		<if test="role.roleId!=null">
+			and t.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and t.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and t.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and t.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and t.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and t.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and t.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and t.classify = #{role.classify}
+		</if>
+		<if test="role.dataSql!=null">
+			and ${role.dataSql}
+		</if>
+		order by t.roleid
+	</select>	
+	
+	<select id="selectByPosition" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+select r.* from DP_ROLE r,DP_POSITIONROLE p
+where r.roleid = p.roleid
+and p.positionid= #{objectId}
+		<if test="role.roleId!=null">
+			and r.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and r.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and r.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and r.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and r.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and r.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and r.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and r.classify = #{role.classify}
+		</if>
+		order by r.roleid
+	</select>
+	
+	<select id="selectByNoPosition" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select t.* from DP_ROLE t where t.roleid not in(select roleid from DP_POSITIONROLE where positionid= #{objectId}) 
+		<if test="role.roleId!=null">
+			and t.roleid = #{role.roleId}
+		</if>
+		<if test="role.roleName!=null">
+			and t.roleName like '%${role.roleName}%'
+		</if>
+		<if test="role.parentRoleId!=null">
+			and t.parentRoleId = #{role.parentRoleId}
+		</if>		
+		<if test="role.appId!=null">
+			and t.appId = #{role.appId}
+		</if>
+		<if test="role.orgId!=null">
+			and t.orgId = #{role.orgId}
+		</if>
+		<if test="role.roleCode!=null">
+			and t.roleCode = #{role.roleCode}
+		</if>
+		<if test="role.roleType!=null">
+			and t.roleType = #{role.roleType}
+		</if>
+		<if test="role.classify!=null">
+			and t.classify = #{role.classify}
+		</if>
+		<if test="role.dataSql!=null">
+			and ${role.dataSql}
+		</if>
+		order by t.roleid
+	</select>
+	
+	<select id="findUserRoles" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+	      select n.* from DP_ORGROLE o left join DP_ROLE n on n.roleid = o.roleid where o.orgid in 
+		<foreach collection="orgIds" item="item" open="(" separator="," close=")">
+${item}
+		</foreach>
+		
+         	union
+			select r.* from DP_POSITIONROLE p ,DP_USER u,DP_ROLE r
+			where p.positionid = u.positionid and r.roleid = p.roleid and u.userid = #{userId}
+			
+			union
+			select r.* from DP_USERROLE o,DP_USER u,DP_ROLE r
+			where  o.userid = u.userid and r.roleid = o.roleid and u.userid = #{userId}
+
+	</select>
+
+	<select id="findOrgRoles" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select n.* from DP_ORGROLE o left join DP_ROLE n on n.roleid = o.roleid where o.INHERIT='1' and o.orgid in 
+		<foreach collection="orgIds" item="item" open="(" separator="," close=")">
+${item}
+		</foreach>
+	</select>
+	
+	<select id="findPositionRoles" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Role" >
+		select r.* from DP_ROLE r,DP_POSITIONROLE p
+		where r.roleid = p.roleid
+		and p.positionid= #{objectId}
+	</select>
+</mapper>

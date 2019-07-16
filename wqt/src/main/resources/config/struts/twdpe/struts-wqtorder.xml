@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="struts-wqtorder"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods>
+	    
+	    <action name="orderPayment" class="com.wqt.user.action.OrderPaymentAction" method="orderPayment">
+		    <result name="success" type="freemarker">
+               /usercenter/payment/payment.ftl
+			</result>
+			<result name="404" >
+               /404.html
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	    <!-- 买家知识产权订单列表 -->
+		<action name="iprBuyerOrder" class="com.wqt.user.action.IprOrderAction" method="iprBuyerOrder">
+			<result name="success" type="freemarker">
+				/usercenter/iprBuyerOrderRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!-- 取消知识产权订单 -->
+		<action name="iprCancelBuyerOrder" class="com.wqt.user.action.IprOrderAction" method="iprCancelBuyerOrder">
+			 <result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+			 <result name="404" >
+               /404.html
+			</result>
+		</action>
+		
+		 <!-- 买家企业服务订单列表 -->
+		<action name="esBuyerOrder" class="com.wqt.user.action.EsOrderAction" method="esBuyerOrder">
+			<result name="success" type="freemarker">
+				/usercenter/esBuyerOrderRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!-- 取消企业服务订单 -->
+		<action name="esCancelBuyerOrder" class="com.wqt.user.action.EsOrderAction" method="esCancelBuyerOrder">
+			 <result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+			 <result name="404" >
+               /404.html
+			</result>
+		</action>
+		
+		
+		<!-- 买家网店订单列表 -->
+		<action name="eShopBuyerOrder" class="com.wqt.user.action.EShopOrderAction" method="eShopBuyerOrder">
+			<result name="success" type="freemarker">
+				/usercenter/eShopBuyerOrderRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!-- 取消网店订单 -->
+		<action name="eShopCancelBuyerOrder" class="com.wqt.user.action.EShopOrderAction" method="eShopCancelBuyerOrder">
+			 <result name="success" type="json">
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+			 </result>
+			 <result name="404" >
+               /404.html
+			</result>
+		</action>
+		
+	</package>
+</struts>

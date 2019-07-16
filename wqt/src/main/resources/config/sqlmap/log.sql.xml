@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="log">
+	<sql id="selectCondition">
+		<if test="log.logId != null">logId=#{log.logId}</if>
+		<if test="log.sourceIp != null and log.sourceIp != ''">and sourceIp=#{log.sourceIp}</if>
+		<if test="log.targetIp != null and log.targetIp != ''">and targetIp=#{log.targetIp}</if>
+		<if test="log.account != null and log.account != ''">and account=#{log.account}</if>
+		<if test="log.accountName != null and log.accountName !=''">and accountName like '%${log.accountName}%'</if>
+		<if test="log.accountType != null and log.accountType != ''">and accountType=#{log.accountType}</if>
+		<if test="log.appId != null">and appId=#{log.appId}</if>
+		<if test="log.appName != null and log.appName != ''">and appName like '%${log.appName}%'</if>
+		<if test="log.funcGroupId != null and log.funcGroupId != ''">and funcGroupId IN (select t.resourcecode from DP_RESOURCE  t where t.parentcode = #{log.funcGroupId} or t.resourcecode=#{log.funcGroupId})</if>
+		<if test="log.funcGroupName != null and log.funcGroupName != ''">and funcGroupName like '%${log.funcGroupName}%'</if>
+		<if test="log.resourceUrl != null and log.resourceUrl != ''">and resourceUrl=#{log.resourceUrl}</if>
+		<if test="log.resourceName != null and log.resourceName != ''">and resourceName like '%${log.resourceName}%'</if>
+		<if test="log.actionType != null and log.actionType != ''">and actionType=#{log.actionType}</if>
+		<if test="log.actionDescription != null and log.actionDescription != ''">and actionDescription like '%${log.actionDescription}%'
+		</if>
+		<if test="log.actionResult != null and log.actionResult != ''">and actionResult like '%${log.actionResult}%'</if>
+		<if test="log.statusCode != null and log.statusCode != ''">and statusCode=#{log.statusCode}</if>
+		<if test="log.dataField != null and log.dataField != ''">and dataField like '%${log.dataField}%'</if>
+		<if test="log.originalValue != null and log.originalValue != ''">and originalValue=#{log.originalValue}</if>
+		<if test="log.newValue != null and log.newValue != ''">and newValue=#{log.newValue}</if>
+		<if test="startDate != null"><![CDATA[and auditDate>=#{startDate}]]></if>
+		<if test="endDate != null"><![CDATA[and auditDate<=#{endDate}]]></if>
+	</sql>
+	<insert id="insertLogInfo" parameterType="map">
+        <![CDATA[insert into ${tableName} (]]>
+		<trim suffix="" suffixOverrides=",">
+			logId,auditDate,
+			<if test="log.sourceIp != null">sourceIp,</if>
+			<if test="log.targetIp != null">targetIp,</if>
+			<if test="log.account != null">account,</if>
+			<if test="log.accountName != null">accountName,</if>
+			<if test="log.accountType != null">accountType,</if>
+			<if test="log.appId != null">appId,</if>
+			<if test="log.appName != null">appName,</if>
+			<if test="log.funcGroupId != null">funcGroupId,</if>
+			<if test="log.funcGroupName != null">funcGroupName,</if>
+			<if test="log.resourceUrl != null">resourceUrl,</if>
+			<if test="log.resourceName != null">resourceName,</if>
+			<if test="log.actionType != null">actionType,</if>
+			<if test="log.actionDescription != null">actionDescription,</if>
+			<if test="log.actionResult != null">actionResult,</if>
+			<if test="log.statusCode != null">statusCode,</if>
+			<if test="log.dataField != null">dataField,</if>
+			<if test="log.originalValue != null">originalValue,</if>
+			<if test="log.newValue != null">newValue</if>
+		</trim>
+        <![CDATA[) values (]]>
+		<trim suffix="" suffixOverrides=",">
+			#{log.logId},#{log.auditDate},
+			<if test="log.sourceIp != null">#{log.sourceIp:VARCHAR},</if>
+			<if test="log.targetIp != null">#{log.targetIp:VARCHAR},</if>
+			<if test="log.account != null">#{log.account},</if>
+			<if test="log.accountName != null">#{log.accountName:VARCHAR},</if>
+			<if test="log.accountType != null and log.accountType != ''">#{log.accountType},</if>
+			<if test="log.appId != null and log.appId != ''">#{log.appId},</if>
+			<if test="log.appName != null">#{log.appName:VARCHAR},</if>
+			<if test="log.funcGroupId != null and log.funcGroupId != ''">#{log.funcGroupId},</if>
+			<if test="log.funcGroupName != null">#{log.funcGroupName:VARCHAR},</if>
+			<if test="log.resourceUrl != null">#{log.resourceUrl:VARCHAR},</if>
+			<if test="log.resourceName != null">#{log.resourceName:VARCHAR},</if>
+			<if test="log.actionType != null and log.actionType != ''">#{log.actionType},</if>
+			<if test="log.actionDescription != null">#{log.actionDescription:VARCHAR},</if>
+			<if test="log.actionResult != null">#{log.actionResult:VARCHAR},</if>
+			<if test="log.statusCode != null and log.statusCode != ''">#{log.statusCode},</if>
+			<if test="log.dataField != null">#{log.dataField:VARCHAR},</if>
+			<if test="log.originalValue != null">#{log.originalValue:VARCHAR},</if>
+			<if test="log.newValue != null">#{log.newValue:VARCHAR}</if>
+		</trim>
+        <![CDATA[)]]>
+	</insert>
+	<delete id="deleteLogInfoByIds" parameterType="map">
+        <![CDATA[delete from ${tableName} where logId in ]]>
+		<foreach collection="ids" item="id" separator="," open="("
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+	<delete id="deleteLogInfoByDate" parameterType="map">
+        <![CDATA[delete from ${tableName} ]]>
+		<where>
+			<if test="startDate != null"><![CDATA[and auditDate>=#{startDate}]]></if>
+			<if test="endDate != null"><![CDATA[and auditDate<=#{endDate}]]></if>
+		</where>
+	</delete>
+	<select id="selectLogInfoById" parameterType="map"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogInfo">
+	   <![CDATA[select * from ${tableName} where logId=#{logId}]]>
+	</select>
+	<select id="selectLogInfoByPage" parameterType="map"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogInfo">
+        <![CDATA[select * from ${tableName}]]>
+		<where>
+			<include refid="selectCondition" />
+		</where>
+		order by auditdate desc
+	</select>
+	<select id="selectLogInfoWithField" parameterType="map"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogInfo">
+        <![CDATA[select ${fields} from ${tableName}]]>
+		<where>
+			<include refid="selectCondition" />
+		</where>
+		order by auditdate desc
+	</select>
+	<insert id="insertLogConfigInfo" parameterType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo">
+	   <![CDATA[insert into DP_LOGCONFIG (]]>
+		<trim suffix="" suffixOverrides=",">
+			configId,createDate,
+			<if test="configName != null">configName,</if>
+			<if test="configDesc != null">configDesc,</if>
+			<if test="configType != null">configType,</if>
+			<if test="accountType != null">accountType,</if>
+			<if test="tableCode != null">tableCode</if>
+		</trim>
+        <![CDATA[) values (]]>
+		<trim suffix="" suffixOverrides=",">
+			#{configId},#{createDate},
+			<if test="configName != null">#{configName},</if>
+			<if test="configDesc != null">#{configDesc},</if>
+			<if test="configType != null">#{configType},</if>
+			<if test="accountType != null">#{accountType},</if>
+			<if test="tableCode != null">#{tableCode}</if>
+		</trim>
+        <![CDATA[)]]>
+	</insert>
+	<delete id="deleteLogConfigInfo" parameterType="long">
+	   <![CDATA[delete from DP_LOGCONFIG where configId=#{configId}]]>
+	</delete>
+	<update id="modifyLogConfigInfo" parameterType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo">
+	   <![CDATA[update DP_LOGCONFIG]]>
+		<set>
+			<if test="configName != null">configName=#{configName},</if>
+			<if test="configDesc != null">configDesc=#{configDesc},</if>
+			<if test="configType != null and configType != ''">configType=#{configType},</if>
+			<if test="accountType != null">accountType=#{accountType},</if>
+			<if test="tableCode != null and tableCode != ''">tableCode=#{tableCode}</if>
+		</set>
+		<where>configId=#{configId}</where>
+	</update>
+	<select id="selectLogConfigInfoById" parameterType="long"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo">
+	   <![CDATA[select * from DP_LOGCONFIG where configId=#{configId}]]>
+	</select>
+	<select id="selectLogConfigInfoByType" parameterType="string"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo">
+	   <![CDATA[select * from DP_LOGCONFIG where configType=#{actionType} order by CONFIGID]]>
+	</select>
+	<select id="selectLogConfigInfoByPage" parameterType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo"
+		resultType="com.talkweb.twdpe.base.log.pojo.LogConfigInfo">
+        <![CDATA[select * from DP_LOGCONFIG]]>
+		<where>
+			<if test="configId != null">configId=#{configId}</if>
+			<if test="configName != null and configName != ''">and configName like '%${configName}%'</if>
+			<if test="configDesc != null and configDesc != ''">and configDesc like '%${configDesc}%'</if>
+			<if test="configType != null and configType != ''">and configType=#{configType}</if>
+			<if test="accountType != null">and accountType=#{accountType}</if>
+			<if test="tableCode != null and tableCode != ''">and tableCode=#{tableCode}</if>
+		</where>
+		order by CONFIGID
+	</select>
+</mapper>

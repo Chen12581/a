@@ -1,0 +1,228 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul, li, ol {
+    list-style: none outside none;
+}
+a, a * {
+    text-decoration: none;
+    outline: none;
+    -webkit-transition: all .3s linear 0s;
+    -moz-transition: all .3s linear 0s;
+    -ms-transition: all .3s linear 0s;
+}
+.trademark_xqalr {
+    width: 600px;
+}
+.trademark_xqalra {
+    background: url(../images/trademark-xq-bg.jpg) no-repeat;
+    width: 600px;
+    height: 94px;
+}
+.trademark_xqalraa {
+    padding: 20px 0 10px 0;
+    overflow: hidden;
+}
+.trademark_xqalraal {
+    
+    float: left;
+    margin: 0 0 0 20px;
+    color: #fff;
+    font-size: 28px;
+    line-height: 30px;
+    *margin-top: -8px;
+}
+.trademark_xqalraar {
+    float: right;
+    background: url(../images/trademark-xq-r.png) no-repeat 0 50%;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #fff;
+    display: inline;
+    font-size:12px;
+}
+.trademark_xqalrab {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 4px;
+}
+.trademark_xqalrabl {
+    float: left;
+    padding-left: 20px;
+}
+.trademark_xqalrabr {
+    float: right;
+    width: 240px;
+    text-align: left;
+}
+.trademark_xqalrb {
+    background: #f6f6f6;
+    padding: 5px 20px 15px 20px;
+    position: relative;
+}
+.trademark_xqalrb li {
+    padding: 10px 0 0 0;
+}
+.trademark_xqalrb li {
+    overflow: hidden;
+    font-size: 14px;
+    color: #4c4c4c;
+}
+.trademark_xqalrbal {
+    float: left;
+}
+.trademark_xqalrbal span, .trademark_xqalrbar span {
+    color: #808080;
+}
+.trademark_xqalrbar {
+    float: right;
+    width: 220px;
+    text-align: left;
+}
+.trademark_xqalrbbl {
+    float: left;
+    width: 70px;
+    color: #808080;
+    line-height: 22px;
+}
+.trademark_xqalrbbr {
+    float: left;
+    width: 490px;
+    line-height: 22px;
+    color: #666666;
+}
+.trademark_xqalrbbr a:hover {
+    text-decoration: underline;
+}
+.trademark_xqalrbbl {
+    float: left;
+    width: 70px;
+    color: #808080;
+    line-height: 22px;
+}
+.trademark_xqalrbbr.overflow-x {
+    /*overflow-x: hidden;*/
+    height: 44px;
+    *overflow: auto;
+    font-size:0;
+}
+.trademark_xqalrbbr a {
+    margin-right: 8px;
+    display: inline-block;
+    color: #282828;
+    font-size: 12px;
+}
+.trademark_xqalrc {
+    padding: 20px;
+    border-bottom: 1px dashed #f2f2f2;
+    overflow: hidden;
+}
+.trademark_xqalrcl {
+    float: left;
+    font-size: 14px;
+    color: #808080;
+    padding-top: 4px;
+}
+.trademark_xqalrcm {
+    float: left;
+    font-size: 30px;
+    line-height: 24px;
+    color: #eb0c1c;
+    font-weight: bold;
+}
+.trademark_xqalrcm {
+    float: left;
+}
+.trademark_xqalrd {
+    border-bottom: 1px dashed #f2f2f2;
+    padding: 10px 0;
+    overflow: hidden;
+    color: #4c4c4c;
+}
+.trademark_xqalrd li {
+    float: left;
+    width: 208px;
+    text-align: center;
+    padding: 0 16px;
+    color: #666666;
+}
+.trademark_xqalrd .trademark_xqalrd_none {
+    background: none;
+}
+.trademark_xqalrd li {
+    float: left;
+    background: url(../images/trademark-xq-sx.jpg) no-repeat 0 3px;
+    width: 208px;
+    text-align: center;
+    padding: 0 16px;
+    color: #666666;
+    font-size: 12px;
+}
+.trademark_xqalrd .trademark_xqalrd02, .trademark_xqalrd .trademark_xqalrd03 {
+    width: 148px;
+}
+.trademark_xqalre {
+    margin: 20px 0 0 0;
+    overflow: hidden;
+}
+.trademark_xqalre li {
+    margin: 0 0 0 20px;
+    float: left;
+    background: #dd2727;
+    height: 38px;
+    text-align: center;
+    color: #fff;
+    width: 178px;
+    line-height: 38px;
+}
+.trademark_xqalre li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 38px;
+}
+.trademark_xqalre .trademark_xqalre_bg {
+    background: #ffeded;
+    border: 1px solid #dd2727;
+    height: 36px;
+    cursor: pointer;
+}
+.trademark_xqalre .trademark_xqalre_bg a {
+    color: #dd2727;
+}
+.trademark_xqalrf {
+    margin: 20px 0 0 0;
+    overflow: hidden;
+}
+.trademark_xqalrf li {
+    float: left;
+    color: #4c4c4c;
+    margin: 0 0 0 20px;
+}
+.trademark_xqalrf ul li {
+    height: 20px;
+    padding: 0 0 0 25px;
+    font-size: 12px;
+}
+.trademark_xqalrf .trademark_xq_icon {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+.trademark_xqalrf .trademark_xq_icon1 {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+.trademark_xqalrf .trademark_xq_icon2 {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+.trademark_xqalrf .trademark_xq_icon3 {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+.trademark_xqalrf .trademark_xq_icon4 {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+.trademark_xqalrf .trademark_xq_icon5 {
+    background: url(../images/trademark-xq-icon2.jpg) no-repeat;
+}
+a:hover {
+    color: #f20e0e;
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="news"> 
+       
+       <!-- wqt -->
+       <select id="selectWqtNewsKindList"
+            parameterType="com.news.pojo.NewsKind"
+       		resultType="com.news.pojo.NewsKind">
+       		select 
+       		    id,
+       		    newkind,
+       		    plateformcode,
+       		    kindkey 
+       		from wqt_news_kind 
+       		where 1=1
+       		<if test="null != id and '' != id">
+       		  and  id = #{id}
+       		</if>
+       		<if test="null != newkind and '' != newkind">
+       		  and  newkind = #{newkind}
+       		</if>
+       		<if test="null != platecode and '' != platecode">   
+       		  and  platecode = #{platecode}
+       		</if>
+       </select>
+       
+       <select id="selectWqtNewsList"
+            parameterType="com.news.pojo.News"
+       		resultType="com.news.pojo.News">
+       		select 
+       		  a.id,
+       		  a.newicon,
+       		  a.plateformcode,
+       		  a.kindid,
+       		  a.kindkey,
+       		  a.myother,
+       		  a.title,
+       		  a.content,
+       		  a.sourcfrom,
+       		  a.hits,
+       		  a.htmlpath,
+       		  a.developtime,
+       		  a.mkeyword,
+       		  a.mdesc,
+			(select newkind from wqt_news_kind k where k.id=a.kindid) kindname
+			 from wqt_news a
+       		where 1=1
+       		<if test="null != id and '' != id">
+       		  and  id = #{id}
+       		</if>
+       		<if test="null != state and '' != state">
+       			and	state = #{state}
+       		</if>
+       		<if test="null != kindid and '' != kindid">
+       			and	kindid = #{kindid}
+       		</if>
+       		<if test="null != plateformcode and '' != plateformcode">
+       			and	plateformcode = #{plateformcode}
+       		</if>
+       		<if test="null != hotrecom and '' != hotrecom">
+       			and	hotrecom = #{hotrecom}
+       		</if>
+       		<if test="null != labelid and '' != labelid">
+       		   and   a.id in
+			   (
+			     select newsid from wqt_news_newslabel 
+			     where labelid=#{labelid}
+			   )
+       		</if>
+       		<if test="null != title and '' != title">
+       		  and  title = #{title}
+       		</if>
+       		order by createtime desc
+       </select>
+       
+       <select id="selectWqtNewsOne"
+       		parameterType="com.news.pojo.News"
+       		resultType="com.news.pojo.News">
+       		select * from wqt_news
+       		where 1=1
+       		<if test="null != id and '' != id"> and id = #{id}</if>
+       </select>
+       
+        <select id="selectPreWqtNews"
+       		parameterType="com.news.pojo.News"
+       		resultType="com.news.pojo.News">
+       		select 
+       		  a.id,
+       		  a.newicon,
+       		  a.plateformcode,
+       		  a.kindid,
+       		  a.kindkey,
+       		  a.myother,
+       		  a.title,
+       		  a.content,
+       		  a.sourcfrom,
+       		  a.hits,
+       		  a.htmlpath,
+       		  a.developtime,
+       		  a.mkeyword,
+       		  a.mdesc
+       		from wqt_news a
+       		where state=2 and  plateformcode='wqt' and 
+       		id=(select max(id) from wqt_news
+                <![CDATA[      where state=2  and  plateformcode='wqt' and id<#{id})   ]]>
+       </select>
+       
+       <select id="selectNextWqtNews"
+       		parameterType="com.news.pojo.News"
+       		resultType="com.news.pojo.News">
+       		select 
+              a.id,
+       		  a.newicon,
+       		  a.plateformcode,
+       		  a.kindid,
+       		  a.kindkey,
+       		  a.myother,
+       		  a.title,
+       		  a.content,
+       		  a.sourcfrom,
+       		  a.hits,
+       		  a.htmlpath,
+       		  a.developtime,
+       		  a.mkeyword,
+       		  a.mdesc
+       		from wqt_news a
+       		where state=2 and  plateformcode='wqt' and 
+       		id=(select min(id) from wqt_news
+                     where state=2  and  plateformcode='wqt' and id>#{id})
+       </select>
+       
+        <select id="selectWqtNewsNewsLabelList" 
+			resultType="com.news.pojo.NewsLabel"
+			parameterType="string">
+			select 
+			   id,
+			   labelname,
+			   url
+			from wqt_news_label
+			where  1=1
+			    and  id in
+			    (
+			      select labelid from  wqt_news_newslabel
+			      where newsid=#{newsid}
+			    )
+	   </select>
+       <!-- wqt -->
+</mapper>

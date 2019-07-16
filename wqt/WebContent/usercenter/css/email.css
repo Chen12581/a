@@ -1,0 +1,189 @@
+/*****************公共样式********************/
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #F1F1F1;;
+}
+body input,div,h1,h2,h3,h4,h5,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+}
+input{
+    background: none;
+    outline: none;
+}
+a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+.lf{
+    float:left;
+}
+.rt{
+    float:right;
+}
+.clear:after, .clear:before {
+    clear: both;
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    font-size: 0;
+    visibility: hidden;
+    zoom: 1;
+}
+/*********************中间内容的样式设置***********************/
+.content{
+    width: 1190px;
+    margin: 10px auto 80px;
+    min-height: 300px;
+}
+.content:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.content .content_lf{
+    float: left;
+    width: 248px;
+    padding: 30px 10px;
+    min-height: 200px;
+    background-color: #fff;
+}
+/***************************左边内容样式设置*********************/
+.content_lf:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.content_lf h4{
+    color: #eb0c1c;
+    border: 1px solid #ddd;
+    padding: 5px 0;
+    padding-left: 40px;
+    border-radius: 15px;
+    line-height: 25px;
+    vertical-align: 25px;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+}
+.content_lf h4:before{
+    display: block;
+    content: "";
+    clear: both;
+    width: 4px ;
+    height: 20px;
+    background-color: #eb0c1c;
+    position: absolute;
+    left: 18px;
+    top: 8px;
+}
+.content_lf li{
+    padding: 10px 0;
+    margin: 10px 0;
+    position: relative;
+    padding-left: 40px;
+}
+.content_lf li a{
+    color: #969696;
+    font-size: 15px;
+}
+.content_lf li:before{
+    position: absolute;
+    display:block;
+    content: "";
+    clear: both;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    left: 25px;
+    top: 19px;
+}
+.content_lf li.hover:before{
+    width:0;
+    height:0;
+}
+.content_lf .hover{
+    background-color: #EFF0EF;
+}
+.content_lf .hover a{
+    color: #33CC99;
+}
+.content_lf li:hover{
+    background-color: #EFF0EF;
+}
+.content_lf li:hover a{
+    color: #33CC99;
+}
+/*右边样式设置*/
+.content .content_rt{
+    float: right;
+    width: 930px;
+    padding: 30px;
+    min-height: 500px;
+    background-color: #fff;
+}
+.content_rt .cont_title{
+    font-size: 16px;
+    color: #4c4c4c;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+}
+.cont_title .tt{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #FF9900;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+.cont_information{
+    width: 590px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.cont_information_tit{
+    width: 165px;
+    text-align: center;
+    padding: 5px 20px;
+    border-bottom: 1px solid #eeeeee;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #f67404;
+}
+.eml{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 25px;
+}
+.eml input{
+    width: 244px;
+    height: 35px;
+    border: 1px solid #e0e0e0;
+    color: #4c4c4c;
+    text-indent: 5px;
+    font-size: 14px;
+}
+.b_email{
+    width: 160px;
+    height: 40px;
+    background: #f67404;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 45px;
+    cursor: pointer;
+    border-radius: 5px;
+}

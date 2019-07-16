@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增专利</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/patent_add.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<style type="text/css">
+	.redStar{
+		 color: red;
+		 position: absolute;
+		 top: 0px;
+		 display: inline
+	}
+</style>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+
+       <form id="patentForm" action="sysPatent_updatePatentShop.action" class="easyui-form" method="get" > 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle" style="position: relative;">专利号<span class="redStar">*</span>：</th>
+				<td style="width:220px;"colspan="2">
+				     <input data-options="prompt:'必填：请输入专利号'" id="patentno" name="iprPatentShop.patentno" class="easyui-textbox" style="width:140px;"/>
+				      <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="reload()">检测</a>
+				</td>
+				<td><input  id="tipsmsg" name="iprPatentShop.tipsmsg" style="width:200px; border: none;" /></td>
+				<td>
+					<input type="hidden" id="id" name="iprPatentShop.id"  style="width:200px;"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">图片管理：</th>
+				<td style="height:30px;">
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="photoUpload()">编辑</a>
+	    		 </td>
+			</tr>
+			<tr>
+				<th valign="middle" style="position: relative;">专利名称<span class="redStar">*</span>：</th>
+				<td style="width:220px;">
+				     <input data-options="prompt:'必填：请输入专利名称'" id="patentname" name="iprPatentShop.patentname" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle" style="position: relative;">行业分类<span class="redStar">*</span>：</th>
+				<td style="width:220px;">
+					<input class="easyui-combobox" 
+					     id="kindid"
+					     name="iprPatentShop.kindid"
+						 style="width:200px;"
+						 data-options="
+								url:'sysPatent_patentkind.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'">
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle" style="position: relative;">专利类型<span class="redStar"  style="top:10px;">*</span>：</th>
+				<td style="width:220px;height:50px;">
+					<select style="width:200px;" id="patenttype" name="iprPatentShop.patenttype" class="easyui-combobox">
+				     	<option value="">不限</option>
+					   	<option value="1">发明专利</option>
+					   	<option value="2">实用新型</option>
+					   	<option value="3">外观设计</option>
+				     </select>
+				</td>
+				<th valign="middle">交易类型：</th>
+				<td style="width:220px;">
+				     <select style="width:200px;" id="busikind" name="iprPatentShop.busikind" class="easyui-combobox">
+				     	<option value="">不限</option>
+					   	<option value="1">出售商品</option>
+					   	<option value="2">授权商品</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">是否特价：</th>
+				<td style="width:220px;">
+				     <select style="width:200px;" id="isspecial" name="iprPatentShop.isspecial" class="easyui-combobox">
+				     	<option value="">不限</option>
+					   	<option value="1">特价商品</option>
+					   	<option value="2">非特价商品</option>
+				     </select>
+				</td>
+				
+				<th valign="middle">专利状态：</th>
+				<td style="width:220px;">
+				     <select style="width:200px;" id="patentstate" name="iprPatentShop.patentstate" class="easyui-combobox">
+				     	<option value="">不限</option>
+					   	<option value="1">授权未下证</option>
+					   	<option value="2">已下证</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">申请日期：</th>
+				<td style="width:220px;height:50px;">
+				     <input data-options="prompt:'请输入申请日期'" id="applydate" name="iprPatentShop.applydate" class="easyui-datebox" style="width:200px;"/>
+				</td>
+				
+				<th valign="middle">有效期至：</th>
+				<td style="width:220px;">
+					<input data-options="prompt:'请输入到期日期'" id="validitydate" name="iprPatentShop.validitydate" class="easyui-datebox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">价格：</th>
+				<td style="width:220px;">
+				     <input data-options="prompt:'请输入价格'" id="price" name="iprPatentShop.price" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">底价：</th>
+				<td style="width:220px;">
+				     <input data-options="prompt:'请输入底价'" id="bottomprice" name="iprPatentShop.bottomprice" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">联系人：</th>
+				<td style="width:220px;height:50px;">
+				     <input data-options="prompt:'请输入联系人'" id="ownername" name="iprPatentShop.ownername" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">电话：</th>
+				<td style="width:220px;">
+				     <input data-options="prompt:'请输入电话'" id="ownermobile" name="iprPatentShop.ownermobile" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th >专利详情：</th>
+				<td style="width:220px;height: 60px" colspan="3">
+				     <input data-options="prompt:'请输入专利详情'" id="patentdesc" name="iprPatentShop.patentdesc" class="easyui-textbox" data-options="multiline:true" style="width:488px;height:80px;"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

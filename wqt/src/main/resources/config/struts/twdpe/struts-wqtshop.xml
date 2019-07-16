@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="struts-wqtshop"   extends="twdpe-common-default">
+	     <global-allowed-methods>regex:.*</global-allowed-methods>
+	    
+		
+		<!-- 卖家知识产权商品列表 -->
+		<action name="iprSellerShop" class="com.wqt.user.action.IprShopAction" method="iprSellerShop">
+			<result name="success" type="freemarker">
+				/usercenter/iprSellerShopRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<!-- 卖家的企业服务商品列表 -->
+		<action name="esSellerShop" class="com.wqt.user.action.EsShopAction" method="esSellerShop">
+			<result name="success" type="freemarker">
+				/usercenter/esSellerShopRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!-- 卖家网店列表 -->
+		<action name="eShopSellerShop" class="com.wqt.user.action.EShopShopAction" method="eShopSellerShop">
+			<result name="success" type="freemarker">
+				/usercenter/eShopSellerShopRecord.ftl
+		    </result>
+		    <result name="404" type="redirect">
+			    /404.html
+		    </result>
+		    <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.permission">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.Permission" >
+		insert into DP_PERMISSION(permissionId,modeId,resourceCode,appId)
+		values(#{permissionId},#{modeId},#{resourceCode},#{appId})
+	</insert>
+	
+	<delete id="delete" parameterType="long" >
+		delete from DP_PERMISSION where permissionId = #{permissionId}
+	</delete>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.Permission" >
+		select * from DP_PERMISSION
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Permission" >
+		select * from DP_PERMISSION where permissionId = #{permissionId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.Permission" resultType="com.talkweb.twdpe.base.right.pojo.Permission">
+		select * from DP_PERMISSION
+		<where>
+			<if test="permissionId!=null">
+				and permissionId = #{permissionId}
+			</if>
+			<if test="modeId!=null">
+				and modeId = #{modeId}
+			</if>
+			<if test="resourceCode!=null">
+				and resourceCode = #{resourceCode}
+			</if>		
+			<if test="appId!=null">
+				and appId = #{appId}
+			</if>							
+		</where>
+		order by permissionId
+	</select>
+	
+	<select id="selectByRole" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Permission">
+		select p.* from DP_PERMISSION p 
+			left join DP_ROLEPERM r on p.permissionid = r.permissionid
+			left join DP_RESOURCE r2 on p.RESOURCECODE = r2.RESOURCECODE
+		<where> 
+			<if test="p.permissionId!=null">
+				and p.permissionId = #{p.permissionId}
+			</if>
+			<if test="p.modeId!=null">
+				and p.modeId = #{p.modeId}
+			</if>
+			<if test="p.resourceCode!=null">
+				and p.resourceCode = #{p.resourceCode}
+			</if>		
+			<if test="roleId!=null">
+				and r.roleId in (${roleId})
+			</if>
+		</where>
+		order by r2.parentCode,r2.orderby
+	</select>
+	
+	<select id="selectByRoleLimit" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Permission">
+		select p.* from DP_PERMISSION p,DP_LIMITPERM r
+		where p.permissionid = r.permissionid
+		<if test="p.permissionId!=null">
+			and p.permissionId = #{p.permissionId}
+		</if>
+		<if test="p.modeId!=null">
+			and p.modeId = #{p.modeId}
+		</if>
+		<if test="p.resourceCode!=null">
+			and p.resourceCode = #{p.resourceCode}
+		</if>
+		<if test="roleId!=null">
+			and r.roleId in (${roleId})
+		</if>
+	</select>
+			<select id="selectByRoleForNew" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Permission">
+		select p.* from DP_PERMISSION p 
+			left join DP_ROLEPERM r on p.permissionid = r.permissionid
+			left join DP_RESOURCE r2 on p.RESOURCECODE = r2.RESOURCECODE
+		<where> 
+			<if test="roleId!=null">
+				and r.roleId in (${roleId})
+			</if>
+				<if test="resourceCode!=null">
+				and p.resourceCode = #{resourceCode}
+			</if>
+		</where>
+		order by r2.parentCode,r2.orderby
+	</select>
+</mapper>

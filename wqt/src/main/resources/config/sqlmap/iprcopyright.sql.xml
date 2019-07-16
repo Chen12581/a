@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iprCopyright"> 
+
+
+     
+     <select id="selectCopyrightProductOne"
+     		parameterType="com.wqt.ipr.copyright.pojo.IprCopyrightProduct"
+     		resultType="com.wqt.ipr.copyright.pojo.IprCopyrightProduct">
+     		select * from ipr_copyright_product
+     		where 1=1
+     		<if test="null != id and '' != id">and id = #{id}</if>
+     		</select>
+     
+     <select id="selectCopyrightProduct"
+     		parameterType="com.wqt.ipr.copyright.pojo.IprCopyrightProduct"
+     		resultType="com.wqt.ipr.copyright.pojo.IprCopyrightProduct">
+     		select *,
+   			(select kindname from ipr_copyright_productkind pk where pk.id=p.kindid) kindname 
+     		 from ipr_copyright_product p
+     		where 1=1
+     		<if test="null != id and '' != id">and id = #{id}</if>
+		 	<if test="null!= kindid and ''!= kindid">and kindid = #{kindid}</if>
+			<if test="null!= productname and ''!= productname">and productname = #{productname}</if>
+			<if test="null!= productdesc and ''!= productdesc">and productdesc = #{productdesc}</if>
+			<if test="null!= price and ''!= price">and price = #{price}</if>
+			<if test="null!= rebateprice and ''!= rebateprice">and rebateprice = #{rebateprice}</if>
+			<if test="null!= simplename and ''!= simplename">and simplename = #{simplename}</if>
+			<if test="null!= htmlpath and ''!= htmlpath">and htmlpath = #{htmlpath}</if>
+			<if test="null!= bookmark and ''!= bookmark">and bookmark = #{bookmark}</if>
+			order by id desc
+     </select>
+     
+    
+
+     <update id="updateCopyrightShop"
+     		parameterType="com.wqt.ipr.copyright.pojo.IprCopyrightShop">
+     	update ipr_copyright_shop
+     	<set>
+     		<trim suffix="" suffixOverrides=",">
+     			<if test="null != userid and '' != userid">userid = #{userid},</if>
+     			<if test="null != copyrightname and '' != copyrightname">copyrightname = #{copyrightname},</if>
+     			<if test="null != copyrightkind and '' != copyrightkind">copyrightkind = #{copyrightkind},</if>
+     			<if test="null != copyrightkindname and '' != copyrightkindname">copyrightkindname = #{copyrightkindname},</if>
+     			<if test="null != transfermethod and '' != transfermethod">transfermethod = #{transfermethod},</if>
+     			<if test="null != copyrightcode and '' != copyrightcode">copyrightcode = #{copyrightcode},</if>
+     			<if test="null != transferinstruct and '' != transferinstruct">transferinstruct = #{transferinstruct},</if>
+     			<if test="null != competentmethod and '' != competentmethod">competentmethod = #{competentmethod},</if>
+     			<if test="null != competentarea and '' != competentarea">competentarea = #{competentarea},</if>
+     			<if test="null != competentterm and '' != competentterm">competentterm = #{competentterm},</if>
+     			<if test="null != competentrange and '' != competentrange">competentrange = #{competentrange},</if>
+     			<if test="null != pathkey and '' != pathkey">pathkey = #{pathkey},</if>
+     			<if test="null != price and '' != price">price = #{price},</if>
+     			<if test="null != state and '' != state">state = #{state},</if>
+     			<if test="null != htmlpath and '' != htmlpath">htmlpath = #{htmlpath},</if>
+     			<if test="null != workerid and '' != workerid">workerid = #{workerid},</if>
+     			<if test="null != developtime and '' != developtime">developtime = #{developtime},</if>
+   			</trim>
+     	</set>
+     	where 1=1
+     		<if test="null!= id and ''!= id">
+			    and  id=#{id}
+			</if>
+			<if test="null!= copyrightcode and ''!= copyrightcode">
+			    and  copyrightcode=#{copyrightcode}
+			</if>
+     </update>
+     
+     <select id="selectCopyrightShopList"
+     		parameterType="com.wqt.ipr.copyright.pojo.IprCopyrightShop"
+     		resultType="com.wqt.ipr.copyright.pojo.IprCopyrightShop">
+     	select a.id,a.userid,a.copyrightname,a.copyrightkind,a.copyrightcode,a.transfermethod,a.competentmethod,
+     	a.competentarea,a.competentterm,a.transferinstruct,a.price,a.state,a.pathkey,a.htmlpath,
+     	a.copyrightdesc,a.workerid,a.developtime,a.remark,
+     	(select k.copyrightdesc from ipr_copyright_shopkind k where a.copyrightkind = k.id) copyrightkindname,
+     	(select c.competentrange from ipr_copyright_competentrange c where a.competentrange = c.id) competentrange, 
+     	(select workername from wqt_worker ww where a.userid = ww.id) displayname,
+     	(select workername from wqt_worker ww where a.workerid = ww.id) updatename
+     	from ipr_copyright_shop a join wqt_worker ww on a.userid=ww.id
+     	where 1=1
+     	<if test="null != userid and '' != userid">and userid = #{userid}</if>
+		<if test="null != copyrightname and '' != copyrightname">and copyrightname = #{copyrightname}</if>
+		<if test="null != copyrightkind and '' != copyrightkind">and copyrightkind = #{copyrightkind}</if>
+		<if test="null != copyrightkindname and '' != copyrightkindname">and copyrightkindname = #{copyrightkindname}</if>
+		<if test="null != copyrightcode and '' != copyrightcode">and copyrightcode = #{copyrightcode}</if>
+		<if test="null != transfermethod and '' != transfermethod">and transfermethod = #{transfermethod}</if>
+		<if test="null != transferinstruct and '' != transferinstruct">and transferinstruct = #{transferinstruct}</if>
+		<if test="null != price and '' != price">and price = #{price}</if>
+		<if test="null != state and '' != state">and a.state = #{state}</if>
+		<if test="null != states and '' != states">and a.state in (#{states})</if>
+		<if test="null != htmlpath and '' != htmlpath">and htmlpath = #{htmlpath}</if>
+		<if test="null != workerid and '' != workerid">and workerid = #{workerid}</if>
+		<if test="null != developtime and '' != developtime">and developtime = #{developtime}</if>
+		order by a.id desc
+     </select>
+     
+     <!-- 查询单个版权 -->
+     <select id="selectCopyrightShopOne"
+     		parameterType="com.wqt.ipr.copyright.pojo.IprCopyrightShop"
+     		resultType="com.wqt.ipr.copyright.pojo.IprCopyrightShop">
+     	select * from ipr_copyright_shop 
+     	where 1=1
+     	<if test="null != id and '' != id">and id = #{id}</if>
+     	<if test="null != userid and '' != userid">and userid = #{userid}</if>
+		<if test="null != copyrightname and '' != copyrightname">and copyrightname = #{copyrightname}</if>
+		<if test="null != copyrightkind and '' != copyrightkind">and copyrightkind = #{copyrightkind}</if>
+		<if test="null != transfermethod and '' != transfermethod">and transfermethod = #{transfermethod}</if>
+		<if test="null != transferinstruct and '' != transferinstruct">and transferinstruct = #{transferinstruct}</if>
+		<if test="null != price and '' != price">and price = #{price}</if>
+		<if test="null != state and '' != state">and state = #{state}</if>
+		<if test="null != htmlpath and '' != htmlpath">and htmlpath = #{htmlpath}</if>
+		<if test="null != workerid and '' != workerid">and workerid = #{workerid}</if>
+		<if test="null != developtime and '' != developtime">and developtime = #{developtime}</if>
+     </select>
+</mapper>

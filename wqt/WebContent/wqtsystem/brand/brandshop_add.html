@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增商标</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/brandshop_add.js"></script>
+<script  type="text/javascript" src="../../js/ajaxfileupload.js" ></script>
+<style type="text/css">
+	#branditem:after{
+		clear: both;
+	}
+	.redStar{
+		 color: red;
+		 position: absolute;
+		 top: 0px;
+		 display: inline
+	}
+</style>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+       <form id="brandForm" action="sysBrand_saveSysBrandShop.action" class="easyui-form" method="get" > 
+       	<div style="border: 1px solid red; ">
+       		<table class="ui-table" border="0px">
+			<tr>
+				<th style="text-align: center;" colspan="6">商标信息</th>
+			</tr>
+			<tr>
+				<th style="position: relative;">注册号<span class="redStar">*</span>：</th>
+				<td style="width:200px;"colspan="2">
+				     <input data-options="prompt:'必填：请输入注册号'" id="regcode" name="sysbrand.regcode"  class="easyui-textbox" style="width:140px;" />
+				     <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="reload()">检测</a>
+				</td>
+				<td><input  id="tipsmsg" name="sysbrand.tipsmsg" style="width:200px; border: none;" /></td>
+			</tr>
+			<tr>
+				<th >图片管理：</th>
+				<td style="height:30px;">
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="photoUpload()">编辑</a>
+			     </td>
+			</tr>
+			<tr>
+				<th style="position: relative;">商标类别<span class="redStar">*</span>：</th>
+				<td colspan="3">
+					<div id="brandkind" style=" height:15px; width:800px;display: inline;"></div>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="test()">编辑</a>
+					<input type="hidden" id="Brandkind" name="sysbrand.brandkind">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>类似群组：</th>
+<!-- 				<td style="width:220px;" > -->
+<!-- 				     <input data-options="prompt:'必填：请输入名称'" id="brandname"  name="sysbrand.brandname" class="easyui-textbox" style="width:200px; " /> -->
+<!-- 				</td> -->
+				<td style="height:30px;" colspan="3">
+					<div id="brandgroup" style=" height:15px;"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="width:62px;"> 适用项目：</th>
+<!-- 				<td style="width:220px;" > -->
+<!-- 				     <input data-options="prompt:'必填：请输入名称'" id="brandname"  name="sysbrand.brandname" class="easyui-textbox" style="width:200px; " /> -->
+<!-- 				</td> -->
+				<td  style="height:30px;" colspan="3">
+					<div id="branditem" style=" height:20px;">
+						<div style="width: 100%;cleaer: both;"></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle" style="position: relative;width:62px;">商标名称<span class="redStar">*</span>：</th>
+				<td style="width:220px;" >
+				     <input data-options="prompt:'必填：请输入名称'" id="brandname"  name="sysbrand.brandname" class="easyui-textbox" style="width:200px; " />
+				</td>
+				<th valign="middle" style="width:62px;">所属区域：</th>
+				<td style="width:220px;">
+				     <select id="area" style="width:200px;" name="sysbrand.area" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >大陆</option>
+				     	<option value="2">港澳台</option>
+				     </select>
+				</td>
+				<th style="width:62px;">商标类型：</th>
+				<td style="width:220px;" >
+				     <select id="rbrand" style="width:200px;" name="sysbrand.rbrand" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >R商标</option>
+				     	<option value="2">TM商标</option>
+				     </select>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">组合类型：</th>
+				<td style="width:200px;">
+				     <select style="width:200px;" name="sysbrand.assemble" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >中文</option>
+				     	<option value="2">英文</option>
+				     	<option value="3" >中文+英文</option>
+				     	<option value="4">图形</option>
+				     	<option value="5" >中文+图形</option>
+				     	<option value="6">组合</option>
+				     	<option value="7" >数字</option>
+				     	<option value="8">拼音</option>
+				     	<option value="9">英文+图形</option>
+				     	<option value="10" >中文+拼音</option>
+				     	<option value="11" >中文+英文+图形</option>
+				     </select>
+				</td>
+				<th>是否特价：</th>
+				<td  style="height:50px;" >
+				     <select id="isspecial" style="width:200px;" name="sysbrand.isspecial" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >正常价格</option>
+				     	<option value="2">特价</option>
+				     </select>
+				</td>
+				
+				<th>购买方式：</th>
+				<td >
+				     <select id="buymethod" style="width:200px;" name="sysbrand.buymethod" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >购买商标</option>
+				     	<option value="2">授权商标</option>
+				     </select>
+				</td>
+			</tr>
+			
+			<tr >
+				<th>初审期号：</th>
+				<td colspan="0">
+				     <input data-options="prompt:'请输入初审公告期号'" id="initialnoticeissue"  name="sysbrand.initialnoticeissue"  class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+				<th>公告日期：</th>
+				<td>
+				     <input data-options="prompt:'请输入公告日期'" id="initialnoticedate" name="sysbrand.initialnoticedate" class="easyui-datebox" style="width:200px;" />
+				</td>
+				<th>注册期号：</th>
+				<td>
+				     <input data-options="prompt:'请输入注册公告期号'"  id="regnoticeissue" name="sysbrand.regnoticeissue" class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+			</tr>
+			<tr>
+				
+				<th>开始时间：</th>
+				<td  style="height:50px;">
+				     <input data-options="prompt:'请输入开始时间'"  id="startvalidity" name="sysbrand.startvalidity" class="easyui-datebox" style="width:200px;" />
+				</td>
+				
+				<th>到期时间：</th>
+				<td>
+				     <input data-options="prompt:'请输入到期时间'" id="endvalidity" name="sysbrand.endvalidity" class="easyui-datebox" style="width:200px;" />
+				</td>
+				
+				<th>注册日期：</th>
+				<td>
+				     <input data-options="prompt:'请输入注册日期'" id="regnoticedate" name="sysbrand.regnoticedate" class="easyui-datebox" style="width:200px;" />
+				</td>	
+			</tr>
+			
+			<tr>
+				<th>商标价格：</th>
+				<td>
+				     <input data-options="prompt:'请输入价格'" id="price" name="sysbrand.price" class="easyui-textbox" style="width:200px;" />
+				</td>
+			
+				<th>商标底价：</th>
+				<td>
+				     <input data-options="prompt:'请输入底价'" id="bottomprice" name="sysbrand.bottomprice" class="easyui-textbox" style="width:200px;" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input  style="display: none;" id="brandphoto" name="brandphoto"/> 
+				</td>
+				<td>
+					<input  style="display: none;" id="brandphoto1" name="brandphoto1"/> 
+				</td>
+			</tr>
+			<tr>
+				
+				<!-- 商标id -->
+				<td> 
+				   <input type="hidden"  id="brandid" name="sysbrand.id"  /> 
+				</td> 
+				<!-- 商标类别名称 -->
+				<td> 
+				   <input type="hidden"  id="kindname" name="sysbrand.kindname"  /> 
+				</td> 
+				<!-- 商标编号 -->
+				<td> 
+				     <input type="hidden"  id="brandcode" name="sysregcode.brandcode"  /> 
+				</td> 
+				
+			</tr>
+		</table>
+       	</div>
+       	</form>
+       	
+       	
+       	<form id="ownerForm" action="sysBrand_saveSysBrandShopowner.action" class="easyui-form" method="get">
+       	<div  style="border: 1px solid blue; ">
+       		<table class="ui-table" >
+			<tr>
+			<th style="height:30px; text-align: center;"  colspan="6">客户信息</th>
+			</tr>
+			<tr>
+				<!-- 客户信息id -->
+				<td > 
+				     <input type="hidden"  id="brandshopid" name="brandshopid" class="" style="width:200px;" /> 
+				</td> 
+			</tr>
+			<tr>
+				<th>客户姓名：</th>
+				<td style="width: 220px;">
+				     <input data-options="prompt:'请输入客户姓名'" id="ownername" name="sysbrandowner.ownername" class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+				<th style="position: relative;">联系电话<span class="redStar">*</span>：</th>
+				<td>
+				     <input data-options="prompt:'必填：请输入联系电话'" id="ownermobile" name="sysbrandowner.ownermobile" class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+				<th>商标持有：</th>
+				<td>
+				     <input data-options="prompt:'请输入商标持有人'" id="brandowner" name="sysbrandowner.brandowner" class="easyui-textbox" style="width:200px;" />
+				</td>
+			</tr>
+			
+			<tr>
+				<th>中介公司：</th>
+				<td style="height:50px;">
+				     <input data-options="prompt:'请输入中介公司'" id="agencycompany" name="sysbrandowner.agencycompany" class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+				<th>客户qq：</th>
+				<td>
+				     <input data-options="prompt:'请输入客户QQ'" id="ownerqq" name="sysbrandowner.ownerqq" class="easyui-textbox" style="width:200px;" />
+				</td>
+				
+				<th>客户微信：</th>
+				<td>
+				     <input data-options="prompt:'请输入客户微信'" id="ownerwx" name="sysbrandowner.ownerwx" class="easyui-textbox" style="width:200px;" />
+				</td>
+			</tr>
+		</table>
+       	</div>
+       	</form>	
+       
+	<div style="text-align:center;padding:20px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>

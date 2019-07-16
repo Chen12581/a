@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>万企通 -- 用户注册中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=0.25">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon " type="images/x-icon" href="/wqt/image/logo.ico">
+    <link rel="stylesheet" href="/wqt/usercenter/css/register.css">
+</head>
+<body>
+
+
+<div class="banner">
+    <div class="banner_box">
+        <div class="banner_content_rt">
+            <img src="/usercenter/image/lf.png" width="740" height="638" alt="">
+        </div>
+        <div class="banner_content">
+            <form>
+                <div class="rt">
+                <div class="theme">
+                    <p>手机注册</p>
+                </div>
+                <div class="error_reminder">
+                    <i>!</i>
+                    <div></div>
+                </div>
+                <div class="userN message" style="margin-bottom: 25px;">
+                    <label for="username"></label>
+                        <input id="phone" name="phone" type="text" placeholder="请输入常用的手机号码" autocomplete="off">
+
+                </div>
+                <div class="userN message">
+                    <label for="yzm"></label>
+                    <input id="aqm" type="text" placeholder="请输入验证码" autocomplete="off" style="width:210px;">
+                    <a href="javascript:void(0);" class="getCode">
+                        <img src="/jsp/validatecode.jsp" alt="验证码" id="verify_picture" width="100%" height="100%">
+                    </a>
+                </div>
+                <div class="security_code message">
+                    <label for="yzm"></label>
+                    <input type="text" placeholder="输入6位动态码" autocomplete="off">
+
+                    <a href="javascript:void(0)" class="mesa">获取动态码</a>
+                </div>
+
+                <div>
+                    <div class="pwd  message">
+                        <label for="password"></label>
+                            <input name="pass" autocomplete="off" id="pwd01"  class="Pwd" type="password" placeholder="请输入密码">
+                            <a href="javascript:void(0)" class="eye" data-eye="0">
+                                <img src="/usercenter/image/pwd_eye.png" alt="" title="显示密码">
+                            </a>
+
+                    </div>
+
+                    <!--<div class="pwd message" style="margin-top:25px;">-->
+                        <!--<label for="password"></label>-->
+                            <!--<input name="pass" autocomplete="off" id="pwd02"  class="Pwd" type="password" placeholder="请确认密码">-->
+                            <!--<a href="javascript:void(0)">-->
+                                <!--<img src="usercenter/image/pwd_eye.png" alt="" title="隐藏密码">-->
+                            <!--</a>-->
+
+                    <!--</div>-->
+                </div>
+                <div class="banner_footer">
+                    <span>已经有账号？<a href="http://login.w7tong.com" id="login">登录</a></span>
+                </div>
+
+
+                <div class="btn">
+                    <a href="javascript:void(0)" id="register_btn">注册</a>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+<script src="/wqt/common/commonurl.js"></script>
+<script src="/wqt/usercenter/js/register.js"></script>
+</body>
+</html>

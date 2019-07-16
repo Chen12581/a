@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片上传</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/patent_addUpload.js"></script>
+<script  type="text/javascript" src="../../js/ajaxfileupload.js" ></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+	<form id="patentForm" action="sysPatent_saveSysPatentShopPhoto.action" class="easyui-form" method="get" >
+		<input type="hidden" id="patentid" name="patentid" value=""> 
+		<input type="hidden" id="patentphoto" name="patentphoto"/> <input type="hidden" value="1" id="kind" name="kind">
+		<input type="hidden" id="patentphoto1" name="patentphoto1"/> <input type="hidden" value="2" id="kind1" name="kind1">
+	</form>
+	<table class="ui-table" border="0">
+       		<tr style="height:30px;">
+				<th valign="middle">专利图标：</th>
+				<td style="width:250px;" >
+				   <form  id="upload" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 240px"   buttonText="选择图片"  
+					  data-options="onChange:function(){fileup(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName" name="uploadName" />
+				   </form>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">其他图片：</th>
+				<td style="width:250px;" >
+				   <form  id="upload1" class="easyui-form" method="post" enctype="multipart/form-data">
+					  <input class="easyui-filebox" style="width: 240px"  buttonText="选择图片"  
+					  data-options="onChange:function(){fileup1(this)},prompt:'选择图片...',
+					  				accept:'image/*'" id="uploadName1" name="uploadName1" multiple=“multiple”  />
+				   </form>
+				</td>
+				<th>图片预览：</th>
+			</tr>
+			<tr>
+				<th valign="middle">专利图标：</th>
+				<td style="width:200px;height:200px;" >
+				   <img alt="" id="viewimg" name="viewimg" src="" style="width:200px;height:200px;">
+				</td>
+				<td id="tdphoto" style="width:220px;height:200px;" rowspan="2">
+				
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">其他图片：</th>
+				<td style="width:220px;height:400px;">
+				   <img alt="" id="viewimg1" name="viewimg1" src="" style="width:200px;height:200px;" >
+				</td>
+			</tr>
+       	</table>
+       	
+       	
+       	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="uploadfile()" style="width:80px">上传</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+		</div>
+		</div>
+</body>
+</html>

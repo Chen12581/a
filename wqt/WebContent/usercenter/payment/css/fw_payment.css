@@ -1,0 +1,363 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    min-width: 1200px;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: none;
+    background: #FAFAFA;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+input{
+    color: #4c4c4c;
+}
+b{
+    font-weight: normal;
+}
+a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+i{
+    font-style:normal
+}
+ul,li{
+    list-style: none;
+}
+input,button{
+    outline: none;
+    border: none;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+.clearfix::after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+.clearfix::before {
+    display: table;
+    content: " ";
+    clear: both;
+}
+.center {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/*banner*/
+.banner{
+    height: 115px;
+    position: relative;
+}
+.banner_logo{
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+    background: #336699;
+}
+.banner_cont{
+    width: 800px;
+    height: 30px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin-right: 40px;
+}
+.banner_cont i{
+    color: #4c4c4c;
+    display: inline-block;
+    width: 152px;
+    height: 30px;
+    background: url("../image/payment/banner_n.png") no-repeat;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
+.banner_cont i.on{
+    background: url("../image/payment/banner_l.png") no-repeat;
+    color: #fff;
+}
+
+/*商标订单*/
+.brand_order{
+    height: 510px;
+    background: #fff;
+    margin-top: 20px;
+}
+.order_number{
+    padding: 20px 0 0 40px;
+}
+.order_number span{
+    font-size: 18px;
+    color: #4c4c4c;
+}
+.order_det{
+    width: 1120px;
+    height: 180px;
+    border: 1px solid #E6E6E6;
+    margin: 20px 0 30px 40px;
+}
+.pay_info {
+    padding: 20px 0 0 20px;
+    min-height: 164px;
+}
+.pay_info .img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-right: 15px;
+    display: inline-block;
+    box-shadow: 0 0 8px 1px rgba(43,47,57,0.08);
+}
+.pay_info .img:hover img{
+    transition: all .3s linear;
+    transform: scale(1.2);
+}
+.pay_info .info {
+    /*margin-right: 15px;*/
+    display: inline-block;
+    /*width: 796px;*/
+    vertical-align: top;
+}
+/*产品交易*/
+.pay_info .info_tit {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.pay_info .info_tit .info_tit01 {
+    height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background: #428bf0;
+    font-size: 10px;
+    font-weight: normal;
+    color: #fff;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+.pay_info .info_tit .info_tit02 {
+    font-size: 14px;
+}
+.pay_info .info_tit .info_tit02:hover{
+    color: #ffb747;
+}
+
+/*//产品服务*/
+.od_title{
+    width: 90px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #336699;
+    color: #fff;
+}
+
+
+
+.pay_info .info_ul ul.txt {
+    width: 420px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.pay_info .info_ul li {
+    color: #b2b2b2;
+    line-height: 25px;
+}
+.pay_info .info_ul li.jj{
+    line-height: 20px;
+    margin-top: 10px;
+}
+.pay_info .info_ul li.half{
+    float: left;
+    width: 50%;
+}
+.pay_info .detail {
+    margin-right: 10px;
+    display: inline-block;
+    width: 210px;
+    overflow: hidden;
+}
+.number{
+    color: #ffb747;
+}
+.pay_info .price {
+    width: 146px;
+    overflow: hidden;
+    color: #ffb747;
+    font-size: 18px;
+    font-weight: bold;
+}
+.paid {
+    font-size: 14px;
+    font-weight: normal;
+    padding-top: 10px;
+    color: #000000;
+}
+.pay_service {
+    width: 180px;
+    text-align: center;
+}
+.fw_pay{
+    margin-right: 50px;
+}
+.pay_service dl dd{
+    color: #4c4c4c;
+    font-size: 14px;
+}
+.pay_service dl dd.btn {
+    margin-top: 6px;
+}
+.pay_service dl .btn a {
+    color: #336699;
+    border: 1px solid #336699;
+    border-radius: 20px;
+    display: inline-block;
+    background: #fff;
+    padding: 0 15px;
+    height: 22px;
+    line-height: 22px;
+}
+.pay_service dl .btn a:hover{
+    background:#336699;
+    color: #fff;
+}
+.pay_type{
+    height: 175px;
+    background: #fff;
+}
+.pay_center{
+    padding:40px 0 0 40px;
+}
+.pay_type .kind{
+    color: #4c4c4c;
+    font-size: 18px;
+}
+.zifu{
+    margin-top: 40px;
+}
+.pay_center .zifu ul li{
+    width: 160px;
+    height: 35px;
+    border: 1px solid #E6E6E6;
+    color: #4c4c4c;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    float: left;
+    margin-right: 100px;
+    cursor: pointer;
+}
+.zifu ul li.on{
+    border: 1px solid #ffb848;
+    color: #ffb848;
+    position: relative;
+}
+.zifu ul li.on:after{
+    content: url("../image/payment/xz.png");
+    width: 21px;
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.zifu span{
+    color: #4c4c4c;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+/*支付方式*/
+.pay_kind{
+    height: 255px;
+    margin-top: 20px;
+}
+.rem_price{
+    color: #ffb747;
+}
+
+
+.pay_balance{
+    margin-top: 40px;
+    font-size: 16px;
+    color: #4c4c4c;
+    cursor: pointer;
+    width: 485px;
+}
+.pay_balance .balance_img{
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+.ts{
+    color: #b2b2b2;
+    margin-top: 10px;
+}
+.top_up{
+    margin-top: 40px;
+}
+.top_up a{
+    color: #fff;
+    padding: 3px 5px;
+    background: #336699;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/*最后结算*/
+.settlement{
+    background: #fff;
+    padding: 40px 0 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    position: relative;
+}
+.settlement ul li{
+    text-align: right;
+    font-size: 16px;
+    line-height: 36px;
+    color: #4c4c4c;
+}
+.settlement ul li #number{
+    font-weight: bold;
+}
+.settlement ul li span{
+    width: 200px;
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 96px;
+    line-height: 40px;
+    text-align: left;
+}
+.now_pay{
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background: #ffb747;
+    text-align: center;
+    margin: 40px 0 0 855px;
+}
+.now_pay a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}

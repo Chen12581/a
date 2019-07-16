@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="master.dic">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+	
+	<sql id="addDictTypeColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=dicttypeid  "> dicttypeid,</if>
+		<if test="null!=dicttypename  "> dicttypename,</if>
+		<if test="null!=parentid  "> parentid,</if>
+		<if test="null!=fullname  "> fullname,</if>
+		<if test="null!=sortno  "> sortno,</if>
+		<if test="null!=memo  "> memo,</if>
+		<if test="null!=type  "> type,</if>
+		<if test="null!=allowmodify  "> allowmodify,</if>
+		<if test="null!=bak1  "> bak1,</if>
+		<if test="null!=bak2  "> bak2,</if>
+	</trim>
+	</sql>
+	
+	<sql id="addDictTypeValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=dicttypeid  "> #{dicttypeid},</if>
+		<if test="null!=dicttypename  "> #{dicttypename},</if>
+		<if test="null!=parentid  "> #{parentid},</if>
+		<if test="null!=fullname  "> #{fullname},</if>
+		<if test="null!=sortno  "> #{sortno},</if>
+		<if test="null!=memo  "> #{memo},</if>
+		<if test="null!=type  "> #{type},</if>
+		<if test="null!=allowmodify  "> #{allowmodify},</if>
+		<if test="null!=bak1  "> #{bak1},</if>
+		<if test="null!=bak2  "> #{bak2},</if>
+	</trim>
+	</sql>
+	
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo">
+		insert into DP_DICT_TYPE
+		(<include refid="addDictTypeColumn"/>)
+		values(<include refid="addDictTypeValue"/>)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		delete from DP_DICT_TYPE where DICTTYPEID=#{dictTypeId}
+	</delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo">
+		update DP_DICT_TYPE 
+		<set>
+			<if test="null!=dicttypeid">      
+					dicttypeid=#{dicttypeid}, 
+			</if>
+			<if test="null!=dicttypename">    
+					dicttypename=#{dicttypename}, 
+			</if>
+			<if test="null!=parentid">        
+					parentid=#{parentid},
+			</if>
+			<if test="null!=fullname">        
+					fullname=#{fullname}, 
+			</if>
+			<if test="null!=sortno">          
+					sortno=#{sortno}, 
+			</if>
+			<if test="null!=memo">            
+					memo=#{memo}, 
+			</if>
+			<if test="null!=type">            
+					type=#{type}, 
+			</if>
+			<if test="null!=allowmodify">        
+					allowmodify=#{allowmodify}, 
+			</if>
+			<if test="null!=bak1">            
+					bak1=#{bak1}, 
+			</if>
+			<if test="null!=bak2">            
+					bak2=#{bak2} 
+			</if>
+		</set>
+		where dicttypeid=#{dicttypeid}
+	</update>
+	
+	<select id="selectAll" parameterType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo"
+		resultType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo">
+		select dicttypeid, dicttypename, fullname, parentid, sortno, memo,
+		type, allowmodify, bak1, bak2
+		from DP_DICT_TYPE
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="String"
+		resultType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo">
+		select dicttypeid, dicttypename, fullname, parentid, sortno, memo,
+		type, allowmodify, bak1, bak2,
+		(select dicttypeName from DP_DICT_TYPE where dicttypeid=t.parentid) as parentname
+		from DP_DICT_TYPE t where t.dicttypeid=#{dicId} 
+	</select>
+
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo"
+		resultType="com.talkweb.twdpe.base.dict.pojo.DictTypeInfo">
+		select dicttypeid, dicttypename, fullname, parentid, sortno, memo,
+		type, allowmodify, bak1, bak2
+		from DP_DICT_TYPE
+		<where>
+			<if test="null!=dicttypeid and ''!=dicttypeid">
+				dicttypeid=#{dicttypeid} 
+			</if>
+			<if test="null!=dicttypename and ''!=dicttypename">
+				and dicttypename like '%${dicttypename}%'
+			</if>
+			<if test="null!=fullname and ''!=fullname">
+				and fullname like '%${fullname}%'
+			</if>
+			<if test="null!=parentid and ''!=parentid">
+				and parentid=#{parentid} 
+			</if>
+			<if test="null!=sortno and ''!=sortno">
+				and sortno=#{sortno} 
+			</if>
+			<if test="null!=memo and ''!=memo">
+				and memo like '%${memo}%'
+			</if>
+			<if test="null!=type and ''!=type">
+				and type=#{type} 
+			</if>
+			<if test="null!=bak1 and ''!=bak1">
+				and bak1=#{bak1} 
+			</if>
+			<if test="null!=bak2 and ''!=bak2">
+				and bak2=#{bak2} 
+			</if>
+		</where>
+	</select>
+</mapper>

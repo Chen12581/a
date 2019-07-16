@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="struts-wqtserv"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods> 
+	   
+		<!--保存用户网站咨询信息-->
+	     <action name="saveWqtNetConsult" class="com.wqt.serv.action.NetConsultAction" method="saveWqtNetConsult"> 
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		<!--网站首页-->
+	    <action name="index" class="com.wqt.index.action.WqtAction" method="index">
+			<result name="success" type="freemarker">
+               /wqt_index.ftl
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--网站首页-->
+	    <action name="siteMap" class="com.wqt.index.action.WqtAction" method="siteMap">
+			<result name="success" type="freemarker">
+               /siteMap.ftl
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<action name="notfound" class="com.wqt.serv.action.NotFoundAction" method="notfound">
+			<result name="success">
+               /notfind/404.html
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	</package>
+</struts>

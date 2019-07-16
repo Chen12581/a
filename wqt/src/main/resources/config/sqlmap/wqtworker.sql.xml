@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtworker">
+
+	  <select id="randomWorker" 
+	        parameterType="com.worker.pojo.Worker" 
+	        resultType="com.worker.pojo.Worker">
+	        SELECT b.workername,
+	        b.tel,
+	        b.headurl,
+	        b.qq
+	         from wqt_worker b
+	        where b.departid='1' 
+			<if test="null!= id and ''!= id ">
+			   and   b.id =#{id}
+			</if>
+			<if test="null!= isshow and ''!= isshow ">
+			   and   b.isshow =#{isshow}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and   state =#{state}
+			</if>
+			order by rand() limit 0,#{randomnum}
+    </select> 
+    
+    <select id="selWqtWorkerList" 
+	        parameterType="com.worker.pojo.Worker" 
+	        resultType="com.worker.pojo.Worker">
+	        SELECT b.*,
+	        (select workerkindname from wqt_worker_kind a where a.workerkindcode=b.workerkind) kindname
+	        from wqt_worker b
+	        where 1=1
+			<if test="null!= id and ''!= id ">
+			   and   b.id =#{id}
+			</if>
+			<if test="null!= username and ''!= username ">
+			   and   b.username =#{username}
+			</if>
+			<if test="null!= workerkind and ''!= workerkind ">
+			   and   b.workerkind =#{workerkind}
+			</if>
+			<if test="null!= workername and ''!= workername ">
+			   and   b.workername =#{workername}
+			</if>
+			<if test="null!= workercode and ''!= workercode ">
+			   and   b.workercode =#{workercode}
+			</if>
+			<if test="null!= state and ''!= state">
+			   and   b.state =#{state}
+			</if>
+			<if test="null!= isshow and ''!= isshow ">
+			   and   b.isshow =#{isshow}
+			</if>
+    </select>
+    <insert id="insertWqtWorker"
+    		parameterType="com.worker.pojo.Worker" >
+    	insert into wqt_worker
+    	(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= username and ''!= username">username,</if>
+				<if test="null!= workerkind and ''!= workerkind">workerkind,</if>
+				<if test="null!= workername and ''!= workername">workername,</if>
+				<if test="null!= sex and ''!= sex">sex,</if>
+				<if test="null!= workercode and ''!= workercode">workercode,</if>
+				<if test="null!= tel and ''!= tel">tel,</if>
+				<if test="null!= mobile and ''!= mobile">mobile,</if>
+				<if test="null!= qq and ''!= qq">qq,</if>
+				<if test="null!= weixin and ''!= weixin">weixin,</if>
+				<if test="null!= headurl and ''!= headurl">headurl,</if>
+				<if test="null!= postname and ''!= postname">postname,</if>
+				<if test="null!= departid and ''!= departid">departid,</if>
+				<if test="null!= state and ''!= state">state,</if>
+				<if test="null!= isshow and ''!= isshow">isshow,</if>
+			</trim>
+		)
+		values
+		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= username and ''!= username">#{username},</if>
+				<if test="null!= workerkind and ''!= workerkind">#{workerkind},</if>
+				<if test="null!= workername and ''!= workername">#{workername},</if>
+				<if test="null!= sex and ''!= sex">#{sex},</if>
+				<if test="null!= workercode and ''!= workercode">#{workercode},</if>
+				<if test="null!= tel and ''!= tel">#{tel},</if>
+				<if test="null!= mobile and ''!= mobile">#{mobile},</if>
+				<if test="null!= qq and ''!= qq">#{qq},</if>
+				<if test="null!= weixin and ''!= weixin">#{weixin},</if>
+				<if test="null!= headurl and ''!= headurl">#{headurl},</if>
+				<if test="null!= postname and ''!= postname">#{postname},</if>
+				<if test="null!= departid and ''!= departid">#{departid},</if>
+				<if test="null!= state and ''!= state">#{state},</if>
+				<if test="null!= isshow and ''!= isshow">#{isshow},</if>
+			</trim>
+		)
+    </insert>
+    <select id="selWqtWorkerOne" 
+	        parameterType="com.worker.pojo.Worker" 
+	        resultType="com.worker.pojo.Worker">
+	        SELECT *
+	        from wqt_worker 
+	        where 1=1
+			<if test="null!= id and ''!= id ">
+			   and   id =#{id}
+			</if>
+    </select>
+    <update id="updateWqtWorker" 
+    		parameterType="com.worker.pojo.Worker" >
+    	update wqt_worker
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= username and ''!= username">username=#{username},</if>
+				<if test="null!= workerkind and ''!= workerkind">workerkind=#{workerkind},</if>
+				<if test="null!= workername and ''!= workername">workername=#{workername},</if>
+				<if test="null!= sex and ''!= sex">sex=#{sex},</if>
+				<if test="null!= workercode and ''!= workercode">workercode=#{workercode},</if>
+				<if test="null!= tel and ''!= tel">tel=#{tel},</if>
+				<if test="null!= mobile and ''!= mobile">mobile=#{mobile},</if>
+				<if test="null!= qq and ''!= qq">qq=#{qq},</if>
+				<if test="null!= weixin and ''!= weixin">weixin=#{weixin},</if>
+				<if test="null!= headurl and ''!= headurl">headurl=#{headurl},</if>
+				<if test="null!= postname and ''!= postname">postname=#{postname},</if>
+				<if test="null!= departid and ''!= departid">departid=#{departid},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= isshow and ''!= isshow">isshow=#{isshow},</if>
+			</trim>
+		</set>
+		where id=#{id}
+    </update>
+    <delete id="delWqtWorker">
+    	delete from wqt_worker where id=#{id}
+    </delete>
+    
+    <select id="selWorkerKind"
+    		parameterType="com.wqt.worker.pojo.WqtWorkerKind" 
+	        resultType="com.wqt.worker.pojo.WqtWorkerKind">
+    		select *
+	        from wqt_worker_kind 
+	        where 1=1
+			<if test="null!= id and ''!= id ">
+			   and   id =#{id}
+			</if>
+    
+    </select>
+    
+      
+	 <select id="confirmWorker" 
+	        parameterType="com.worker.pojo.Worker" 
+	        resultType="com.worker.pojo.Worker">
+		     select 
+             *
+             from wqt_worker a
+		     where a.tel=#{tel}
+			   or   a.mobile=upper(#{mobile})
+			   or   a.qq=#{qq}
+			   or   a.weixin=#{weixin}
+	   </select>
+</mapper>

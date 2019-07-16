@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="struts-wqthelpcenter"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods> 
+	
+		<!--帮助中心-->
+		<action name="helpuser" class="com.wqt.helpcenter.action.HelpCenterAction" method="helpuser">
+		   <result name="success" type="freemarker">
+              /helpcenter/helpcenter.ftl
+		   </result>	
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--关于我们-->
+		<action name="aboutus" class="com.wqt.helpcenter.action.HelpCenterAction" method="aboutus">
+		   <result name="success" type="freemarker">
+              /helpcenter/about.ftl
+		   </result>	
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--常见问题详情-->
+		<action name="problemInfo" class="com.wqt.helpcenter.action.HelpCenterAction" method="problemInfo">
+		   <result name="success" type="freemarker">
+              /helpcenter/problem.ftl
+		   </result>
+		   <result name="404">
+              /404.html
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->	
+		</action>
+		
+		<!--常见问题分类-->
+		<action name="problemKind" class="com.wqt.helpcenter.action.HelpCenterAction" method="problemKind">
+		   <result name="success" type="freemarker">
+              /helpcenter/problemkind.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<action name="problemSearch" class="com.wqt.helpcenter.action.HelpCenterAction" method="problemSearch">
+		   <result name="success" type="freemarker">
+              /helpcenter/problemSearch.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	</package>
+</struts>

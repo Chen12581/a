@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iprbrand"> 
+
+     
+	   <update id="updateIprBrandShopState" parameterType="com.wqt.ipr.brand.pojo.IprBrandShop">
+	  	 update ipr_brand_shop
+			<set>
+				<trim suffix="" suffixOverrides=",">
+					<if test="null!= state and ''!= state">state=#{state},</if>
+				</trim>
+			</set>
+			where id=#{id}
+	   </update>
+
+	  <!--修改交易商标-->
+	  <update id="updateIprBrandShop" parameterType="com.wqt.ipr.brand.pojo.IprBrandShop">
+		update ipr_brand_shop
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= brandcode and ''!= brandcode">brandcode=#{brandcode},</if>
+				<if test="null!= brandname and ''!= brandname">brandname=#{brandname},</if>
+				<if test="null!= regcode and ''!= regcode">regcode=#{regcode},</if>
+				<if test="null!= rbrand and ''!= rbrand">rbrand=#{rbrand},</if>
+				<if test="null!= assemble and ''!= assemble">assemble=#{assemble},</if>
+				<if test="null!= area and ''!= area">area=#{area},</if>
+				<if test="null!= brandindustry and ''!= brandindustry">brandindustry=#{brandindustry},</if>
+				<if test="null!= brandkind and ''!= brandkind">brandkind=#{brandkind},</if>
+				<if test="null!= price and ''!= price">price=#{price},</if>
+				<if test="null!= bottomprice and ''!= bottomprice">bottomprice=#{bottomprice},</if>
+				<if test="null!= initialnoticeissue and ''!= initialnoticeissue">initialnoticeissue=#{initialnoticeissue},</if>
+				<if test="null!= initialnoticedate and ''!= initialnoticedate">initialnoticedate=#{initialnoticedate},</if>
+				<if test="null!= regnoticeissue and ''!= regnoticeissue">regnoticeissue=#{regnoticeissue},</if>
+				<if test="null!= regnoticedate and ''!= regnoticedate">regnoticedate=#{regnoticedate},</if>
+				<if test="null!= brandowner and ''!= brandowner">brandowner=#{brandowner},</if>
+				<if test="null!= startvalidity and ''!= startvalidity">startvalidity=#{startvalidity},</if>
+				<if test="null!= endvalidity and ''!= endvalidity">endvalidity=#{endvalidity},</if>
+				<if test="null!= similargroup and ''!= similargroup">similargroup=#{similargroup},</if>
+				<if test="null!= suititem and ''!= suititem">suititem=#{suititem},</if>
+				<if test="null!= htmlpath and ''!= htmlpath">htmlpath=#{htmlpath},</if>
+				<if test="null!= mobilehtml and ''!= mobilehtml">mobilehtml=#{mobilehtml},</if>
+				<if test="null!= state and ''!= state">state=#{state},</if>
+				<if test="null!= workerid and ''!= workerid">workerid=#{workerid},</if>
+			</trim>
+		</set>
+		where 1=1
+			<if test="null!= id and ''!= id">
+			    and  id=#{id}
+			</if>
+			<if test="null!= regcode and ''!= regcode">
+			    and  regcode=#{regcode}
+			</if>
+			
+	   </update>
+	   
+	   
+	   
+	  <!--查询交易商标-->
+	  <select id="selectIprBrandShopList" 
+		        parameterType="com.wqt.ipr.brand.pojo.IprBrandShop" 
+		        resultType="com.wqt.ipr.brand.pojo.IprBrandShop">
+		     select 
+             a.id,a.userid,a.brandname,a.brandlength,a.brandcode,a.developtime,a.brandindustry,a.brandkind,a.regcode,
+			 a.area,a.rbrand,a.state,a.startvalidity,a.endvalidity,a.initialnoticeissue,a.initialnoticedate,a.isspecial,
+		 	 a.regnoticeissue,a.regnoticedate,a.price,a.buymethod,a.pathkey,a.htmlpath,a.workerid,a.remark,a.bottomprice,
+             e.username,
+             e.mobileno,
+             e.email,
+             (select c.industryname from ipr_brand_industry c WHERE a.brandindustry=c.id)  industryname,
+             (select p.photopath from ipr_brand_shopphoto p where p.brandshopid = a.id and p.kind=1) brandshopphoto,
+			 (select b.kindname from ipr_brand_shopkind b where b.kindcode=a.brandkind) kindname,
+			 (select ass.assemblename from ipr_brand_assemble ass where ass.assemblecode=a.assemble) assemble,
+			 (select workername from wqt_worker ww where a.userid=ww.id) displayname,
+			 (select workername from wqt_worker ww where a.workerid=ww.id) updatename,
+			 ( select  GROUP_CONCAT(itemname) AS "itemnames"  from ipr_brand_item f,ipr_brand_shopitem h WHERE f.itemcode=h.itemcode and a.id=h.shopid )  itemnames 
+             from ipr_brand_shop a left join  wqt_user_basic e on a.userid=e.id join wqt_worker ww on a.userid=ww.id
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			<if test="null!= mobileno and ''!= mobileno">
+			    and  e.mobileno=#{mobileno}
+			</if>
+			<if test="null!= email and ''!= email">
+			    and  e.email=#{email}
+			</if>
+			<if test="null!= username and ''!= username">
+			    and  e.username=#{username}
+			</if>
+			<if test="null!= state and ''!= state">
+			    and  a.state=#{state}
+			</if>
+			<if test="null!= states and ''!= states">
+			    and  a.state in (${states})
+			</if>
+			<if test="null!= brandname and ''!= brandname">
+			     and  a.brandname LIKE CONCAT(CONCAT('%', #{brandname}), '%')
+			</if>
+			<if test="null!= brandcode and ''!= brandcode">
+			     and  a.brandcode=#{brandcode}
+			</if>
+			<if test="null!= brandindustry and ''!= brandindustry">
+			     and  a.brandindustry=#{brandindustry}
+			</if>
+			<if test="null!= brandkind and ''!= brandkind">
+			     and  a.brandkind=#{brandkind}
+			</if>
+			<if test="null!= area and ''!= area">
+			     and  a.area=#{area}
+			</if>
+			<if test="null!= rbrand and ''!= rbrand">
+			     and  a.rbrand=#{rbrand}
+			</if>
+			<if test="null!= price and ''!= price">
+			     and  a.price=#{price}
+			</if>
+			<if test="null!= minprice and ''!= minprice">
+			    <![CDATA[ and  a.price>=#{minprice} ]]>
+			</if>
+			<if test="null!= maxprice and ''!= maxprice">
+			    <![CDATA[ and  a.price<=#{maxprice} ]]>
+			</if>
+			<if test="null!= connect and ''!= connect">
+			     and  a.connect=#{connect}
+			</if>
+			<if test="null!= workerid and ''!= workerid">
+			    and  a.workerid=#{workerid}
+			</if>
+			<if test="null!= regcode and ''!= regcode">
+			    and  a.regcode=#{regcode}
+			</if>
+			order by id desc
+	   </select>
+	   
+	   <!--查询单个交易商标-->
+	  <select id="selectBrandShopOne" 
+		        parameterType="com.wqt.ipr.brand.pojo.IprBrandShop" 
+		        resultType="com.wqt.ipr.brand.pojo.IprBrandShop">
+		    select  a.*,
+				e.username,
+             e.mobileno,
+             e.email,
+             (select c.industryname from ipr_brand_industry c WHERE a.brandindustry=c.id)  industryname,
+             (select d.kindname from ipr_brand_shopkind d WHERE a.brandkind=d.id)  kindname,
+             (select p.photopath from ipr_brand_shopphoto p where p.brandshopid = a.id and p.kind=1) brandshopphoto
+			from  ipr_brand_shop a left join  wqt_user_basic e on a.userid=e.id
+			
+			where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			<if test="null!= mobileno and ''!= mobileno">
+			    and  e.mobileno=#{mobileno}
+			</if>
+			<if test="null!= email and ''!= email">
+			    and  e.email=#{email}
+			</if>
+			<if test="null!= username and ''!= username">
+			    and  e.username=#{username}
+			</if>
+			<if test="null!= state and ''!= state">
+			    and  a.state=#{state}
+			</if>
+			<if test="null!= states and ''!= states">
+			    and  a.state in (${states})
+			</if>
+			<if test="null!= brandname and ''!= brandname">
+			     and  a.brandname=#{brandname}
+			</if>
+			<if test="null!= brandcode and ''!= brandcode">
+			     and  a.brandcode=#{brandcode}
+			</if>
+			<if test="null!= brandindustry and ''!= brandindustry">
+			     and  a.brandindustry=#{brandindustry}
+			</if>
+			<if test="null!= brandkind and ''!= brandkind">
+			     and  a.brandkind=#{brandkind}
+			</if>
+			<if test="null!= area and ''!= area">
+			     and  a.area=#{brandkind}
+			</if>
+			<if test="null!= rbrand and ''!= rbrand">
+			     and  a.rbrand=#{rbrand}
+			</if>
+			<if test="null!= price and ''!= price">
+			     and  a.price=#{price}
+			</if>
+			<if test="null!= minprice and ''!= minprice">
+			    <![CDATA[ and  a.price>=#{minprice} ]]>
+			</if>
+			<if test="null!= maxprice and ''!= maxprice">
+			    <![CDATA[ and  a.price<=#{maxprice} ]]>
+			</if>
+			<if test="null!= connect and ''!= connect">
+			     and  a.connect=#{connect}
+			</if>
+			<if test="null!= workerid and ''!= workerid">
+			    and  a.workerid=#{workerid}
+			</if>
+			order by id desc
+	   </select>
+	   
+		<!-- 查询商标转让商标详情 -->
+		<select id="selectOneIprBrandShop" 
+				parameterType="com.wqt.ipr.brand.pojo.IprBrandShop"
+				resultType="com.wqt.ipr.brand.pojo.IprBrandShop">
+			select * from ipr_brand_shop wbs
+			where 1=1
+			<if test="null != id and '' != id">
+				and wbs.id = #{id}
+			</if>
+		</select>
+</mapper>

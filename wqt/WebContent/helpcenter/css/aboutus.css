@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding:0;
+}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, textarea, th, td, a {
+    font-family: 微软雅黑;
+    font-size: 12px;
+    line-height: 18px;
+    color: #282828;
+}
+a, a * {
+    text-decoration: none;
+    outline: none;
+}
+img {
+    border: 0;
+    outline: none;
+    width: 100%;
+    vertical-align: top;
+}
+.banner{
+    background: url(../image/enterprise-q.jpg) no-repeat center center;
+    width: 100%;
+    height: 150px;
+}
+.box{
+    width: 1200px;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+}
+.box .banner_l{
+    line-height: 150px;
+    float: left;
+    font-size: 24px;
+    color: #efefef;
+}
+.box .banner_r{
+    float: right;
+    color: #efefef;
+    padding-top: 120px;
+}
+.box .banner_r a,.box .banner_r span{
+    color: #efefef;
+    padding-right: 5px;
+}
+.box .banner_r span{
+    color: #efefef;
+    padding-left: 5px;
+}
+.company_profile{
+    padding-top: 30px;
+    overflow: hidden;
+}
+.company_profilel{
+    float: left;
+    background: #fff;
+    width: 910px;
+}
+.company_profiler{
+    float: right;
+    width: 260px;
+    margin-top:195px;
+}
+.company_profilel-a{
+    font-size: 38px;
+    line-height: 38px;
+    color: #221815;
+    text-align: center;
+    padding-top: 46px;
+}
+.company_profilel-b{
+    padding-top: 20px;
+    color: #b5b5b6;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid #dcdddd;
+    height: 40px;
+}
+.company_profilel-c{
+    padding: 20px 0px 0px 0px;
+    color: #595757;
+    font-size: 16px;
+    overflow: hidden;
+}
+.company_profilel-c p{
+    color: #595757;
+    font-size: 16px;
+    line-height: 30px;
+    text-indent: 2em;
+    padding: 20px 2em 0;
+    text-align: justify;
+}
+.company_profilel-d{
+    text-align: right;
+    padding: 55px 55px 55px 0;
+    color: #eb001d;
+}
+.company_profiler a{
+    display: block;
+    width:260px;
+    height: 30px;
+    line-height: 20px;
+    color: #fff;
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: center;
+    background: #0586eb;
+
+}
+.company_profiler-b{
+    padding:20px;
+    box-shadow: 0px -1px 18px 1px rgba(29, 84, 160, 0.15);
+    margin-top: 36px;
+    border: 1px solid #f1f9f5;
+}
+.company_profiler-b-a{
+    padding-top: 17px;
+    color: #4c4c4c;
+    font-size: 14px;
+    text-align: center;
+}
+.company_profiler-b-b{
+    text-align: center;
+}
+.company_profiler-b-b a{
+    color: #fff;
+    font-size: 16px;
+    padding-top: 10px;
+    display: inline-block;
+    margin-top:18px;
+    margin-bottom: 15px;
+    width: 150px;
+    border-radius: 6px;
+}

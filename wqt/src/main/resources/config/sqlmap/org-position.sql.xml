@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.position">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+	<select id="insert" parameterType="com.talkweb.twdpe.base.org.pojo.Position" >
+		  insert into DP_POSITION
+		    (positionId,
+		     posiCode,
+		     posiName,
+		     posiLevel,
+		     manaPosi,
+		     dutyId,
+		     orgId,
+		     positionSeq,
+		     posiType,
+		     createTime,
+		     lastUpdate,
+		     updator,
+		     startDate,
+		     endDate,
+		     status,
+		     isDelete)
+		  
+		  values
+		    (#{positionId},
+		     #{posiCode},
+		     #{posiName},
+		     #{posiLevel:INTEGER},
+		     #{manaPosi:NUMERIC},
+		     #{dutyId:NUMERIC},
+		     #{orgId},
+		     #{positionSeq:VARCHAR},
+		     #{posiType},
+		     #{createTime},
+		     #{lastUpdate},
+		     #{updator},
+		     #{startDate},
+		     #{endDate},
+		     #{status},
+		     #{isDelete})
+	</select>
+	
+	<delete id="delete" parameterType="long">
+    	delete from DP_POSITION where positionId = #{positionId}
+    </delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.org.pojo.Position" >
+		update DP_POSITION
+		<set>
+			<if test="posiCode!=null">
+				posiCode = #{posiCode},
+			</if>
+			<if test="posiName!=null">
+				posiName = #{posiName},
+			</if>
+			<if test="posiLevel!=null">
+				posiLevel = #{posiLevel},
+			</if>
+			<if test="manaPosi!=null">
+				manaPosi = #{manaPosi},
+			</if>
+			<if test="dutyId!=null">
+				dutyId = #{dutyId},
+			</if>
+			<if test="orgId!=null">
+				orgId = #{orgId},
+			</if>
+			<if test="positionSeq!=null">
+				positionSeq = #{positionSeq},
+			</if>
+			<if test="posiType!=null">
+				posiType = #{posiType},
+			</if>
+			<if test="lastUpdate!=null">
+				lastUpdate = #{lastUpdate},
+			</if>
+			<if test="updator!=null">
+				updator = #{updator},
+			</if>
+			<if test="startDate!=null">
+				startDate = #{startDate},
+			</if>
+			<if test="endDate!=null">
+				endDate = #{endDate},
+			</if>
+			<if test="status!=null">
+				status = #{status},
+			</if>
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>
+		</set>
+		where positionId = #{positionId}
+	</update>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+		select * from DP_POSITION where ISDELETE = 0
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="string" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+		select * from DP_POSITION where positionId = #{positionId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Position" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+		select p.*,o.orgname from DP_POSITION p left join DP_ORGANIZATION o on p.orgid = o.orgid
+		<where>
+			<if test="positionId!=null">
+				and p.positionId = #{positionId}
+			</if>
+			<if test="posiCode!=null">
+				and p.posiCode  like '%${posiCode}%'
+			</if>
+			<if test="posiName!=null">
+				and p.posiName  like '%${posiName}%'
+			</if>
+			<if test="posiLevel!=null">
+				and p.posiLevel = #{posiLevel}
+			</if>
+			<if test="manaPosi!=null">
+				and p.manaPosi = #{manaPosi}
+			</if>
+			<if test="dutyId!=null">
+				and p.dutyId = #{dutyId}
+			</if>
+			<if test="orgId!=null">
+				and p.orgId = #{orgId}
+			</if>
+			<if test="positionSeq!=null">
+				and p.positionSeq = #{positionSeq}
+			</if>
+			<if test="posiType!=null">
+				and p.posiType = #{posiType}
+			</if>
+			<if test="updator!=null">
+				and p.updator = #{updator}
+			</if>
+			<if test="status!=null">
+				and p.status = #{status}
+			</if>
+			<if test="isDelete!=null">
+				and p.isDelete = #{isDelete}
+			</if>
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>
+		</where>
+		order by p.createtime 
+	</select>
+	
+	<select id="selectByOrg" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+		select o.orgname,p.* from DP_POSITION p left join DP_ORGANIZATION o on p.orgid = o.orgid
+		<where>
+ p.orgid in 
+			<foreach collection="orgIds" item="item" open="(" separator="," close=")">
+${item}
+			</foreach>
+			<if test="p.positionId!=null">
+				and p.positionId = #{p.positionId}
+			</if>
+			<if test="p.posiCode!=null">
+				and p.posiCode = #{p.posiCode}
+			</if>
+			<if test="p.posiName!=null">
+				and p.posiName  like '%${p.posiName}%'
+			</if>
+			<if test="p.posiLevel!=null">
+				and p.posiLevel = #{p.posiLevel}
+			</if>
+			<if test="p.manaPosi!=null">
+				and p.manaPosi = #{p.manaPosi}
+			</if>
+			<if test="p.dutyId!=null">
+				and p.dutyId = #{p.dutyId}
+			</if>
+			<if test="p.positionSeq!=null">
+				and p.positionSeq = #{p.positionSeq}
+			</if>
+			<if test="p.posiType!=null">
+				and p.posiType = #{p.posiType}
+			</if>
+			<if test="p.updator!=null">
+				and p.updator = #{p.updator}
+			</if>
+			<if test="p.status!=null">
+				and p.status = #{p.status}
+			</if>
+			<if test="p.isDelete!=null">
+				and p.isDelete = #{p.isDelete}
+			</if>
+			<if test="p.dataSql!=null">
+				and ${p.dataSql}
+			</if>
+		</where>
+		order by p.createtime 
+	</select>	
+	
+	<select id="selectByRole" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+		select p.* from DP_POSITION p,DP_POSITIONROLE r
+		where p.POSITIONID = r.POSITIONID
+		and r.roleid = #{roleId}
+			<if test="position.positionId!=null">
+				and p.positionId = #{position.positionId}
+			</if>
+			<if test="position.posiCode!=null">
+				and p.posiCode like '%${position.posiCode}%'
+			</if>
+			<if test="position.posiName!=null">
+				and p.posiName  like '%${position.posiName}%'
+			</if>
+			<if test="position.posiLevel!=null">
+				and p.posiLevel = #{position.posiLevel}
+			</if>
+			<if test="position.manaPosi!=null">
+				and p.manaPosi = #{position.manaPosi}
+			</if>
+			<if test="position.dutyId!=null">
+				and p.dutyId = #{position.dutyId}
+			</if>
+			<if test="position.orgId!=null">
+				and p.orgId = #{position.orgId}
+			</if>
+			<if test="position.positionSeq!=null">
+				and p.positionSeq = #{position.positionSeq}
+			</if>
+			<if test="position.posiType!=null">
+				and p.posiType = #{position.posiType}
+			</if>
+			<if test="position.updator!=null">
+				and p.updator = #{position.updator}
+			</if>
+			<if test="position.status!=null">
+				and p.status = #{position.status}
+			</if>
+			<if test="position.isDelete!=null">
+				and p.isDelete = #{position.isDelete}
+			</if>
+		order by p.createtime 
+	</select>
+
+	<select id="selectByNoRole" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Position" >
+	    select p.* from DP_POSITION p
+	     where p.POSITIONID not in (select r.POSITIONID from DP_POSITIONROLE r where r.roleid = #{roleId})
+			<if test="position.positionId!=null">
+				and p.positionId = #{position.positionId}
+			</if>
+			<if test="position.posiCode!=null">
+				and p.posiCode = #{position.posiCode}
+			</if>
+			<if test="position.posiName!=null">
+				and p.posiName  like '%${position.posiName}%'
+			</if>
+			<if test="position.posiLevel!=null">
+				and p.posiLevel = #{position.posiLevel}
+			</if>
+			<if test="position.manaPosi!=null">
+				and p.manaPosi = #{position.manaPosi}
+			</if>
+			<if test="position.dutyId!=null">
+				and p.dutyId = #{position.dutyId}
+			</if>
+			<if test="position.orgId!=null">
+				and p.orgId = #{position.orgId}
+			</if>
+			<if test="position.positionSeq!=null">
+				and p.positionSeq = #{position.positionSeq}
+			</if>
+			<if test="position.posiType!=null">
+				and p.posiType = #{position.posiType}
+			</if>
+			<if test="position.updator!=null">
+				and p.updator = #{position.updator}
+			</if>
+			<if test="position.status!=null">
+				and p.status = #{position.status}
+			</if>
+			<if test="position.isDelete!=null">
+				and p.isDelete = #{position.isDelete}
+			</if>
+		order by p.createtime 
+	</select>
+</mapper>

@@ -1,0 +1,218 @@
+/***********************头部样式的设置*********************/
+body{
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #f7f7f7;
+}
+body h1,h2,h3,h4,h5,ol,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-weight: normal;
+    box-sizing: content-box;
+}
+a{
+    color: #4c4c4c;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+input{
+    border: none;
+    outline: none;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+.lf{
+    float:left;
+}
+.rt{
+    float:right;
+}
+.clear {
+    clear: both;
+    zoom: 1;
+}
+.clear:after, .clear:before {
+    clear: both;
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    font-size: 0;
+    visibility: hidden;
+    zoom: 1;
+}
+.header{
+    width: 100%;
+    /*height: 158px;*/
+}
+.header .top{
+    width: 100%;
+    height: 42px;
+}
+.header .top .top_right{
+    height:42px;
+    line-height: 42px;
+}
+.top_right ul li{
+    float: left;
+    padding: 0 15px;
+    margin-top: 16px;
+    height: 12px;
+    line-height: 12px;
+}
+.top_right ul li:not(:last-child){
+    border-right: 1px solid #b2b2b2;
+}
+.top_right ul li:hover a{
+    color: #FE625C;
+}
+.hot_tel{
+    display: inline-block;
+    width: 146px;
+    height: 42px;
+    text-align: center;
+}
+.hot_tel span{
+    font-size:14px;
+    font-weight:bold;
+}
+.header_bottom{
+    height: 90px;
+    width: 100%;
+    background: #fff;
+}
+.wqt{
+    font-size: 18px;
+    position: absolute;
+    bottom: -80px;
+    right: 0;
+}
+.wqt i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../image/login/index.png") no-repeat;
+    padding-right: 5px;
+    position: relative;
+    top: 2px;
+}
+.wqt a{
+    color: #b2b2b2;
+}
+.logo{
+    margin-top: 16px;
+}
+/*头部样式结束*/
+
+.center{
+    width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+}
+.banner{
+    width: 1200px;
+    margin: 0 auto;
+    color: #4c4c4c;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+.nent{
+    margin-top: 40px;
+    min-height: 600px;
+}
+.center_tit{
+    text-align: center;
+    color: #4c4c4c;
+    font-weight: bold;
+    padding: 40px 0 60px 0;
+}
+.inp{
+    margin: 0 auto;
+    width: 336px;
+}
+.inp .p1{
+    width:336px;
+    height: 40px;
+    border: solid 1px #e2e2e2;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.inp .p1 label{
+    float: left;
+    width: 90px;
+    height: 100%;
+    line-height: 40px;
+    border-right: 1px solid #e2e2e2;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+.inp .p1 input{
+    width: 230px;
+    height: 40px;
+    color: #4c4c4c;
+    padding-left: 8px;
+}
+.inp .p2{
+    position: relative;
+}
+.inp .p2 .getCode{
+    display: block;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.inp .p2 input{
+    width: 120px;
+    padding-right: 115px;
+}
+.inp .p2 .yyy{
+    display: block;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #4c4c4c;
+    background: #f8f8f8;
+    border-left: 1px solid #e2e2e2;
+    line-height: 40px;
+    text-align: center;
+    font-size: 12px;
+}
+.p3{
+    width: 338px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    background-color: #ef2d1d;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 34px;
+    border: none;
+    outline: none;
+}
+
+
+
+.footer p{
+    text-align: center;
+    font-size: 14px;
+    padding:80px 0 20px;
+    color: #4c4c4c;
+}

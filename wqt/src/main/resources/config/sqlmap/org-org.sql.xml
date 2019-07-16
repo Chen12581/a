@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.org">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+    <select id="selectAll" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		select * from DP_ORGANIZATION where isDelete=0 order by PARENTORGID,orderby,orgid
+	</select>
+	
+	<insert id="insertOrg" parameterType="com.talkweb.twdpe.base.org.pojo.Org" >
+		    insert into DP_ORGANIZATION
+		      (orgId,
+		       parentOrgId,
+		       orgCode,
+		       parentOrgCode,
+		       bizParentId,
+		       bizParentCode,
+		       topOrgCode,
+		       topOrgId,
+		       hrCode,
+		       shortName,
+		       orgName,
+		       orgLevel,
+		       orgDegree,
+		       orgType,
+		       orgAddr,
+		       zipCode,
+		       manaPosition,
+		       managerId,
+		       linkMan,
+		       linkTel,
+		       email,
+		       webUrl,
+		       startDate,
+		       endDate,
+		       status,
+		       area,
+		       createTime,
+		       lastUpdate,
+		       updator,
+		       orderby,
+		       webName,
+		       path,
+		       remark,
+		       backup1,
+		       backup2,
+		       backup3,
+		       backup4,
+		       backup5,
+		       isDelete,
+		       busiorg)
+		    values
+		      (#{orgId},
+		       #{parentOrgId},
+		       #{orgCode},
+		       #{parentOrgCode},
+		       #{bizParentId:NUMERIC},
+		       #{bizParentCode:VARCHAR},
+		       #{topOrgCode:VARCHAR},
+		       #{topOrgId:NUMERIC},
+		       #{hrCode:VARCHAR},
+		       #{shortName},
+		       #{orgName},
+		       #{orgLevel},
+		       #{orgDegree:VARCHAR},
+		       #{orgType},
+		       #{orgAddr:VARCHAR},
+		       #{zipCode:VARCHAR},
+		       #{manaPosition:NUMERIC},
+		       #{managerId:NUMERIC},
+		       #{linkMan:VARCHAR},
+		       #{linkTel:VARCHAR},
+		       #{email:VARCHAR},
+		       #{webUrl:VARCHAR},
+		       #{startDate},
+		       #{endDate},
+		       #{status},
+		       #{area:VARCHAR},
+		       #{createTime},
+		       #{lastUpdate},
+		       #{updator},
+		       #{orderby},
+		       #{webName:VARCHAR},
+		       #{path:VARCHAR},
+		       #{remark:VARCHAR},
+		       #{backup1:VARCHAR},
+		       #{backup2:VARCHAR},
+		       #{backup3:VARCHAR},
+		       #{backup4:VARCHAR},
+		       #{backup5:VARCHAR},
+		       #{isDelete},
+		       #{busiOrg:VARCHAR})
+	</insert>
+	
+	<select id="findOrgByExample" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		select * from DP_ORGANIZATION
+		<where>
+			<if test="parentOrgId!=null">
+				and parentOrgId = #{parentOrgId}			
+			</if>
+			<if test="orgCode!=null">
+				and orgCode = #{orgCode}
+			</if>
+			<if test="parentOrgCode!=null">
+				and parentOrgCode = #{parentOrgCode}
+			</if>
+			<if test="bizParentId!=null">
+				and bizParentId = #{bizParentId}
+			</if>
+			<if test="bizParentCode!=null">
+				and bizParentCode = #{bizParentCode}
+			</if>
+			<if test="topOrgCode!=null">
+				and topOrgCode = #{topOrgCode}
+			</if>
+			<if test="topOrgId!=null">
+				and topOrgId = #{topOrgId}
+			</if>
+			<if test="hrCode!=null">
+				and hrCode = #{hrCode}
+			</if>
+			<if test="shortName!=null">
+				and shortName like '%${shortName}%'
+			</if>
+			<if test="orgName!=null">
+				and orgName  like '%${orgName}%'
+			</if>
+			<if test="orgLevel!=null">
+				and orgLevel = #{orgLevel}
+			</if>
+			<if test="orgDegree!=null">
+				and orgDegree = #{orgDegree}
+			</if>
+			<if test="orgType!=null">
+				and orgType = #{orgType}
+			</if>
+			<if test="manaPosition!=null">
+				and manaPosition = #{manaPosition}
+			</if>
+			<if test="managerId!=null">
+				and managerId = #{managerId}
+			</if>
+			<if test="linkMan!=null">
+				and linkMan = #{linkMan}
+			</if>
+			<if test="linkTel!=null">
+				and linkTel = #{linkTel}
+			</if>
+			<if test="email!=null">
+				and email = #{email}
+			</if>
+			<if test="webUrl!=null">
+				and webUrl = #{webUrl}
+			</if>
+			<if test="startDate!=null">
+				and startDate = #{startDate}
+			</if>
+			<if test="endDate!=null">
+				and endDate = #{endDate}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="area!=null">
+				and area = #{area}
+			</if>
+			<if test="updator!=null">
+				and updator = #{updator}
+			</if>
+			<if test="orderby!=null">
+				and orderby = #{orderby}
+			</if>
+			<if test="webName!=null">
+				and webName = #{webName}
+			</if>
+			<if test="backup1!=null">
+				and backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and backup2 = #{backup2}
+			</if>	
+			<if test="backup3!=null">
+				and backup3 = #{backup3}
+			</if>	
+			<if test="backup4!=null">
+				and	backup4 = #{backup4}
+			</if>	
+			<if test="backup5!=null">
+				and backup5 = #{backup5}
+			</if>
+			<if test="isDelete!=null">
+				and isDelete = #{isDelete}
+			</if>	
+			<if test="busiOrg!=null">
+				and busiOrg = #{busiOrg}
+			</if>								
+		</where>
+		order by orderby,orgid
+	</select>
+	
+	<select id="findOrgsWithLeaf" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+select t1.leafs,t.* from DP_ORGANIZATION t
+left join (select count(u.orgid) leafs,u.parentorgid from DP_ORGANIZATION u where u.isdelete!=1 group by u.parentorgid) t1
+on t.orgid=t1.parentorgid
+<where>	
+			<if test="parentOrgId!=null">
+				and t.parentOrgId = #{parentOrgId}			
+			</if>
+			<if test="orgCode!=null">
+				and t.orgCode = #{orgCode}
+			</if>
+			<if test="parentOrgCode!=null">
+				and t.parentOrgCode = #{parentOrgCode}
+			</if>
+			<if test="bizParentId!=null">
+				and t.bizParentId = #{bizParentId}
+			</if>
+			<if test="bizParentCode!=null">
+				and t.bizParentCode = #{bizParentCode}
+			</if>
+			<if test="topOrgCode!=null">
+				and t.topOrgCode = #{topOrgCode}
+			</if>
+			<if test="topOrgId!=null">
+				and t.topOrgId = #{topOrgId}
+			</if>
+			<if test="hrCode!=null">
+				and t.hrCode = #{hrCode}
+			</if>
+			<if test="shortName!=null">
+				and t.shortName like '%${shortName}%'
+			</if>
+			<if test="orgName!=null">
+				and t.orgName  like '%${orgName}%'
+			</if>
+			<if test="orgLevel!=null">
+				and t.orgLevel = #{orgLevel}
+			</if>
+			<if test="orgDegree!=null">
+				and t.orgDegree = #{orgDegree}
+			</if>
+			<if test="orgType!=null">
+				and t.orgType = #{orgType}
+			</if>
+			<if test="manaPosition!=null">
+				and t.manaPosition = #{manaPosition}
+			</if>
+			<if test="managerId!=null">
+				and t.managerId = #{managerId}
+			</if>
+			<if test="linkMan!=null">
+				and t.linkMan like '%${linkMan}%'
+			</if>
+			<if test="linkTel!=null">
+				and t.linkTel = #{linkTel}
+			</if>
+			<if test="email!=null">
+				and t.email = #{email}
+			</if>
+			<if test="webUrl!=null">
+				and t.webUrl = #{webUrl}
+			</if>
+			<if test="startDate!=null">
+				and t.startDate = #{startDate}
+			</if>
+			<if test="endDate!=null">
+				and t.endDate = #{endDate}
+			</if>
+			<if test="status!=null">
+				and t.status = #{status}
+			</if>
+			<if test="area!=null">
+				and t.area = #{area}
+			</if>
+			<if test="updator!=null">
+				and t.updator = #{updator}
+			</if>
+			<if test="orderby!=null">
+				and t.orderby = #{orderby}
+			</if>
+			<if test="webName!=null">
+				and t.webName = #{webName}
+			</if>
+			<if test="backup1!=null">
+				and t.backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and t.backup2 = #{backup2}
+			</if>	
+			<if test="backup3!=null">
+				and t.backup3 = #{backup3}
+			</if>	
+			<if test="backup4!=null">
+				and	t.backup4 = #{backup4}
+			</if>	
+			<if test="backup5!=null">
+				and t.backup5 = #{backup5}
+			</if>
+			<if test="isDelete!=null">
+				and t.isDelete = #{isDelete}
+			</if>	
+			<if test="busiOrg!=null">
+				and t.busiOrg = #{busiOrg}
+			</if>
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>
+		</where>
+		order by t.orderby,t.orgid
+	</select>
+	
+	<select id="findOrgsWithBusiness" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+select t1.leafs ,t.* from DP_ORGANIZATION t
+left join (select count(u.orgid) leafs,u.bizParentId from DP_ORGANIZATION u where u.isdelete!=1 group by u.bizParentId) t1
+on t.orgid=t1.bizParentId
+		<where>		
+			<if test="parentOrgId!=null">
+				and t.parentOrgId = #{parentOrgId}			
+			</if>
+			<if test="orgCode!=null">
+				and t.orgCode = #{orgCode}
+			</if>
+			<if test="parentOrgCode!=null">
+				and t.parentOrgCode = #{parentOrgCode}
+			</if>
+			<if test="bizParentId!=null">
+				and t.bizParentId = #{bizParentId}
+			</if>
+			<if test="bizParentCode!=null">
+				and t.bizParentCode = #{bizParentCode}
+			</if>
+			<if test="topOrgCode!=null">
+				and t.topOrgCode = #{topOrgCode}
+			</if>
+			<if test="topOrgId!=null">
+				and t.topOrgId = #{topOrgId}
+			</if>
+			<if test="hrCode!=null">
+				and t.hrCode = #{hrCode}
+			</if>
+			<if test="shortName!=null">
+				and t.shortName like '%${shortName}%'
+			</if>
+			<if test="orgName!=null">
+				and t.orgName  like '%${orgName}%'
+			</if>
+			<if test="orgLevel!=null">
+				and t.orgLevel = #{orgLevel}
+			</if>
+			<if test="orgDegree!=null">
+				and t.orgDegree = #{orgDegree}
+			</if>
+			<if test="orgType!=null">
+				and t.orgType = #{orgType}
+			</if>
+			<if test="manaPosition!=null">
+				and t.manaPosition = #{manaPosition}
+			</if>
+			<if test="managerId!=null">
+				and t.managerId = #{managerId}
+			</if>
+			<if test="linkMan!=null">
+				and t.linkMan like '%${linkMan}%'
+			</if>
+			<if test="linkTel!=null">
+				and t.linkTel = #{linkTel}
+			</if>
+			<if test="email!=null">
+				and t.email = #{email}
+			</if>
+			<if test="webUrl!=null">
+				and t.webUrl = #{webUrl}
+			</if>
+			<if test="startDate!=null">
+				and t.startDate = #{startDate}
+			</if>
+			<if test="endDate!=null">
+				and t.endDate = #{endDate}
+			</if>
+			<if test="status!=null">
+				and t.status = #{status}
+			</if>
+			<if test="area!=null">
+				and t.area = #{area}
+			</if>
+			<if test="updator!=null">
+				and t.updator = #{updator}
+			</if>
+			<if test="orderby!=null">
+				and t.orderby = #{orderby}
+			</if>
+			<if test="webName!=null">
+				and t.webName = #{webName}
+			</if>
+			<if test="backup1!=null">
+				and t.backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and t.backup2 = #{backup2}
+			</if>
+			<if test="backup3!=null">
+				and t.backup3 = #{backup3}
+			</if>
+			<if test="backup4!=null">
+				and	t.backup4 = #{backup4}
+			</if>
+			<if test="backup5!=null">
+				and t.backup5 = #{backup5}
+			</if>
+			<if test="isDelete!=null">
+				and t.isDelete = #{isDelete}
+			</if>
+			<if test="busiOrg!=null">
+				and t.busiOrg = #{busiOrg}
+			</if>
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>
+		</where>
+		order by t.orderby,t.orgid
+	</select>
+	
+	<select id="findOrgByExampleWithCascade" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+	      select *
+	        from  DP_ORGANIZATION
+		<where>
+			<if test="parentOrgId!=null">
+				and path like '%${parentOrgId};%'
+			</if>
+			<if test="orgCode!=null">
+				and orgCode = #{orgCode}
+			</if>
+			<if test="parentOrgCode!=null">
+				and parentOrgCode = #{parentOrgCode}
+			</if>
+			<if test="bizParentId!=null">
+				and bizParentId = #{bizParentId}
+			</if>
+			<if test="bizParentCode!=null">
+				and bizParentCode = #{bizParentCode}
+			</if>
+			<if test="topOrgCode!=null">
+				and topOrgCode = #{topOrgCode}
+			</if>
+			<if test="topOrgId!=null">
+				and topOrgId = #{topOrgId}
+			</if>
+			<if test="hrCode!=null">
+				and hrCode = #{hrCode}
+			</if>
+			<if test="shortName!=null">
+				and shortName like '%${shortName}%'
+			</if>
+			<if test="orgName!=null">
+				and orgName  like '%${orgName}%'
+			</if>
+			<if test="orgLevel!=null">
+				and orgLevel = #{orgLevel}
+			</if>
+			<if test="orgDegree!=null">
+				and orgDegree = #{orgDegree}
+			</if>
+			<if test="orgType!=null">
+				and orgType = #{orgType}
+			</if>
+			<if test="manaPosition!=null">
+				and manaPosition = #{manaPosition}
+			</if>
+			<if test="managerId!=null">
+				and managerId = #{managerId}
+			</if>
+			<if test="linkMan!=null">
+				and linkMan = #{linkMan}
+			</if>
+			<if test="linkTel!=null">
+				and linkTel = #{linkTel}
+			</if>
+			<if test="email!=null">
+				and email = #{email}
+			</if>
+			<if test="webUrl!=null">
+				and webUrl = #{webUrl}
+			</if>
+			<if test="startDate!=null">
+				and startDate = #{startDate}
+			</if>
+			<if test="endDate!=null">
+				and endDate = #{endDate}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="area!=null">
+				and area = #{area}
+			</if>
+			<if test="updator!=null">
+				and updator = #{updator}
+			</if>
+			<if test="webName!=null">
+				and webName = #{webName}
+			</if>
+			<if test="backup1!=null">
+				and backup1 = #{backup1}
+			</if>
+			<if test="backup2!=null">
+				and backup2 = #{backup2}
+			</if>	
+			<if test="backup3!=null">
+				and backup3 = #{backup3}
+			</if>	
+			<if test="backup4!=null">
+				and	backup4 = #{backup4}
+			</if>	
+			<if test="backup5!=null">
+				and backup5 = #{backup5}
+			</if>
+			<if test="isDelete!=null">
+				and isDelete = #{isDelete}
+			</if>
+			<if test="busiOrg!=null">
+				and busiOrg  = #{busiOrg}
+			</if>
+			<if test="dataSql!=null">
+				and ${dataSql}
+			</if>									
+		</where>
+		order by orderby,orgid
+	</select>	
+	
+	<select id="selectByIds" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		select * from DP_ORGANIZATION where orgid in 
+			<foreach collection="ids" item="item" open="(" separator="," close=")">
+${item}
+			</foreach>
+		<if test="isDelete!=null">
+			and isdelete = #{org.isDelete}
+		</if>
+		<if test="status!=null">
+			and status = #{org.status}
+		</if>
+		order by orderby,orgid
+	</select>
+	
+	<select id="findOrgById" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		select * from DP_ORGANIZATION
+		where orgid = #{orgId}
+	</select>
+	
+	<update id="updateOrg" parameterType="com.talkweb.twdpe.base.org.pojo.Org" >
+		update DP_ORGANIZATION
+		<set>
+			<if test="parentOrgId!=null">
+				parentOrgId = #{parentOrgId},			
+			</if>
+			<if test="orgCode!=null">
+				orgCode = #{orgCode},
+			</if>
+			<if test="parentOrgCode!=null">
+				parentOrgCode = #{parentOrgCode},
+			</if>
+			<if test="bizParentId!=null">
+				bizParentId = #{bizParentId},
+			</if>
+			<if test="bizParentCode!=null">
+				bizParentCode = #{bizParentCode},
+			</if>
+			<if test="topOrgCode!=null">
+				topOrgCode = #{topOrgCode},
+			</if>
+			<if test="topOrgId!=null">
+				topOrgId = #{topOrgId},
+			</if>
+			<if test="hrCode!=null">
+				hrCode = #{hrCode},
+			</if>
+			<if test="shortName!=null">
+				shortName = #{shortName},
+			</if>
+			<if test="orgName!=null">
+				orgName  = #{orgName},
+			</if>
+			<if test="orgLevel!=null">
+				orgLevel = #{orgLevel},
+			</if>
+			<if test="orgDegree!=null">
+				orgDegree = #{orgDegree},
+			</if>
+			<if test="orgType!=null">
+				orgType = #{orgType},
+			</if>
+			<if test="orgAddr!=null">
+				orgAddr = #{orgAddr},
+			</if>
+			<if test="zipCode!=null">
+				zipCode = #{zipCode},
+			</if>
+			<if test="manaPosition!=null">
+				manaPosition = #{manaPosition},
+			</if>
+			<if test="managerId!=null">
+				managerId = #{managerId},
+			</if>
+			<if test="linkMan!=null">
+				linkMan = #{linkMan},
+			</if>
+			<if test="linkTel!=null">
+				linkTel = #{linkTel},
+			</if>
+			<if test="email!=null">
+				email = #{email},
+			</if>
+			<if test="webUrl!=null">
+				webUrl = #{webUrl},
+			</if>
+			<if test="startDate!=null">
+				startDate = #{startDate},
+			</if>
+			<if test="endDate!=null">
+				endDate = #{endDate},
+			</if>
+			<if test="status!=null">
+				status = #{status},
+			</if>
+			<if test="area!=null">
+				area = #{area},
+			</if>
+			<if test="lastUpdate!=null">
+				lastUpdate = #{lastUpdate},
+			</if>
+			<if test="updator!=null">
+				updator = #{updator},
+			</if>
+			<if test="orderby!=null">
+				orderby = #{orderby},
+			</if>
+			<if test="webName!=null">
+				webName = #{webName},
+			</if>
+			<if test="path!=null">
+				path = #{path},
+			</if>
+			<if test="remark!=null">
+				remark = #{remark},
+			</if>
+			<if test="backup1!=null">
+				backup1 = #{backup1},
+			</if>
+			<if test="backup2!=null">
+				backup2 = #{backup2},
+			</if>		
+			<if test="backup3!=null">
+				backup3 = #{backup3},
+			</if>	
+			<if test="backup4!=null">
+				backup4 = #{backup4},
+			</if>	
+			<if test="backup5!=null">
+				backup5 = #{backup5},
+			</if>
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>			
+			<if test="busiOrg!=null">
+				busiOrg = #{busiOrg},
+			</if>						
+		</set>
+		where orgid = #{orgId}
+	</update>
+		<!-- 根据子节点找到所在第二层分支()  -->
+	<select id="getTreeforOrgid" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		 select *
+		  from DP_ORGANIZATION t where t.parentorgid=-1 and t. isdelete = 0
+		 START WITH t.orgid = #{orgId}
+		CONNECT BY PRIOR t.parentorgid = t.orgid
+	</select>
+	
+	<select id="getTopCompanyWithBusiness" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+select * from DP_ORGANIZATION o where parentOrgId=-1 and orgtype=1 and exists 
+(select orgid from DP_ORGANIZATION o1 where parentorgid=o.orgid and exists 
+(select orgid from DP_ORGANIZATION where bizparentid=o1.orgid))
+order by o.orderby,o.orgid
+	</select>
+	
+	<select id="findTopOrgsWithBusiness" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Org" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+select * from DP_ORGANIZATION o1 where parentorgid=#{bizParentId} and exists 
+(select orgid from DP_ORGANIZATION where bizparentid=o1.orgid)
+order by o1.orderby,o1.orgid
+	</select>
+    
+    <delete id="deleteOrg" parameterType="long">
+    	delete from DP_ORGANIZATION where orgid = #{orgId}
+    </delete>
+    	<select id="getOrgByIds" parameterType="String" resultType="com.talkweb.twdpe.base.org.pojo.Org">
+	   select t.orgid,t.orgname from DP_ORGANIZATION t where t.orgid in 
+	   <foreach item="item" index="index" collection="list" 
+                         open="(" separator="," close=")">
+                        ${item}
+                </foreach>
+	</select>
+	
+	<select id="findOrgMembersByExample" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+		select o.* from DP_ORGANIZATION o,DP_ORGROLE r
+		where o.orgid = r.orgid
+		and r.roleid = #{roleId}
+		<if test="org.parentOrgId!=null">
+			and o.parentOrgId = #{org.parentOrgId}			
+		</if>
+		<if test="org.orgCode!=null">
+			and o.orgCode like '%${org.orgCode}%'
+		</if>
+		<if test="org.parentOrgCode!=null">
+			and o.parentOrgCode = #{org.parentOrgCode}
+		</if>
+		<if test="org.bizParentId!=null">
+			and o.bizParentId = #{org.bizParentId}
+		</if>
+		<if test="org.bizParentCode!=null">
+			and o.bizParentCode = #{org.bizParentCode}
+		</if>
+		<if test="org.topOrgCode!=null">
+			and o.topOrgCode = #{org.topOrgCode}
+		</if>
+		<if test="org.topOrgId!=null">
+			and o.topOrgId = #{org.topOrgId}
+		</if>
+		<if test="org.hrCode!=null">
+			and o.hrCode = #{org.hrCode}
+		</if>
+		<if test="org.shortName!=null">
+			and o.shortName like '%${org.shortName}%'
+		</if>
+		<if test="org.orgName!=null">
+			and o.orgName  like '%${org.orgName}%'
+		</if>
+		<if test="org.orgLevel!=null">
+			and o.orgLevel = #{org.orgLevel}
+		</if>
+		<if test="org.orgDegree!=null">
+			and o.orgDegree = #{org.orgDegree}
+		</if>
+		<if test="org.orgType!=null">
+			and o.orgType = #{org.orgType}
+		</if>
+		<if test="org.manaPosition!=null">
+			and o.manaPosition = #{org.manaPosition}
+		</if>
+		<if test="org.managerId!=null">
+			and o.managerId = #{org.managerId}
+		</if>
+		<if test="org.linkMan!=null">
+			and o.linkMan = #{org.linkMan}
+		</if>
+		<if test="org.linkTel!=null">
+			and o.linkTel = #{org.linkTel}
+		</if>
+		<if test="org.email!=null">
+			and o.email = #{org.email}
+		</if>
+		<if test="org.webUrl!=null">
+			and o.webUrl = #{org.webUrl}
+		</if>
+		<if test="org.startDate!=null">
+			and o.startDate = #{org.startDate}
+		</if>
+		<if test="org.endDate!=null">
+			and o.endDate = #{org.endDate}
+		</if>
+		<if test="org.status!=null">
+			and o.status = #{org.status}
+		</if>
+		<if test="org.area!=null">
+			and o.area = #{org.area}
+		</if>
+		<if test="org.updator!=null">
+			and o.updator = #{org.updator}
+		</if>
+		<if test="org.webName!=null">
+			and o.webName = #{org.webName}
+		</if>
+		<if test="org.backup1!=null">
+			and o.backup1 = #{org.backup1}
+		</if>
+		<if test="org.backup2!=null">
+			and o.backup2 = #{org.backup2}
+		</if>	
+		<if test="org.backup3!=null">
+			and o.backup3 = #{org.backup3}
+		</if>	
+		<if test="org.backup4!=null">
+			and	o.backup4 = #{org.backup4}
+		</if>	
+		<if test="org.backup5!=null">
+			and o.backup5 = #{org.backup5}
+		</if>
+		<if test="org.isDelete!=null">
+			and o.isDelete = #{org.isDelete}
+		</if>
+		order by o.orderby,o.orgid									
+	</select>	
+	
+	<select id="findNoOrgMembersByExample" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.org.pojo.Org" >
+	    select o.*
+	      from DP_ORGANIZATION o
+	     where o.orgid not in (select r.orgid from DP_ORGROLE r where r.roleid = #{roleId})
+	     and o.STATUS = 0
+		<if test="org.parentOrgId!=null">
+			and o.parentOrgId = #{org.parentOrgId}			
+		</if>
+		<if test="org.orgCode!=null">
+			and o.orgCode = #{org.orgCode}
+		</if>
+		<if test="org.parentOrgCode!=null">
+			and o.parentOrgCode = #{org.parentOrgCode}
+		</if>
+		<if test="org.bizParentId!=null">
+			and o.bizParentId = #{org.bizParentId}
+		</if>
+		<if test="org.bizParentCode!=null">
+			and o.bizParentCode = #{org.bizParentCode}
+		</if>
+		<if test="org.topOrgCode!=null">
+			and o.topOrgCode = #{org.topOrgCode}
+		</if>
+		<if test="org.topOrgId!=null">
+			and o.topOrgId = #{org.topOrgId}
+		</if>
+		<if test="org.hrCode!=null">
+			and o.hrCode = #{org.hrCode}
+		</if>
+		<if test="org.shortName!=null">
+			and o.shortName like '%${org.shortName}%'
+		</if>
+		<if test="org.orgName!=null">
+			and o.orgName  like '%${org.orgName}%'
+		</if>
+		<if test="org.orgLevel!=null">
+			and o.orgLevel = #{org.orgLevel}
+		</if>
+		<if test="org.orgDegree!=null">
+			and o.orgDegree = #{org.orgDegree}
+		</if>
+		<if test="org.orgType!=null">
+			and o.orgType = #{org.orgType}
+		</if>
+		<if test="org.manaPosition!=null">
+			and o.manaPosition = #{org.manaPosition}
+		</if>
+		<if test="org.managerId!=null">
+			and o.managerId = #{org.managerId}
+		</if>
+		<if test="org.linkMan!=null">
+			and o.linkMan = #{org.linkMan}
+		</if>
+		<if test="org.linkTel!=null">
+			and o.linkTel = #{org.linkTel}
+		</if>
+		<if test="org.email!=null">
+			and o.email = #{org.email}
+		</if>
+		<if test="org.webUrl!=null">
+			and o.webUrl = #{org.webUrl}
+		</if>
+		<if test="org.startDate!=null">
+			and o.startDate = #{org.startDate}
+		</if>
+		<if test="org.endDate!=null">
+			and o.endDate = #{org.endDate}
+		</if>
+		<if test="org.status!=null">
+			and o.status = #{org.status}
+		</if>
+		<if test="org.area!=null">
+			and o.area = #{org.area}
+		</if>
+		<if test="org.updator!=null">
+			and o.updator = #{org.updator}
+		</if>
+		<if test="org.webName!=null">
+			and o.webName = #{org.webName}
+		</if>
+		<if test="org.backup1!=null">
+			and o.backup1 = #{org.backup1}
+		</if>
+		<if test="org.backup2!=null">
+			and o.backup2 = #{org.backup2}
+		</if>	
+		<if test="org.backup3!=null">
+			and o.backup3 = #{org.backup3}
+		</if>	
+		<if test="org.backup4!=null">
+			and	o.backup4 = #{org.backup4}
+		</if>	
+		<if test="org.backup5!=null">
+			and o.backup5 = #{org.backup5}
+		</if>
+		<if test="org.isDelete!=null">
+			and o.isDelete = #{org.isDelete}
+		</if>
+		order by o.orderby,o.orgid
+	</select>	
+	<select id="findUserByStaffRelationForCas" parameterType="string" resultType="com.talkweb.twdpe.base.org.pojo.User">
+		select u.* ,o.orgName,
+				s.STAFFID			as 	 "staff.staffId"	,			 	
+				s.STAFFCODE			as   "staff.staffCode"	,
+				s.USERCODE          as   "staff.userCode"   ,
+				s.STAFFNAME         as   "staff.staffName"  ,
+				s.REALNAME          as   "staff.realName"   ,
+				s.GENDER	        as   "staff.gender"	    ,
+				s.BIRTHDATE	        as   "staff.birthdate"	,
+				s.STATUS            as   "staff.status"     ,
+				s.CARDTYPE	        as   "staff.cardType"   ,
+				s.CARDNO	        as   "staff.cardno"	    ,
+				s.INDATE	        as   "staff.indate"	    ,
+				s.OUTDATE	        as   "staff.outdate"	,
+				s.OTEL	            as   "staff.otel"	    ,
+				s.OADDRESS	        as   "staff.oaddress"	,
+				s.OZIPCODE	        as   "staff.ozipCode"	,
+				s.OEMAIL            as   "staff.oemail"	    ,
+				s.FAXNO	            as   "staff.faxNo"		,
+				s.MOBILENO	        as   "staff.mobileNo"	,
+				s.MSN	            as   "staff.msn"		,
+				s.HTEL	            as   "staff.htel"		,
+				s.HADDRESS	        as   "staff.haddress"	,
+				s.HZIPCODE	        as   "staff.hzipCode"	,
+				s.PEMAIL	        as   "staff.pemail"		,
+				s.PARTY	            as   "staff.party"		,
+				s.DEGREE	        as   "staff.degree"		,
+				s.MAJOR	            as   "staff.major"		,
+				s.WORKEXP	        as   "staff.workexp"	,
+				s.REGDATE	        as   "staff.regdate"	,
+				s.CREATETIME        as   "staff.createTime"	,
+				s.LASTMODYTIME      as   "staff.lastModyTime",
+				s.ORGID             as   "staff.orgId"	    ,
+				s.ORGCODE	        as   "staff.orgCode"	,
+				s.USERTYPE	        as   "staff.userType"	,
+				s.ORDERBY	        as   "staff.orderby"	,
+				s.ISDELETE          as   "staff.isDelete"	,
+				s.BACKUP1	        as   "staff.backup1"	,
+				s.BACKUP2	        as   "staff.backup2"	,
+				s.BACKUP3	        as   "staff.backup3"	,
+				s.BACKUP4	        as   "staff.backup4"	,
+				s.BACKUP5	        as   "staff.backup5"	,
+				s.REMARK			as   "staff.remark"		
+
+			from DP_USER u ,DP_STAFF s,DP_ORGANIZATION o where u.staffid = s.staffid 
+			and u.orgid = o.orgid and
+				 u.userCode = #{userCode}
+			order by u.orderby,u.userId
+	</select>	
+</mapper>

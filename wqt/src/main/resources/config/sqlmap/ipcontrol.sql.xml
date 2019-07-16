@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ipcontrol">
+	<select id="queryIpControl" parameterType="map" resultType="com.talkweb.twdpe.base.ipcontrol.pojo.IpControl">
+		<![CDATA[
+			SELECT 
+			T.CONTROLID,
+			T.USERID,
+			T.USERNAME,
+			T.IPADDRESS,
+			T.MASKCODE,
+			T.CONTROLTYPE,
+			T.CONTROLVALUE,
+			to_char(T.STARTDATE, 'YYYY-MM-DD HH24:MI:SS') as STARTDATE,
+			to_char(T.ENDDATE, 'YYYY-MM-DD HH24:MI:SS') as ENDDATE,
+			to_char(T.CREATETIME, 'YYYY-MM-DD HH24:MI:SS') as CREATETIME,
+			T.CREATEUSER,T.MEMO,
+			case when T.CONTROLVALUE = '1' then '是' else '否' end as CONTROLDESC 
+			FROM DP_IPCONTROL T 
+		]]>
+		<where>
+			<if test="null!=CONTROLID and ''!=CONTROLID">
+				T.CONTROLID = #{CONTROLID}
+			</if>
+			<if test="null!=USERID and ''!=USERID">
+				and T.USERID = #{USERID}
+			</if>
+			<if test="null!=USERNAME and ''!=USERNAME">
+				and T.USERNAME = #{USERNAME}
+			</if>
+			<if test="null!=IPADDRESS and ''!=IPADDRESS">
+				and T.IPADDRESS = #{IPADDRESS}
+			</if>
+			<if test="null!=MASKCODE and ''!=MASKCODE">
+				and T.MASKCODE = #{MASKCODE}
+			</if>
+			<if test="null!=CONTROLTYPE and ''!=CONTROLTYPE">
+				and T.CONTROLTYPE = #{CONTROLTYPE}
+			</if>
+			<if test="null!=CONTROLVALUE and ''!=CONTROLVALUE">
+				and T.CONTROLVALUE = #{CONTROLVALUE}
+			</if>
+			<if test="null!=CREATEUSER and ''!=CREATEUSER">
+				and T.CREATEUSER = #{CREATEUSER}
+			</if>
+			<if test="null!=MEMO and ''!=MEMO">
+				and T.MEMO = #{MEMO}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getNewIpControlId" resultType="int">
+		select SEQ_DP_IPCONTROL.Nextval from dual
+	</select>
+	
+	<sql id="addIpControlColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CONTROLID "> CONTROLID,</if>
+		<if test="null!=USERID "> USERID,</if>
+		<if test="null!=USERNAME "> USERNAME,</if>
+		<if test="null!=IPADDRESS "> IPADDRESS,</if>
+		<if test="null!=MASKCODE "> MASKCODE,</if>
+		<if test="null!=CONTROLTYPE "> CONTROLTYPE,</if>
+		<if test="null!=CONTROLVALUE "> CONTROLVALUE,</if>
+		<if test="null!=CREATEUSER "> CREATEUSER,</if>
+		<if test="null!=MEMO "> MEMO,</if>
+		<if test="null!=STARTDATE "> STARTDATE,</if>
+		<if test="null!=ENDDATE "> ENDDATE,</if>
+	</trim>
+	</sql>
+	<sql id="addIpControlValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CONTROLID "> #{CONTROLID},</if>
+		<if test="null!=USERID "> #{USERID},</if>
+		<if test="null!=USERNAME "> #{USERNAME},</if>
+		<if test="null!=IPADDRESS "> #{IPADDRESS},</if>
+		<if test="null!=MASKCODE "> #{MASKCODE},</if>
+		<if test="null!=CONTROLTYPE "> #{CONTROLTYPE},</if>
+		<if test="null!=CONTROLVALUE "> #{CONTROLVALUE},</if>
+		<if test="null!=CREATEUSER "> #{CREATEUSER},</if>
+		<if test="null!=MEMO "> #{MEMO},</if>
+		<if test="null!=STARTDATE "> #{STARTDATE},</if>
+		<if test="null!=ENDDATE "> #{ENDDATE},</if>
+	</trim>
+	</sql>
+	<insert id="addIpControl" parameterType="map">
+		insert into DP_IPCONTROL
+		(<include refid="addIpControlColumn"/>)
+		values(<include refid="addIpControlValue"/>)
+	</insert>
+	
+	<update id="modifyIpControl" parameterType="map">
+		update DP_IPCONTROL
+		<set>
+			<if test="null!=CONTROLID">         
+				CONTROLID = #{CONTROLID},         
+			</if>                               
+			<if test="null!=USERID">            
+				USERID = #{USERID},               
+			</if>                               
+			<if test="null!=USERNAME">          
+				USERNAME = #{USERNAME},           
+			</if>                               
+			<if test="null!=IPADDRESS">         
+				IPADDRESS = #{IPADDRESS},         
+			</if>                               
+			<if test="null!=MASKCODE">          
+				MASKCODE = #{MASKCODE},           
+			</if>                               
+			<if test="null!=CONTROLTYPE">       
+				CONTROLTYPE = #{CONTROLTYPE},     
+			</if>                               
+			<if test="null!=CONTROLVALUE">      
+				CONTROLVALUE = #{CONTROLVALUE},   
+			</if>                               
+			<if test="null!=CREATEUSER">        
+				CREATEUSER = #{CREATEUSER},       
+			</if>                               
+			<if test="null!=MEMO">              
+				MEMO = #{MEMO},                    
+			</if>
+			<if test="null!=STARTDATE">              
+				STARTDATE = #{STARTDATE},                  
+			</if> 
+			<if test="null!=ENDDATE">              
+				ENDDATE = #{ENDDATE}                  
+			</if>                         
+		</set>
+		 where CONTROLID = #{CONTROLID}
+	</update>
+	
+	<update id="deleteIpControl" parameterType="map">
+		delete from  DP_IPCONTROL where CONTROLID = #{CONTROLID}
+	</update>
+</mapper>

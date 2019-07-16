@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.app">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.App" >
+		insert into DP_APPLICATION(APPID,APPCODE,APPNAME,APPSHORT,APPTYPE,ISOPEN,OPENDATE,URL,
+		LOGINPAGE,APPDESC,REMARK,ISDELETE,ACCESSID,ACCESSPASSWORD,MANUFACTURER,MANAGER,TELEPHONE)
+		
+		values(#{appId},#{appCode},#{appName},#{appShort:VARCHAR},#{appType},
+		#{isOpen},#{openDate:DATE},#{url:VARCHAR},#{loginPage:VARCHAR},#{appDesc:VARCHAR},
+		#{remark:VARCHAR},#{isDelete:INTEGER},#{accessId:VARCHAR},#{accessPassword:VARCHAR},
+		#{manufacturer:VARCHAR},#{manager:VARCHAR},#{telephone:VARCHAR})
+	</insert>
+	
+	<delete id="delete" parameterType="long">
+		delete from DP_APPLICATION where appId=#{appId}
+	</delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.App">
+		update DP_APPLICATION 
+		<set>
+			<if test="appName!=null">
+				appName = #{appName},
+			</if>
+			<if test="appShort!=null">
+				appShort = #{appShort},
+			</if>
+			<if test="appCode!=null">
+				appCode = #{appCode},
+			</if>
+			<if test="appType!=null">
+				appType = #{appType},
+			</if>	
+			<if test="isOpen!=null">
+				isOpen = #{isOpen},
+			</if>	
+			<if test="openDate!=null">
+				openDate = #{openDate},
+			</if>	
+			<if test="url!=null">
+				url = #{url},
+			</if>	
+			<if test="loginPage!=null">
+				loginPage = #{loginPage},
+			</if>	
+			<if test="appDesc!=null">
+				appDesc = #{appDesc},
+			</if>	
+			<if test="accessId!=null">
+				accessId = #{accessId},
+			</if>
+			<if test="accessPassword!=null">
+				accessPassword = #{accessPassword},
+			</if>	
+			<if test="manufacturer!=null">
+				manufacturer = #{manufacturer},
+			</if>	
+			<if test="manager!=null">
+				manager = #{manager},
+			</if>	
+			<if test="telephone!=null">
+				telephone = #{telephone},
+			</if>
+			<if test="remark!=null">
+				remark = #{remark},
+			</if>		
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>																																												
+		</set> 	
+		where appId = #{appId}
+	</update>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.App" >
+		select * from DP_APPLICATION where ISDELETE=0
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.App" >
+		select * from DP_APPLICATION where appId = #{appId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.App" resultType="com.talkweb.twdpe.base.right.pojo.App">
+		select * from DP_APPLICATION where isdelete='0'
+			<if test="appName!=null">
+				and appName like '%${appName}%'
+			</if>
+			<if test="appId!=null">
+				and appId = #{appId}
+			</if>			
+			<if test="appShort!=null">
+				and appShort like '%${appShort}'
+			</if>
+			<if test="appCode!=null">
+				and appCode = #{appCode}
+			</if>
+			<if test="appType!=null">
+				and appType = #{appType}
+			</if>	
+			<if test="isOpen!=null">
+				and isOpen = #{isOpen}
+			</if>	
+			<if test="openDate!=null">
+				and openDate = #{openDate}
+			</if>	
+			<if test="url!=null">
+				and url = #{url}
+			</if>	
+			<if test="loginPage!=null">
+				and loginPage = #{loginPage}
+			</if>	
+			<if test="appDesc!=null">
+				and appDesc = '%${appDesc}%'
+			</if>	
+			<if test="accessId!=null">
+				and accessId = #{accessId}
+			</if>
+			<if test="accessPassword!=null">
+				and accessPassword = #{accessPassword}
+			</if>	
+			<if test="manufacturer!=null">
+				and manufacturer like '%${manufacturer}%'
+			</if>	
+			<if test="manager!=null">
+				and manager like '%${manager}%'
+			</if>
+			<if test="telephone!=null">
+				and telephone like '%{telephone}%'
+			</if>
+		order by appid
+	</select>
+</mapper>

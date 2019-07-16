@@ -1,0 +1,10 @@
+@charset "utf-8";
+.ui-toolbar-bg {
+	background-color: #c7e2f5;
+	background: -webkit-linear-gradient(top,#f8ffff 0,#c7e2f5 100%);
+	background: -moz-linear-gradient(top,#f8ffff 0,#c7e2f5 100%);
+	background: -o-linear-gradient(top,#f8ffff 0,#c7e2f5 100%);
+	background: linear-gradient(to bottom, #f8ffff 0, #c7e2f5 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8ffff,endColorstr=#c7e2f5,GradientType=0);
+}

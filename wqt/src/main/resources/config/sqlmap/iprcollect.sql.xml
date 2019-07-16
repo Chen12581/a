@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iprcollect"> 
+      
+	
+	  <!--查询交易产品用户收藏-->
+	  <select id="selectIprCollectShopList" 
+		        parameterType="com.wqt.user.pojo.IprCollectShop" 
+		        resultType="com.wqt.user.pojo.IprCollectShop">
+		    select 
+             *
+             from ipr_collect_shop a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			    and  a.kind=#{kind}
+			</if>
+			<if test="null!= shopid and ''!= shopid">
+			    and  a.shopid=#{shopid}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			order by collecttime desc
+	   </select>
+	   
+	  
+	   <!-- 删除交易产品用户收藏-->
+	   <delete id="delIprCollectShop" parameterType="com.wqt.user.pojo.IprCollectShop">
+			 delete  from ipr_collect_shop
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+		</delete>
+	  
+	  <!--查询交易产品用户收藏-->
+	  <select id="selectIprCollectProductList" 
+		        parameterType="com.wqt.user.pojo.IprCollectProduct" 
+		        resultType="com.wqt.user.pojo.IprCollectProduct">
+		    select 
+             *
+             from ipr_collect_product a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			    and  a.kind=#{kind}
+			</if>
+			<if test="null!= productid and ''!= productid">
+			    and  a.productid=#{productid}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+			order by collecttime desc
+	   </select>
+	   
+	   <!-- 删除用户收藏-->
+	   <delete id="delIprCollectProduct" parameterType="com.wqt.user.pojo.IprCollectProduct">
+			 delete  from ipr_collect_product
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			    and  a.userid=#{userid}
+			</if>
+		</delete>	
+</mapper>

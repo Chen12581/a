@@ -1,0 +1,150 @@
+.pro-main-layout{
+	margin: 10px;
+	min-width: 1092px;
+}
+.pro-topbar{
+	margin-bottom: 10px;
+	width: 100%;
+}
+.pro-topbar div{
+	/* float: left; */
+	/* margin: 5px; */
+}
+.pro-title{
+	margin: 5px;
+	padding-left: 5px;
+	border-left: 2px solid #46a3ff;
+}
+.pro-select{
+	float: right;
+	margin-top: -25px;
+	right: 15px;
+	width: 100px;
+}
+.pro-topbar-left{
+	margin-top: 0!important;
+	margin-left: 0!important;
+	padding: 0 30px;
+}
+.pro-topbar-left ul li{
+	float: left;
+	margin-right: 16px;
+	padding: 0 52px;
+	font-size: 14px;
+	text-align: center;
+	color: #333;
+	/* background-color: #66b3ff; */
+	border-radius: 2px;
+	cursor: pointer;
+}
+/* .pro-topbar-left ul li:hover{
+	background-color: #46a3ff;
+} */
+.pro-topbar-left ul li span{
+	line-height: 30px;
+}
+.pro-topbar-left ul li a{
+	font-size: 22px;
+	color: #333;
+}
+.pro-topbar-left ul li i{
+	width: 6px;
+	height: 4px;
+	padding-left: 8px;
+}
+/* .ico1{
+	display:inline-block;
+	float: left;
+	width: 50px;
+	height: 51px;
+	margin-right: 5px;
+	margin-top: 4px;
+	background-image: url(../images/icon1.png);
+} */
+.statistics-chart{
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+}
+.statistics-chart a{
+	padding: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.statistics-chart-date{
+	width: 100px;
+	height: 24px;
+	line-height: 24px;
+	cursor: pointer;
+}
+.chart1{
+	height: 250px;
+	margin: 0;
+}
+.chart2{
+	float: left;
+	margin-right: 5px;
+	width: 45%;
+	height: 210px;
+}
+.chart3{
+	float: left;
+	width: 45%;
+	height: 210px;
+}
+.statistics-down{
+	color: #00db00;
+	background: url(../images/u166.png) center left no-repeat;
+}
+.statistics-up{
+	color: #FF0000;
+	background: url(../images/u179.png) center left no-repeat;
+}
+.graytext{
+	padding-left: 5px;
+	line-height: 20px;
+	color: #ddd;
+	font-size: 11px;
+}
+.pro-topbar-graph{
+	margin-top: 0!important;
+	margin-left: 0!important;
+	padding-left: 45px;
+	cursor: pointer;
+}
+.pro-topbar-graph ul li{
+	float: left;
+	margin-right: 16px;
+	padding: 0 6px;
+}
+.graph{
+	height: 50px;
+	line-height: 50px;
+	display: block;
+	vertical-align: bottom!important;
+}
+.graph img{
+	vertical-align: bottom;
+}
+.pro-content-left{
+	float: left;
+	padding: 5px 10px;
+	margin-right: 1%;
+	width: 52%;
+	height: 500px; 
+	background: url(../images/u180.jpg) center center no-repeat;
+	background-size:96%;
+	/* border: 1px solid #ddd; */
+	cursor: pointer;
+	color: #333;
+	font-size: 30px;
+	text-align: center;
+}
+.pro-content{
+	width: 100%;
+	margin-top: 5px;
+}
+.pro-content-right{
+	float: left;
+	width: 45%;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+	<!-- 访问方式 -->
+	<bean id="accessModeDao" class="com.talkweb.twdpe.base.right.dal.AccessModeDao" />
+	<bean id="accessModeService" class="com.talkweb.twdpe.base.right.service.impl.AccessModeServiceImpl" />
+	
+	<!-- 权限定义 -->
+	<bean id="permissionDao" class="com.talkweb.twdpe.base.right.dal.PermissionDao" />
+	<bean id="permissionService" class="com.talkweb.twdpe.base.right.service.impl.PermissionServiceImpl" />
+	
+	<!-- 数据规则 -->
+	<bean id="dataRuleDao" class="com.talkweb.twdpe.base.right.dal.DataRuleDao" />
+	<bean id="dataBusinessDao" class="com.talkweb.twdpe.base.right.dal.DataBusinessDao" />
+	<bean id="dataRuleService" class="com.talkweb.twdpe.base.right.service.impl.DataRuleServiceImpl" />
+	
+	<!-- 应用 -->
+	<bean id="appDao" class="com.talkweb.twdpe.base.right.dal.AppDao" />
+	<bean id="appService" class="com.talkweb.twdpe.base.right.service.impl.AppServiceImpl" />
+		
+	<!-- 资源 -->
+	<bean id="resourceDao" class="com.talkweb.twdpe.base.right.dal.ResourceDao" />
+	<bean id="resourceService" class="com.talkweb.twdpe.base.right.service.impl.ResourceServiceImpl" />
+
+	<!-- 角色 -->
+	<bean id="roleDao" class="com.talkweb.twdpe.base.right.dal.RoleDao" />
+	<bean id="roleMemberDao" class="com.talkweb.twdpe.base.right.dal.RoleMemberDao" />
+	<bean id="roleService" class="com.talkweb.twdpe.base.right.service.impl.RoleServiceImpl" />
+	
+	<!-- 授权 -->
+	<bean id="authorityDao" class="com.talkweb.twdpe.base.right.dal.AuthorityDao" />
+	<bean id="authorityService" class="com.talkweb.twdpe.base.right.service.impl.AuthorityServiceImpl" />
+				
+</beans>

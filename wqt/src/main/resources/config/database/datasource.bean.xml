@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://www.springframework.org/schema/util
+     http://www.springframework.org/schema/util/spring-util-3.0.xsd" 
+     xmlns:util="http://www.springframework.org/schema/util"	
+     >
+     
+
+	<bean id="mainPropertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config/database/jdbc.properties" />
+	</bean>
+	
+	<!-- <util:properties id="ds" location="classpath:config/common/ds.properties"/> -->
+	
+	
+	<bean id="com.talkweb.twdpe.dal.jdbc.dialect.MySqlDialect" class="com.talkweb.twdpe.dal.jdbc.dialect.MySqlDialect">
+	</bean>
+	
+	<!-- 
+	<bean id="com.talkweb.twdpe.dal.jdbc.dialect.SqlServerDialect" class="com.talkweb.twdpe.dal.jdbc.dialect.SqlServerDialect">
+	</bean>
+	
+    <bean id="com.talkweb.twdpe.dal.jdbc.dialect.OracleDialect" class="com.talkweb.twdpe.dal.jdbc.dialect.OracleDialect">
+	</bean>
+	
+	<bean id="com.talkweb.twdpe.dal.jdbc.dialect.Db2Dialect" class="com.talkweb.twdpe.dal.jdbc.dialect.Db2Dialect">
+	</bean>
+	
+	<bean id="com.talkweb.twdpe.dal.jdbc.dialect.DmDialect" class="com.talkweb.twdpe.dal.jdbc.dialect.DmDialect">
+	</bean>
+	 -->
+	
+	<!-- Proxool数据库连接池配置,可在Web.xml中开启管理监控功能 -->
+	<bean id="config.datasource.main" class="com.talkweb.twdpe.dal.connect.DriverSource" init-method="open" >
+			<property name="description" value="${jdbc.main.description}" />
+			<property name="driverClass" value="${jdbc.main.pooledClass}" />
+			<property name="dialect" ref="${jdbc.main.dialect}" />
+			<property name="name" value="main" ></property>
+			<property name="poolProperties">
+				<map>
+					<entry key="alias" value="main" />
+					<entry key="driver" value="${jdbc.main.driver}" />
+					<entry key="driverUrl" value="${jdbc.main.driverUrl}" />
+					<entry key="user" value="${jdbc.main.user}" />
+					<entry key="password" value="${jdbc.main.password}" />
+					<entry key="minimumConnectionCount" value="${jdbc.main.minimumConnectionCount}" />
+					<entry key="maximumConnectionCount" value="${jdbc.main.maximumConnectionCount}" />
+					<!-- <entry key="houseKeepingSleepTime" value="${jdbc.main.houseKeepingSleepTime}" /> 
+					<entry key="houseKeepingTestSql" value="${jdbc.main.houseKeepingTestSql}" />
+					<entry key="simultaneousBuildThrottle" value="${jdbc.main.simultaneousBuildThrottle}" />
+					<entry key="maximumConnectionLifetime" value="${jdbc.main.maximumConnectionLifetime}" /> -->
+					
+				</map>
+			</property>
+	</bean>
+	
+	
+	<bean id="datasource" class="com.talkweb.twdpe.dal.datasource.DataSourceFactoryBean">
+		<property name="sourceBean" ref="config.datasource.main" />
+	</bean>
+	
+	<bean id="sessionfactory.main" class="com.talkweb.twdpe.dal.batis.spring.SessionFactoryBean" >
+		<property name="dataSource" ref="datasource" />
+		<!-- <property name="defaultFactory" value="true" />   -->
+		<property name="configPath" value="classpath*:/config/sqlmap/*.sql.xml" />
+		<property name="cacheConfiguration" ref="cacheConfiguration" />
+		<property name="plugins">
+			<list>
+				<ref local="paginationInterceptor" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="config.datasource" class="com.talkweb.twdpe.dal.datasource.DataSourceGather" scope="singleton">
+		<property name="pools">
+			<map>
+				<entry key="main" value-ref="config.datasource.main" /> 
+			</map>
+		</property>
+	</bean> 
+ 	
+ 	<bean id="cacheConfiguration" class="com.talkweb.twdpe.dal.batis.CacheConfiguration">
+		<property name="cacheSource" ref="config.cache.ehcache" />
+		<property name="keyPrefix" value="__Dal_" />
+	</bean>
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>  
+	
+	<bean id="paginationInterceptor" class="com.talkweb.twdpe.dal.batis.intercept.PaginationInterceptor">
+	     <property name="dialect" ref="com.talkweb.twdpe.dal.jdbc.dialect.MySqlDialect"/>
+	  <!--  <property name="dialect" ref="com.talkweb.twdpe.dal.jdbc.dialect.OracleDialect"/> -->
+	</bean>
+	
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"  />
+	
+	<!-- 定义事务管理器（声明式的事务） -->  
+ 	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
+          <property name="dataSource" ref="datasource"></property>
+    </bean>
+    
+	<tx:advice id="componentTxAdvice" transaction-manager="transactionManager"  >
+		<tx:attributes>
+			<tx:method name="delete*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />
+			<tx:method name="add*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />
+			<tx:method name="modify*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />
+			<tx:method name="bind*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />	
+			<tx:method name="unbind*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />			
+			<tx:method name="privilege*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />			
+			<tx:method name="remove*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />	
+			<tx:method name="sort*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception,Throwable" />															
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="txComponent"  expression="execution( * com.talkweb.twdpe.base..service..*.*(..))" />   
+		<aop:advisor pointcut-ref="txComponent" advice-ref="componentTxAdvice"  order="1" /> 
+	</aop:config>
+</beans>

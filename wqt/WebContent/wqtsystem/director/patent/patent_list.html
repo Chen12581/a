@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>业务员挂卖的专利</title>
+<link href='../../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/patent_list.js"></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 90px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+				 <form id="dictDataForm" class="easyui-form" method="get" >
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>业务员:</th>
+							<td><input id="displayname" class="easyui-textbox" style="width: 100%; margin: 0px; padding: 0;"/></td>
+							<th>专利名称:</th>
+							<td><input id="patentname" class="easyui-textbox" style="width: 100%; margin: 0px; padding: 0;"/></td>
+							<th>专利号:</th>
+							<td><input id="patentno"  class="easyui-textbox" style="width: 100%; margin: 0px; padding: 0;"/></td>
+							<th>商标编码:</th>
+							<td><input id="shopcode"  class="easyui-textbox" style="width: 100%; margin: 0px; padding: 0;"/></td>
+							<th>行业分类:</th>
+							<td style="height:50px;">
+							   <input class="easyui-combobox" 
+									  id="kindid"
+									  style="width: 100%; margin: 0px; padding: 0;"
+									  data-options="
+												url:'sysPatent_patentkind.action',
+												method:'get',
+											    valueField:'value',
+							                    textField:'text',
+												panelHeight:'auto'
+								">
+							</td>
+<!-- 							<th valign="middle">专利类型：</th> -->
+<!-- 							<td style="height:50px;"> -->
+<!-- 							     <select style="width: 100%; margin: 0px; padding: 0;" margin: 0px; padding: 0;" id="patenttype"  class="easyui-combobox"> -->
+<!-- 							     	<option value="">不限</option> -->
+<!-- 								   	<option value="1">发明专利</option> -->
+<!-- 								   	<option value="2">实用新型</option> -->
+<!-- 								   	<option value="3">外观设计</option> -->
+<!-- 							     </select> -->
+<!-- 							</td> -->
+<!-- 							<th valign="middle">交易类型：</th> -->
+<!-- 							<td> -->
+<!-- 							     <select style="width: 100%; margin: 0px; padding: 0;" id="busikind"  class="easyui-combobox"> -->
+<!-- 							     	<option value="">不限</option> -->
+<!-- 								   	<option value="1">出售商品</option> -->
+<!-- 								   	<option value="2">授权商品</option> -->
+<!-- 							     </select> -->
+<!-- 							</td> -->
+<!-- 							<th valign="middle">是否特价：</th> -->
+<!-- 							<td> -->
+<!-- 							     <select style="width: 100%; margin: 0px; padding: 0;" id="isspecial"  class="easyui-combobox"> -->
+<!-- 							     	<option value="">不限</option> -->
+<!-- 								   	<option value="1">特价商品</option> -->
+<!-- 								   	<option value="2">非特价商品</option> -->
+<!-- 							     </select> -->
+<!-- 							</td> -->
+							<th>选择状态:</th>
+							<td>
+							 <select id="state"  class="easyui-combobox" style="width: 100%; margin: 0px; padding: 0;">
+							    <option value="">请选择</option>
+							    <option value="1">编辑</option>	
+							    <option value="2">在售</option>	
+								<option value="3">已预订</option>	
+								<option value="4">已售</option>
+								<option value="5">下架</option>	
+								<option value="6">停售</option>
+							  </select >
+						    </td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			 </div>
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			</div>
+		    
+			  
+			
+
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'业务员挂的专利列表', 
+					              iconCls      :'icon-ex-grid' ,
+								        url          :'sysPatent_selectPatentShopLists.action',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :50,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'startvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'endvalidity'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'patentname',width:180  ,halign:'center' ,align:'center',formatter:formatname">专利名称</th>
+							<th data-options="field:'shopcode',width:120  ,halign:'center' ,align:'center'">商品编号</th>
+							<th data-options="field:'patenttype',width:80  ,halign:'center' ,align:'center',formatter:formattype">专利类型</th>
+							<th data-options="field:'patentno',width:100  ,halign:'center' ,align:'center'">专利号</th>
+							<th data-options="field:'kindname',width:80  ,halign:'center' ,align:'center'">行业分类</th>
+							<th data-options="field:'busikind',width:80 ,halign:'center' ,align:'center',formatter:formatkind">交易类型</th>
+							<th data-options="field:'isspecial',width:120 ,halign:'center' ,align:'center',formatter:formatiss">是否特价</th>
+							<th data-options="field:'patentstate',width:100  ,halign:'center' ,align:'center',formatter:formatpstate">专利状态</th>
+							<th data-options="field:'price',width:100  ,halign:'center' ,align:'center'">出售价格</th>
+							<th data-options="field:'developtime',width:150  ,halign:'center' ,align:'center'">发布时间</th>
+							<th data-options="field:'_operate',width:165 ,halign:'center' ,align:'center',formatter:formatvalidity">有效期至</th>
+							<th data-options="field:'patentdesc',width:150  ,halign:'center' ,align:'center'">专利详情</th>
+							<th data-options="field:'state',width:80 ,halign:'center' ,align:'center',formatter:formatstate">状态</th>
+							<th data-options="field:'displayname',width:80  ,halign:'center' ,align:'center'">业务员</th>
+<!-- 							<th data-options="field:'_oper',width:200,align:'center',formatter:formatOper">操作</th>  -->
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+<!-- 			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="doAdd()">新增</a> -->
+<!-- 			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a> -->
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

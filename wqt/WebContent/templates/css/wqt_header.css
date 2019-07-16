@@ -1,0 +1,212 @@
+body{
+    font-family: "MicrosoftYaHei";
+    font-size: 12px;
+    background:#FDFDFD; 
+    -webkit-user-select: none;  
+    -moz-user-select: none;  
+    -ms-user-select: none;  
+    user-select: none;
+}
+*{
+    margin: 0;
+    padding:0;
+}
+a, a * {
+    text-decoration: none;
+    outline: none;
+}
+ul, li, ol {
+    list-style: none outside none;
+}
+li {
+    vertical-align: bottom;
+}
+input, button {
+    border: 0;
+    outline: none;
+    background: none;
+}
+textarea{
+    outline: none;
+}
+input::-webkit-input-placeholder{
+    letter-spacing: 1px;
+	color: #b3b3b3;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    letter-spacing: 1px;
+	color: #b3b3b3;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    letter-spacing: 1px;
+	color: #b3b3b3;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    letter-spacing: 1px;
+	color: #b3b3b3;
+}
+img {
+    max-width: 100%;
+    /* height: 100%; */
+    border: 0;
+    outline: none;
+    /* vertical-align: middle; */
+}
+.clear:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.header{
+    min-width:1200px; 
+    background-color: #ffffff;
+}
+.header .top{
+    height: 42px;
+    line-height: 42px;
+    background-color:#f2f2f2; 
+	font-size: 12px;
+}
+.header .top .top_box{
+    width:1200px;
+    margin: 0 auto;
+}
+.header .top .top_left{
+    height: 100%;
+    float: left;
+}
+.header .top .top_right{
+    height: 100%;
+    float: right;
+}
+.header .top .top_left >p{
+    display: inline-block;
+}
+.header .top .top_left >p a{
+    display: inline-block;
+    letter-spacing: 0px;
+    color: #4d4d4d;
+    line-height: 13px;
+}
+.header .top .top_left >p a:first-child{
+    padding:0 10px;
+    margin:0 10px;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+	color:#336699;
+}
+.header .top .top_right .top_menu{
+    float: left;
+}
+.header .top .top_right .hot_tel{
+    float: left;
+    color:#4d4d4d;
+    letter-spacing: 0px;
+    height: 100%;
+    padding:0 0 0 25px;
+}
+.header .top .top_right .hot_tel span{
+    font-weight: bold;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+.header .top .top_right .top_menu >li {
+    float: left;
+    height: 100%;
+    line-height: 42px;
+}
+.header .top .top_right .top_menu >li a{
+    letter-spacing: 0px;
+    color: #4d4d4d;
+    position: relative;
+}
+.header .top .top_right .top_menu >li:not(:last-child) a{
+    padding-right: 13px;
+}
+.header .top .top_right .top_menu >li:not(:first-child) a{
+    padding-left: 13px;
+}
+.header .top .top_right .top_menu >li:not(:last-child) a:before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 12px;
+    top: 50%;
+    margin-top: -6px;
+    right: 0;
+    background: #e6e6e6;
+}
+
+.header .bottom{
+    height: 117px;
+    background-color:#ffffff;
+    position: relative; 
+}
+.header .bottom .bottom_box{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top:20px;
+}
+.header .bottom .bottom_box .logo{
+    height: 58px;
+    float: left;
+    line-height: 78px;
+    padding-top: 6px;
+}
+.header .bottom .bottom_box .logo>a{
+    display: block;
+    height: 100%;
+    width: 184px;
+}
+.header .bottom .bottom_box .nav{
+    float: right;
+    height: 78px;
+    line-height: 78px;
+    margin-left:43px; 
+}
+.header .bottom .bottom_box .nav ul li{
+    float: left;
+    position: relative;
+}
+.header .bottom .bottom_box .nav ul li a{
+    font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0px;
+    color: #4d4d4d;
+    padding:0 17px;
+}
+.header .bottom .bottom_box .nav ul li a:hover{
+    color:#145fbc;
+}
+.header .bottom .bottom_box .nav ul li.centerl a {
+    padding-right: 10px;
+}
+.header .bottom .bottom_box .nav ul li.on a{
+    color:#5968d1;
+}
+.qyfw>a,.zscq>a,.wdfw>a,.hlfw>a{
+    padding:0 24px 0 24px !important;
+    background: url(../image/header/1.png) no-repeat center right;
+}
+.header .bottom .bottom_box .nav>ul>li>div{
+    width: 122px;
+    background: #ffffff;
+    position: absolute;
+    padding-top:30px;
+    padding-bottom:10px;
+    top:48px;
+    z-index: 9;
+    display: none;
+}
+.header .bottom .bottom_box .nav>ul>li>div p{
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+}
+.header .bottom .bottom_box .nav>ul>li>div p a{
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #808080;
+    display: block;
+}

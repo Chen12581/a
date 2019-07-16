@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.area">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+	
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.org.pojo.Area" >
+	    insert into DP_AREA(area, upArea, areaName, nodeLvl, orderby, isDelete,fullName)
+	    values (#{area},#{upArea},#{areaName},#{nodeLvl},#{orderby},#{isDelete},#{fullName})
+	</insert>
+	
+	<select id="delete" parameterType="string">
+		delete from DP_AREA where area = #{area}
+	</select>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.org.pojo.Area" >
+		update DP_AREA 
+		<set>
+			<if test="upArea!=null">
+				upArea = #{upArea},
+			</if>
+			<if test="areaName!=null">
+				areaName = #{areaName},
+			</if>
+			<if test="fullName!=null">
+				fullName = #{fullName},
+			</if>
+			<if test="nodeLvl!=null">
+				nodeLvl = #{nodeLvl},
+			</if>
+			<if test="orderby!=null">
+				orderby = #{orderby},
+			</if>
+			<if test="isDelete!=null">
+				isDelete = #{isDelete},
+			</if>
+		</set>
+		where area = #{area}
+	</update>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.org.pojo.Area" >
+		select * from DP_AREA where isDelete=0 order by UPAREA,orderby,AREA
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="string" resultType="com.talkweb.twdpe.base.org.pojo.Area" >
+		select * from DP_AREA where area=#{areaId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.org.pojo.Area" resultType="com.talkweb.twdpe.base.org.pojo.Area" >
+		select * from DP_AREA 
+		<where>
+			<if test="upArea!=null">
+				and upArea = #{upArea}
+			</if>
+			<if test="areaName!=null">
+				and areaName like '%${areaName}%'
+			</if>
+			<if test="fullName!=null">
+				and fullName like '%${fullName}%'
+			</if>
+			<if test="nodeLvl!=null">
+				and nodeLvl = #{nodeLvl}
+			</if>
+			<if test="orderby!=null">
+				and orderby = #{orderby}
+			</if>
+			<if test="isDelete!=null">
+				and isDelete = #{isDelete}
+			</if>
+		</where>
+		order by orderby,area		
+	</select>
+</mapper>

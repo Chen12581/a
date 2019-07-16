@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改客服 </title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<script  type="text/javascript" src="js/wqtWorker_update.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+		<table class="ui-table">
+          	<tr>
+				<th valign="middle">用户头像：</th>
+				<td style="width:420px;">
+			   		<form  id="upload" class="easyui-form" method="post" enctype="multipart/form-data">
+			 			<input class="easyui-filebox" style="width: 300px"   buttonText="选择图片"  data-options="onChange:function(){fileup(this)},prompt:'选择图片...',accept:'image/*'" id="uploadName" name="uploadName" />
+<!-- 				  		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="uploadfile()">上传</a> -->
+			  	 	</form>
+				</td>
+		   	</tr> 
+		   	<tr>
+		   		<th valign="middle">用户头像：</th>
+				<td style="width:420px;">
+			   		<img alt="" id="viewimg" name="viewimg" src="">
+				</td>
+		   	</tr>
+		   	<tr>
+				<th valign="middle">二维码：</th>
+				<td style="width:420px;">
+			   		<form  id="upload1" class="easyui-form" method="post" enctype="multipart/form-data">
+			 			<input class="easyui-filebox" style="width: 300px"   buttonText="选择图片"  data-options="onChange:function(){fileup1(this)},prompt:'选择图片...',accept:'image/*'" id="uploadName1" name="uploadName1" />
+<!-- 				  		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="uploadfile1()">上传</a> -->
+			  	 	</form>
+				</td>
+		   	</tr> 
+		   	<tr>
+		   		<th valign="middle">二维码：</th>
+				<td style="width:420px;">
+			   		<img alt="" id="viewimg1" name="viewimg1" src="">
+				</td>
+		   	</tr> 
+        </table>
+       <form id="workerForm" action="sysWorker_updateWqtWorker.action" class="easyui-form" method="get" > 
+       <input type="hidden" id="headurl" name="wqtWorker.headurl"/>
+       <input type="hidden" id="weixin" name="wqtWorker.weixin"/>
+       <input type="hidden" id="id" name="wqtWorker.id"/>
+		<table class="ui-table">
+			<tr>
+				<th valign="middle" >用户名</th>
+				<td style="width:220px; height:50px;">
+				     <input id="username" name="wqtWorker.username" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">类别</th>
+				<td style="width:220px;">
+					<div class="select">
+					     <input class="easyui-combobox" 
+					     id="workerkind"
+					     name="wqtWorker.workerkind"
+						 style="width:200px;"
+						 data-options="
+								url:'sysWorker_selWorkerKind.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'
+						">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">姓名：</th>
+				<td style="width:220px; height:50px;">
+				     <input id="workername" name="wqtWorker.workername" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				
+				<th valign="middle">性别：</th>
+				<td style="width:220px; height:50px;">
+				     <input id="sex" name="wqtWorker.sex" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">工号：</th>
+				<td style="width:220px; height:50px;">
+				     <input id="workercode" name="wqtWorker.workercode" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">qq：</th>
+				<td style="width:220px;height:50px;">
+				     <input  id="qq" name="wqtWorker.qq" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				
+			</tr>
+			<tr>
+				<th valign="middle">联系电话：</th>
+				<td style="width:220px; height:50px;">
+				     <input id="mobile" name="wqtWorker.mobile" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">固定电话：</th>
+				<td style="width:220px; height:50px;">
+				     <input id="tel" name="wqtWorker.tel" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				
+				<th valign="middle">职位：</th>
+				<td style="width:220px;height:50px;">
+				     <input id="postname" name="wqtWorker.postname" class="easyui-textbox" style="width:200px;"/>
+				</td>
+				<th valign="middle">所属部门：</th>
+				<td style="width:220px;height:50px;">
+				     <input  id="departid" name="wqtWorker.departid" class="easyui-textbox" style="width:200px;"/>
+				</td>
+			</tr>
+			<tr>
+				
+				<th valign="middle">状态：</th>
+				<td style="width:220px;height:50px;">
+				     <select id="state" name="wqtWorker.state" style="width:200px;" class="easyui-combobox">
+				    	<option value="">请选择</option>
+					   	<option value="1">在职</option>
+					   	<option value="2">离职</option>
+					   	<option value="3">请假</option>
+				    </select>
+				</td>
+				<th >前台展示：</th>
+				<td style="width:220px;height:50px;">
+					<select id="isshow" name="wqtWorker.isshow" style="width:200px;" class="easyui-combobox">
+				    	<option value="">请选择</option>
+					   	<option value="1">展示</option>
+					   	<option value="2">不展示</option>
+				    </select>
+			     </td>
+			</tr>
+		</table>
+		
+	</form>
+	
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="uploadfile()" style="width:80px">上传</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

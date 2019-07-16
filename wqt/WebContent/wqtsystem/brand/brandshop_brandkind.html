@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新闻列表</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" >
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              iconCls      :'icon-ex-grid' ,
+								        url    :'',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :false,
+					              pagination   :true,
+				                  pageSize     :20,
+					              method       :'get',
+					              striped      :true">
+					<thead id="thead">
+						<tr>
+							<th id="dd" data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'ck',checkbox:true"></th> 
+							<th data-options="field:'brandkind'  ,width:100  ,halign:'center' ,align:'center'">类别</th>
+							<th data-options="field:'groupcode'  ,width:100  ,halign:'center' ,align:'center'">群组编号</th>
+							<th data-options="field:'itemcode'  ,width:100  ,halign:'center' ,align:'center'">项目编号</th>
+							<th data-options="field:'itemname'  ,width:400  ,halign:'center' ,align:'center'">项目名称</th>
+						</tr>
+					</thead>
+				</table>
+			<!--== ! End DataGrid ==-->
+			<div id="toolbar">
+				<a href="#" class="easyui-linkbutton" style="margin-right: 50px;" data-options="iconCls:'icon-save'" onclick="save()">保存</a>
+				<input data-options="prompt:'请输入适用项目,例:服装'" id="itemname"  class="easyui-textbox" style="width:200px;" />
+		     	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="select()">查询</a>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+<script  type="text/javascript" src='js/brandshop_brandkind.js'></script>
+</html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqthelp"> 
+
+      <!--查询用户中心常见问题分类 -->
+	  <select id="selectWqtProblemKind" 
+		        resultType="com.problem.pojo.ProblemKind">
+		    select * from wqt_problemkind 
+		    where 1=1
+		    <if test="null!= id and ''!= id">
+			    and  id=#{id}
+			</if>
+			<if test="null!= problemkind and ''!= problemkind">
+			    and  problemkind=#{problemkind}
+			</if>
+	   </select>
+	   
+	   <select id="distSelectWqtProblemKind" 
+		        resultType="com.problem.pojo.ProblemKind">
+		    select 
+             *
+             from wqt_problemkind 
+			 order by id desc
+	   </select>
+	   
+	  <!--查询用户中心常见问题大类 -->
+	  <select id="selectdisProblemKind" 
+		        resultType="com.problem.pojo.ProblemKind">
+		    select 
+              distinct problemkind,problemkindname
+             from wqt_problemkind a
+	   </select>
+	   
+       <!--保存用户中心常见问题  -->
+       <insert id="insertWqtProblem" parameterType="com.problem.pojo.Problem">
+		insert into wqt_problem
+		(
+		<trim suffix="" suffixOverrides=",">
+			<if test="null!= problemkind and ''!= problemkind">problemkind,</if>
+			<if test="null!= sonproblemkind and ''!= sonproblemkind">sonproblemkind,</if>
+			<if test="null!= title and ''!= title">title,</if>
+			<if test="null!= simpledesc and ''!= simpledesc">simpledesc,</if>
+			<if test="null!= content and ''!= content">content,</if>
+			<if test="null!= pathkey and ''!= pathkey">pathkey,</if>
+			<if test="null!= htmlpath and ''!= htmlpath">htmlpath,</if>
+		</trim>
+		)
+		values
+		(
+		<trim suffix="" suffixOverrides=",">
+			<if test="null!= problemkind and ''!= problemkind">#{problemkind},</if>
+			<if test="null!= sonproblemkind and ''!= sonproblemkind">#{sonproblemkind},</if>
+			<if test="null!= title and ''!= title">#{title},</if>
+			<if test="null!= simpledesc and ''!= simpledesc">#{simpledesc},</if>
+			<if test="null!= content and ''!= content">#{content},</if>
+			<if test="null!= pathkey and ''!= pathkey">#{pathkey},</if>
+			<if test="null!= htmlpath and ''!= htmlpath">#{htmlpath},</if>
+		</trim>
+		)
+	  </insert>
+	   
+	  <select id="selectPreWqtProblem"
+       		parameterType="com.problem.pojo.Problem"
+       		resultType="com.problem.pojo.Problem">
+       		select * from wqt_problem 
+       		where 
+       		id=(select max(id) from wqt_problem
+                <![CDATA[      where  id<#{id})   ]]>
+       </select>
+       
+       <select id="selectNextWqtProblem"
+       		parameterType="com.problem.pojo.Problem"
+       		resultType="com.problem.pojo.Problem">
+       		select * from wqt_problem 
+       		where
+       		id=(select min(id) from wqt_problem
+                     where id>#{id})
+       </select>
+       
+	  <!--查询用户中心常见问题 -->
+	  <select id="selectWqtProblemList" 
+		        parameterType="com.problem.pojo.Problem" 
+		        resultType="com.problem.pojo.Problem">
+		    select 
+             *
+             from wqt_problem a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= title and ''!= title">
+			   and   a.title=#{title}
+			</if>
+			<if test="null!= problemkind and ''!= problemkind">
+			   and   a.problemkind=#{problemkind}
+			</if>
+			<if test="null!= sonproblemkind and ''!= sonproblemkind">
+			   and   a.sonproblemkind=#{sonproblemkind}
+			</if>
+			<if test="null!= pathkey and ''!= pathkey">
+			   and   a.pathkey=#{pathkey}
+			</if>
+			<if test="null!= searchkey and ''!= searchkey">
+			     and  MATCH (title, simpledesc, content) AGAINST (#{searchkey}  IN  NATURAL LANGUAGE  MODE)
+			</if>
+			order by createtime desc
+	   </select>
+	
+	   <!-- 删除用户中心常见问题  -->
+	   <delete id="deleteWqtProblem" parameterType="com.problem.pojo.Problem">
+			 delete  from wqt_problem
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+		</delete>
+		
+	   <!--修改用户中心常见问题 -->
+	  <update id="updateWqtProblem" parameterType="com.problem.pojo.Problem">
+		update wqt_problem
+		<set>
+			<trim suffix="" suffixOverrides=",">
+			        <if test="null!= sonproblemkind and ''!= sonproblemkind">sonproblemkind=#{sonproblemkind},</if>
+			        <if test="null!= problemkind and ''!= problemkind">problemkind=#{problemkind},</if>
+					<if test="null!= title and ''!= title">title=#{title},</if>
+					<if test="null!= simpledesc and ''!= simpledesc">simpledesc=#{simpledesc},</if>
+					<if test="null!= content and ''!= content">content=#{content},</if>
+					<if test="null!= pathkey and ''!= pathkey">pathkey=#{pathkey},</if>
+					<if test="null!= htmlpath and ''!= htmlpath">htmlpath=#{htmlpath},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+ 
+</mapper>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"        
+"http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<urlrewrite>
+   <rule>
+      <from>^/order/pay/([0-9,]+)/type/([0-9]+)$</from>
+      <to>orderPayment?ordercode=$1&amp;ordertype=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/buyer/list$</from>
+      <to>iprBuyerOrder</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/buyer/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>iprBuyerOrder?orderstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/shop/seller/list$</from>
+      <to>iprSellerShop</to>      
+   </rule>
+   
+   <rule>
+      <from>^/shop/seller/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>iprSellerShop?shopstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+    <rule>
+      <from>^/shop/es/seller/list$</from>
+      <to>esSellerShop</to>      
+   </rule>
+   
+   <rule>
+      <from>^/shop/es/seller/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>esSellerShop?shopstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/shop/wd/seller/list$</from>
+      <to>eShopSellerShop</to>      
+   </rule>
+     
+   <rule>
+      <from>^/shop/wd/seller/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>eShopSellerShop?shopstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/buyer/cancel/([0-9]+)*/type/([0-9]+)*$</from>
+      <to>iprCancelBuyerOrder?ordercode=$1&amp;ordertype=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/suggest$</from>
+      <to>usersuggest</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/suggestlist$</from>
+      <to>userSuggestlist</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/suggestlist/([0-9]+)*$</from>
+      <to>userSuggestlist?pagenum=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/postaddr$</from>
+      <to>userPostaddr</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/contract$</from>
+      <to>usercontract</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/es/buyer/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>esBuyerOrder?orderstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/es/buyer/list*$</from>
+      <to>esBuyerOrder</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/wd/buyer/([0-9]+)*/list/([0-9]+)*$</from>
+      <to>eShopBuyerOrder?orderstate=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/wd/buyer/list*$</from>
+      <to>eShopBuyerOrder</to>      
+   </rule>
+   
+   <rule>
+      <from>^/order/buyer/es/cancel/([0-9]+)*/type/([0-9]+)*$</from>
+      <to>esCancelBuyerOrder?ordercode=$1&amp;ordertype=$2</to>      
+   </rule>
+   
+    <rule>
+      <from>^/order/buyer/wd/cancel/([0-9]+)*/type/([0-9]+)*$</from>
+      <to>eShopCancelBuyerOrder?ordercode=$1&amp;ordertype=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/capital$</from>
+      <to>userCapitalList</to>      
+   </rule>
+   <rule>
+      <from>^/user/capital/([0-9]+)*$</from>
+      <to>userCapitalList?pagenum=$1</to>      
+   </rule>
+   
+    <rule>
+      <from>^/user/bill$</from>
+      <to>userBill</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/bill/([0-9]+)*$</from>
+      <to>userBill?pagenum=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/recharge$</from>
+      <to>userRecharge</to>      
+   </rule>
+  
+   <rule>
+      <from>^/user/withdraw$</from>
+      <to>userWithDraw</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/bank$</from>
+      <to>usersBank</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/bank/([0-9]+)*$</from>
+      <to>usersBank?pagenum=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/collection$</from>
+      <to>usercollect</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/collection/([0-9]+)*$</from>
+      <to>usercollect?pagenum=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/personalinfo$</from>
+      <to>userBasic</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/center$</from>
+      <to>userCenter</to>      
+   </rule>
+   
+    <rule>
+      <from>^/user/safety$</from>
+      <to>userSecurity</to>      
+   </rule>
+   
+    <rule>
+      <from>^/user/register\.html$</from>
+      <to>register</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/helpcenter\.html$</from>
+      <to>helpuser.action</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/login\.html$</from>
+      <to>tologin</to>      
+   </rule>
+   
+   <rule>
+      <from>^/404\.html$</from>
+      <to>notfound.action</to>      
+   </rule>
+  
+   <rule>
+      <from>^/helpcenter/about\.html$</from>
+      <to>aboutus</to>      
+   </rule> 
+   
+   
+   <rule>
+      <from>^/problem/([0-9]+)*\.html$</from>
+      <to>problemInfo?pathkey=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/problem/([a-zA-Z]+)/([0-9]+)*\.html$</from>
+      <to>problemKind?kindkey=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/problem/search/(.*)/([0-9]+)*\.html$</from>
+      <to>problemSearch?searchkey=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/fpassword\.html$</from>
+      <to>findPassword</to>      
+   </rule>
+   
+ 
+    <rule>
+      <from>^/user/mobile$</from>
+      <to>modifymobile</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/email$</from>
+      <to>findemail</to>      
+   </rule> 
+   
+   <rule>
+      <from>^/user/password$</from>
+      <to>modifypassword</to>      
+   </rule>
+   
+   <rule>
+      <from>^/news/([0-9]+)*_([0-9]+)*/([0-9]+)*\.html$</from>
+      <to>wqtNewsList?kindid=$1&amp;labelid=$2&amp;pagenum=$3</to>      
+   </rule>
+   
+   <rule>
+      <from>^/news/news\.html$</from>
+      <to>wqtNewsList</to>      
+   </rule>
+   
+   <rule>
+      <from>^/news/([0-9]+)*\.html$</from>
+      <to>wqtNewsInfo?pathkey=$1</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/signup\.html$</from>
+      <to>threeLoginCheck</to>      
+   </rule>
+   
+    <rule>
+      <from>^/user/oauth\.html$</from>
+      <to>threeLoginOauth</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/adviser\.html$</from>
+      <to>adviser</to>      
+   </rule>
+   
+   <rule>
+      <from>^/user/adviser/([a-zA-Z]+)/([0-9]+)\.html$</from>
+      <to>adviser?workerkind=$1&amp;pagenum=$2</to>      
+   </rule>
+   
+   <rule>
+      <from>^/siteMap\.html$</from>
+      <to>siteMap.action</to>      
+   </rule>
+   
+   <rule>
+      <from>^/cases/([0-9]+)*\.html$</from>
+      <to>wqtCasesInfo?pathkey=$1</to>      
+   </rule>
+   <rule>
+      <from>^/cases/caseslist\.html$</from>
+      <to>wqtCasesList</to>      
+   </rule>
+   <rule>
+      <from>^/cases/caseslist_([0-9]+)*\.html$</from>
+      <to>wqtCasesList?pagenum=$1</to>      
+   </rule>
+   
+</urlrewrite>

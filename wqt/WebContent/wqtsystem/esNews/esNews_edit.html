@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新闻编辑</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/icon-extend.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/form-table.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../support/easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../common/js/jquery.validate.extend.js'></script>
+<script  type="text/javascript" src='../common/js/common.js'></script>
+<script  type="text/javascript" src='../support/layer/layer.js'></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="../../ueditor/ueditor.all.js"></script>
+<link rel="stylesheet"  href="../../ueditor/themes/default/css/ueditor.css" />
+<link rel="stylesheet"  href="../../ueditor/themes/default/css/ueditor.min.css" />
+<script  type="text/javascript" src="../../js/ajaxfileupload.js" ></script>
+<script  type="text/javascript" src="js/esNews_edit.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+			    <div>
+			    	<table class="ui-table">
+			          <tr>
+						<th valign="middle">新闻图标：</th>
+						<td style="width:420px;">
+						   <form  id="upload" class="easyui-form" method="post" enctype="multipart/form-data">
+							  <input class="easyui-filebox" style="width: 300px"   buttonText="选择图片"  data-options="onChange:function(){fileup(this)},prompt:'选择图片...',accept:'image/*'" id="uploadName" name="uploadName" />
+							  <a href="javascript:void(0)" class="easyui-linkbutton" onclick="uploadfile()">上传</a>
+						   </form>
+						</td>
+					   </tr> 
+					   <tr>
+					   	<th valign="middle">新闻图标：</th>
+						<td style="width:420px;">
+						   <img alt="" id="viewimg" name="viewimg" src="">
+						</td>
+					   </tr> 
+			        </table>
+			       <form id="new_editform" action="sysEsNews_updateEsNews.action" class="easyui-form" method="get" >
+			        <input  style="display: none;" id="id" name="esnews.id" ></input>
+			        <input  style="display: none;" id="newicon" name="esnews.newicon"></input> 
+			        <input  style="display: none;" id="content" name="esnews.content"></input>
+					<input  style="display: none;" id="hits" name="esnews.hits"></input>
+					   <table class="ui-table">
+						<tr>
+							<th valign="middle">新闻标题：</th>
+							<td style="width:420px;">
+							     <input id="title" name="esnews.title" class="easyui-textbox" style="width:400px;"/>
+							</td>
+						</tr>
+						<tr>
+							<th valign="middle">新闻分类：</th>
+							<td style="width:200px;">
+							     <div class="select">
+							         <input class="easyui-combobox" 
+									  id="kindid"
+									  name="esnews.kindid"
+									  style="width:200px;"
+									  data-options="
+												url:'sysEsNews_newsKindCombo.action',
+												method:'get',
+											    valueField:'value',
+							                    textField:'text',
+												panelHeight:'auto'
+								    ">
+				                 </div>
+							</td>
+						</tr>
+						<tr>
+							<th valign="middle">是否推荐：</th>
+							<td style="width:220px;height: 30px;">
+								<select style="width:200px;" id="hotrecom" name="esnews.hotrecom" class="easyui-combobox">
+							     	<option value="">不限</option>
+								   	<option value="1">不推荐</option>
+								   	<option value="2">推荐</option>
+							     </select>
+							</td>
+						</tr>
+						<tr>
+							<th valign="middle">新闻方式：</th>
+							<td style="width:220px;height: 30px;">
+								<select style="width:200px;" id="myother" name="esnews.myother" class="easyui-combobox">
+							     	<option value="">不限</option>
+								   	<option value="1">原创</option>
+								   	<option value="2">转载</option>
+							     </select>
+							</td>
+						</tr>
+					 	<tr>
+							<th valign="middle">主关键词：</th>
+							<td style="width:420px;">
+							     <input id="mkeyword" name="esnews.mkeyword" class="easyui-textbox" style="width:400px;"/>
+							</td>
+						</tr>
+						<tr>
+							<th valign="middle">新闻标签：</th>
+							<td style="width:420px;">
+							     <input id="bookmark" name="esNewsBookmark.bookmark" class="easyui-textbox" style="width:400px;"/><font color="red">(请使用同样";"分隔)</font>
+							</td>
+						</tr>
+						<tr>
+							<th valign="middle">文章描述：</th>
+							<td style="width:420px;">
+								<input id="mdesc" maxlength="50" name="esnews.mdesc" class="easyui-textbox" style="width:400px;"/>
+							</td>
+						</tr>
+					   <tr>
+							<th valign="middle">新闻来源：</th>
+							<td style="width:420px;">
+							     <input id="sourcfrom" name="esnews.sourcfrom" class="easyui-textbox" style="width:400px;"/>
+							</td>
+						</tr>
+						<tr>
+							<th>
+							         新闻内容：
+							 </th>
+							<td>
+							     <div align="center" style="width:80%;">  
+							          
+							            <!-- <textarea id="newsEditor" name="esnews.content" style="height: 88%"></textarea>  -->
+			                             <textarea id="uecontent" name="uecontent" style="height: 88%"></textarea> 
+			                            <br/>  
+			                             <script type="text/javascript">
+			                                //UE.getEditor('newsEditor');
+			                                UE.getEditor('uecontent');
+			                            </script> 
+			                        </div>
+							</td>
+						</tr>
+						<tr>
+							<th>
+							 </th>
+							<td align="center">
+							    <a  class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="doSubmitForm()">保存</a> 
+				                <a style="margin-left:80px;"class="easyui-linkbutton" data-options="iconCls:'icon-back'" onclick="doClose()">关闭</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+				</div>
+	</div>
+</body>
+ <!-- <script type="text/javascript">
+           UE.getEditor('newsEditor');       
+ </script>  -->   
+</html>

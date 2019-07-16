@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userthree"> 
+
+
+       <insert id="insertUserThreeparty" parameterType="com.wqt.three.pojo.WqtUserThreeparty">
+		insert into wqt_user_threeparty
+		(
+		<trim suffix="" suffixOverrides=",">
+		    <if test="null!= userid and ''!= userid">userid,</if>
+			<if test="null!= kind and ''!= kind">kind,</if>
+			<if test="null!= openid and ''!= openid">openid,</if>
+			<if test="null!= nickname and ''!= nickname">nickname,</if>
+			<if test="null!= province and ''!= province">province,</if>
+			<if test="null!= city and ''!= city">city,</if>
+			<if test="null!= avatar and ''!= avatar">avatar,</if>
+		</trim>
+		)
+		values
+		(
+		<trim suffix="" suffixOverrides=",">
+			<if test="null!= userid and ''!= userid">#{userid},</if>
+			<if test="null!= kind and ''!= kind">#{kind},</if>
+			<if test="null!= openid and ''!= openid">#{openid},</if>
+			<if test="null!= nickname and ''!= nickname">#{nickname},</if>
+			<if test="null!= province and ''!= province">#{province},</if>
+			<if test="null!= city and ''!= city">#{city},</if>
+			<if test="null!= avatar and ''!= avatar">#{avatar},</if>
+		</trim>
+		)
+	  </insert>
+	   
+	  <select id="selectUserThreepartyList" 
+		        parameterType="com.wqt.three.pojo.WqtUserThreeparty" 
+		        resultType="com.wqt.three.pojo.WqtUserThreeparty">
+		    select 
+             *
+             from wqt_user_threeparty a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= userid and ''!= userid">
+			   and   a.userid=#{userid}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			   and   a.kind=#{kind}
+			</if>
+			<if test="openid != null and openid != ''">
+			    and openid =#{openid}
+			</if>
+	   </select>
+		
+	  <update id="updateUserThreeparty" parameterType="com.wqt.three.pojo.WqtUserThreeparty">
+		update wqt_user_threeparty
+		<set>
+			<trim suffix="" suffixOverrides=",">
+			        <if test="null!= kind and ''!= kind">kind=#{kind},</if>
+					<if test="null!= userid and ''!= userid">userid=#{userid},</if>
+					<if test="null!= openid and ''!= openid">openid=#{openid},</if>
+					<if test="null!= nickname and ''!= nickname">nickname=#{nickname},</if>
+					<if test="null!= province and ''!= province">province=#{province},</if>
+					<if test="null!= city and ''!= city">city=#{city},</if>
+					<if test="null!= avatar and ''!= avatar">avatar=#{avatar},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+ 
+</mapper>

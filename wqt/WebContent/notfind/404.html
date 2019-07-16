@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25,maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon " type="images/x-icon" href="/image/logo.ico">
+    <title>404-页面不存在</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+        }
+        body h1,h2,h3,h4,h5,ul,li,a,img,dl,dt,dd,p{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .iim{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background:url("/notfind/404.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            /*background-attachment: fixed;*/
+        }
+        .center{
+            width: 1200px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .center span{
+            font-size: 44px;
+            color: #ff9700;
+            position: absolute;
+            right: 68%;
+            top: 86.5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="iim">
+        <div class="center">
+            <span id="develop">3</span>
+        </div>
+    </div>  
+  <script src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+    var secs=3;
+    var o=$("#develop");
+    function count(o) {  
+        if(secs==0){
+
+           if(window.history.length>1){
+              window.history.back();
+           }else{                       //若新窗口跳向404.html 关闭当前404
+              window.opener=null;      
+              window.open('','_self');
+              window.close();
+           }
+        }else{
+            o.html(secs);  
+            secs--;
+            setTimeout(function () {  
+                count(o);
+            },1000)
+        }
+    }
+    count(o);
+  </script>
+
+</body>
+</html>

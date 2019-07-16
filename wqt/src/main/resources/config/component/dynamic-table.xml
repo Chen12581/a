@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dynamic-mapping>
+	<!-- 
+		class 
+			id : 唯一ID
+			table : 扩展表名
+			name  : 暂时没用
+		property
+			name : java  变量命名
+			javaType : java 数据类型 暂时没用
+			jdbcType : jdbc 数据类型  合法值 见 JdbcType 类	
+			column  : 数据库列名
+			dbkey  : 是否为数据库主键，只能有一个
+		switch 
+			status : open 开启 close 关闭
+	 -->
+	 
+	<switch status="close" />
+	 
+	<class id="DP_ORG_EXT" table="DP_ORG_EXT" name="java.util.HashMap" >
+		<property name="ORGID"  javaType="int" jdbcType="NUMERIC" column="ORGID" dbkey="true" />
+		<property name="EXT1"  javaType="string" jdbcType="VARCHAR" column="EXT1"></property>
+		<property name="EXT2"  javaType="string" jdbcType="VARCHAR" column="EXT2"></property>
+		<property name="EXT3"  javaType="string" jdbcType="VARCHAR" column="EXT3"></property>
+	</class>
+
+	<class id="DP_STAFF_EXT" table="DP_STAFF_EXT" name="java.util.HashMap">
+		<property name="STAFFID"  javaType="int" jdbcType="NUMERIC" column="STAFFID" dbkey="true" />
+		<property name="EXT1"  javaType="string" jdbcType="VARCHAR" column="EXT1"></property>
+		<property name="EXT2"  javaType="string" jdbcType="VARCHAR" column="EXT2"></property>
+		<property name="EXT3"  javaType="string" jdbcType="VARCHAR" column="EXT3"></property>
+	</class>
+	
+</dynamic-mapping>

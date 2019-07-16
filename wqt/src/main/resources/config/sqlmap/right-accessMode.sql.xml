@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.accessMode">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		insert into DP_ACCESSMODE
+		  (MODEID, MODENAME, MODETYPE, APPID, URL, PARAM, ACTION, MODEDESC)
+		values
+		  (#{modeId}, #{modeName}, #{modeType},#{appId},#{url:VARCHAR},#{param:VARCHAR},#{action:VARCHAR},#{modeDesc:VARCHAR})
+	</insert>
+	
+	<delete id="delete" parameterType="string">
+		delete from DP_ACCESSMODE where modeId = #{modeId}
+	</delete>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		update DP_ACCESSMODE 
+		<set>
+			<if test="modeName!=null">
+				MODENAME = #{modeName},
+			</if>
+			<if test="modeType!=null">
+				MODETYPE  = #{modeType},
+			</if>
+			<if test="appId!=null">
+				APPID  = #{appId},
+			</if>
+			<if test="url!=null">
+				URL  = #{url},
+			</if>
+			<if test="param!=null">
+				PARAM  = #{param},
+			</if>
+			<if test="action!=null">
+				ACTION  = #{action},
+			</if>	
+			<if test="modeDesc!=null">
+				MODEDESC  = #{modeDesc},
+			</if>				
+		</set>
+		where modeid = #{modeId}
+	</update>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		select * from DP_ACCESSMODE
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="string" resultType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		select * from DP_ACCESSMODE where modeId = #{modeId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.AccessMode"   resultType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		select * from DP_ACCESSMODE
+		
+		<where>
+			<if test="modeId!=null">
+				and modeId = #{modeId}
+			</if>
+			<if test="modeName!=null">
+				and modeName like '%${modeName}%'
+			</if>
+			<if test="modeType!=null">
+				and modeType = #{modeType}
+			</if>
+			<if test="appId!=null">
+				and appId = #{appId}
+			</if>
+			<if test="url!=null">
+				and url like '%${url}%'
+			</if>
+			<if test="param!=null">
+				and param like '%${param}%'
+			</if>
+			<if test="action!=null">
+				and action like '%${action}%'
+			</if>						
+		</where>
+		order by appid,modeId
+	</select>
+	
+	<select id="selectByResource" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+		select m.* from DP_ACCESSMODE m,dp_permission p
+		where m.modeid = p.modeid and p.resourcecode = #{resource}
+		<if test="mode.modeId!=null">
+			and m.modeId = #{mode.modeId}
+		</if>
+		<if test="mode.modeName!=null">
+			and m.modeName like '%${mode.modeName}%'
+		</if>
+		<if test="mode.modeType!=null">
+			and m.modeType = #{mode.modeType}
+		</if>
+		<if test="mode.appId!=null">
+			and m.appId = #{mode.appId}
+		</if>
+		<if test="mode.url!=null">
+			and m.url like '%${mode.url}%'
+		</if>
+		<if test="mode.param!=null">
+			and m.param like '%${mode.param}%'
+		</if>
+		<if test="mode.action!=null">
+			and m.action like '%${mode.action}%'
+		</if>
+		order by m.modeId
+	</select>
+	
+	<select id="selectByNoResource" useCache="false" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.AccessMode" >
+	    select m.* from DP_ACCESSMODE m
+	    where m.modeid not in (select MODEID from dp_permission where resourcecode = #{resource})
+	    and m.appId = (select APPID from DP_RESOURCE where resourcecode = #{resource})
+		<if test="mode.modeId!=null">
+			and m.modeId = #{mode.modeId}
+		</if>
+		<if test="mode.modeName!=null">
+			and m.modeName like '%${mode.modeName}%'
+		</if>
+		<if test="mode.modeType!=null">
+			and m.modeType = #{mode.modeType}
+		</if>
+		<if test="mode.url!=null">
+			and m.url like '%${mode.url}%'
+		</if>
+		<if test="mode.param!=null">
+			and m.param like '%${mode.param}%'
+		</if>
+		<if test="mode.action!=null">
+			and m.action like '%${mode.action}%'
+		</if>						
+		order by m.modeId		
+	</select>
+</mapper>

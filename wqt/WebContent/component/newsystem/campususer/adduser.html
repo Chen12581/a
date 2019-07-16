@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>新增用户</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="../../fastdev/fastDev-import.js"></script>
+		<script type="text/javascript" src="adduser.js"></script>		
+		<style>
+			html, body {
+				height:100%;
+			}
+			body {
+				padding:1px;
+				overflow:hidden;
+			}
+		</style>
+	</head>
+
+	<body scroll="no">
+		<form itype="Form" id="userForm" saveInstance="true" action="user_addUser.action" method="post" initSource="user_initUserData.action" submitJson="false" onSubmitSuccess="onSubmitSuccess()"  onAfterDataRender="onAfterDataRender()">
+			<div itype="TextBox" width="100%" id="userParts" saveInstance="true" type="hidden"></div>
+			<table class="ui-form-table">
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户账号：
+					</th>
+					<td class="ui-form-table-dd">
+						<div itype="TextBox" width="100%" id="staff.userCode" rule="required;MaxLength:128" tips="用户的应用系统登录ID，一般为用户的拼音如zhangsan。"></div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户编号：
+					</th>
+					<td class="ui-form-table-dd" >
+						<div itype="TextBox" width="100%" id="staff.staffCode" rule="required;MaxLength:50" tips="组织给用户的编码，HR编码、工号等 0288。"></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户姓名：
+					</th>
+					<td class="ui-form-table-dd" >
+						<div itype="TextBox" width="100%" id="staff.staffName" rule="required;MaxLength:64"></div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>登陆密码：
+					</th>
+					<td class="ui-form-table-dd" >
+						<div itype="TextBox" width="100%" id="user.password" type="password" rule="required;MaxLength:64"></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户性别：
+					</th>
+					<td class="ui-form-table-dd" >
+						<div itype="RadioGroup" id="staff.gender" rule="required">
+							<div value="1" text="男" checked="true"></div>
+							<div value="2" text="女"></div>
+						</div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户类型：
+					</th>
+					<td class="ui-form-table-dd" >
+						<select id="user.userType" itype="Select" width="100%" rule="required"><option>-请选择-</option></select>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>所属组织：
+					</th>
+					<td class="ui-form-table-dd" >
+						<div itype="SelectTree" width="100%" id="user.orgId" onBeforeReady="onOrgBeforeReady()" asyncDataSource="org_initGradeOrgTree.action?moduleId=M32&modeId=add" rootValue="-请选择-" topParentid="-1" textMaxLength="60" openFloor="2" rule="required" onchange="selectPos()"></div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">
+						<span class="ui-red">*</span>用户状态：
+					</th>
+					<td class="ui-form-table-dd">
+						<select id="user.status" itype="Select" width="100%" rule="required"><option>-请选择-</option></select>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">本职岗位：</th>
+					<td class="ui-form-table-dd">
+						<select id="user.positionId" itype="Select"  onBeforeReady="onPositionReady()"  width="100%"><option>-请选择-</option></select>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">上级用户：</th>
+					<td class="ui-form-table-dd">
+						<div style="float:left;border:none;">
+							<div itype="TextBox" type="hidden" id="user.upUserId" ></div>
+							<div style="margin-right:5px">
+							<div itype="TextBox" width="60px" id="user.backup1" readOnly="true"></div>
+							</div>
+						</div>
+						<div itype="Button" iconCls="icon-search" text="选择" onclick="doSelectUpUser()"></div>
+						<div itype="Button" iconCls="icon-reset" text="清空" onclick="doCleanUpUser()"></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">手机号码：</th>
+					<td class="ui-form-table-dd">
+						<div itype="TextBox" width="100%" id="staff.mobileNo" rule="IsMobile"></div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">办公电话：</th>
+					<td class="ui-form-table-dd">
+						<div itype="TextBox" width="100%" id="staff.otel" rule="IsTel"></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">身份证号：</th>
+					<td class="ui-form-table-dd">
+						<div itype="TextBox" width="100%" id="staff.cardno" rule="IsIdCard"></div>
+					</td>
+					<th class="ui-form-table-dt" style="width:100px;">邮箱地址：</th>
+					<td class="ui-form-table-dd">
+						<div itype="TextBox" width="100%" id="staff.oemail" rule="IsEmail"></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="ui-form-table-dt" style="width:100px;">描　　述：</th>
+					<td class="ui-form-table-dd" colspan="3">
+						<div itype="TextBox" width="100%" type="textarea" id="staff.remark" height="50px" rule="MaxLength:512"></div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

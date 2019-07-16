@@ -1,0 +1,82 @@
+.foot {
+    width: 100%;
+	min-width:1200px;
+    background: url(../image/footer/banner-yewei.png);
+    height: 463px;
+    clear:both;
+}
+.footer_service {
+    overflow: hidden;
+    padding: 5px 0 40px 0;
+}
+.footer_service li {
+    float: left;
+    overflow: hidden;
+    padding-right: 5px;
+    width: 150px;
+}
+.footer_service li .tit {
+    font-size: 16px;
+    padding-top: 55px;
+    color: #fff;
+}
+.footer_service li .links {
+    clear: both;
+    line-height: 20px;
+    overflow: hidden;
+    padding-top: 15px;
+}
+.footer_service li .links a {
+    display: block;
+    color: #a5a5a5;
+    font-size: 14px;
+    padding-top: 10px;
+}
+.footer_map {
+    background: url(../image/footer/ditu_03.png) no-repeat right 10px;
+    position: absolute;
+    top: 28px;
+    right: 44px;
+    height: 293px;
+    width: 381px;
+}
+.footer_map .t1 {
+    font-size: 14px;
+    padding-top: 30px;
+    color: #fff;
+}
+.footer_map .t2 a {
+    color: #f26709;
+}
+.foot-a {
+    color: #ffffff;
+    font-size: 14px;
+}
+.foot-a a {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 0 10px 0;
+}
+.foot-b {
+    padding-top: 10px;
+}
+.foot-b p {
+    color: #fff;
+}
+.foot-c {
+    padding-bottom: 30px;
+    overflow: hidden;
+    border-bottom: 2px solid #fff;
+	margin-bottom: 20px;
+}
+.foot-c li {
+    float: left;
+    padding: 0 20px 0 0;
+	/*width: 96px;*/
+    height: 51px;
+    overflow: hidden;
+}
+.foot-d p a{
+	color:#fff;
+	margin-right:5px;
+}

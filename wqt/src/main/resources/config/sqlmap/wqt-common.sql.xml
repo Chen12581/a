@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtcommon">
+       
+	  <!--查询基础银行信息-->
+	  <select id="selectListWqtBank" 
+		        parameterType="com.wqt.common.pojo.WqtBank" 
+		        resultType="com.wqt.common.pojo.WqtBank">
+		    select 
+             *
+             from wqt_bank a
+		     order by id desc
+	   </select>	 
+	   
+	  <!--查询区县-->
+	  <select id="selectWqtAreaList" 
+		        parameterType="com.wqt.common.pojo.WqtArea" 
+		        resultType="com.wqt.common.pojo.WqtArea">
+		    select 
+             *
+             from wqt_area a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= provinceid and ''!= provinceid">
+			   and   a.provinceid=#{provinceid}
+			</if>
+			<if test="null!= cityid and ''!= cityid">
+			   and   a.cityid=#{cityid}
+			</if>
+			<if test="null!= areaname and ''!= areaname">
+			    and a.areaname LIKE CONCAT(CONCAT('%', #{areaname}), '%')
+			</if>
+			order by cityid,provinceid
+	   </select>
+	
+	  <!--查询地市-->
+	  <select id="selectWqtCityList" 
+		        parameterType="com.wqt.common.pojo.WqtCity" 
+		        resultType="com.wqt.common.pojo.WqtCity">
+		    select 
+             *
+             from wqt_city a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= provinceid and ''!= provinceid">
+			   and   a.provinceid=#{provinceid}
+			</if>
+			<if test="null!= cityname and ''!= cityname">
+			    and a.cityname LIKE CONCAT(CONCAT('%', #{cityname}), '%')
+			</if>
+			order by provinceid desc
+	   </select> 
+	   
+	  <!--查询省份-->
+	  <select id="selectWqtProvinceList" 
+		        parameterType="com.wqt.common.pojo.WqtProvince" 
+		        resultType="com.wqt.common.pojo.WqtProvince">
+		    select 
+             *
+             from wqt_province a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= provincename and ''!= provincename">
+			    and a.provincename LIKE CONCAT(CONCAT('%', #{provincename}), '%')
+			</if>
+			order by id desc
+	   </select>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iprpatent"> 
+
+   
+	   <!--查询专利产品-->
+	  <select id="selectIprPatentProductList" 
+		        parameterType="com.wqt.ipr.patent.pojo.IprPatentProduct" 
+		        resultType="com.wqt.ipr.patent.pojo.IprPatentProduct">
+		    select *, 
+		    (select kindname from ipr_patent_productkind pk where pk.id=p.kindid) kindname 
+		    from ipr_patent_product p
+		     where 1=1
+			<if test="null != id and '' != id">and id = #{id}</if>
+		 	<if test="null!= kindid and ''!= kindid">and kindid = #{kindid}</if>
+			<if test="null!= productname and ''!= productname">and productname = #{productname}</if>
+			<if test="null!= productdesc and ''!= productdesc">and productdesc = #{productdesc}</if>
+			<if test="null!= price and ''!= price">and price = #{price}</if>
+			<if test="null!= rebateprice and ''!= rebateprice">and rebateprice = #{rebateprice}</if>
+			<if test="null!= simplename and ''!= simplename">and simplename = #{simplename}</if>
+			<if test="null!= htmlpath and ''!= htmlpath">and htmlpath = #{htmlpath}</if>
+			<if test="null!= bookmark and ''!= bookmark">and bookmark = #{bookmark}</if>
+			order by id desc
+	   </select>
+	
+	
+		
+		<select id="selectPatentShopList" 
+					resultType="com.wqt.ipr.patent.pojo.IprPatentShop"
+					parameterType="com.wqt.ipr.patent.pojo.IprPatentShop">
+			select a.id,a.userid,a.patentname,a.patentno,a.patenttype,a.kindid,a.applydate,
+			a.validitydate,a.busikind,a.isspecial,a.patentstate,a.price,a.shopcode,a.developtime,
+			a.patentdesc,a.state,a.htmlpath,a.patentphoto,a.workerid,a.remark,
+			(select k.kindname from ipr_patent_shopkind k where a.kindid = k.id) kindname,
+			(select workername from wqt_worker ww where a.userid = ww.id) displayname,
+			(select workername from wqt_worker ww where a.workerid = ww.id) updatename
+			from ipr_patent_shop a join wqt_worker ww on a.userid=ww.id
+			where 1=1
+			<if test="null != userid and '' != userid">and a.userid = #{userid}</if>
+			<if test="null != patentname and '' != patentname">and a.patentname = #{patentname}</if>
+			<if test="null != patentno and '' != patentno">and a.patentno = #{patentno}</if>
+			<if test="null != patenttype and '' != patenttype">and a.patenttype = #{patenttype}</if>
+			<if test="null != kindid and '' != kindid">and a.kindid = #{kindid}</if>
+			<if test="null != applydate and '' != applydate">and a.applydate = #{applydate}</if>
+			<if test="null != validitydate and '' != validitydate">and a.validitydate = #{validitydate}</if>
+			<if test="null != busikind and '' != busikind">and a.busikind = #{busikind}</if>
+			<if test="null != isspecial and '' != isspecial">and a.isspecial = #{isspecial}</if>
+			<if test="null != patentstate and '' != patentstate">and a.patentstate = #{patentstate}</if>
+			<if test="null != price and '' != price">and a.price = #{price}</if>
+			<if test="null != shopcode and '' != shopcode">and a.shopcode = #{shopcode}</if>
+			<if test="null != developtime and '' != developtime">and a.developtime = #{developtime}</if>
+			<if test="null != state and '' != state">and a.state = #{state}</if>
+			<if test="null != patentdesc and '' != patentdesc">and a.patentdesc = #{patentdesc}</if>
+			<if test="null != workerid and '' != workerid">and a.workerid = #{workerid}</if>
+			order by id desc
+		</select>
+		
+		<update id="updatePatentShop" 
+					parameterType="com.wqt.ipr.patent.pojo.IprPatentShop">
+			update ipr_patent_shop
+			<set>
+	     		<trim suffix="" suffixOverrides=",">
+	     			<if test="null != userid and '' != userid">userid = #{userid},</if>
+					<if test="null != patentname and '' != patentname">patentname = #{patentname},</if>
+					<if test="null != patentno and '' != patentno">patentno = #{patentno},</if>
+					<if test="null != patenttype and '' != patenttype">patenttype = #{patenttype},</if>
+					<if test="null != kindid and '' != kindid">kindid = #{kindid},</if>
+					<if test="null != applydate and '' != applydate">applydate = #{applydate},</if>
+					<if test="null != validitydate and '' != validitydate">validitydate = #{validitydate},</if>
+					<if test="null != busikind and '' != busikind">busikind = #{busikind},</if>
+					<if test="null != isspecial and '' != isspecial">isspecial = #{isspecial},</if>
+					<if test="null != patentstate and '' != patentstate">patentstate = #{patentstate},</if>
+					<if test="null != price and '' != price">price = #{price},</if>
+					<if test="null != shopcode and '' != shopcode">shopcode = #{shopcode},</if>
+					<if test="null != developtime and '' != developtime">developtime = #{developtime},</if>
+					<if test="null != state and '' != state">state = #{state},</if>
+					<if test="null != workerid and '' != workerid">workerid = #{workerid},</if>
+					<if test="null != kindname and '' != kindname">kindname = #{kindname},</if>
+					<if test="null != patentdesc and '' != patentdesc">patentdesc = #{patentdesc},</if>
+					<if test="null != ownername and '' != ownername">ownername = #{ownername},</if>
+					<if test="null != ownermobile and '' != ownermobile">ownermobile = #{ownermobile},</if>
+	   			</trim>
+	     	</set>
+	     	where 1=1
+     		<if test="null!= id and ''!= id">
+			    and  id=#{id}
+			</if>
+			<if test="null!= patentno and ''!= patentno">
+			    and  patentno=#{patentno}
+			</if>
+		</update>
+		
+		<select id="selectPatentShopOne" 
+					resultType="com.wqt.ipr.patent.pojo.IprPatentShop"
+					parameterType="com.wqt.ipr.patent.pojo.IprPatentShop">
+			select * from ipr_patent_shop 
+			where 1=1
+			<if test="null != id and '' != id">and id = #{id}</if>
+			<if test="null != userid and '' != userid">and userid = #{userid},</if>
+			<if test="null != patentname and '' != patentname">and patentname = #{patentname},</if>
+			<if test="null != patentno and '' != patentno">and patentno = #{patentno},</if>
+			<if test="null != patenttype and '' != patenttype">and patenttype = #{patenttype},</if>
+			<if test="null != kindid and '' != kindid">and kindid = #{kindid},</if>
+			<if test="null != applydate and '' != applydate">and applydate = #{applydate},</if>
+			<if test="null != validitydate and '' != validitydate">and validitydate = #{validitydate},</if>
+			<if test="null != busikind and '' != busikind">and busikind = #{busikind},</if>
+			<if test="null != isspecial and '' != isspecial">and isspecial = #{isspecial},</if>
+			<if test="null != patentstate and '' != patentstate">and patentstate = #{patentstate},</if>
+			<if test="null != price and '' != price">and price = #{price},</if>
+			<if test="null != shopcode and '' != shopcode">and shopcode = #{shopcode},</if>
+			<if test="null != developtime and '' != developtime">and developtime = #{developtime},</if>
+			<if test="null != state and '' != state">and state = #{state},</if>
+			<if test="null != workerid and '' != workerid">and workerid = #{workerid},</if>
+			<if test="null != patentdesc and '' != patentdesc">and patentdesc = #{patentdesc},</if>
+		</select>
+		
+		<select id="selIprPatentProductOne" 
+			resultType="com.wqt.ipr.patent.pojo.IprPatentProduct"
+			parameterType="com.wqt.ipr.patent.pojo.IprPatentProduct">
+			select * from ipr_patent_product
+			where 1=1
+			<if test="id != null and id != ''">
+		    and id =#{id}
+			</if>
+		</select>
+		<!-- 出售end -->
+</mapper>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>网约车监管理平台(省级平台版)</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<style type="text/css">
+		.layui-nav-item a:hover{
+			background-color:rgb(57,121,178);
+			color:white;
+		}
+		
+		.layui-tab-title{
+			height:35px;
+		}
+		
+		.layui-tab-title li{
+			line-height:35px;
+		}
+		
+		.layui-nav{
+			background-color:rgb(66,118,164);
+		}
+		.layui-nav-child a:hover{
+			background-color:red;
+		}
+		</style>
+	<script>
+            //百度自动推送代码
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            //百度统计代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?42488dceee05409d65f7bf2d164133d9";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            //360浏览器推送代码
+            (function(){
+              var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?7333e036a851641d0a404fac1617c6de":"https://jspassport.ssl.qhimg.com/11.0.1.js?7333e036a851641d0a404fac1617c6de";
+                  document.write('<script src="' + src + '" id="sozz"><\/script>');
+            })();
+        </script>
+    </head>
+    <body>
+        <script>
+            //百度信誉代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?3d82d1abf6ac0fc3c192d9c07c32fa89";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+		<div class="layui-layout layui-layout-admin" style="border-bottom: solid 5px #1aa094;">
+		    <!--header-->
+			<div class="layui-header header" style="background-color:rgb(45,95,139);">
+				<div class="layui-main">
+					<div class="admin-login-box">
+						<a class="logo" style="left: 0;" href="http://www.talkweb.com.cn">
+							<span style="font-size: 20px;color:white;">网约车监管理平台</span>
+						</a>
+						<div class="admin-side-toggle">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</div>
+						<div class="admin-side-full">
+							<i class="fa fa-life-bouy" aria-hidden="true"></i>
+						</div>
+					</div>
+					<ul class="layui-nav admin-header-item" style="background-color:transparent;">
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">首页</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">许可管理</a>
+						</li>
+						<li class="layui-nav-item" id="video1" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">资质信息管理</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">营运监管</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">辅助决策</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">服务质量管理</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">数据管理</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" style="padding:0px 10px;">系统管理</a>
+						</li>
+						<li class="layui-nav-item" style="margin:0px 10px;">
+							<a href="javascript:;" class="admin-header-user">
+								<img src="images/0.jpg" />
+								<span style="padding:0 5px;">ADMIN</span>
+							</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;"><i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:;"><i class="fa fa-gear" aria-hidden="true"></i> 设置</a>
+								</dd>
+								<dd id="lock">
+									<a href="javascript:;">
+										<i class="fa fa-lock" aria-hidden="true" style="padding-right: 3px;padding-left: 1px;"></i> 锁屏 (Alt+L)
+									</a>
+								</dd>
+								<dd>
+									<a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<ul class="layui-nav admin-header-item-mobile">
+						<li class="layui-nav-item">
+							<a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<!--side-->
+			<div class="layui-side layui-bg-black" id="admin-side" style="background-color:rgb(66,118,164);">
+				<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
+			</div>
+			
+			<!--body-->
+			<div class="layui-body" style="bottom: 0;border-left: solid 2px #1AA094;" id="admin-body">
+				<div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
+					<ul class="layui-tab-title">
+						<li class="layui-this">
+							<i class="fa fa-dashboard" aria-hidden="true"></i>
+							<cite>首页</cite>
+						</li>
+					</ul>
+					<div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
+						<div class="layui-tab-item layui-show">
+							<iframe src="main.html"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--footer-->
+			<div class="layui-footer footer footer-demo" id="admin-footer" style="background-color:rgb(45,95,139);">
+				<div class="layui-main">
+					<p style="color:#c2c2c2;">2017 &copy;
+						<a style="color:white;" href="http://www.talkweb.com.cn">拓维信息系统股份有限公司</a> 版本所有
+					</p>
+				</div>
+			</div>
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+			
+			<!--锁屏模板 start-->
+			<script type="text/template" id="lock-temp">
+				<div class="admin-header-lock" id="lock-box">
+					<div class="admin-header-lock-img">
+						<img src="images/0.jpg"/>
+					</div>
+					<div class="admin-header-lock-name" id="lockUserName">beginner</div>
+					<input type="text" class="admin-header-lock-input" value="输入密码解锁.." name="lockPwd" id="lockPwd" />
+					<button class="layui-btn layui-btn-small" id="unlock">解锁</button>
+				</div>
+			</script>
+			<!--锁屏模板 end -->
+			
+			<script type="text/javascript" src="plugins/layui/layui.js"></script>
+			<script type="text/javascript" src="datas/nav.js"></script>
+			<script src="js/index.js"></script>
+			<script>
+				layui.use('layer', function() {
+					var $ = layui.jquery,
+						layer = layui.layer;
+
+					$('#video1').on('click', function() {
+						layer.open({
+							title: 'YouTube',
+							maxmin: true,
+							type: 2,
+							content: 'video.html',
+							area: ['800px', '500px']
+						});
+					});
+
+				});
+			</script>
+		</div>
+	</body>
+
+</html>

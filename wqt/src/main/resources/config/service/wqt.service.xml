@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+   
+    <bean id="alipayLoginService" class="com.wqt.three.alipay.login.AlipayLoginService"/>
+    
+     <bean id="wxLoginService" class="com.wqt.three.wx.login.WxLoginService"/>
+   
+    <bean id="userBasicDao" class="com.wqt.user.dao.UserBasicDao"/>
+	<bean id="userBasicService" class="com.wqt.user.service.impl.UserBasicServiceImpl"/>
+	<bean id="userContractDao" class="com.wqt.user.dao.UserContractDao"/>
+	<bean id="userContractService" class="com.wqt.user.service.impl.UserContractServiceImpl"/>
+	<bean id="userPostDao" class="com.wqt.user.dao.UserPostDao"/>
+	<bean id="userPostService" class="com.wqt.user.service.impl.UserPostServiceImpl"/>
+	<bean id="userBillDao" class="com.wqt.user.dao.UserBillDao"/>
+	<bean id="userBillService" class="com.wqt.user.service.impl.UserBillServiceImpl"/>
+	<bean id="wqtAreaDao" class="com.wqt.common.dal.WqtAreaDao"/>
+	<bean id="wqtCityDao" class="com.wqt.common.dal.WqtCityDao"/>
+	<bean id="wqtProvinceDao" class="com.wqt.common.dal.WqtProvinceDao"/>
+	<bean id="wqtBankDao" class="com.wqt.common.dal.WqtBankDao"/>
+	<bean id="wqtBankService" class="com.wqt.common.service.impl.WqtBankServiceImpl"/>
+	<bean id="wqtCommonSevice" class="com.wqt.common.service.impl.WqtCommonSeviceImpl"/>
+    <bean id="userSuggestDao" class="com.wqt.user.dao.UserSuggestDao"/>
+	<bean id="userSuggestService" class="com.wqt.user.service.impl.UserSuggestServiceImpl"/>
+	<bean id="capitalAccountDao" class="com.wqt.user.dao.CapitalAccountDao"/>
+	<bean id="capitalAccountService" class="com.wqt.user.service.impl.CapitalAccountServiceImpl"/>
+	<bean id="usercenterOrderDao" class="com.wqt.user.dao.UsercenterOrderDao"/>
+	<bean id="usercenterOrderService" class="com.wqt.user.service.impl.UsercenterOrderServiceImpl"/>
+	<bean id="userBankDao" class="com.wqt.user.dao.UserBankDao"/>
+	<bean id="userBankService" class="com.wqt.user.service.impl.UserBankServiceImpl"/>
+	<bean id="problemDao" class="com.wqt.helpcenter.dao.ProblemDao"/>
+	<bean id="wqtProblemService" class="com.wqt.helpcenter.service.impl.WqtProblemServiceImpl"/>
+	<bean id="problemKindDao" class="com.wqt.helpcenter.dao.ProblemKindDao"/>
+	<bean id="wqtProblemKindService" class="com.wqt.helpcenter.service.impl.WqtProblemKindServiceImpl"/>
+	
+	<bean id="wqtCasesDao" class="com.wqt.cases.dal.WqtCasesDao"/>
+	<bean id="wqtCasesService" class="com.wqt.cases.service.impl.WqtCasesServiceImpl"/>
+	 
+	<bean id="userCollectDao" class="com.wqt.user.dao.UserCollectDao"/>
+	<bean id="userCollectService" class="com.wqt.user.service.impl.UserCollectServiceImpl"/> 
+	
+	<bean id="uOrderCancelDao" class="com.wqt.user.dao.UOrderCancelDao"/>
+	<bean id="uOrderCancelService" class="com.wqt.user.service.impl.UOrderCancelServiceImpl"/> 
+	
+	<bean id="userThreepartyDao" class="com.wqt.three.dao.UserThreepartyDao"/>
+	<bean id="userThreepartyService" class="com.wqt.three.service.impl.UserThreepartyServiceImpl"/>
+	
+	
+</beans>

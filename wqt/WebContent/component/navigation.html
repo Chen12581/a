@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>导航条</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../common/css/easyuiExtend.css"></link>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css"></link>
+<script type="text/javascript" src="../easyui/js/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/js/easyui-lang-zh_CN.js"></script>
+<style type="text/css">
+	.accordion-header-selected {
+   		 background: #CBDAF0;
+}
+	.ui-nav-inner-seleted {
+    	background: #CBDAF0;
+	}
+	.ui-nav-inner {
+		margin:0px;
+	    overflow: hidden;
+	    line-height: 22px;
+	    white-space: nowrap;
+	}
+	
+	.ui-out-nav-inner {
+		margin:0px;
+	    overflow: hidden;
+	    line-height: 22px;
+	    white-space: nowrap;
+	}
+	.ui-nav-text-other {
+	   font-weight:normal;
+	 	padding-left:25px;
+	    color: #075488;
+}	
+	.ui-nav-text {
+	    font-size: 13px;
+		margin:0px;
+	    padding-bottom: 2px;
+	    cursor: pointer;
+	    display: block;
+	    outline: none;
+	    overflow: hidden;
+        white-space: nowrap;
+    	text-overflow: ellipsis;
+}
+	.ui-nav-background{
+	    padding-left:35px;
+		border:none;
+		background: url(../fastdev/themes/default/images/nav/arrow-nav.gif) no-repeat 20px center;
+	}
+</style>
+<script type="text/javascript">
+$(function(){
+	createSideBar("resource_showMenu.action",'#sideBar');
+})
+function clickMenuBar(obj,url,text){
+	$('div.ui-nav-inner').removeClass("ui-nav-inner-seleted");
+	if($(obj).parent('div').attr('name')) $(obj).parent('div').addClass("ui-nav-inner-seleted");
+	if($.trim(url)){
+		alert("aa"+url+"----"+text); 
+	}
+} 
+function createSideBar(url,id){
+	$.post(url,function(data){
+		$.each(data, function(i, rowData){
+				if(rowData.pid=="-1"){
+					var content="";
+					$.each(data, function(j, tempRowData){
+						if(tempRowData.pid==rowData.id){
+							content+='<div  name='+tempRowData.id+' class="ui-nav-inner"><a  class="ui-nav-background  ui-nav-text " onClick=\"clickMenuBar(this,\' '+tempRowData.url+' \',\' '+tempRowData.text+'\')\">'+tempRowData.text+'</a></div>';
+						}
+					});
+					if(!rowData.ico){
+						rowData.ico='ico-folder';
+		    		}
+					var flag=true;
+					if(!content){
+						flag=false;
+					}
+					$(id).accordion('add', {
+				    	title:'<div class="'+rowData.ico+' ui-out-nav-inner"><a class="ui-nav-text-other ui-nav-text"  onClick=\"clickMenuBar(this,\' '+rowData.url+' \' ,\' '+rowData.text+'\')\">'+rowData.text+'</a></div>',
+				    	content: content,
+				    	collapsible:flag,
+				    	selected: false
+				    });
+				}
+			});
+	},"json");
+}
+</script>
+</head>
+<body>
+	<div id="sideBar" class="easyui-accordion" style="width: 255px;">
+	</div>
+</body>
+</html>

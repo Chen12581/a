@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+	
+	<bean id="patentProductDao" class="com.wqt.ipr.patent.dal.PatentProductDao" />
+	<bean id="patentProductService" class="com.wqt.ipr.patent.service.impl.PatentProductServiceImpl" />
+	<bean id="patentShopDao" class="com.wqt.ipr.patent.dal.PatentShopDao" />
+	<bean id="patentShopService" class="com.wqt.ipr.patent.service.impl.PatentShopServiceImpl" />
+	
+	<bean id="copyrightProductService" class="com.wqt.ipr.copyright.service.impl.CopyrightProductServiceImpl" />
+	<bean id="copyrightProductDao" class="com.wqt.ipr.copyright.dal.CopyrightProductDao" />
+	<bean id="copyrightShopService" class="com.wqt.ipr.copyright.service.impl.CopyrightShopServiceImpl" />
+	<bean id="copyrightShopDao" class="com.wqt.ipr.copyright.dal.CopyrightShopDao" />
+	
+	<bean id="brandProductDao" class="com.wqt.ipr.brand.dal.BrandProductDao"/>
+	<bean id="brandProductService" class="com.wqt.ipr.brand.service.impl.BrandProductServiceImpl"/>
+	<bean id="brandShopDao" class="com.wqt.ipr.brand.dal.BrandShopDao" />
+	<bean id="brandShopService" class="com.wqt.ipr.brand.service.impl.BrandShopServiceImpl" />
+	
+	<bean id="iprOrderProductDao" class="com.wqt.ipr.order.dal.IprOrderProductDao"/>
+	<bean id="iprOrderProductService" class="com.wqt.ipr.order.service.impl.IprOrderProductServiceImpl"/>
+	<bean id="iprOrderShopDao" class="com.wqt.ipr.order.dal.IprOrderShopDao"/>
+	<bean id="iprOrderShopService" class="com.wqt.ipr.order.service.impl.IprOrderShopServiceImpl"/>
+	
+
+	
+	
+	<bean id="uIprOrderDao" class="com.wqt.user.dao.UIprOrderDao"/>
+	<bean id="uIprOrderService" class="com.wqt.user.service.impl.UIprOrderServiceImpl"/>
+	
+	<bean id="uIprShopDao" class="com.wqt.user.dao.UIprShopDao"/>
+	<bean id="uIprShopService" class="com.wqt.user.service.impl.UIprShopServiceImpl"/>
+	
+	<bean id="iprCasesDao" class="com.wqt.ipr.cases.dal.IprCasesDao"/>
+	<bean id="iprCasesService" class="com.wqt.ipr.cases.service.impl.IprCasesServiceImpl"/>
+	
+	
+	<bean id="iprCollectShopDao" class="com.wqt.user.dao.IprCollectShopDao"/>
+	<bean id="iprCollectShopService" class="com.wqt.user.service.impl.IprCollectShopServiceImpl"/>
+	
+	<bean id="iprCollectProductDao" class="com.wqt.user.dao.IprCollectProductDao"/>
+	<bean id="iprCollectProductService" class="com.wqt.user.service.impl.IprCollectProductServiceImpl"/>
+	
+</beans>

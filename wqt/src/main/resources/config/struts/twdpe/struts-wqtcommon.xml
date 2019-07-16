@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="struts-wqtcommon"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods>
+	    
+	    <!--省份-->
+	    <action name="getProvince" class="com.wqt.common.action.CommonAction" method="getProvince">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		<!--地市-->
+		<action name="getCity" class="com.wqt.common.action.CommonAction" method="getCity">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result> 
+		</action>
+		
+		<!--区县-->
+		<action name="getArea" class="com.wqt.common.action.CommonAction" method="getArea">
+           <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result> 
+		</action> 
+		
+		<!--银行-->
+		<action name="getBank" class="com.wqt.common.action.CommonAction" method="getBank">
+           <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result> 
+		</action> 
+		
+			
+	    <!--登录用户短信验证码-->
+		<action name="smsCode" class="com.wqt.common.action.CommonAction" method="getSmsCode">
+           <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result> 
+		</action> 
+		
+		<!--带图形验证的短信验证码-->
+		<action name="commonSmsCode" class="com.wqt.common.action.CommonAction" method="commonSmsCode">
+           <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result> 
+		</action>
+		
+		<action name="getTemplateXls" class="com.wqt.common.action.CommonAction" method="getTemplateXls">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+	</package>
+</struts>

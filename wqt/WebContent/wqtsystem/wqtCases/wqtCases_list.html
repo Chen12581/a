@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>案例列表</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/wqtCases_list.js"></script>
+
+</head>
+<body class="easyui-layout" data-options="border:false">
+
+	<!--==================== Main ====================-->
+	<div data-options="region:'center'" style="padding: 5px 5px">
+		<div class="easyui-layout" data-options="fit:true">
+
+			<div data-options="region:'north',border:false,split:false" style="height: 64px;">
+			<!--1行68； 2行100px；3行； 4行；5行；-->
+            <!--== Form ==-->		
+            <div class="easyui-tabs" data-options="tools:'#tab-tools'">
+				<div title="查询条件" data-options="iconCls:'icon-ex-query'">
+					<form id="dictDataForm" class="easyui-form" method="post">
+					<table class="dg-formtable">
+					    <!-- 第1行 -->
+						<tr>
+							<th>案例标题:</th>
+							<td><input id="title" name="title" class="easyui-textbox" style="width:100%"/></td>
+							
+							<th valign="middle">服务类别：</th>
+							<td style="width:220px;height: 30px;" colspan="3">
+								<select style="width:200px;" id="kind"  class="easyui-combobox">
+							     	<option value="">请选择</option>
+								   	<option value="1">知识产权</option>
+								   	<option value="2">企业服务</option>
+								   	<option value="9">其他</option>
+							     </select>
+							</td>
+							
+							<th>案例状态:</th>
+							<td>
+							 <select id="state" name="state" class="easyui-combobox" style="width: 100%; margin: 0px; padding: 0;">
+							    <option value="">请选择</option>
+							    <option value="0">编辑中</option>	
+								<option value="1">已发布</option>	
+								<option value="2">已上线</option>
+							  </select >
+						    </td>
+						</tr>				
+					</table>
+					</form>
+				</div>
+			</div>
+			
+		    <!--== Form Button ==-->
+			 <div id="tab-tools">
+		        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSubmitForm()">查询</a>
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="width:80px" onclick="doClearForm()">清除</a>
+			</div>
+			<!--== !End Form ==-->
+			</div>
+
+			<div data-options="region:'center',border:false">
+			<!--== DataGrid ==-->
+			   <table id="dictDataGrid" class="easyui-datagrid" 
+					data-options="fit          :true, 
+					              title        :'案例列表', 
+					              iconCls      :'icon-ex-grid' ,
+								        url    :'sysCases_selectWqtCasesPage.action',
+					              rownumbers   : true,
+					              toolbar      :'#toolbar',
+					              singleSelect :true,
+					              pagination   :true,
+				                  pageSize     :30,
+					              method       :'post',
+					              striped      :true">
+					<thead>
+						<tr>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'id'" width="10%" hidden="true"  align="center"></th>
+							<th data-options="field:'title',width:160  ,halign:'center' ,align:'center'">标题</th>
+							<th data-options="field:'kind',width:70  ,halign:'center' ,align:'center',formatter:formatkind">服务类别</th>
+<!-- 						    <th data-options="field:'kindname',width:150 ,halign:'center' ,align:'center'">类别名称</th> -->
+							<th data-options="field:'periodsnum',width:70  ,halign:'center' ,align:'center'">期数</th>
+							<th data-options="field:'beforetext',width:70  ,halign:'center' ,align:'center'">采访前言</th>
+							<th data-options="field:'resulttext',width:70  ,halign:'center' ,align:'center'">结束语</th>
+							<th data-options="field:'casedesc',width:70  ,halign:'center' ,align:'center'">案例描述</th>
+							<th data-options="field:'orderkind',width:70  ,halign:'center' ,align:'center',formatter:formatorderkind">交易类型</th>
+							<th data-options="field:'price',width:70  ,halign:'center' ,align:'center'">价格</th>
+							<th data-options="field:'createtime' ,width:120  ,halign:'center' ,align:'center'">创建时间</th>
+							<th data-options="field:'caseimg',width:100 ,halign:'center' ,align:'center'">案例图标</th>
+							<th data-options="field:'state',width:100 ,halign:'center' ,align:'center',formatter:formatstatus">状态</th>
+							<th data-options="field:'htmlpath',width:100 ,halign:'center' ,align:'center'">案例文件</th>
+							<th data-options="field:'_operate',width:280,align:'center',formatter:formatOper">操作</th> 
+						</tr>
+					</thead>
+				</table>
+			    <div id="toolbar">
+			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addNews()">新增案例</a>
+<!-- 			        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'"  onclick="doDeletes()">刪除</a> -->
+					<!-- <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ex-edit'" onclick="doupdate()">修改</a>  
+					<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ex-delete'" onclick="doDeletes()">刪除新闻</a>-->
+				</div> 
+			<!--== ! End DataGrid ==-->
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

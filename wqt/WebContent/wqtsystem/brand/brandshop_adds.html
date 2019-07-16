@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>业务员发布求购店铺</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link href='../support/easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../support/easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/icon-extend.css' rel='stylesheet' type='text/css' ></link>
+<link href='../common/css/form-table.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../support/easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../support/easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../support/layer/layer.js'></script>
+<script  type="text/javascript" src='../common/js/common.js'></script>
+<script type="text/javascript" src="js/brandshop_adds.js"></script>
+<script type="text/javascript" src="../../js/zoom.js"></script>
+<style>
+	body{background: #f5f5f5}
+	.bigimg{width:600px;position: fixed;left: 0;top: 0; right: 0;bottom: 0;margin:auto;display: none;z-index:9999;border: 10px solid #fff;}
+	.mask{position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #000;opacity:0.5;filter: Alpha(opacity=50);z-index: 98;transition:all 1s;display: none}
+	.bigbox{width:780px;background: #fff;margin:0 auto;border-radius: 10px;overflow: hidden;padding:10px;}
+	.bigbox>.imgbox>img{width:100%;}
+	.imgbox:hover{cursor:zoom-in}
+	.mask:hover{cursor:zoom-out}
+	.mask>img{position: fixed;right:10px;top: 10px;width: 60px;}
+	.mask>img:hover{cursor:pointer}
+</style>
+<script>
+	$(function(){
+		/*
+		 smallimg   // 小图
+		 bigimg  //点击放大的图片
+		 mask   //黑色遮罩
+		 */
+		var obj = new zoom('mask', 'bigimg','smallimg');
+		obj.init();
+	})
+</script>
+</head>
+   
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+			 <div>
+			    <div>
+			       <form id="storeForm" action="sysBrand_addFiles.action"  class="easyui-form" method="post" > 
+				     	<input type="hidden" id="file" name="file" style="width:80%;" />
+			       </form>
+					<table class="dg-formtable">
+						<tr>
+		                    <th valign="middle" style="width: 30px;">文件地址：</th>
+		                    <td style="width:420px;height:120px;">
+		                        <form id="upload" class="easyui-form" method="post" enctype="multipart/form-data">
+		                            <input class="easyui-filebox" style="width: 400px;" name="uploadName2" id="upload_uploadfile01" />
+		                            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="uploadfile()" accept="image/gif, image/jpeg,image/jpg, image/png">上传</a>
+		                        </form>
+		                        <span style="color: red">请点击图片查看注意事项</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                	<td colspan="2">
+		                		<div class="bigbox">
+			                		<div class="imgbox">
+		                				<img src="uploadBrand.png" style="width: 600px" class="smallimg" />
+									</div>
+		                		</div>
+		                		<img src="" alt="" class="bigimg">
+								<div class="mask">
+								</div>
+		                	</td>
+		                </tr>
+					</table>
+					<div style="text-align:center;padding:10px 0">
+						<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="save()" style="width:80px">保存</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+					</div>
+			</div>
+		 </div>
+	 </div>
+</body>
+</html>

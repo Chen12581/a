@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 常量定义 -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.reload" value="false"></constant>
+
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.serve.static.browserCache" value="false"></constant>
+	<constant name="struts.objectFactory.spring.useClassCache" value="false"></constant>
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" /> 
+	<!-- 上传文件最大值 50M -->
+	<constant name="struts.multipart.maxSize" value="52428800"></constant>
+	
+	<package name="twdpe-common-default" extends="json-default">
+	    <interceptors>
+	        <interceptor name="checkException" class="com.talkweb.twdpe.web.commons.ExceptionInterceptor" />
+	        
+	        <!-- 客服人员拦截器定义 -->  
+	        <interceptor name="workerServiceInterceptor" class="com.wqt.interceptor.WorkerServiceInterceptor" />  
+	        
+	        <interceptor-stack name="myStack">
+                <interceptor-ref name="checkException" />
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+	    </interceptors>
+	    
+	    <default-interceptor-ref name="myStack"/>
+	
+		<global-results>
+            <result name="success" type="json">  
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+            </result> 			
+		</global-results>
+	</package>	
+
+	<!-- 组织管理 -->
+	<include file="config/struts/twdpe/struts-org.xml" />
+
+	<!-- 用户管理 -->
+	<include file="config/struts/twdpe/struts-user.xml" />
+	
+	<!-- easyUI new用户管理 -->
+	<include file="config/struts/twdpe/struts-newuser.xml" />
+<!-- easyUI new权限查询 -->
+	<include file="config/struts/twdpe/struts-newauthor.xml" />
+	<!-- 角色管理 -->
+	<include file="config/struts/twdpe/struts-role.xml" />
+
+	<!-- 岗位管理 -->
+	<include file="config/struts/twdpe/struts-position.xml" />
+
+	<!-- 地区管理 -->
+	<include file="config/struts/twdpe/struts-area.xml" />
+
+	<!-- 访问控制管理 -->
+	<include file="config/struts/twdpe/struts-ipcontrol.xml" />	
+	
+	<!-- 字典管理 -->
+	<include file="config/struts/twdpe/struts-dict.xml" />	
+	
+	<!-- 系统首页 -->
+	<include file="config/struts/twdpe/struts-portal.xml" />
+
+	<!-- 日志管理 -->
+	<include file="config/struts/twdpe/struts-log.xml" />		
+	
+	<!-- 数据权限配置管理 -->
+	<include file="config/struts/twdpe/struts-dataright.xml" />
+	
+	<!-- 访问方式管理 -->
+	<include file="config/struts/twdpe/struts-accessmode.xml" />
+	
+	<!-- 资源管理 -->
+	<include file="config/struts/twdpe/struts-resource.xml" />	
+		
+	<!-- 权限管理 -->
+	<include file="config/struts/twdpe/struts-permission.xml" />		
+	
+	<!-- 应用管理 -->
+	<include file="config/struts/twdpe/struts-application.xml"/>
+
+	<include file="config/struts/twdpe/struts-wqtuser.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtserv.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtcommon.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtorder.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtshop.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtnews.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtcompany.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtcases.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqthelpcenter.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtworker.xml"/>
+	
+	<include file="config/struts/twdpe/struts-wqtthreeuser.xml"/>
+	
+</struts>

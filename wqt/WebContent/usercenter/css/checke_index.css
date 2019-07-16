@@ -1,0 +1,194 @@
+/***********************头部样式的设置*********************/
+body{
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #f7f7f7;
+}
+body h1,h2,h3,h4,h5,ol,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-weight: normal;
+    box-sizing: content-box;
+}
+a{
+    color: #4c4c4c;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+input{
+    border: none;
+    outline: none;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+.lf{
+    float:left;
+}
+.rt{
+    float:right;
+}
+.clear {
+    clear: both;
+    zoom: 1;
+}
+.clear:after, .clear:before {
+    clear: both;
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    font-size: 0;
+    visibility: hidden;
+    zoom: 1;
+}
+.header{
+    width: 100%;
+    /*height: 158px;*/
+}
+.header .top{
+    width: 100%;
+    height: 42px;
+}
+.header .top .top_right{
+    height:42px;
+    line-height: 42px;
+}
+.top_right ul li{
+    float: left;
+    padding: 0 15px;
+    margin-top: 16px;
+    height: 12px;
+    line-height: 12px;
+}
+.top_right ul li:not(:last-child){
+    border-right: 1px solid #b2b2b2;
+}
+.top_right ul li:hover a{
+    color: #FE625C;
+}
+.hot_tel{
+    display: inline-block;
+    width: 146px;
+    height: 42px;
+    text-align: center;
+}
+.hot_tel span{
+    font-size:14px;
+    font-weight:bold;
+}
+.header_bottom{
+    height: 90px;
+    width: 100%;
+    background: #fff;
+}
+.wqt{
+    font-size: 18px;
+    position: absolute;
+    bottom: -80px;
+    right: 0;
+}
+.wqt i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../image/login/index.png") no-repeat;
+    padding-right: 5px;
+    position: relative;
+    top: 2px;
+}
+.wqt a{
+    color: #b2b2b2;
+}
+.logo{
+    margin-top: 16px;
+}
+/*头部样式结束*/
+
+.banner{
+    width: 1200px;
+    margin: 0 auto;
+    color: #4c4c4c;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+.center{
+    width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+}
+.nent{
+    margin-top: 40px;
+    min-height: 600px;
+}
+.center_tit{
+    text-align: center;
+    color: #4c4c4c;
+    font-weight: bold;
+    padding: 40px 0 60px 0;
+}
+.cont{
+    height: 240px;
+    width: 100%;
+}
+.cont ul li{
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 240px;
+}
+.cont ul li:not(:first-child){
+    border-left: 1px solid #f1f1f1;
+    background: url("../image/checked.png") no-repeat center center;
+}
+.cont_cc{
+    margin-left: 290px;
+    width: 240px;
+    height:240px ;
+}
+.cont_cc .p1{
+    margin-top: 25px;
+    color: #4c4c4c;
+    font-weight: bold;
+    font-size: 16px;
+}
+.cont_cc .p2{
+    font-size: 14px;
+    color: #4c4c4c;
+    margin-top: 18px;
+}
+.cont_cc a{
+    display: block;
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    margin-top: 8px;
+}
+.cont_cc a.has_btn{
+    background: #fd5d5a;
+}
+.cont_cc a.register_btn{
+    background: #6aafe6;
+}
+
+
+.footer p{
+    text-align: center;
+    font-size: 14px;
+    padding:80px 0 20px;
+    color: #4c4c4c;
+}

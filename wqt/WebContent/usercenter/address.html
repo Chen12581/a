@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25,maximum-scale=1.0">
+    <title>地址设置</title>
+    <link rel="shortcut icon " type="images/x-icon" href="/image/logo.ico">
+    <link rel="stylesheet" href="../templates/css/wqt_header.css">
+    <link rel="stylesheet" href="./css/address.css">
+    <link rel="stylesheet" href="../templates/css/footer.css">
+
+</head>
+
+<body>
+    <!--头部-->
+
+    <!--内容区域-->
+    <div class="content">
+        <div class="content_lf">
+            <div>
+                <h4 data-item="true">个人资料
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li><a href="/user/personalinfo">基本资料</a></li>
+                    <li class="hover"><a href="/user/postaddr">寄送地址</a></li>
+                    <li><a href="/user/contract">主体管理</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>我是买家
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li class=""><a href="/order/buyer/list">我的知识产权</a></li>
+                    <li class=""><a href="/order/es/buyer/list">我的企业</a></li>
+                    <li class=""><a href="/order/wd/buyer/list">我的网店</a></li>
+                    <li class=""><a href="/user/collection">我的收藏</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>我是卖家
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li class=""><a href="/shop/seller/list">我出售的知识产权</a></li>
+                    <li class=""><a href="/shop/es/seller/list">我出售的企业服务</a></li>
+                    <li class=""><a href="/shop/wd/seller/list">我出售的网店</a></li>
+                    <li class=""><a href="/shop/wd/seller/list">我要出售</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>资金管理
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li><a href="/user/recharge">我要充值</a></li>
+                    <li><a href="/user/withdraw">我要提现</a></li>
+                    <li><a href="/user/capital">资金明细</a></li>
+                    <li><a href="/user/bill">索取发票</a></li>
+                    <li><a href="/user/bank">绑定银行卡</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>安全设置
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li><a href="/user/safety">实名认证</a></li>
+                    <li><a href="/user/password">修改密码</a></li>
+                    <li><a href="/user/email">绑定邮箱</a></li>
+                    <li><a href="/user/mobile">修改手机号</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>其他管理
+                    <i class="item"></i>
+                </h4>
+                <ul class="link">
+                    <li><a href="/user/suggest">我要建议</a></li>
+                    <li><a href="/user/suggestlist">我的建议</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content_rt">
+            <h4>收件地址</h4>
+            <div class="addBtn">
+                <a href="javascript:;">新增收件地址</a>
+            </div>
+            <div class="information">
+                <table>
+                    <tr>
+                        <th width="20%">联系人名称</th>
+                        <th width="20%">联系电话</th>
+                        <th width="20%">联系地址</th>
+                        <th width="40%" colspan="2">操作</th>
+                    </tr>
+                    <!--<tr>-->
+                    <!--<td>刘先生</td>-->
+                    <!--<td>13548763174</td>-->
+                    <!--<td>江苏省南京市鼓楼区</td>-->
+                    <!--<td>-->
+                    <!--<a class="modification" onclick="modify(123)" style="color: #258E3D" href="javascript:void(0)">修改</a>-->
+                    <!--<a class="cancel" style="color: red" onclick="delAddr(123)" href="javascript:void(0)">删除</a>-->
+                    <!--</td>-->
+                    <!--<td class="select">-->
+                    <!--<i></i>-->
+                    <!--<a href="">默认地址</a>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>刘先生</td>-->
+                    <!--<td>13548763174</td>-->
+                    <!--<td>江苏省南京市鼓楼区</td>-->
+                    <!--<td>-->
+                    <!--<a class="modification" style="color: #258E3D" href="">修改</a>-->
+                    <!--<a class="cancel" style="color: red" href="">删除</a>-->
+                    <!--</td>-->
+                    <!--<td class="select">-->
+                    <!--<i></i>-->
+                    <!--<a href="">默认地址</a>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>刘先生</td>-->
+                    <!--<td>13548763174</td>-->
+                    <!--<td>江苏省南京市鼓楼区</td>-->
+                    <!--<td>-->
+                    <!--<a class="modification" style="color: #258E3D" href="">修改</a>-->
+                    <!--<a class="cancel" style="color: red" href="">删除</a>-->
+                    <!--</td>-->
+                    <!--<td class="select">-->
+                    <!--<i></i>-->
+                    <!--<a href="">默认地址</a>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                </table>
+                <!--页码-->
+                <div class="company_list_result_pages">
+                    <span class="backhome">
+                        <a href="javascript:void(0)" id="firstPage">第一页</a></span>
+                    <span class="prevpage">
+                        <a href="javascript:void(0)" id="prevA">上一页</a>
+                    </span>
+                    <span class="pagesN">
+
+                    </span>
+                    <span class="nextpage">
+                        <a href="javascript:void(0)" id="nextA">下一页</a>
+                    </span>
+                    <span class="lastpage">
+                        <a href="javascript:void(0)" id="nextPage">尾页</a>
+                    </span>
+                    <span class="total">
+                        共<span id="allPage2"></span>页/当前为第
+                        <strong id="nowPage2">1</strong>
+                        页
+                    </span>
+                    <span class="jump">
+                        <form>
+                            <input type="text" id="pages" value="" />
+                            <input type="button" id="btn" value="跳转" />
+                            <input style="display: none;" />
+                            <!--为了防止回车刷新页面-->
+                        </form>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pop">
+        <div class="pop_bg"></div>
+        <div class="add_detail" id="add">
+            <p class="pop_title">新增收货地址 <a class="stop" href="">×</a></p>
+            <div>
+                <span><strong>*</strong>联系人姓名</span>
+                <input id="add_uName" class="uName" type="text" placeholder="请填写联系人姓名">
+            </div>
+            <div>
+                <span><strong>*</strong>联系地址</span>
+                <i class="area_box">
+                    <select class="province" name="" id="add_province"></select>
+
+                    <select class="city" name="" id="add_city"></select>
+
+                    <select class="area" name="" id="add_area"></select>
+                </i>
+            </div>
+            <div>
+                <span><strong>*</strong>详细地址</span>
+                <input id="add_address" class="address" type="text" placeholder="请填写详细地址">
+            </div>
+            <div>
+                <span><strong>*</strong>联系电话</span>
+                <input class="phone" id="add_tel" type="tel" placeholder="请填写联系电话">
+            </div>
+            <div class="btnBox">
+                <a class="save" href="javascript:;" onclick="add()">保存</a>
+                <a class="cancel stop" href="javascript:;">取消</a>
+            </div>
+        </div>
+
+        <div class="add_detail" id="modify">
+            <p class="pop_title">修改收件地址 <a class="stop" href="javascript:void(0)">×</a></p>
+            <div>
+                <span><strong>*</strong>联系人姓名</span>
+                <input id="modify_uName" class="uName" type="text" placeholder="请填写联系人姓名">
+            </div>
+            <div>
+                <span><strong>*</strong>联系地址</span>
+                <i class="area_box">
+                    <select class="province" name="" id="modify_province">
+                        <!--<option value="">请选择省份</option>-->
+                        <!--<option value="">陕西省</option>-->
+                        <!--<option value="">山西省</option>-->
+                    </select>
+
+                    <select class="city" name="" id="modify_city">
+                        <!--<option value="">长治市</option>-->
+                        <!--<option value="">晋中市</option>-->
+                    </select>
+
+                    <select class="area" name="" id="modify_area">
+                        <!--<option value="">小店区</option>-->
+                        <!--<option value="">岳麓区</option>-->
+                    </select>
+                </i>
+            </div>
+            <div>
+                <span><strong>*</strong>详细地址</span>
+                <input class="address" id="modify_address" type="text" placeholder="请填写详细地址">
+            </div>
+            <div>
+                <span><strong>*</strong>联系电话</span>
+                <input id="modify_tel" class="phone" type="tel" placeholder="请填写联系电话">
+            </div>
+            <div class="btnBox">
+                <a class="save" href="javascript:void(0);">保存</a>
+                <a class="cancel stop" href="javascript:void(0);">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm">
+        <p><span>!</span>设置默认地址成功</p>
+    </div>
+
+
+    <!--底部-->
+    <script src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/templates/js/wqt_header.js"></script>
+    <script src="/common/commonurl.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="./js/address.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #F1F1F1;;
+}
+body input,div,h1,h2,h3,h4,h5,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+}
+input{
+    background: none;
+    outline: none;
+}
+input::placeholder{
+    color: #b3b3b3;
+}
+a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+.lf{
+    float:left;
+}
+.rt{
+    float:right;
+}
+.clear:after, .clear:before {
+    clear: both;
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    font-size: 0;
+    visibility: hidden;
+    zoom: 1;
+}
+
+/*********************中间内容的样式设置***********************/
+.content{
+    width: 1190px;
+    margin: 10px auto 80px;
+    min-height: 300px;
+}
+.content:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.content .content_lf{
+    float: left;
+    width: 248px;
+    padding: 30px 10px;
+    min-height: 200px;
+    background-color: #fff;
+}
+/***************************左边内容样式设置*********************/
+.content_lf:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.content_lf h4{
+    color: #eb0c1c;
+    border: 1px solid #ddd;
+    padding: 5px 0;
+    padding-left: 40px;
+    border-radius: 15px;
+    line-height: 25px;
+    vertical-align: 25px;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+}
+.content_lf h4:before{
+    display: block;
+    content: "";
+    clear: both;
+    width: 4px ;
+    height: 20px;
+    background-color: #eb0c1c;
+    position: absolute;
+    left: 18px;
+    top: 8px;
+}
+.content_lf li{
+    padding: 10px 0;
+    margin: 10px 0;
+    position: relative;
+    padding-left: 40px;
+}
+.content_lf li a{
+    color: #969696;
+    font-size: 15px;
+}
+.content_lf li:before{
+    position: absolute;
+    display:block;
+    content: "";
+    clear: both;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    left: 25px;
+    top: 19px;
+}
+.content_lf li.hover:before{
+    width:0;
+    height:0;
+}
+.content_lf .hover{
+    background-color: #EFF0EF;
+}
+.content_lf .hover a{
+    color: #33CC99;
+}
+.content_lf li:hover{
+    background-color: #EFF0EF;
+}
+.content_lf li:hover a{
+    color: #33CC99;
+}
+
+/*右边样式设置*/
+.content .content_rt{
+    float: right;
+    width: 930px;
+    padding: 30px 15px;
+    min-height: 500px;
+    background-color: #fff;
+}
+.content_tab{
+    width: 100%;
+    height: 40px;
+}
+.content_tab ul li{
+    width: 20%;
+    float: left;
+    text-align: center;
+    background: #271a6c;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.content_tab ul li.on{
+    background: #ff8a00;
+}
+.content_tab ul li:hover{
+    background: #ff8a00;
+}
+.content_tab ul li a{
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.money_tab{
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid #e4e4e4;
+}
+.money_tab ul li{
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    cursor: pointer;
+    color: #4c4c4c;
+}
+.money_tab ul li.on{
+    border-bottom: 2px solid #ff8a00;
+}
+.money_tab ul li:hover{
+    border-bottom: 2px solid #ff8a00;
+}
+.money_chat{
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+.money_chat:hover a{
+    color: #ff8a00;
+}
+
+.recharge_tab{
+    height: 50px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+.recharge_tab ul li{
+    float: left;
+    font-size: 14px;
+    color: #4c4c4c;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+    margin: 10px 0 10px 20px;
+    cursor: pointer;
+}
+.recharge_tab ul li.on{
+    background: #ff8a00;
+    color: #fff;
+}
+.wy_recharge{
+    border: 1px solid #e0e0e0;
+    padding: 40px;
+}
+.recharge_ts{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.recharge_ts .red{
+    color: rgb(255,0,0);
+}
+.recharge_bank ul li{
+    float: left;
+    width: 174px;
+    height: 50px;
+    margin-right: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    position: relative;
+    border: 1px solid #e0e0e0;
+}
+.recharge_bank ul li:hover{
+    border: 1px solid #ff8a00;
+}
+.recharge_bank ul li.on{
+    border: 1px solid #ff8a00;
+}
+.recharge_bank ul li.on:before{
+    content: '';
+    background: url("../image/xz.png");
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
+}
+.recharge_bank ul li img{
+    width: 100%;
+    height: 100%;
+}
+.recharge_bank ul li:nth-child(4n){
+    margin-right: 0;
+}
+.operation{
+    padding: 50px 0;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    font-size: 16px;
+    color: #4c4c4c;
+}
+.operation ul{
+    width: 300px;
+    margin: 0 auto;
+}
+.operation ul li:not(:first-child){
+    margin-top: 25px;
+}
+.operation .p1 span{
+    color: #ff8a00;
+}
+.operation .p2{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding-left: 20px;
+    overflow: hidden;
+}
+.operation .p2 input{
+    width: 100%;
+    font-size: 14px;
+    line-height: 40px;
+    color: #4c4c4c;
+}
+.operation .p3{
+    width: 300px;
+    height: 40px;
+    background: #ff8a00;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 40px;
+}
+.operation .p3:hover{
+    opacity: 0.8;
+}
+.operation .p3 a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+}
+.operation .p4{
+    font-size: 14px;
+}
+.operation .p4 span{
+    font-weight: bold;
+}
+/*微信支付*/
+div.wechat_recharge{
+    border: 1px solid #e0e0e0;
+}
+.skf{
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    color: #4c4c4c;
+    border-bottom: 1px solid #e0e0e0;
+}
+.wechat_cont{
+    height: 500px;
+}

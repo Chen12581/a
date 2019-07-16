@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>btable</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/btable.css" />
+<script>
+            //百度自动推送代码
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            //百度统计代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?42488dceee05409d65f7bf2d164133d9";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            //360浏览器推送代码
+            (function(){
+              var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?7333e036a851641d0a404fac1617c6de":"https://jspassport.ssl.qhimg.com/11.0.1.js?7333e036a851641d0a404fac1617c6de";
+                  document.write('<script src="' + src + '" id="sozz"><\/script>');
+            })();
+        </script>
+    </head>
+       
+
+<body style=" background-color: gainsboro;">
+ <script>
+            //百度信誉代码
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?3d82d1abf6ac0fc3c192d9c07c32fa89";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    <div style="margin:0px; background-color: white;">
+        <blockquote class="layui-elem-quote">
+            <button type="button" class="layui-btn layui-btn-small" id="getAll">获取选择的数据</button>
+        </blockquote>
+        <div id="content" style="width: 100%;height: 533px;"></div>
+    </div>
+
+    <script type="text/javascript" src="plugins/layui/layui.js"></script>
+    <script>
+        layui.config({
+            base: 'js/'
+        }).use(['btable'], function () {
+            var btable = layui.btable(),
+                $ = layui.jquery;
+
+            btable.set({
+                elem: '#content',
+                url: 'datas/btable_data.json',
+                pageSize: 3,
+                columns: [{
+                    fieldName: '昵称',
+                    field: 'name'
+                }, {
+                    fieldName: '加入时间',
+                    field: 'createtime'
+                }, {
+                    fieldName: '签名',
+                    field: 'sign'
+                }],
+                even: true,
+                //skin: 'row',
+                checkbox: true,
+                paged: true,
+                singleSelect: false
+            });
+            btable.render();
+
+            $('#getAll').on('click', function () {
+
+                //btable.getSelected(function(obj){
+                //	console.log(obj.elem);
+                //	layer.msg(obj.id);
+                //});
+                //获取选择的数据
+                btable.getSelections(function (obj) {
+                    console.log(obj.elem);
+                    console.log(obj.ids);
+                    console.log(obj.count);
+                    layer.msg(obj.ids.join(','))
+                });
+
+            });
+
+            $(window).on('resize', function (e) {
+                var $that = $(this);
+                $('#content').height($that.height() - 92);
+            }).resize();
+        });
+    </script>
+</body>
+
+</html>

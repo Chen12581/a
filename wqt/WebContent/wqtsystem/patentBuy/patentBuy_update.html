@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改专利求购</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/patentBuy_update.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+       <form id="patentBuyForm" action="sysPatentBuy_updatePatentBuy.action" class="easyui-form" method="get" > 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle">求购关键字：</th>
+				<td style="width:200px;height:50px;">
+				     <input id="buycontent" name="iprPatentBuy.buycontent" class="easyui-textbox" style="width:180px;"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">联系人：</th>
+				<td style="width:200px;">
+				     <input id="connector" name="iprPatentBuy.connector" class="easyui-textbox" style="width:180px;"/>
+				</td>
+				
+				<th valign="middle">联系方式：</th>
+				<td style="width:200px;">
+				     <input id="connectmethod" name="iprPatentBuy.connectmethod" class="easyui-textbox" style="width:180px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">详细描述：</th>
+				<td style="width:200px;height:75px;" colspan="3">
+				     <input id="buydesc" name="iprPatentBuy.buydesc" class="easyui-textbox" style="width:450px; height: 50px;"/>
+				</td>
+			</tr>
+			<tr>
+				<th valign="middle">状态：</th>
+				<td style="width:200px;">
+				     <select style="width:180px;" id="state"  name="iprPatentBuy.state" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1">未处理</option>
+				     	<option value="2">已处理</option>
+				     </select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input  style="display: none;" id="id" name="iprPatentBuy.id"></input> 
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

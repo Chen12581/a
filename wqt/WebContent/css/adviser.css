@@ -1,0 +1,358 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    min-width: 1200px;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: none;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+i{
+    font-style:normal
+}
+ul,li{
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+input,button{
+    outline: none;
+    border: none;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+
+
+.all{
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+}
+.center{
+    width: 1200px;
+    margin: 0 auto;
+}
+.banner{
+    height:48px;
+    line-height: 48px;
+    color: #999999;
+    font-size: 14px;
+}
+.banner a{
+    color: #999999;
+    font-size: 14px;
+}
+.banner a:hover{
+    color: #f77252;
+}
+.kf_cont{
+    background: #fff;
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+.kf_tab{
+    height: 60px;
+    padding-left: 20px;
+    position: relative;
+}
+.kf_search{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+}
+.kf_search input{
+    width: 240px;
+    height: 39px;
+    margin-left: 8px;
+    color: #4c4c4c;
+}
+.kf_search a{
+    display: inline-block;
+    width: 40px;
+    height: 42px;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    background: #f77252 url(../image/adviser/search.png) no-repeat center center;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.kf_tab ul li{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 40px;
+}
+.kf_tab ul li.on a{
+    color: #f77252;
+}
+.kf_tab ul li a{
+    font-size: 14px;
+    color: #666666;
+}
+.kf_list>ul.clear>li{
+    box-sizing: border-box;
+    border-top: 1px solid #eeeeee;
+    height: 160px;
+    padding: 20px;
+}
+.kf_img{
+    width: 120px;
+    height: 120px;
+    float: left;
+}
+.kf_det{
+    width: 260px;
+    height: 120px;
+    margin-left: 20px;
+    float: left;
+}
+.kf_det .p1{
+    margin-top: 10px;
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+}
+.kf_det .p2{
+    margin: 10px 0;
+    color: #999999;
+}
+.kf_pf{
+    width: 145px;
+    float: left;
+    margin: 15px 0 0 115px;
+    text-align: center;
+}
+.kf_pf .p1{
+    color: #ff3c00;
+    font-size: 28px;
+}
+.kf_pf .p2{
+    width: 100%;
+    height: 22px;
+    background: url("../image/adviser/pf.png") no-repeat center center;
+    background-size: 130px;
+}
+.kf_zx{
+    width: 300px;
+    height: 35px;
+    float: right;
+    margin-top: 35px;
+}
+.kf_zx ul li{
+    float: left;
+    width: 140px;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+}
+.kf_zx ul li a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 35px;
+    padding-left: 53px;
+    font-size: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.kf_zx ul li a.k1{
+    background: #6b8ed7 url(../image/adviser/phone.png) no-repeat 20px center;
+    color: #ffffff;
+}
+.kf_zx ul li:first-child{
+    margin-right: 20px;
+}
+.kf_zx ul li a.k2{
+    background:  url(../image/adviser/zx.png) no-repeat 20px center;
+    color: #6b8ed7;
+    border: 1px solid #6b8ed7;
+}
+
+/* 分页 */
+div.company_list_result_pages {
+    /*display: none;*/
+    position: relative;
+    padding: 30px 0;
+    text-align: center;
+    height: 35px;
+    font-size: 0;
+}
+div.company_list_result_pages a {
+    color:#272727;
+}
+span.lastpage,
+span.nextpage,
+span.backhome,
+span.prevpage,
+span.pagesN a {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 33px;
+    padding: 0 11px 0 12px;
+    line-height: 33px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+span.prevpage {
+    border-left: none;
+}
+span.prevpage a {
+    background: url('../image/adviser/list_prevpage.jpg') left center no-repeat;
+    padding-left: 17px;
+}
+span.pagesN {
+    padding: 0 16px;
+}
+span.pagesN a.active {
+    border: 1px solid #f89e19;
+}
+span.pagesN a {
+    position: relative;
+    font-style: normal;
+}
+span.nextpage a {
+    background: url('../image/adviser/list_nextpage.jpg') right center no-repeat;
+    padding-right: 17px;
+}
+span.lastpage {
+    border-left: none;
+}
+span.total {
+    font-size: 12px;
+    padding-left: 10px;
+}
+span.total strong {
+    color: red;
+    font-weight: normal;
+}
+span.jump {
+    display: inline-block;
+    position: relative;
+    vertical-align: -10px;
+    width: 79px;
+    height: 28px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.pages_inp {
+    width: 38px;
+    height: 28px;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    background: none;
+    text-indent: 5px;
+    line-height: 24px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.pages_btn{
+    width: 41px;
+    height: 28px;
+    border: none;
+    background: #f89e19;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/*弹框*/
+.copy-bg {
+    opacity: 0.7;
+    background: rgb(0, 0, 0,0.5) none repeat scroll 0% 0%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    z-index: 99999;
+}
+.ui-win-search {
+    position: fixed;
+    width: 300px;
+    height: 341px;
+    left: 50%;
+    top: 50%;
+    margin-left: -135px;
+    margin-top: -205px;
+    background: #fff;
+    z-index: 99999;
+    background: url("../image/adviser/tx.png") no-repeat;
+}
+.ui-win-search p{
+    width: 220px;
+    height: 38px;
+    line-height: 38px;
+    margin: 0 auto;
+}
+.ui-win-search p input::placeholder{
+    color: #999999;
+}
+.ui-win-search p input{
+    width: 215px;
+    height: 100%;
+    color: #666666;
+    border: 1px solid #6b8ed7;
+    border-radius: 6px;
+    padding-left: 5px;
+}
+.ui-win-search .p1{
+    margin-top: 140px;
+}
+.ui-win-search .p2{
+    margin-top: 20px;
+}
+#free_btn{
+    display: block;
+    width: 220px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: #6b8ed7;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.ui-win-search h2{
+    color: #666666;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+}
+#exit{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url("../image/adviser/exit.png") no-repeat;
+    background-size:40px ;
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    cursor: pointer;
+}

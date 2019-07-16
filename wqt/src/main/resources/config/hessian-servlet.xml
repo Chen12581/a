@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+	
+	<!-- <aop:config>
+		<aop:advisor
+			pointcut="execution(* com.buss.bu.*.*(..))"
+			advice-ref="txAdvice" order="0" />
+	</aop:config>
+
+<bean id="daoservice" class="com.buss.bu.Service" >
+	<property name="busdao" ref="busdao"></property>
+	</bean>
+	 -->
+	 
+	<!--公告-->
+    <bean id="noticeDao" class="com.wqt.notice.dal.NoticeDao"></bean>
+	<bean id="noticeService" class="com.hessian.service.impl.NoticeServiceImpl">
+	       <property name="noticeDao" ref="noticeDao"></property>
+	</bean>
+    <bean name="/notice" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="noticeService"></property>
+       <property name="serviceInterface" value="com.hessian.service.NoticeService"></property>
+    </bean> 
+    
+    <!--常见问题-->
+    <bean id="problemDao" class="com.wqt.helpcenter.dao.ProblemDao"></bean>
+	<bean id="problemService" class="com.hessian.service.impl.ProblemServiceImpl">
+	       <property name="problemDao" ref="problemDao"></property>
+	</bean>
+    <bean name="/problem" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="problemService"></property>
+       <property name="serviceInterface" value="com.hessian.service.ProblemService"></property>
+    </bean> 
+    
+	<!--客服验证-->
+    <bean id="workerDao" class="com.wqt.worker.dal.WorkerDao"></bean>
+	<bean id="workerService" class="com.hessian.service.impl.WorkerServiceImpl">
+	       <property name="workerDao" ref="workerDao"></property>
+	</bean>
+    <bean name="/worker" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="workerService"></property>
+       <property name="serviceInterface" value="com.hessian.service.WorkerService"></property>
+    </bean> 
+    
+    <!--收藏-->
+	<bean id="collectDao" class="com.collect.dal.CollectDao"></bean>
+	<bean id="collectService" class="com.hessian.service.impl.CollectServiceImpl">
+	       <property name="collectDao" ref="collectDao"></property>
+	</bean>
+    <bean name="/collect" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="collectService"></property>
+       <property name="serviceInterface" value="com.hessian.service.CollectService"></property>
+    </bean> 
+    
+    <!--短信-->
+	<bean id="smsDao" class="com.sms.dal.SmsDao"></bean>
+	<bean id="smsService" class="com.hessian.service.impl.SmsServiceImpl">
+	       <property name="smsDao" ref="smsDao"></property>
+	</bean>
+    <bean name="/sms" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="smsService"></property>
+       <property name="serviceInterface" value="com.hessian.service.SmsService"></property>
+    </bean> 
+    
+    <!--咨询-->
+    <bean id="clientConsultDao" class="com.clientconsult.dal.ClientConsultDao">
+    </bean>
+    <bean id="clientConsultService" class="com.hessian.service.impl.ClientConsultServiceImpl">
+        <property name="clientConsultDao" ref="clientConsultDao"></property>
+    </bean>
+    <bean name="/clientConsult" class="org.springframework.remoting.caucho.HessianServiceExporter">
+       <property name="service" ref="clientConsultService"></property>
+       <property name="serviceInterface" value="com.hessian.service.ClientConsultService"></property>
+    </bean> 
+</beans>

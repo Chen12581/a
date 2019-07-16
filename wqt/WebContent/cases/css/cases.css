@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    min-width: 1200px;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: none;
+    background-color: #f5f6fa;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+a:hover {
+    color: #ff0000;
+}
+i{
+    font-style:normal
+}
+ul,li{
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+input,button{
+    outline: none;
+    border: none;
+}
+.clear {
+    clear: both;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+/*售后采访*/
+.section_banner {
+    background: url(../image/cases/coverbanner.jpg) no-repeat center top;
+    height: 496px;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    clear: both;
+}
+.section_banner .container {
+    position: relative;
+}
+.section_banner p {
+    position: absolute;
+    right: 90px;
+    top: 320px;
+    transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+    -o-transform: rotate(7deg);
+    font-size: 22px;
+}
+.section_banner p span {
+    color: #ed0017;
+}
+.section_banner .section_bannerbd {
+    position: absolute;
+    right: 100px;
+    top: 410px;
+}
+.section_bannerbd_title{
+    width: 400px;
+    padding: 12px 0 10px 10px;
+    border: 1px solid #ed0017;
+    border-radius: 5px;
+    font-size: 22px;
+    font-family: 微软雅黑, Microsoft YaHei, 微软雅黑;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+.section_banner .share {
+    margin-top: 8px;
+}
+
+/*主角风采*/
+.section01 {
+    background: url(../image/cases/section01_bg.jpg) no-repeat center top;
+    height: 586px;
+}
+.section01 .container {
+    position: relative;
+}
+.section01 .section01_left {
+    width: 634px;
+}
+.section01 .section01_left dl.section01_left_top {
+    margin-bottom: 50px;
+}
+.section01 .section01_left dt {
+    margin-bottom: 20px;
+}
+.section01 .section01_left dd {
+    font-size: 16px;
+    line-height: 36px;
+    color: #f7f0f1;
+}
+.section01 .section01_left dl.section01_left_top dd {
+    height: 144px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.section01 .section01_left dd {
+    font-size: 16px;
+    line-height: 36px;
+    color: #f7f0f1;
+}
+.section01 .section01_slide {
+    margin: 70px 40px 0 0;
+    position: relative;
+    width: 380px;
+    height: 480px;
+}
+.section01 .section_center_tit {
+    position: absolute;
+    top: 60px;
+    left: 680px;
+}
+/*采访现场*/
+.section02 {
+    background: #fafafa;
+}
+.section02 .tit {
+    background: url(../image/cases/section02_tit.jpg) no-repeat center top;
+    height: 82px;
+}
+.section02_left {
+    width: 690px;
+    overflow: hidden;
+}
+.section02_left li {
+    margin-bottom: 30px;
+}
+.section02_left .pic {
+    margin-right: 10px;
+    float: left;
+    display: inline;
+}
+.section02_left i {
+    float: left;
+    vertical-align: -6px;
+    background: url(../image/cases/arrow-left.jpg) no-repeat left top;
+    width: 13px;
+    display: inline-block;
+    height: 41px;
+}
+.section02_left .info {
+    float: left;
+}
+.section02_left .txt {
+    max-width: 566px;
+    min-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 15px;
+    line-height: 26px;
+    font-size: 14px;
+    background: #f0f0f0;
+}
+.section02_left li.right .pic {
+    margin-left: 10px;
+    float: right;
+    display: inline;
+}
+.section02_left li.right .info {
+    float: right;
+}
+.section02_left li.right i {
+    float: right;
+    background: url(../image/cases/arrow-right.jpg) no-repeat top right;
+}
+.section02_left li.right .txt {
+    background: #e93641;
+    color: #fff;
+}
+.section02_right {
+    width: 390px;
+    padding: 20px 40px 0 36px;
+    border-left: 6px solid #efefef;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.section02_right li {
+    margin-bottom: 20px;
+    height: 106px;
+}
+.section02_right .pic {
+    margin-right: 10px;
+}
+.section02_right .title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.section02_right .txt {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.section02_right .btn a {
+    border: 1px solid #ADADAD;
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+/*结语*/
+.section03 {
+    background: url(../image/cases/section03_bg.jpg) no-repeat top center;
+    padding: 40px 0;
+    text-align: center;
+}
+.section03 .tit {
+    margin-bottom: 30px;
+}
+.section03 p {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: left;
+    text-indent: 2em;
+}
+.section03 p {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: left;
+    text-indent: 2em;
+}
+.section03 p.writer {
+    text-align: right;
+}

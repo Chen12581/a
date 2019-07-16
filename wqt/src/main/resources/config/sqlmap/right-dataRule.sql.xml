@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.dataRule">
+	<cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+	
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.Rule">
+		insert into DP_RULE(ruleId,ruleName,bizCode,sourceType,ruleValue)
+		values(#{ruleId},#{ruleName:VARCHAR},#{bizCode},#{sourceType},#{ruleValue:VARCHAR})
+	</insert>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.Rule">
+		update DP_RULE 
+		<set>
+			<if test="ruleName!=null">
+				ruleName = #{ruleName},
+			</if>
+			<if test="bizCode!=null">
+				bizCode = #{bizCode},
+			</if>
+			<if test="sourceType!=null">
+				sourceType = #{sourceType},
+			</if>
+			<if test="ruleValue!=null">
+				ruleValue = #{ruleValue},
+			</if>
+		</set>
+		where ruleId = #{ruleId}
+	</update>
+	
+	<delete id="delete" parameterType="long">
+		delete from DP_RULE where ruleid = #{ruleId}
+	</delete>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.Rule">
+		select * from DP_RULE
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Rule">
+		select * from DP_RULE where ruleid = #{ruleId}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.Rule" resultType="com.talkweb.twdpe.base.right.pojo.Rule" >
+		select * from DP_RULE 
+		<where>
+			<if test="ruleId!=null">
+				and ruleId = #{ruleId}
+			</if>
+			<if test="ruleName!=null">
+				and ruleName like '%${ruleName}%'
+			</if>
+			<if test="bizCode!=null">
+				and bizCode = #{bizCode}
+			</if>
+			<if test="sourceType!=null">
+				and sourceType = #{sourceType}
+			</if>
+			<if test="ruleValue!=null">
+				and ruleValue = #{ruleValue}
+			</if>
+		</where>
+		order by ruleId desc
+	</select>
+	
+	<select id="selectByBinded" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Rule" >
+		select r.* from DP_PERMRULE p left join DP_RULE r on p.ruleid= r.ruleid
+		where p.permissionid=#{permissionId}
+		order by r.ruleid
+	</select>
+
+	<select id="selectByNoBinded" useCache="false" parameterType="long" resultType="com.talkweb.twdpe.base.right.pojo.Rule" >
+		select * from DP_RULE 
+		where ruleid not in (
+			select r.ruleid from DP_PERMRULE p left join DP_RULE r on p.ruleid= r.ruleid where p.permissionid=#{permissionId}
+		) 
+		order by ruleid
+	</select>
+	
+	<select id="findDynamicSqlDatas" useCache="false" parameterType="map" resultType="string">
+		${sql}
+	</select>
+	
+	<insert id="insertPerssionRule" parameterType="com.talkweb.twdpe.base.right.pojo.PermissionRule">
+		insert into DP_PERMRULE(PERMISSIONID,RULEID)
+		values(#{permissionId},#{ruleId})
+	</insert>	
+	
+	<delete id="deletePerssionRule" parameterType="com.talkweb.twdpe.base.right.pojo.PermissionRule" >
+		delete from DP_PERMRULE
+		<where>
+			<if test="permissionId!=null">
+				and permissionId = #{permissionId}
+			</if>
+			<if test="ruleId!=null">
+				and  ruleId = #{ruleId}
+			</if>
+		</where>
+	</delete>	
+	
+	<delete id="batchDeletePerssionRule" parameterType="map" >
+		delete from DP_PERMRULE
+		<where>
+			<if test="permissionId!=null">
+				and permissionId in (${permissionId})
+			</if>
+			<if test="ruleId!=null">
+				and  ruleId in (${ruleId})
+			</if>
+		</where>
+	</delete>	
+</mapper>

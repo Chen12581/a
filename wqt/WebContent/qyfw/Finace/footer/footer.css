@@ -1,0 +1,222 @@
+body{
+    font-size: 14px;
+    margin:0px;
+    font-family: Helvetica Neue,Helvetica,sans-serif;
+}
+body p,a,span,dd,dt,dl,i,div,h1,h2,h3,h4,h5,h6,ol,ul,li,button, input, select, textarea{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+a {
+    outline: 0;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    outline-width: 0;
+}
+ol, ul {
+    list-style: none;
+}
+img {
+    border-style: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+    font-weight: 500;
+}
+.item-left{
+    float:left;
+}
+.item-right{
+    float:right;
+}
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.cs-footer {
+    background-color: #2b2e42;
+    padding-top: 48px;
+    min-width: 1200px;
+}
+.cs-footer .cs-footer-control {
+    border-bottom: 1px solid #383b50;
+}
+.cs-footer .cs-footer-wrap-content {
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.cs-footer .cs-footer-wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list {
+    color: #fff;
+    -ms-flex: 1;
+    flex: 1;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-content:first-child {
+    padding-left: 0;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-content {
+    width: 180px;
+    border-right: 1px solid #383b50;
+    padding-left: 15px;
+    padding-bottom: 38px;
+    float: left;
+    height: 242px;
+    overflow: hidden;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-title {
+    font-size: 16px;
+    color: #fff;
+    height: 28px;
+    line-height: 28px;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-item {
+    margin-top: 20px;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-item .wrap-list-item-task {
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    font-size: 13px;
+    cursor: pointer;
+    color: #9ea0a9;
+}
+.cs-footer .cs-footer-wrap-content .footer-qr {
+    width: 177px;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.cs-footer .cs-footer-wrap-content .footer-qr .footer-qr-info {
+    width: 170px;
+    height: 170px;
+    position: relative;
+    overflow: hidden;
+}
+.cs-footer .cs-footer-wrap-content .footer-qr .footer-qr-info .footer-qr-img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.cs-footer .cs-footer-wrap-content .footer-qr .footer-qr-desc {
+    color: #9ea0a9;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+}
+.cs-footer .business-management-tools {
+    padding: 20px 0;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.cs-footer .business-management-tools .management-tools-content {
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-title {
+    color: #fff;
+    font-size: 13px;
+    float: left;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list {
+    float: left;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item {
+    margin-left: 28px;
+    float: left;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item .list-item-detail {
+    display: block;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item .list-item-detail .item-info {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item .list-item-detail .item-title {
+    color: #9ea0a9;
+    font-size: 12px;
+    width: 60px;
+    text-align: center;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item .list-item-detail .item-info img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.cs-footer .business-management-tools .cs-service {
+    text-align: right;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.cs-footer .business-management-tools .cs-service .service-phone {
+    font-size: 12px;
+    color: #9ea0a9;
+}
+.cs-footer .business-management-tools .cs-service .service-phone .service-phone-desc {
+    color: #ff7955;
+    font-size: 18px;
+}
+.cs-footer .business-management-tools .cs-service .service-content {
+    margin: 6px 0;
+}
+.cs-footer .business-management-tools .cs-service .service-content .service-content-info {
+    color: #9ea0a9;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    display: inline-block;
+    border-right: 1px solid #9ea0a9;
+    padding: 0 5px;
+}
+.cs-footer .business-management-tools .cs-service .service-position {
+    color: #9ea0a9;
+    font-size: 12px;
+}
+.cs-footer .cs-footer-wrap-content .footer-wrap-list .wrap-list-item .wrap-list-item-task:hover {
+    color: #ff7955;
+}
+.cs-footer .business-management-tools .management-tools-content .tools-content-list .tools-content-list-item .list-item-detail:hover .item-title {
+    color: #ff7955;
+}
+.cs-footer .business-management-tools .cs-service .service-content .service-content-info:hover {
+    color: #ff7955;
+}

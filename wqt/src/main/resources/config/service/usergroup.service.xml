@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+	<!-- 圈子管理数据库访问 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.ICircleManager" class="com.talkweb.twdpe.base.usergroup.CircleManagerDbImpl">
+		<property name="circleManager" ref="com.talkweb.twdpe.base.usergroup.dal.CircleManager" />
+		<property name="circleUserManager" ref="com.talkweb.twdpe.base.usergroup.dal.CircleUserManager" />
+	</bean>
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.CircleManager" class="com.talkweb.twdpe.base.usergroup.dal.CircleManager" >
+		<property name="session" ref="session" />
+	</bean>
+	<bean id="com.talkweb.twdpe.base.usergroup.service.CircleManagerService" class="com.talkweb.twdpe.base.usergroup.service.CircleManagerService">
+		<property name="iCircleManager" ref="com.talkweb.twdpe.base.usergroup.ICircleManager" />
+	</bean>
+	
+	<!-- 圈子用户管理 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.CircleUserManager" class="com.talkweb.twdpe.base.usergroup.dal.CircleUserManager" >
+		<property name="session" ref="session" />
+	</bean>
+	
+	<!-- 字段管理数据库访问 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.QueryFieldManager" class="com.talkweb.twdpe.base.usergroup.dal.QueryFieldManager" >
+		<property name="session" ref="session" />
+	</bean>
+	
+	<!-- 项目管理数据库访问 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.QueryItemManager" class="com.talkweb.twdpe.base.usergroup.dal.QueryItemManager" >
+		<property name="session" ref="session" />
+	</bean>
+	
+	<!-- 圈子管理数据库访问 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.IQueryManager" class="com.talkweb.twdpe.base.usergroup.QueryManagerDbImpl">
+		<property name="queryManager" ref="com.talkweb.twdpe.base.usergroup.dal.QueryManager" />
+		<property name="queryItemManager" ref="com.talkweb.twdpe.base.usergroup.dal.QueryItemManager" />
+		<property name="queryOperatorManager" ref="com.talkweb.twdpe.base.usergroup.dal.QueryOperatorManager" />
+		<property name="queryFieldManager" ref="com.talkweb.twdpe.base.usergroup.dal.QueryFieldManager" />
+	</bean>
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.QueryManager" class="com.talkweb.twdpe.base.usergroup.dal.QueryManager" >
+		<property name="session" ref="session" />
+		<property name="queryFieldManager" ref="com.talkweb.twdpe.base.usergroup.dal.QueryFieldManager"></property>
+	</bean>
+	<bean id="com.talkweb.twdpe.base.usergroup.service.QueryManagerService" class="com.talkweb.twdpe.base.usergroup.service.QueryManagerService">
+		<property name="iQueryManager" ref="com.talkweb.twdpe.base.usergroup.IQueryManager" />
+		<property name="userManagerService" ref="com.talkweb.twdpe.base.right.service.UserManagerService" />
+	</bean>
+	
+	<!-- 操作符管理数据库访问 -->
+	<bean id="com.talkweb.twdpe.base.usergroup.dal.QueryOperatorManager" class="com.talkweb.twdpe.base.usergroup.dal.QueryOperatorManager" >
+		<property name="session" ref="session" />
+	</bean>
+</beans>

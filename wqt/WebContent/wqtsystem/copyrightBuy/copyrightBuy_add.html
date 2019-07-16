@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增版权求购</title>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/default/easyui.css' rel='stylesheet' type='text/css' ></link>
+<link href='../../easyui/themes/icon.css' rel='stylesheet' type='text/css' ></link>
+<script  type="text/javascript" src='../../easyui/jquery.min.js'></script>
+<script  type="text/javascript" src='../../easyui/jquery.easyui.min.js'></script>
+<script  type="text/javascript" src='../../easyui/locale/easyui-lang-zh_CN.js'></script>
+<script  type="text/javascript" src='../../layer/layer.js'></script>
+<script  type="text/javascript" src="js/copyrightBuy_add.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+</head>
+<body class="easyui-layout" style="width:100%;margin:0;padding:0;overflow:hidden" scroll="no">
+	<div data-options="region:'center'" style="padding:10px 5px;border:0">
+       <form id="copyrightBuyForm" action="sysCopyBuy_insertCopyrightBuy.action" class="easyui-form" method="get" > 
+		<table class="ui-table">
+			<tr>
+				<th valign="middle">求购关键字：</th>
+				<td style="width:200px;height:50px;">
+				     <input id="buycontent" name="iprCopyrightBuy.buycontent" class="easyui-textbox" style="width:180px;"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">交易方式：</th>
+				<td style="width:200px;">
+					<select style="width:180px;" id="transfermethod"  name="iprCopyrightBuy.transfermethod" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1">转让</option>
+				     	<option value="2">授权</option>
+				     	<option value="3">分账</option>
+				     </select>
+				</td>
+				
+				<th valign="middle">授权方式：</th>
+				<td style="width:200px;">
+					<select style="width:180px;" id="competentmethod"  name="iprCopyrightBuy.competentmethod" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1">独家</option>
+				     	<option value="2">非独家</option>
+				     </select>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">授权地区：</th>
+				<td style="width:200px; height:50px;">
+				     <select style="width:180px;" id="competentarea"  name="iprCopyrightBuy.competentarea" class="easyui-combobox">
+				     	<option value="" >请选择</option>
+				     	<option value="1" >中国大陆</option>
+				     	<option value="2">港澳台</option>
+				     	<option value="3" >全球</option>
+				     	<option value="4">其他</option>
+				     </select>
+				</td>
+				
+				<th valign="middle">授权范围：</th>
+				<td style="width:200px;">
+				     <input class="easyui-combobox" 
+				     id="competentrange" 
+				     name="iprCopyrightBuy.competentrange" 
+				     style="width:180px;"
+				     data-options="
+								url:'sysCopyBuy_competentrange.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'
+				     "/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th valign="middle">版权分类：</th>
+				<td style="width:200px;">
+					<input class="easyui-combobox" 
+					     id="copyrightkind"
+					     name="iprCopyrightBuy.copyrightkind"
+						 style="width:180px;"
+						 data-options="
+								url:'sysCopyBuy_copyrightKind.action',
+								method:'get',
+								valueField:'value',
+			                    textField:'text',
+								panelHeight:'180'
+						">
+				</td>
+				<th valign="middle">预算价格：</th>
+				<td style="width:200px;">
+				     <input id="price" name="iprCopyrightBuy.price" class="easyui-textbox" style="width:180px;"/>
+				</td>
+				
+			</tr>
+			<tr>
+				<th valign="middle">联系人：</th>
+				<td style="width:200px;height:50px;">
+				     <input id="connector" name="iprCopyrightBuy.connector" class="easyui-textbox" style="width:180px;"/>
+				</td>
+				
+				<th valign="middle">联系方式：</th>
+				<td style="width:200px;">
+				     <input id="connectmethod" name="iprCopyrightBuy.connectmethod" class="easyui-textbox" style="width:180px;"/>
+				</td>
+			</tr>
+			<tr>
+				
+			</tr>
+			<tr>
+				<th valign="middle">详细描述：</th>
+				<td style="width:200px;height:25px;" colspan="3">
+				     <input id="buydesc" name="iprCopyrightBuy.buydesc" class="easyui-textbox" style="width:450px; height: 50px;"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input  style="display: none;" id="" name=""></input> 
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="submitForm()" style="width:80px">保存</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="doClose()" style="width:80px">关闭</a>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true"
+	>
+	<!-- Position -->
+	<bean id="positionDao" class="com.talkweb.twdpe.base.org.dal.PositionDao" />
+	<bean id="positionService" class="com.talkweb.twdpe.base.org.service.impl.PositionServiceImpl" />
+	
+	<!-- Area -->
+	<bean id="areaDao" class="com.talkweb.twdpe.base.org.dal.AreaDao" />
+	<bean id="areaService" class="com.talkweb.twdpe.base.org.service.impl.AreaServiceImpl" />
+
+	<!-- Org -->
+	<bean id="orgDao" class="com.talkweb.twdpe.base.org.dal.OrgDao" />
+	<bean id="orgService" class="com.talkweb.twdpe.base.org.service.impl.OrgServiceImpl" />
+	
+	<!-- User -->
+	<bean id="userDao" class="com.talkweb.twdpe.base.org.dal.UserDao" />
+	<bean id="staffDao" class="com.talkweb.twdpe.base.org.dal.StaffDao" />
+	<bean id="userService" class="com.talkweb.twdpe.base.org.service.impl.UserServiceImpl" />
+			
+</beans>

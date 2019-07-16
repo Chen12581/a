@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+        
+<struts>
+	<package name="struts-wqtworker"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods> 
+	    
+		<action name="adviser" class="com.wqt.worker.action.WorkerAction" method="adviser">
+			<result name="success" type="freemarker">
+				/adviser.ftl
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<action name="configClient" class="com.wqt.worker.action.WorkerAction" method="configClient">
+		   <result name="success" type="json">  
+				  <param name="root">data</param>
+				  <param name="excludeNullProperties">true</param>
+            </result> 
+		</action>
+	</package>
+</struts>

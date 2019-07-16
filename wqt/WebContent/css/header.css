@@ -1,0 +1,140 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+}
+body h1,h2,h3,h4,h5,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.header_top{
+    background-color: #F6F6F6;
+}
+.header_top:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.header_top>div{
+    width: 1190px;
+    margin: 0 auto;
+}
+.header_top li{
+    display: inline-block;
+    font-size: 13px;
+    padding-right: 20px;
+    color: #999;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.header_top li a{
+    color: #999;
+}
+.header_top ul{
+    display: inline-block;
+}
+.header_top .header_left{
+    display: inline-block;
+    float: left;
+}
+.header_top .header_right{
+    display: inline-block;
+    float: right;
+}
+.header_top .header_right li:last-child{
+    padding-right: 0;
+}
+.header_left .home{
+    position: relative;
+    padding-left: 14px;
+}
+.header_left .home:before{
+    position: absolute;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(../image/home.png) no-repeat left bottom;
+    content: "";
+    left: 0;
+    top: 15px;
+}
+.header_right .user{
+    position: relative;
+    padding-left: 20px;
+}
+.header_right .user a:first-child{
+    color: #000;
+}
+.header_right .user:before{
+    position: absolute;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../image/user.png) no-repeat left bottom;
+    content: "";
+    top: 13px;
+    left: 0;
+}
+.header_left .tools{
+    position: relative;
+}
+.header_left .tools:after{
+    display: inline-block;
+    content: "";
+    border-top: 6px solid #666;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute;
+    top: 17px;
+    right: 5px;
+}
+.tools div{
+    position: absolute;
+    bottom: -118px;
+    left: -35px;
+    width: 190px;
+    background-color: #EAEAEA;
+    padding: 10px;
+    border-radius: 8px;
+}
+.tools div a{
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+    color: #000;
+    padding: 5px 0;
+}
+.header_bottom{
+    width: 1190px;
+    margin: 0 auto;
+    height: 90px;
+    line-height: 90px;
+    vertical-align: middle;
+}
+.header_bottom:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.header_bottom .header_logo{
+    float: left;
+    padding-top: 4px;
+    height: 90px;
+}
+.header_bottom .header_nav{
+    float: right;
+}
+.header_bottom .header_nav a{
+    margin: 0 10px;
+    padding: 0 10px;
+    height: 87px;
+    display: inline-block;
+    color: #666;
+}
+.header_bottom .header_nav a:hover{
+    border-bottom: 3px solid #20CB9A
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="estrade"> 
+
+     <select id="selectEsTradeCompanyShopList"
+     		parameterType="com.wqt.es.trade.pojo.EsTradeCompanyShop"
+     		resultType="com.wqt.es.trade.pojo.EsTradeCompanyShop">
+     	select s.*,a.areacodename,
+     	(select c.industryname from es_trade_companyindustry c where s.companyindustry=c.id) industryname
+     	from es_trade_companyshop s join wqt_areacode a on s.areacode=a.areacode
+     	where 1= 1
+     	<if test="null != id and '' != id">
+	 		and s.id = #{id}
+	 	</if>
+	 	<if test="null != userid and '' != userid">
+	 		and s.userid = #{userid}
+	 	</if>
+	 	<if test="null != shopcode and '' != shopcode">
+	 		and s.shopcode = #{shopcode}
+	 	</if>
+	 	<if test="null != companytruename and '' != companytruename">
+	 		and s.companytruename = #{companytruename}
+	 	</if>
+	 	<if test="null != lawername and '' != lawername">
+	 		and s.lawername = #{lawername}
+	 	</if>
+	 	<if test="null != companyindustry and '' != companyindustry">
+	 		and s.companyindustry = #{companyindustry}
+	 	</if>
+	 	<if test="null != regcapital and '' != regcapital">
+	 		and s.regcapital = #{regcapital}
+	 	</if>
+	 	<if test="null != creditcode and '' != creditcode">
+	 		and s.creditcode = #{creditcode}
+	 	</if>
+	 	order by id desc
+     </select>
+		
+	<select id="selectEsTradeCompanyShopOne"
+     		parameterType="com.wqt.es.trade.pojo.EsTradeCompanyShop"
+     		resultType="com.wqt.es.trade.pojo.EsTradeCompanyShop">
+     	select * from es_trade_companyshop
+     	where 1= 1
+     	<if test="null != id and '' != id">
+	 		and id = #{id}
+	 	</if>
+	 	<if test="null != shopcode and '' != shopcode">
+	 		and shopcode = #{shopcode}
+	 	</if>
+	 	<if test="null != companytruename and '' != companytruename">
+	 		and companytruename = #{companytruename}
+	 	</if>
+	 	<if test="null != lawername and '' != lawername">
+	 		and lawername = #{lawername}
+	 	</if>
+	 	<if test="null != companyindustry and '' != companyindustry">
+	 		and companyindustry = #{companyindustry}
+	 	</if>
+	 	<if test="null != regcapital and '' != regcapital">
+	 		and regcapital = #{regcapital}
+	 	</if>
+	 	<if test="null != creditcode and '' != creditcode">
+	 		and creditcode = #{creditcode}
+	 	</if>
+     </select>
+		
+	 <update id="updateEsTradeCompanyShop"
+	 		parameterType="com.wqt.es.trade.pojo.EsTradeCompanyShop">
+	 	update es_trade_companyshop
+	 	<set>
+	 		<trim suffix="" suffixOverrides=",">
+	 		<if test="null != shopcode and '' != shopcode">shopcode=#{shopcode},</if>
+	 		<if test="null != userid and '' != userid">userid=#{userid},</if>
+	 		<if test="null != companyname and '' != companyname">companyname=#{companyname},</if>
+	 		<if test="null != companytruename and '' != companytruename">companytruename=#{companytruename},</if>
+	 		<if test="null != companyindustry and '' != companyindustry">companyindustry=#{companyindustry},</if>
+	 		<if test="null != holddate and '' != holddate">holddate=#{holddate},</if>
+	 		<if test="null != establishdate and '' != establishdate">establishdate=#{establishdate},</if>
+	 		<if test="null != dutytype and '' != dutytype">dutytype=#{dutytype},</if>
+	 		<if test="null != regcapital and '' != regcapital">regcapital=#{regcapital},</if>
+	 		<if test="null != regcapitalmoney and '' != regcapitalmoney">regcapitalmoney=#{regcapitalmoney},</if>
+	 		<if test="null != truecapital and '' != truecapital">truecapital=#{truecapital},</if>
+	 		<if test="null != creditcode and '' != creditcode">creditcode=#{creditcode},</if>
+	 		<if test="null != companytype and '' != companytype">companytype=#{companytype},</if>
+	 		<if test="null != provinceid and '' != provinceid">provinceid=#{provinceid},</if>
+	 		<if test="null != provincename and '' != provincename">provincename=#{provincename},</if>
+	 		<if test="null != cityid and '' != cityid">cityid=#{cityid},</if>
+	 		<if test="null != cityname and '' != cityname">cityname=#{cityname},</if>
+	 		<if test="null != areaid and '' != areaid">areaid=#{areaid},</if>
+	 		<if test="null != areaname and '' != areaname">areaname=#{areaname},</if>
+	 		<if test="null != areacode and '' != areacode">areacode=#{areacode},</if>
+	 		<if test="null != bankaccount and '' != bankaccount">bankaccount=#{bankaccount},</if>
+	 		<if test="null != applybill and '' != applybill">applybill=#{applybill},</if>
+	 		<if test="null != netbank and '' != netbank">netbank=#{netbank},</if>
+	 		<if test="null != price and '' != price">price=#{price},</if>
+	 		<if test="null != operaterange and '' != operaterange">operaterange=#{operaterange},</if>
+	 		<if test="null != lawername and '' != lawername">lawername=#{lawername},</if>
+	 		<if test="null != debtissue and '' != debtissue">debtissue=#{debtissue},</if>
+	 		<if test="null != rightsissue and '' != rightsissue">rightsissue=#{rightsissue},</if>
+	 		<if test="null != businessissue and '' != businessissue">businessissue=#{businessissue},</if>
+	 		<if test="null != lawissue and '' != lawissue">lawissue=#{lawissue},</if>
+	 		<if test="null != dutyissue and '' != dutyissue">dutyissue=#{dutyissue},</if>
+	 		<if test="null != tangiblecapital and '' != tangiblecapital">tangiblecapital=#{tangiblecapital},</if>
+	 		<if test="null != intangiblecapital and '' != intangiblecapital">intangiblecapital=#{intangiblecapital},</if>
+	 		<if test="null != loanissue and '' != loanissue">loanissue=#{loanissue},</if>
+	 		<if test="null != connector and '' != connector">connector=#{connector},</if>
+	 		<if test="null != address and '' != address">address=#{address},</if>
+	 		<if test="null != mobileno and '' != mobileno">mobileno=#{mobileno},</if>
+	 		<if test="null != state and '' != state">state=#{state},</if>
+	 		<if test="null != pathkey and '' != pathkey">pathkey=#{pathkey},</if>
+	 		<if test="null != htmlpath and '' != htmlpath">htmlpath=#{htmlpath},</if>
+	 		<if test="null != developtime and '' != developtime">developtime=#{developtime},</if>
+	 		<if test="null != workerid and '' != workerid">workerid=#{workerid},</if>
+	 		<if test="null != remark and '' != remark">remark=#{remark},</if>
+	 		<if test="null != createtime and '' != createtime">createtime=#{createtime},</if>
+	 		<if test="null != bookmark and '' != bookmark">bookmark=#{bookmark},</if>
+	 	</trim>
+	 	</set>
+	 	where id = #{id}
+	 </update>
+	 			
+	 <delete id="deleteCompany"
+	 		parameterType="com.wqt.es.trade.pojo.EsTradeCompanyShop">
+	 	delete from es_trade_companyshop
+	 	where 1=1
+	 	<if test="null != id and '' != id">
+	 		and id = #{id}
+	 	</if>
+	 </delete>
+	 
+	 
+	 
+
+</mapper>

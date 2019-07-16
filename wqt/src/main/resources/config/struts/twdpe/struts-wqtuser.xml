@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="struts-wqtuser"   extends="twdpe-common-default">
+	    <global-allowed-methods>regex:.*</global-allowed-methods> 
+	    
+	    
+	    <!--用户收藏-->
+	    <action name="delcollect" class="com.wqt.user.action.UserCollectAction" method="delcollect">
+		   <result name="success" type="json">
+			  <param name="root">data</param>
+			  <param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+	    <!--用户收藏-->
+	    <action name="usercollect" class="com.wqt.user.action.UserCollectAction" method="usercollect">
+		   <result name="success" type="freemarker">
+              /usercenter/usercollection.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<action name="tologin" class="com.wqt.user.action.UserAction" method="tologin">
+		    <result name="success"  type="freemarker">
+			  /usercenter/login.ftl
+	       </result>
+	       <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	    <!--用户登录-->
+	    <action name="mobilelogin" class="com.wqt.user.action.UserAction" method="mobilelogin">
+		    <result name="success" type="json">
+			  <param name="root">data</param>
+			  <param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+	    <!--用户登录-->
+	    <action name="userlogin" class="com.wqt.user.action.UserAction" method="userlogin">
+		    <result name="success" type="json">
+			  <param name="root">data</param>
+			  <param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+	    <!--邮箱验证-->
+	    <action name="verityEmail" class="com.wqt.user.action.UserAction" method="verityEmail">
+		    <result name="success" type="json">
+			  <param name="root">data</param>
+			  <param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+	    <!--绑定邮箱页面-->
+	    <action name="findemail" class="com.wqt.user.action.UserAction" method="findemail">
+		   <result name="success" type="freemarker">
+              /usercenter/email.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--绑定邮箱-->
+		<action name="bandEmail" class="com.wqt.user.action.UserAction" method="bandEmail">
+	       <result name="success" type="json">
+			<param name="root">data</param>
+			<param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+	    <!--修改手机号页面-->
+	    <action name="modifymobile" class="com.wqt.user.action.UserAction" method="modifymobile">
+		   <result name="success" type="freemarker">
+              /usercenter/modify_mobile.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		 <!--修改密码页面-->
+	    <action name="modifypassword" class="com.wqt.user.action.UserAction" method="modifypassword">
+		   <result name="success" type="freemarker">
+              /usercenter/modify_password.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	    <!--找回密码页面-->
+	    <action name="findPassword" class="com.wqt.user.action.UserAction" method="findPassword">
+		   <result name="success" type="freemarker">
+              /helpcenter/password_back.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--找回密码下一步-->
+		<action name="findPasswordnext" class="com.wqt.user.action.UserAction" method="findPasswordnext">
+	       <result name="success" type="json">
+			<param name="root">data</param>
+			<param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+		<!--修改用户密码-->
+		<action name="updatePassword" class="com.wqt.user.action.UserAction" method="updatePassword">
+	       <result name="success" type="json">
+			<param name="root">data</param>
+			<param name="excludeNullProperties">true</param>
+	       </result>
+		</action>
+		
+		
+	    <!--CAS登录-->
+	    <action name="casLogin" class="com.wqt.user.action.UserAction" method="casLogin">
+			 <result name="success" type="redirect">
+				 ${srcurl}
+		      </result>
+		      <result name="JSONDATA" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		<action name="autoLoginCas" class="com.wqt.user.action.UserAction" method="autoLoginCas">
+			 <result name="success" type="redirect">
+				 ${srcurl}
+		      </result>
+		</action>
+		
+		
+		<!--登录验证码-->
+		<action name="loginSmsCode" class="com.wqt.user.action.UserAction" method="loginSmsCode">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		<!--注册验证码-->
+		<action name="regSmsCode" class="com.wqt.user.action.UserAction" method="regSmsCode">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		<!--用户名验证-->
+		<action name="checkUsername" class="com.wqt.user.action.UserAction" method="checkUsername">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		<!--用户换手机号码，验证手机号码-->
+		<action name="confirmUserMobile" class="com.wqt.user.action.UserAction" method="confirmUserMobile">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		<!--用户换手机号码-->
+		<action name="updateUserMobile" class="com.wqt.user.action.UserAction" method="updateUserMobile">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		</action>
+		
+		
+		
+		
+	<!-- 	<action name="testCas" class="com.wqt.user.action.UserAction" method="testCas">
+			  <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		      </result>
+		      <result name="TOCAS" type="redirect">
+				 /casLogin?service=${srcurl}
+		      </result>
+		</action> -->
+		
+		
+		<!--用户注册-->
+		<action name="register" class="com.wqt.user.action.UserAction" method="register">
+		   <result name="success">
+             /usercenter/register.html
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->	
+		</action>
+		
+		<!--用户中心-->
+		<action name="userCenter" class="com.wqt.user.action.UserAction" method="userCenter">
+		   <result name="success" type="freemarker">
+              /usercenter/usercenter.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->	
+		</action>
+		
+	    <!--用户信息编辑-->
+	    <action name="editUser" class="com.wqt.user.action.UserAction" method="editUser">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		     </result>
+		</action>
+		
+		<!--用户信息-->
+	    <action name="userBasic" class="com.wqt.user.action.UserAction" method="userBasic">
+			 <result name="success" type="freemarker">
+                 /usercenter/personalinfo.ftl
+		     </result>	
+		     <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	    <!--验证手机号码是否注册-->
+	    <action name="checkMobile" class="com.wqt.user.action.UserAction" method="checkMobile">
+			 <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		
+		
+		<!--用户注册-->
+		<action name="userRegister" class="com.wqt.user.action.UserAction" method="userReg">
+            <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action> 
+		
+	
+		<!--修改用户密码页面-->
+		<action name="modifyPassword" class="com.wqt.user.action.UserAction" method="modifyPassword">
+			<result name="success" type="freemarker">
+			   /usercenter/modify_password.ftl
+			</result>
+			<result name="404" type="json">
+			   /404.html
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<!--注销用户-->
+		<action name="loginOut" class="com.wqt.user.action.UserAction" method="loginOut">
+			<result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		
+		<!--邮寄地址页面-->
+		<action name="userPostaddr" class="com.wqt.user.action.PostAddressAction" method="userPostaddr">
+			<result name="success" type="freemarker">
+			   /usercenter/address.ftl
+			</result>
+			<interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+	    <!--邮寄地址列表-->
+	    <action name="postlist" class="com.wqt.user.action.PostAddressAction" method="postlist">
+	         <result name="success" type="json">
+					<param name="root">data</param>
+					<param name="excludeNullProperties">true</param>
+			 </result>
+		</action>
+		
+		<!--邮寄地址详情-->
+		<action name="onePostInfo" class="com.wqt.user.action.PostAddressAction" method="onePostInfo">
+            <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		<!--保存邮寄地址-->
+		<action name="saveUserPost" class="com.wqt.user.action.PostAddressAction" method="saveUserPost">
+            <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		<!--修改邮寄地址-->
+	    <action name="updateUserPost" class="com.wqt.user.action.PostAddressAction" method="updateUserPost">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+	    </action>
+	    
+	    <!--删除用户邮寄地址-->
+	    <action name="delUserPost" class="com.wqt.user.action.PostAddressAction" method="delUserPost">
+		  <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		  </result>
+	    </action>
+	    
+		<!--合同主体管理页面-->
+		<action name="usercontract" class="com.wqt.user.action.UserContractAction" method="usercontract">
+		   <result name="success" type="freemarker">
+				/usercenter/usercontract.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--合同主体列表-->
+		<action name="contractlist" class="com.wqt.user.action.UserContractAction" method="contractlist">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--合同主体列表-->
+		<action name="oneContractInfo" class="com.wqt.user.action.UserContractAction" method="oneContractInfo">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--添加合同主体-->
+		<action name="saveUserContract" class="com.wqt.user.action.UserContractAction" method="saveUserContract">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--修改合同主体-->
+		<action name="updateUserContract" class="com.wqt.user.action.UserContractAction" method="updateUserContract">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--删除合同主体-->
+		<action name="delUserContract" class="com.wqt.user.action.UserContractAction" method="delUserContract">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--发票主体管理页面-->
+		<action name="userBill" class="com.wqt.user.action.UserBillAction" method="userBill">
+		   <result name="success" type="freemarker">
+				/usercenter/userbill.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<!--保存用户申请发票-->
+		<action name="saveUserBill" class="com.wqt.user.action.UserBillAction" method="saveUserBill">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--发票主体列表-->
+		<action name="userBilllist" class="com.wqt.user.action.UserBillAction" method="userBilllist">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--发票主体详情-->
+		<action name="oneBillInfo" class="com.wqt.user.action.UserBillAction" method="oneBillInfo">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--修改发票主体-->
+		<action name="updateUserBill" class="com.wqt.user.action.UserBillAction" method="updateUserBill">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--删除发票主体-->
+		<action name="delUserBill" class="com.wqt.user.action.UserBillAction" method="delUserBill">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--用户安全设置-->
+		<action name="userSecurity" class="com.wqt.user.action.UserSecurityAction" method="userSecurity">
+		   <result name="success" type="freemarker">
+				/usercenter/security.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		
+		<!--用户建议列表-->
+		<action name="suggestlist" class="com.wqt.user.action.UserAction" method="suggestlist">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--发票主体管理页面-->
+		<action name="usersuggest" class="com.wqt.user.action.SugguestAction" method="usersuggest">
+		   <result name="success" type="freemarker">
+				/usercenter/suggest.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--保存用户建议-->
+		<action name="saveUserSuggest" class="com.wqt.user.action.SugguestAction" method="saveUserSuggest">
+            <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		    </result>
+		</action>
+		
+		<!--修改用户建议-->
+		<action name="updateUserSuggest" class="com.wqt.user.action.SugguestAction" method="updateUserSuggest">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--删除用户建议-->
+		<action name="delUserSuggest" class="com.wqt.user.action.SugguestAction" method="delUserSuggest">
+		   <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--用户建议列表-->
+		<action name="userSuggestlist" class="com.wqt.user.action.SugguestAction" method="userSuggestlist">
+		   <result name="success" type="freemarker">
+				/usercenter/suggestlist.ftl
+		   </result>
+		   <result name="404">
+				/404.html
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--用户资金明细-->
+		<action name="userCapitalList" class="com.wqt.user.action.UserCapitalAction" method="userCapitalList">
+		   <result name="success" type="freemarker">
+				/usercenter/capital.ftl
+		   </result>
+		   <result name="404">
+				/404.html
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--用户充值-->
+		<action name="userRecharge" class="com.wqt.user.action.UserCapitalAction" method="userRecharge">
+		   <result name="success" type="freemarker">
+				/usercenter/recharge.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--用户提现-->
+		<action name="userWithDraw" class="com.wqt.user.action.UserCapitalAction" method="userWithDraw">
+		   <result name="success" type="freemarker">
+				/usercenter/withdraw.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--用户绑定银行卡-->
+		<action name="usersBank" class="com.wqt.user.action.UserBankAction" method="usersBank">
+		   <result name="success" type="freemarker">
+				/usercenter/userbank.ftl
+		   </result>
+		   <interceptor-ref name="workerServiceInterceptor" />  <!-- 应用自定义拦截器 -->
+		</action>
+		
+		<!--用户绑定银行卡-->
+		<action name="bindUserBank" class="com.wqt.user.action.UserBankAction" method="bindUserBank">
+		     <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+		
+		<!--用户解除绑定银行卡-->
+		<action name="unbindUserBank" class="com.wqt.user.action.UserBankAction" method="unbindUserBank">
+		    <result name="success" type="json">
+				<param name="root">data</param>
+				<param name="excludeNullProperties">true</param>
+		   </result>
+		</action>
+	</package>
+</struts>

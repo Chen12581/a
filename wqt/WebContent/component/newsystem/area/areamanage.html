@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>地区管理</title>
+		<script src="../../fastdev/fastDev-import.js"></script>
+		<script src="areamanage.js"></script>
+		<style>
+			html, body {
+				height:100%;
+			}
+		</style>
+	</head>
+	<body class="ui-layout-body ui-layout-body-bg ui-layout-container">
+		<div class="ui-layout" style="height:100%;">
+			<div class="ui-layout-left" style="width: 200px; height:100%;">
+				<div class="ui-toolbar ui-toolbar-bg" style="height:22px;">
+					<div itype="Button" plain=true text="新增" display="false" id="add" iconCls="icon-add" onClick="doAddArea()"></div>
+					<div itype="Button" plain=true text="修改" display="false" id="modify" iconCls="icon-edit" onClick="doModifyArea()"></div>
+					<div itype="Button" plain=true text="删除" display="false" id="delete" iconCls="icon-delete" onClick="doDeleteArea()"></div>
+				</div>
+				<div id="areatree" itype="Tree" saveInstance="true" showIco="true"
+					width="100%" rootValue="所有地区"
+					initSource="area_initSubAreaTree.action"
+					asyncDataSource="area_initSubAreaTree.action"
+					topParentid="-1"
+					openFloor=3 onNodeClick="onNodeClick()"></div>
+			</div>
+			<div class="ui-layout-center" id="centerPanel" style="left: 205px;height:100%;">
+				<form itype="Form" id="areaform" action="" saveInstance="true" requestType="post"  submitJson="false" onSubmitSuccess="onSubmitSuccess()">
+					<table class="ui-form-table" style="width:100%;left:0;">
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>地区编码：
+							</td>
+							<td class="ui-form-table-dd" colspan="">
+								<div style="float:left;width:205px;">
+									<div itype="TextBox" id="area.area" width="100%" readonly="true" rule="required;MaxLength:32"></div>
+								</div>
+								<div class="ui-red" style="float:left;">　唯一标识此地区，可以是邮编或区号。</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>上级地区：
+							</td>
+							<td class="ui-form-table-dd">
+								<div itype="SelectTree"  id="area.upArea" asyncDataSource="area_initSubAreaTree.action" saveInstance="true" width="205px" readonly="true" rootValue="-请选择-" topParentid="-1" openFloor="3" rule="required">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>地区名称：
+							</td>
+							<td class="ui-form-table-dd">
+								<div itype="TextBox" id="area.areaName" width="205px" readonly="true" rule="required;MaxLength:32"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>地区全称：
+							</td>
+							<td class="ui-form-table-dd">
+								<div itype="TextBox" id="area.fullName" width="205px" readonly="true" rule="required;MaxLength:32"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>地区级别：
+							</td>
+							<td class="ui-form-table-dd">
+								<div style="float:left;width:205px;">
+									<div itype="TextBox" id="area.nodeLvl" width="100%" readonly="true" rule="isNumber;MaxLength:10"></div>
+								</div>
+								<div class="ui-red" style="float:left;">　输入数字，一般省级为“1”，地市为“2”，区县为“3” </div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-form-table-dt" style="width:100px;">
+								<span class="ui-red">*</span>地区排序：
+							</td>
+							<td class="ui-form-table-dd">
+								<div style="float:left;width:205px;">
+									<div itype="TextBox" id="area.orderby" width="100%" readonly="true" rule="isNumber;MaxLength:10"></div>
+								</div>
+								<div class="ui-red" style="float:left;">　输入数字，数值越小，排位越靠前 </div>
+							</td>
+						</tr>
+						<tr height="30px" valign="middle">
+							<td colspan="2" style="padding-left:20px;">
+								<div style="display:none" id="buttonBar">
+									<div itype="Button" iconCls="icon-save" text="保存" onClick="doSave()"></div>
+									<div itype="Button" iconCls="icon-reset" text="重置" onClick="doReset()"></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtservice"> 
+       <!--保存用户网站咨询 -->
+       <insert id="insertWqtNetConsult" parameterType="com.consult.pojo.ClientConsult">
+		insert into wqt_netconsult
+		(
+		<trim suffix="" suffixOverrides=",">
+			<if test="null!= kind and ''!= kind">kind,</if>
+			<if test="null!= mobileno and ''!= mobileno">mobileno,</if>
+			<if test="null!= consultname and ''!= consultname">consultname,</if>
+			<if test="null!= connector and ''!= connector">connector,</if>
+			<if test="null!= consultdate and ''!= consultdate">consultdate,</if>
+			<if test="null!= workerid and ''!= workerid">workerid,</if>
+			<if test="null!= state and ''!= state">state,</if>
+			<if test="null!= resulttxt and ''!= resulttxt">resulttxt,</if>
+		</trim>
+		)
+		values
+		(
+		<trim suffix="" suffixOverrides=",">
+			<if test="null!= kind and ''!= kind">#{kind},</if>
+			<if test="null!= mobileno and ''!= mobileno">#{mobileno},</if>
+			<if test="null!= consultname and ''!= consultname">#{consultname},</if>
+			<if test="null!= connector and ''!= connector">#{connector},</if>
+			<if test="null!= consultdate and ''!= consultdate">#{consultdate},</if>
+			<if test="null!= workerid and ''!= workerid">#{workerid},</if>
+			<if test="null!= state and ''!= state">#{state},</if>
+			<if test="null!= resulttxt and ''!= resulttxt">#{resulttxt},</if>
+		</trim>
+		)
+	  </insert>
+	   
+	  <!--查询用户网站咨询-->
+	  <select id="selectWqtNetConsultList" 
+		        parameterType="com.consult.pojo.ClientConsult" 
+		        resultType="com.consult.pojo.ClientConsult">
+		    select 
+             *
+             from wqt_netconsult a
+		     where 1=1
+			<if test="null!= id and ''!= id">
+			    and  a.id=#{id}
+			</if>
+			<if test="null!= mobileno and ''!= mobileno">
+			   and   a.mobileno=#{mobileno}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			   and   a.kind=#{kind}
+			</if>
+			<if test="workerid != null and workerid != ''">
+			    and workerid =#{workerid}
+			</if>
+			<if test="state != null and state != ''">
+			    and state =#{state}
+			</if>
+			order by consultdate desc
+	   </select>
+	
+	   <!-- 删除用户网站咨询 -->
+	   <delete id="delWqtNetConsult" parameterType="com.consult.pojo.ClientConsult">
+			 delete  from wqt_netconsult
+			 where  1=1
+			<if test="id != null and id != ''">
+			    and id =#{id}
+			</if>
+			<if test="null!= kind and ''!= kind">
+			    and  kind=#{kind}
+			</if> 
+			<if test="mobileno != null and mobileno != ''">
+			    and mobileno =#{mobileno}
+			</if>
+			<if test="workerid != null and workerid != ''">
+			    and workerid =#{workerid}
+			</if>
+			<if test="state != null and state != ''">
+			    and state =#{state}
+			</if>
+		</delete>
+		
+	   <!--修改用户网站咨询 -->
+	  <update id="updateWqtNetConsult" parameterType="com.consult.pojo.ClientConsult">
+		update wqt_netconsult
+		<set>
+			<trim suffix="" suffixOverrides=",">
+			        <if test="null!= kind and ''!= kind">kind=#{kind},</if>
+					<if test="null!= mobileno and ''!= mobileno">mobileno=#{mobileno},</if>
+					<if test="null!= consultname and ''!= consultname">consultname=#{consultname},</if>
+					<if test="null!= connector and ''!= connector">connector=#{connector},</if>
+					<if test="null!= consultdate and ''!= consultdate">consultdate=#{consultdate},</if>
+					<if test="null!= workerid and ''!= workerid">workerid=#{workerid},</if>
+					<if test="null!= state and ''!= state">state=#{state},</if>
+					<if test="null!= resulttxt and ''!= resulttxt">resulttxt=#{resulttxt},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+ 
+</mapper>

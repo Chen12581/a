@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wqtcases"> 
+
+       <insert id="insertWqtCases" parameterType="com.cases.pojo.Cases">
+       		insert into wqt_cases
+       		(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= kind and ''!= kind">kind,</if>
+				<if test="null!= state and ''!= state">state,</if>
+				<if test="null!= periodsnum and ''!= periodsnum">periodsnum,</if>
+				<if test="null!= title and ''!= title">title,</if>
+				<if test="null!= createtime and ''!= createtime">createtime,</if>
+				<if test="null!= beforetext and ''!= beforetext">beforetext,</if>
+				<if test="null!= resulttext and ''!= resulttext">resulttext,</if>
+				<if test="null!= casedesc and ''!= casedesc">casedesc,</if>
+				<if test="null!= orderkind and ''!= orderkind">orderkind,</if>
+				<if test="null!= price and ''!= price">price,</if>
+				<if test="null!= kindname and ''!= kindname">kindname,</if>
+				<if test="null!= casecontent and ''!= casecontent">casecontent,</if>
+				<if test="null!= caseimg and ''!= caseimg">caseimg,</if>
+				<if test="null!= pathkey and ''!= pathkey">pathkey,</if>
+				<if test="null!= htmlpath and ''!= htmlpath">htmlpath,</if>
+			</trim>
+			)
+			values
+			(
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= kind and ''!= kind">#{kind},</if>
+				<if test="null!= state and ''!= state">#{state},</if>
+				<if test="null!= periodsnum and ''!= periodsnum">#{periodsnum},</if>
+				<if test="null!= title and ''!= title">#{title},</if>
+				<if test="null!= createtime and ''!= createtime">#{createtime},</if>
+				<if test="null!= beforetext and ''!= beforetext">#{beforetext},</if>
+				<if test="null!= resulttext and ''!= resulttext">#{resulttext},</if>
+				<if test="null!= casedesc and ''!= casedesc">#{casedesc},</if>
+				<if test="null!= orderkind and ''!= orderkind">#{orderkind},</if>
+				<if test="null!= price and ''!= price">#{price},</if>
+				<if test="null!= kindname and ''!= kindname">#{kindname},</if>
+				<if test="null!= casecontent and ''!= casecontent">#{casecontent},</if>
+				<if test="null!= caseimg and ''!= caseimg">#{caseimg},</if>
+				<if test="null!= pathkey and ''!= pathkey">#{pathkey},</if>
+				<if test="null!= htmlpath and ''!= htmlpath">#{htmlpath},</if>
+			</trim>
+			)
+       </insert>
+       
+       <select id="selectWqtCasesList" 
+       		   parameterType="com.cases.pojo.Cases"
+       		   resultType="com.cases.pojo.Cases">
+       		select * from wqt_cases
+       		where 1=1
+       		<if test="null!= id and ''!= id">and id=#{id}</if>
+			<if test="null!= kind and ''!= kind">and kind=#{kind}</if>
+			<if test="null!= state and ''!= state">and state=#{state}</if>
+			<if test="null!= periodsnum and ''!= periodsnum">and periodsnum=#{periodsnum}</if>
+			<if test="null!= title and ''!= title">and title=#{title}</if>
+			<if test="null!= createtime and ''!= createtime">and createtime=#{createtime}</if>
+			<if test="null!= beforetext and ''!= beforetext">and beforetext=#{beforetext}</if>
+			<if test="null!= resulttext and ''!= resulttext">and resulttext=#{resulttext}</if>
+			<if test="null!= casedesc and ''!= casedesc">and casedesc=#{casedesc}</if>
+			<if test="null!= orderkind and ''!= orderkind">and orderkind=#{orderkind}</if>
+			<if test="null!= price and ''!= price">and price=#{price}</if>
+			<if test="null!= kindname and ''!= kindname">and kindname=#{kindname}</if>
+			<if test="null!= casecontent and ''!= casecontent">and casecontent=#{casecontent}</if>
+			<if test="null!= caseimg and ''!= caseimg">and caseimg=#{caseimg}</if>
+			<if test="null!= pathkey and ''!= pathkey">and pathkey=#{pathkey}</if>
+			<if test="null!= htmlpath and ''!= htmlpath">and htmlpath=#{htmlpath}</if>
+       </select>
+       
+       <select id="selectWqtCasesOne" 
+       		   parameterType="com.cases.pojo.Cases"
+       		   resultType="com.cases.pojo.Cases">
+       		select * from wqt_cases 
+       		where 1=1
+       		<if test="null!= id and ''!= id">and id=#{id}</if>
+       		<if test="null!= pathkey and ''!= pathkey">and pathkey=#{pathkey}</if>
+       </select>
+       
+       <update id="updateWqtCases" parameterType="com.cases.pojo.Cases">
+       		update wqt_cases
+       		<set>
+				<trim suffix="" suffixOverrides=",">
+					<if test="null!= kind and ''!= kind">kind=#{kind},</if>
+					<if test="null!= state and ''!= state">state=#{state},</if>
+					<if test="null!= periodsnum and ''!= periodsnum">periodsnum=#{periodsnum},</if>
+					<if test="null!= title and ''!= title">title=#{title},</if>
+					<if test="null!= createtime and ''!= createtime">createtime=#{createtime},</if>
+					<if test="null!= beforetext and ''!= beforetext">beforetext=#{beforetext},</if>
+					<if test="null!= resulttext and ''!= resulttext">resulttext=#{resulttext},</if>
+					<if test="null!= casedesc and ''!= casedesc">casedesc=#{casedesc},</if>
+					<if test="null!= orderkind and ''!= orderkind">orderkind=#{orderkind},</if>
+					<if test="null!= price and ''!= price">price=#{price},</if>
+					<if test="null!= kindname and ''!= kindname">kindname=#{kindname},</if>
+					<if test="null!= casecontent and ''!= casecontent">casecontent=#{casecontent},</if>
+					<if test="null!= caseimg and ''!= caseimg">caseimg=#{caseimg},</if>
+					<if test="null!= pathkey and ''!= pathkey">pathkey=#{pathkey},</if>
+					<if test="null!= htmlpath and ''!= htmlpath">htmlpath=#{htmlpath},</if>
+				</trim>
+			</set>
+			where id=#{id}
+       </update>
+       
+       <delete id="deleteWqtCases" 
+       		 	parameterType="com.cases.pojo.Cases">
+       		delete from wqt_cases
+       		where id=#{id}
+       </delete>
+</mapper>

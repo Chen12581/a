@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>万企通-用户注册</title>
+    <link rel="shortcut icon" href="/wqt/image/logo.ico">
+    <link rel="stylesheet" href="/wqt/usercenter/css/register.css">
+</head>
+<body>
+<div class="header">
+    <div class="top">
+        <div class="center">
+            <div class="top_right rt">
+                <ul class="lf">
+                    <li><a href="http://www.w7tong.com">万企通首页</a></li>
+                    <li><a href="http://www.w7tong.com/helpcenter/aboutus.html">关于我</a></li>
+                    <li><a href="tencent://message/?uin=${wqtworker.qq?if_exists}&amp;Site=&amp;menu=yes">关注万企通</a></li>
+                    <li><a href="tencent://message/?uin=${wqtworker.qq?if_exists}&amp;Site=&amp;menu=yes">在线客服</a></li>
+                    <li><a href="http://www.w7tong.com/user/helpcenter.html">帮助中心</a></li>
+                </ul>
+                <p class="hot_tel">热线：<span>400-611-8288</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="center" style="position: relative;">
+            <div class="logo lf">
+                <a href="http://www.w7tong.com">
+                    <img src="/usercenter/image/login/logo.png" alt="万企通-LOGO">
+                </a>
+            </div>
+            <div class="wqt rt">
+                <a href="http://www.w7tong.com"><i></i>万企通首页</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner">
+    <div class="box">
+        <div class="rt login_form">
+            <div class="login_tit">
+                <span class="on">用户注册</span>
+            </div>
+            <div class="fonm_cont yzm_lg">
+                <p class="form_phone">
+                    <input type="text" placeholder="请输入手机号" class="yz_phone" id="phone">
+                    <span class="error04 error00"></span>
+                </p>
+                <p class="form_yzm yyz">
+                    <input type="text" placeholder="请输入图形码" class="yz_txm">
+                    <a href="javascript:;" class="getCode">
+                        <img src="/jsp/validatecode.jsp" class="verify_picture_n" alt="验证码" width="100%" height="100%">
+                    </a>
+                    <span class="error05 error00"></span>
+                </p>
+                <p class="form_dt yyz">
+                    <input type="text" placeholder="请输入验证码" class="yz_yzm">
+                    <a href="javascript:;" class="ddd">发送动态密码</a>
+                    <span class="error06 error00"></span>
+                </p>
+                <p class="form_passworld">
+                    <input type="password" placeholder="请输入6-16位密码" class="yz_passworld">
+                    <span class="error07 error00"></span>
+                </p>
+                <p class="lj">
+                    <a href="javascript:;">已有账号？</a>
+                    <a href="/user/login.html" style="color: red;" class="logg">立即登录</a>
+                </p>
+                <p class="form_logn">
+                    <input type="button" value="登录" id="register_btn">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>
+        Copyright © 2018 湖南万企通全企业管理有限公司 版权所有 湘ICP备18017033号 w7tong.com
+    </p>
+</div>
+</body>
+<script src="/wqt/js/jquery-1.11.1.min.js"></script>
+<script src="/wqt/common/commonurl.js"></script>
+<script src="/wqt/usercenter/js/register.js"></script>
+</html>

@@ -1,0 +1,147 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, textarea, th, td, a {
+    font-family: 微软雅黑, Microsoft YaHei, 微软雅黑;
+    font-size: 14px;
+    color: #4c4c4c;
+    text-decoration: none;
+    outline: none;
+}
+i, em, b {
+    font-style: normal;
+}
+ol, ul ,li {
+    list-style: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+img {
+    max-width: 100%;
+    border: 0;
+    outline: none;
+    vertical-align: top;
+}
+.fl {
+    display: inline;
+    float: left;
+}
+.fr {
+    display: inline;
+    float: right;
+}
+.clear {
+    clear: both;
+    zoom: 1;
+}
+.box {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+/*===================底部======================*/
+.foot {
+    background: #1d1d1d;
+    padding-bottom: 40px;
+}
+.footer_service {
+    overflow: hidden;
+    padding: 5px 0 30px 0;
+}
+.footer_service li {
+    float: left;
+    overflow: hidden;
+    padding-right: 5px;
+    width: 150px;
+}
+.footer_service li .tit {
+    font-size: 16px;
+    padding-top: 30px;
+    color: #fff;
+}
+.footer_service li .links {
+    clear: both;
+    line-height: 20px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+.footer_service li .links a {
+    display: block;
+    color: #a5a5a5;
+    font-size: 14px;
+    padding-top: 5px;
+}
+.footer_service li.last {
+    background: url(../images/footer_map.png) no-repeat right 10px;
+    height: 206px;
+    width: 309px;
+}
+.footer_service li.last .t1 {
+    font-size: 14px;
+    padding-top: 30px;
+    color: #fff;
+}
+.footer_service li.last .t2 {
+    color: #b3b3b3;
+    overflow: hidden;
+    padding-top: 10px;
+    width: 180px;
+}
+.footer_service li.last .t2 a {
+    color: #f26709;
+}
+.foot-a {
+    color: #ffffff;
+    font-size: 14px;
+}
+.foot-a a {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 0 10px 0;
+}
+.foot-b {
+    padding-top: 10px;
+}
+.foot-b p {
+    color: #fff;
+}
+.foot-c {
+    padding-top: 40px;
+    overflow: hidden;
+}
+.foot-c li {
+    float: left;
+    padding: 0 20px 0 0;
+}
+.foot-d {
+    padding-top: 40px;
+    border-bottom: 1px solid #4f4f4f;
+    height: 26px;
+}
+.foot-dl {
+    float: left;
+    border-bottom: 1px solid #eb0d1d;
+    height: 26px;
+    color: #fff;
+}
+.foot-dr {
+    float: right;
+    background: url(../images/wemedia-ar.png) no-repeat right 50%;
+    padding-right: 10px;
+}
+.foot-dr a {
+    color: #fff;
+}
+.foot-e {
+    padding-top: 10px;
+}
+/*==================右侧浮动========================*/
+.floatBar {
+    background-color: #4B1468;
+    width: 35px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99999;
+    margin-top: 0;
+}

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="action-log.xsd">
+	<aop-support value="true" />
+	<skip-undeclared value="false" />
+	<stub-method name="log" />
+	<session-key>
+		<user-id>userid</user-id>
+		<user-name>username</user-name>
+		<user-type>usertype</user-type>
+		<app-id>appid</app-id>
+		<app-name>appname</app-name>
+		<module-id>moduleid</module-id>
+		<module-name>modulename</module-name>
+		<description>description</description>
+		<type>type</type>
+		<request>requst</request>
+		<session>session</session>
+		<result>result</result>
+		<success>success</success>
+		<throw>throw</throw>
+		<resource>resource</resource>
+		<field>field</field>
+		<old>old</old>
+		<new>new</new>
+	</session-key>
+	<application id="1" name="系统运维管理" />
+	<module id="1" name="系统管理" />
+	<action-define package="com.talkweb.twdpe.webcomponent.component">
+		<action class="JobConfigAction">
+         	<application id="2" name="任务调度管理" />
+            <module id="M15" name="调度定义" />
+			<method name="queryJobConfigsByPage">
+				<type>visit</type>
+				<resource>调度定义</resource>
+				<description>查询调度定义</description>
+				<result>
+					<success>查询调度定义成功</success>
+					<throws default="查询调度定义失败" />
+				</result>
+			</method>
+			<method name="addJobConfig">
+				<type>add</type>
+				<resource>调度定义</resource>
+				<description>新增调度定义</description>
+				<result>
+					<success>新增调度定义成功</success>
+					<throws>新增调度定义失败</throws>
+				</result>
+			</method>
+			<method name="deleteJobs">
+				<type>delete</type>
+				<resource>调度定义</resource>
+				<description>删除调度定义</description>
+				<result>
+					<success>删除调度定义成功</success>
+					<throws>删除调度定义失败</throws>
+				</result>
+			</method>
+			<method name="modifyJobConfig">
+				<type>modify</type>
+				<resource>调度定义</resource>
+				<description>修改调度定义</description>
+				<result>
+					<success>修改调度定义成功</success>
+					<throws>修改调度定义失败</throws>
+				</result>
+			</method>
+			<method name="pauseJob">
+				<module id="M17" name="调度监控" />
+				<type>modify</type>
+				<resource>调度监控</resource>
+				<description>暂停调度监控</description>
+				<result>
+					<success>暂停调度监控成功</success>
+					<throws default="暂停调度监控失败" />
+				</result>
+			</method>
+			<method name="resumeJob">
+				<module id="M17" name="调度监控" />
+				<type>modify</type>
+				<resource>调度监控</resource>
+				<description>恢复调度监控</description>
+				<result>
+					<success>恢复调度监控成功</success>
+					<throws default="恢复调度监控失败" />
+				</result>
+			</method>		
+			<method name="queryJobInstances">
+				<module id="M14" name="调度日志" />
+				<type>visit</type>
+				<resource>任务调度</resource>
+				<description>查询任务调度日志</description>
+				<result>
+					<success>查询任务调度日志成功</success>
+					<throws default="查询任务调度日志失败" />
+				</result>
+			</method>
+        </action>
+		<action class="OrgMngAction">
+			<module id="M2" name="组织管理" />
+			<method name="addOrg">
+				<type>add</type>
+				<resource>组织管理</resource>
+				<description>新增组织信息</description>
+				<result>
+					<success>新增组织成功</success>
+					<throws default="新增失败" />
+				</result>
+			</method>
+			<method name="modifyOrg">
+				<type>modify</type>
+				<resource>组织管理</resource>
+				<description>修改组织信息</description>
+				<result>
+					<success>修改组织成功</success>
+					<throws default="修改失败" package="com.talkweb.twdpe.base.common.exception">
+						<throw class="IllegalLevelException">修改后的组织与其上下级组织级别关系错误，修改失败</throw>
+					</throws>
+				</result>
+			</method>
+		</action>
+		<action class="PortalMngAction">
+			<module id="M4" name="用户管理" />
+			<method name="loginIn">
+				<type>login</type>
+				<description>用户登录</description>
+				<result>
+					<success>登录成功</success>
+				</result>
+			</method>
+			<method name="loginOut">
+				<type>logout</type>
+				<description>用户注销</description>
+				<result>
+				<success>注销成功</success>
+				</result>
+			</method>
+			<method name="validateSessionExpire" skip="true" />
+		</action>
+		<action class="CacheMngAction" skip="true" />
+	</action-define>
+	<action-map pattern="ant" ignoreCase="true" autoConnect="true">
+		<action class="com.talkweb.twdpe.**.UserMng*" skip="false"
+			priority="2">
+			<module id="M4" name="用户管理" />
+			<method priority="1" pattern="ant">
+				<verbs default="visit" value="访问">
+					<verb type="add" skip="false" priority="1">
+						<pattern>add*</pattern>
+						<semantic>新增</semantic>
+						<result>
+							<success>新增用户成功</success>
+							<throws>新增用户失败</throws>
+						</result>
+					</verb>
+					<verb type="delete" skip="false">
+						<pattern>del*</pattern>
+						<semantic>删除</semantic>
+						<result>
+							<success>删除用户成功</success>
+							<throws default="删除失败" />
+						</result>
+					</verb>
+					<verb>
+						<pattern>query*</pattern>
+						<semantic>查询</semantic>
+					</verb>
+				</verbs>
+				<nouns default="用户">
+					<noun>
+						<pattern>*ser</pattern>
+						<semantic>用户</semantic>
+					</noun>
+				</nouns>
+			</method>
+		</action>
+		<action class="com.talkweb.twdpe.**.Permission*" skip="false"
+			priority="1">
+			<module id="M10" name="资源权限管理" />
+			<method priority="1" pattern="ant">
+				<verbs default="visit" value="访问">
+					<verb type="add" skip="false" priority="1">
+						<pattern>add*</pattern>
+						<semantic>新增</semantic>
+						<result>
+							<success>新增资源权限成功</success>
+							<throws default="新增资源权限失败" />
+						</result>
+					</verb>
+					<verb type="delete" skip="false">
+						<pattern>delete*</pattern>
+						<semantic>删除</semantic>
+						<result>
+							<success>删除成功</success>
+							<throws default="删除失败" />
+						</result>
+					</verb>
+					<verb>
+						<pattern>query*</pattern>
+						<semantic>查询</semantic>
+					</verb>
+				</verbs>
+				<nouns default="权限">
+					<noun>
+						<pattern>*Permission</pattern>
+						<semantic>权限</semantic>
+					</noun>
+				</nouns>
+			</method>
+		</action>
+		<action class="com.talkweb.**.*MngAction" skip="false"
+			priority="0">
+			<method skip="false" pattern="ant">
+				<verbs default="visit" value="访问">
+					<verb type="add">
+						<pattern>add*</pattern>
+						<semantic>新增</semantic>
+						<result>
+							<success>新增成功</success>
+							<throws>新增失败</throws>
+						</result>
+					</verb>
+					<verb type="delete">
+						<pattern>delete*</pattern>
+						<semantic>删除</semantic>
+						<result>
+							<success>删除成功</success>
+							<throws>删除失败</throws>
+						</result>
+					</verb>
+					<verb type="delete">
+						<pattern>del*</pattern>
+						<semantic>删除</semantic>
+						<result>
+							<success>删除成功</success>
+							<throws>删除失败</throws>
+						</result>
+					</verb>
+					<verb type="modify">
+						<pattern>modify*</pattern>
+						<semantic>修改</semantic>
+						<result>
+							<success>修改成功</success>
+							<throws>修改失败</throws>
+						</result>
+					</verb>
+					<verb>
+						<pattern>select*</pattern>
+						<result>
+							<success>查询成功</success>
+							<throws default="查询失败" />
+						</result>
+					</verb>
+					<verb>
+						<pattern>query*</pattern>
+						<result>
+							<success>查询成功</success>
+							<throws default="查询失败" />
+						</result>
+					</verb>
+					<verb>
+						<pattern>get*</pattern>
+						<result>
+							<success>查询成功</success>
+							<throws default="查询失败" />
+						</result>
+					</verb>
+					<verb>
+						<pattern>init*</pattern>
+						<result>
+							<success>查询成功</success>
+							<throws default="查询失败" />
+						</result>
+					</verb>
+				</verbs>
+				<nouns pattern="ant">
+					<noun>
+						<pattern>*mode*</pattern>
+						<semantic>访问模式</semantic>
+					</noun>
+					<noun>
+						<pattern>*app*</pattern>
+						<semantic>应用</semantic>
+					</noun>
+					<noun>
+						<pattern>*area*</pattern>
+						<semantic>地区</semantic>
+					</noun>
+					<noun>
+						<pattern>*cache*</pattern>
+						<semantic>缓存</semantic>
+					</noun>
+					<noun>
+						<pattern>*rule*</pattern>
+						<semantic>规则</semantic>
+					</noun>
+					<noun>
+						<pattern>*dict*</pattern>
+						<semantic>字典</semantic>
+					</noun>
+					<noun>
+						<pattern>*file*</pattern>
+						<semantic>文件</semantic>
+					</noun>
+					<noun>
+						<pattern>*func*</pattern>
+						<semantic>功能组</semantic>
+					</noun>
+					<noun>
+						<pattern>*mail*</pattern>
+						<semantic>邮件</semantic>
+					</noun>
+					<noun>
+						<pattern>*ipcontrol*</pattern>
+						<semantic>访问控制</semantic>
+					</noun>
+					<noun>
+						<pattern>*job*</pattern>
+						<semantic>计划任务</semantic>
+					</noun>
+					<noun>
+						<pattern>*msg*</pattern>
+						<semantic>消息</semantic>
+					</noun>
+					<noun>
+						<pattern>*org*</pattern>
+						<semantic>组织</semantic>
+					</noun>
+					<noun>
+						<pattern>*resource*</pattern>
+						<semantic>资源</semantic>
+					</noun>
+					<noun>
+						<pattern>*author*</pattern>
+						<semantic>授权</semantic>
+					</noun>
+					<noun>
+						<pattern>*permission*</pattern>
+						<semantic>权限</semantic>
+					</noun>
+					<noun>
+						<pattern>*user*</pattern>
+						<semantic>用户</semantic>
+					</noun>
+					<noun>
+						<pattern>*position*</pattern>
+						<semantic>岗位</semantic>
+					</noun>
+					<noun>
+						<pattern>*role*</pattern>
+						<semantic>角色</semantic>
+					</noun>
+				</nouns>
+			</method>
+		</action>
+	</action-map>
+</actions>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="right.resource">
+    <cache eviction="LRU" type="com.talkweb.twdpe.dal.batis.CacheDriver" />
+    
+	<insert id="insert" parameterType="com.talkweb.twdpe.base.right.pojo.Resource">
+		insert into DP_RESOURCE(RESOURCECODE,PARENTCODE,RESOURCENAME,RESOURCETYPE,APPID,
+		URL,PARAM,ORDERBY,REMARK,ICON)
+		values(#{resourceCode},#{parentCode},#{resourceName},#{resourceType},
+		#{appId},#{url:VARCHAR},#{param:VARCHAR},#{orderby},#{remark:VARCHAR},#{icon:VARCHAR})
+	</insert>
+	
+	<update id="update" parameterType="com.talkweb.twdpe.base.right.pojo.Resource">
+		update DP_RESOURCE 
+		<set>
+			<if test="parentCode!=null">
+				parentCode = #{parentCode},
+			</if>
+			<if test="resourceName!=null">
+				resourceName = #{resourceName},
+			</if>
+			<if test="resourceType!=null">
+				resourceType = #{resourceType},
+			</if>
+			<if test="appId!=null">
+				appId = #{appId},
+			</if>	
+			<if test="url!=null">
+				url = #{url},
+			</if>
+			<if test="param!=null">
+				param = #{param},
+			</if>
+			<if test="orderby!=null">
+				orderby = #{orderby},
+			</if>
+			<if test="remark!=null">
+				remark = #{remark},
+			</if>	
+			<if test="icon!=null">
+				icon = #{icon},
+			</if>																			
+		</set>
+		where resourceCode = #{resourceCode}
+	</update>
+	
+	<delete id="delete" parameterType="string" >
+		delete from DP_RESOURCE where resourceCode = #{resourceCode}
+	</delete>
+	
+	<select id="selectAll" resultType="com.talkweb.twdpe.base.right.pojo.Resource" >
+		select * from DP_RESOURCE order by parentCode,orderby
+	</select>
+	
+	<select id="selectAllByAppAndType" parameterType="map" resultType="com.talkweb.twdpe.base.right.pojo.Resource" >
+		select * from DP_RESOURCE where appId=#{appId} and resourceType=#{resourceType} order by parentCode,orderby
+	</select>
+	
+	<select id="selectOne" useCache="false" parameterType="string" resultType="com.talkweb.twdpe.base.right.pojo.Resource" >
+		select * from DP_RESOURCE where resourceCode = #{resourceCode}
+	</select>
+	
+	<select id="selectList" useCache="false" parameterType="com.talkweb.twdpe.base.right.pojo.Resource" resultType="com.talkweb.twdpe.base.right.pojo.Resource" >
+		select * from DP_RESOURCE 
+		<where>
+			<if test="resourceCode!=null">
+				and resourceCode = #{resourceCode}
+			</if>
+			<if test="parentCode!=null">
+				and parentCode = #{parentCode}
+			</if>
+			<if test="resourceName!=null">
+				and resourceName like '%${resourceName}%'
+			</if>
+			<if test="resourceType!=null">
+				and resourceType = #{resourceType}
+			</if>
+			<if test="appId!=null">
+				and appId = #{appId}
+			</if>
+			<if test="url!=null">
+				and url = #{url}
+			</if>
+			<if test="param!=null">
+				and param = #{param}
+			</if>																		
+		</where>
+		order by parentCode,orderby
+	</select>
+</mapper>

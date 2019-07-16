@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登录</title>
+<link rel="shortcut icon" href="themes/default/images/favicon.ico" /></link>
+<script type="text/javascript" src="fastdev/fastDev-import-login.js"></script>
+<style type="text/css">
+body {
+	margin: 0;
+	font-size: 12px;
+	color: #075587;
+	background: url(themes/default/images/loginbg.gif);
+	_height:100%;
+}
+
+input {
+	font-size: 12px;
+	color: #333;
+}
+
+a {
+	color: #075587;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #075587;
+	text-decoration: none;
+}
+
+.content {
+	background-image: url(themes/default/images/login_body.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 305px;
+	width: 516px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -153px 0 0 -258px;
+}
+
+table tr {
+	line-height: 35px;
+}
+</style>
+<script type="text/javascript" src="loginin.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div style="width: 340px; padding: 110px 10px 10px 140px;">
+			<form id="loginForm" action="portal_loginin.action" itype="Form" saveInstance="true" submitJson="false" onSubmitSuccess="onSubmitSuccess()">
+				<table colspan="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td style="width:100px;" align="right">用户名：</td>
+						<td colspan="2">
+							<div itype="TextBox" height="19px" width="200px" id="USERID" rule="required" onkeypress="loginByKey()"></div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td style="width:100px;" align="right">密　码：</td>
+						<td colspan="2">
+							<div type="password" height="19px" itype="TextBox" width="200px" id="PASSWORD" rule="required" onkeypress="loginByKey()"></div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td colspan="2" style="padding-top:6px\9">
+							<div itype="Button" text="登陆" iconCls="icon-login" onclick="login()"></div>
+							<div itype="Button" text="重置" iconCls="icon-reset" onclick="reset()"></div>
+						</td>
+					</tr>
+					
+				</table>
+			</form>	
+			<div id="pwd_error" class="ui-red" style="display: none">提示：用户名或密码错误，请重新输入！</div>
+			<div id="validate_error" class="ui-red" style="display: none">提示：验证码错误，请重新输入！</div>
+			<div id="code_error" class="ui-red" style="display: none">提示：程序出现异常！</div>
+			<div id="accountforbidden_error" class="ui-red" style="display: none">提示：账号已停用！</div>
+		</div>
+	</div>
+</body>
+</html>

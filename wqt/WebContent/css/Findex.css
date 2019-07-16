@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+body h1,h2,h3,h4,h5,i,p,a,ul,li,dl,dt,dd,strong,small{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+.top_box{
+    width: 100%;
+    background-color: #EDEFF0;
+    border-bottom: 1px solid #D9D9D9;
+}
+.top_box .top_bar{
+    width: 1190px;
+    margin: 0 auto;
+    font-size: 13px;
+}
+.top_box .top_bar:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.top_box .top_bar a,span{
+    display: inline-block;
+    color: #999;
+    /*margin-right: 15px;*/
+    line-height: 30px;
+    padding: 0 10px;
+}
+.top_box .top_bar strong{
+    font-size: 14px;
+    font-weight: 500;
+}
+.top_box .top_bar .attention:hover{
+    background-color: #fff;
+}
+.top_box .top_bar .attention:hover .wechat{
+    display: block;
+}
+.top_box .top_bar .attention{
+    position: relative;
+}
+.top_box .top_bar .attention .wechat{
+    top: 29px;
+    right: 0;
+    position: absolute;
+    width: 136px;
+    display: none;
+    border: 1px solid red;
+}
+.top_box .top_bar .attention .wechat p{
+    padding-left: 20px;
+    line-height: 16px;
+    margin-top: -18px;
+    font-size: 12px;
+}
+.top_box .top_bar .attention .wechat img{
+    width: 120px;
+    margin: 0 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

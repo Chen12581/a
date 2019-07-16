@@ -1,0 +1,305 @@
+/***********************头部样式的设置*********************/
+body{
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #f7f7f7;
+}
+body h1,h2,h3,h4,h5,ol,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-weight: normal;
+    box-sizing: content-box;
+}
+a{
+    color: #4c4c4c;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+input{
+    border: none;
+    outline: none;
+}
+input::placeholder{
+    color: #b2b2b2;
+}
+.lf{
+    float:left;
+}
+.rt{
+    float:right;
+}
+.clear {
+    clear: both;
+    zoom: 1;
+}
+.clear:after, .clear:before {
+    clear: both;
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    font-size: 0;
+    visibility: hidden;
+    zoom: 1;
+}
+.header{
+    width: 100%;
+    /*height: 158px;*/
+}
+.header .top{
+    width: 100%;
+    height: 42px;
+}
+.center{
+    width: 1200px;
+    margin: 0 auto;
+}
+.header .top .top_right{
+    height:42px;
+    line-height: 42px;
+}
+.top_right ul li{
+    float: left;
+    padding: 0 15px;
+    margin-top: 16px;
+    height: 12px;
+    line-height: 12px;
+}
+.top_right ul li:not(:last-child){
+    border-right: 1px solid #b2b2b2;
+}
+.top_right ul li:hover a{
+    color: #FE625C;
+}
+.hot_tel{
+    display: inline-block;
+    width: 146px;
+    height: 42px;
+    /*background-color: #336699;
+    color: #ffffff;*/
+    text-align: center;
+}
+.hot_tel span{
+    font-size:14px;
+    font-weight:bold;
+}
+.header_bottom{
+    height: 90px;
+    width: 100%;
+    background: #fff;
+}
+.wqt{
+    font-size: 18px;
+    position: absolute;
+    bottom: -80px;
+    right: 0;
+}
+.wqt i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../image/login/index.png") no-repeat;
+    padding-right: 5px;
+    position: relative;
+    top: 2px;
+}
+.wqt a{
+    color: #b2b2b2;
+}
+.logo{
+    margin-top: 16px;
+}
+/*头部样式结束*/
+
+
+
+
+.banner{
+    background: url("../image/login/banner.png") no-repeat center center;
+    height: 600px;
+}
+.box{
+    width: 1200px;
+    height: 540px;
+    margin: 0 auto;
+    border-radius:8px;
+}
+.box .login_form{
+    width: 420px;
+    height: 540px;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+.login_tit{
+    width: 220px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+.login_tit span{
+    display: inline-block;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #b2b2b2;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.login_tit span:last-child {
+    margin-left: 15px;
+}
+.login_tit span.on{
+    color:#fd4350;
+}
+.login_tit span.on:after{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 50px;
+    background: #fd4350;
+    position: relative;
+    top: 10px;
+    left: 25px;
+}
+
+.fonm_cont{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.fonm_cont input{
+    width: 100%;
+    height: 38px;
+    border: none;
+    background: #f3f2f2;
+    font-size: 12px;
+    border-radius: 6px;
+    text-indent: 10px;
+    color: #4c4c4c;
+}
+.fonm_cont .form_yzm,.form_dt{
+    margin-top:30px;
+    font-size: 0;
+}
+.fonm_cont .yyz input{
+    width: 140px;
+    margin-right: 20px;
+}
+.fonm_cont .yyz a{
+    display: inline-block;
+    width: 140px;
+    height: 38px;
+    border-radius: 6px;
+    overflow: hidden;
+    float: right;
+    font-size: 12px;
+}
+.form_dt a{
+    color: #fff;
+    line-height: 38px;
+    text-align: center;
+    background: -webkit-linear-gradient(left, #fb414e,#ff7b66);
+    background: -o-linear-gradient(right, #fb414e,#ff7b66);
+    background: -moz-linear-gradient(right, #fb414e,#ff7b66);
+    background: linear-gradient(to right,#fb414e,#ff7b66 );
+}
+.lj{
+    margin: 20px 0;
+    text-align: right;
+}
+.lj a{
+    color: #4c4c4c;
+}
+.form_logn input{
+    font-size: 14px;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #fb414e,#ff7b66);
+    background: -o-linear-gradient(right, #fb414e,#ff7b66);
+    background: -moz-linear-gradient(right, #fb414e,#ff7b66);
+    background: linear-gradient(to right,#fb414e,#ff7b66 );
+    cursor: pointer;
+}
+.form_passworld{
+    margin-top: 30px;
+}
+.other_login_title{
+    margin-top: 30px;
+    color: #4c4c4c;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.other_login_title:after{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 43px;
+    background: #4c4c4c;
+    position: relative;
+    top: 10px;
+    left: 43%;
+}
+.login-list{
+    text-align: center;
+    margin-top: 20px;
+}
+.login-list a{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+.login-list a.login_qq{
+    background: url("../image/login/qq_hide.png") no-repeat;
+}
+.login-list a.login_wx{
+    background: url("../image/login/wx_hide.png") no-repeat;
+    margin: 0 10px;
+}
+.login-list a.login_zfb{
+    background: url("../image/login/zfb_hide.png") no-repeat;
+}
+.login-list a.login_qq:hover{
+    background: url("../image/login/qq_show.png") no-repeat;
+}
+.login-list a.login_wx:hover{
+    background: url("../image/login/wx_show.png") no-repeat;
+}
+.login-list a.login_zfb:hover{
+    background: url("../image/login/zfb_show.png") no-repeat;
+}
+
+.form_phone,.fonm_cont,.form_passworld,.form_yzm,.fonm_phone,.form_dt{
+    position: relative;
+}
+.error01,.error02,.error04{
+    position: absolute;
+    left: 0;
+    color: red;
+	top:42px;
+}
+.error03,.error05,.error06{
+    position: absolute;
+    left: 0;
+    top: 40px;
+    color: red;
+    font-size: 12px;
+}
+
+
+
+
+
+.footer p{
+    text-align: center;
+    font-size: 14px;
+    padding:80px 0 20px;
+    color: #4c4c4c;
+}

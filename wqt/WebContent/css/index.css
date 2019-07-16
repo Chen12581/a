@@ -1,0 +1,660 @@
+    body{
+        padding: 0;
+        margin: 0;
+        font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
+    body a,p,h1,h2,h3,h4,h5,dl,dt,dd,ul,li,img{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        border: none;
+    }
+    ul,li{
+        list-style: none;
+    }
+    .clear{
+        clear: both;
+    }
+    .left{
+        float: left;
+    }
+    .right{
+        float: right;
+    }
+    .banner_box{
+        background: url(../image/banner_bg.png) no-repeat;
+        background-size: auto;
+        background-position: top center;
+    }
+    .clearFix li{
+        display: inline-block;
+        font-size: 12px;
+        color: #DDDDDD;
+    }
+    .clearFix li a{
+        color: #DDDDDD;
+    }
+    .banner_content{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .header_left{
+        float: left;
+    }
+    .header_left li{
+        padding: 12px;
+    }
+    .header_right li{
+        padding: 12px;
+    }
+    .header_right{
+        float: right;
+    }
+    .header:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .banner_content .header_wrap{
+        background-color: rgba(0,0,0,.2);
+        margin-top: 70px;
+        padding-bottom: 50px;
+    }
+    .header_wrap .logo_text{
+        color: #fff;
+        text-align: center;
+    }
+    .header_wrap .logo{
+        padding-top: 65px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .header_wrap .logo h2{
+        color: #FF6600;
+        font-size: 80px;
+        font-weight: bold;
+        letter-spacing: 10px;
+    }
+    .header_wrap .logo_text{
+        font-size: 36px;
+        padding-bottom: 40px;
+        letter-spacing: 70px;
+        padding-left: 70px;
+    }
+    .search{
+        background-color: rgba(0,0,0,.12);
+        width: 855px;
+        height: 95px;
+        margin: 0 auto;
+        line-height: 60px;
+        vertical-align: 60px;
+        border-radius: 5px;
+        padding-top: 30px;
+        margin-bottom: 30px;
+    }
+    .search_box{
+        width: 830px;
+        height: 48px;
+        background-color: #fff;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 5px;
+    }
+    .search_box input{
+        display: block;
+        position: absolute;
+        left: 0;
+        height: 48px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 0 10px;
+    }
+    .search_box #search_btn{
+        position: absolute;
+        right: 0;
+        background-color: #FF6600;
+        color: #fff;
+        display: inline-block;
+        height: 48px;
+        line-height: 48px;
+        width: 235px;
+        text-align: center;
+        border-radius: 0 5px 5px 0;
+        font-size: 18px;
+    }
+    .banner_info{
+        color: #999999;
+    }
+    .banner_info span{
+        color: #4C964C;
+    }
+    .info_2{
+        width: 950px;
+        margin: 10px auto 0;
+        padding-bottom: 90px;
+    }
+    .banner_bottom{
+        background-color: #fff;
+        box-shadow: 0 10px 20px #ccc;
+    }
+    .banner_list>div{
+        display: inline-block;
+    }
+    .banner_bottom a{
+        color: #666666;
+    }
+    .banner_bottom li{
+        display: inline-block;
+        width: 96px;
+        padding: 9px 12px;
+    }
+    .business{
+        width: 245px;
+        padding:0 22px;
+    }
+    .business{
+        padding-bottom: 20px;
+    }
+    .business .title{
+        padding-top: 50px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 50px;
+    }
+    .business .title a{
+        position: absolute;
+        top: -24px;
+        left: 98px;
+    }
+    .business .title:before{
+        content: "";
+        display: inline-block;
+        width: 96px;
+        height: 96px;
+        position: absolute;
+        top: -33px;
+        left: 89px;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+    .banner_message{
+        border-top: 1px dashed #CCCCCC;
+        height: 54px;
+        position: relative;
+    }
+    .banner_message img{
+        width: 18px;
+        height: 15px;
+        position: absolute;
+        top: 18px;
+        left: 30px;
+    }
+    /*优选推荐的样式设置*/
+    .optimization .title{
+        padding-top: 45px;
+        padding-bottom: 30px;
+    }
+    .optimization{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .optimization_list>div{
+        display: inline-block;
+    }
+    .optimization_list .pad{
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+    /*商标服务样式*/
+    .brand_service_box{
+        background-color: #EFF3F7;
+    }
+    .brand_service{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .brand_service .title{
+        padding-top: 45px;
+        padding-bottom: 30px;
+    }
+    .brand_service .title span{
+        font-size: 20px;
+        color: #7D7D7D;
+        font-weight: normal;
+    }
+    .brand_service .title a{
+        font-size: 18px;
+        font-weight: normal;
+        padding: 5px 15px;
+        border: 1px solid #9FA8AE;
+        color: #7D7D7D;
+        border-radius: 12px;
+        float: right;
+    }
+    .service_list>div{
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .service_list>div:first-child{
+        margin-left: 0;
+    }
+    .service_list .service dt{
+        width: 230px;
+        height: 280px;
+    }
+    .service_list .service dd{
+        width: 230px;
+        height: 280px;
+        background: url(../image/brand_hover.jpg) no-repeat;
+        text-align: center;
+    }
+    .service_list dd a{
+        color: #fff;
+    }
+    .service_list dd span{
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        letter-spacing: 1px;
+    }
+    .service_list dd p{
+        width: 140px;
+        font-size: 14px;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+    .service_list dd button{
+        width: 100px;
+        height: 30px;
+        color: #fff;
+        font-size: 14px;
+        margin: 15px auto;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background: inherit;
+    }
+    .service_list .service{
+        width: 230px;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+    }
+    .service_list .service dl{
+        position: absolute;
+    }
+    .f2{
+        margin-top: 20px;
+    }
+    .f2>div{
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .f2>div:first-child{
+        margin-left: 0;
+    }
+    .f2_content>div h3{
+        margin-left: 75px;
+        margin-top: 20px;
+        margin-right: 28px;
+        padding-bottom: 11px;
+        border-bottom: 1px dashed #C9CFD3;
+        padding-top: 22px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 100%;
+    }
+    .f2_content>div{
+        position: relative;
+        /*height: 60px;*/
+    }
+    .f2_content{
+        background-color: #fff;
+        width: 390px;
+        height: 180px;
+        vertical-align: top;
+    }
+    .f2_content>div img{
+        width: 43px;
+        height: 43px;
+        border-radius: 50%;
+        position: absolute;
+        left: 17px;
+        top: 10px;
+    }
+    .f2_content li{
+        display: inline-block;
+        padding-left: 21px;
+        padding-bottom: 23px;
+        width: 99px;
+    }
+    .f2_content ul{
+        margin-top: 18px;
+    }
+    .f2_content ul a{
+        color: #555555;
+    }
+    .f2_content ul a:hover{
+        color: #42DAAE;
+    }
+    .f3{
+        background-color: #fff;
+        margin-top: 20px;
+    }
+    .f_title{
+        position: relative;
+    }
+    .f_title img{
+        position: absolute;
+        left: 15px;
+        top: 10px;
+    }
+    .f_title h3{
+        margin-left: 75px;
+        padding-top: 20px;
+        margin-bottom: 15px;
+    }
+    .f3 li{
+        margin: 0;
+        padding: 0;
+        float: left;
+        border-top: 1px solid #E7E7E7;
+        border-right: 1px solid #E7E7E7;
+        width: 237px;
+        height: 156px;
+    }
+    .f3 li:last-child{
+        border-right: none;
+    }
+    .f3 ul:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .f4{
+        background-color: #fff;
+        margin-top: 20px;
+    }
+    .f4 ul li{
+        display: inline-block;
+        width: 375px;
+        height: 100px;
+        margin-left: 14px;
+    }
+    .f4 ul li a{
+        display: inline-block;
+        width: 375px;
+        height: 100px;
+    }
+    .f4 ul li img{
+        width: 100%;
+        height: 100%;
+    }
+    .f4 .f_title{
+        margin-bottom: 30px;
+    }
+    .f4_content{
+        padding-bottom: 15px;
+    }
+    .f5{
+        width: 1190px;
+        height: 100px;
+        margin: 0 auto;
+        padding: 50px 0 0;
+    }
+    .f5 img{
+        width: 1190px;
+        height: 100px;
+    }
+    /*版权服务*/
+    .copyright_box{
+        background-color: #EFF3F7;
+        padding-bottom: 50px;
+    }
+    .copyright_service{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .copyright_service .title span{
+        font-size: 20px;
+        font-weight: normal;
+        color: #7D7D7D;
+    }
+    .service_type{
+        padding: 30px 0;
+    }
+    .service_type:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .service_type li{
+        float: left;
+        width: 593px;
+        border: 1px solid #C6C6C7;
+        text-align: center;
+        padding: 4px 0;
+        font-size: 14px;
+    }
+    .service_type .aim{
+        background-color: #2F3840;
+    }
+    .service_type .aim a{
+        color: #fff;
+    }
+    .service_type li a{
+        color: #555555;
+    }
+    .service_list li{
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .service_list li:first-child{
+        margin-left: 0;
+    }
+    .copyright_service .title{
+        padding-top: 50px;
+    }
+    /*咨询区*/
+    .news_box{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .news_box .title{
+        margin: 40px auto;
+    }
+    .news_content>div{
+        float: left;
+        width: 286px;
+        height: 385px;
+        border: 1px solid #E3E3E3;
+        margin-right: 12px;
+    }
+    .news_content>div:last-child{
+        margin-right: 0;
+    }
+    .news_content .type_1 dt{
+        width: 286px;
+        height: 226px;
+        position: relative;
+    }
+    .news_content .type_1 dt img{
+        width: 286px;
+        height: 226px;
+    }
+    .news_content .type_1 dt p{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.6);
+        color: #eee;
+        width: 256px;
+        padding: 10px 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .news_content .type_1 dd{
+        padding: 12px;
+    }
+    .news_content .type_1 dd a {
+        color: #555555;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .type_2_top{
+        width: 284px;
+        height: 185px;
+        position: relative;
+    }
+    .type_2_top img{
+        width: 286px;
+        height: 185px;
+    }
+    .type_2_top p{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        color: #eee;
+        width: 256px;
+        padding: 10px 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .type_2_bottom p{
+        padding-left: 28px;
+        position: relative;
+        font-weight: bold;
+        padding-bottom: 10px;
+        font-size: 18px;
+        /*line-height: 43px;*/
+        padding-top: 10px;
+        border-bottom: 1px solid #979797;
+        margin: 0 5px;
+    }
+    .type_2_bottom p:before{
+        display: block;
+        content: "";
+        width: 3px;
+        height: 17px;
+        background-color: #3EAE87;
+        position: absolute;
+        left: 11px;
+        top: 14px;
+    }
+    .type_2_bottom p a{
+        float: right;
+        padding: 2px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: #555555;
+        border: 1px solid #555555;
+        margin-top: 2px;
+        margin-right: 5px;
+    }
+    .type_2_bottom ul{
+        padding: 21px 14px 0;
+        margin-top: -18px;
+    }
+    .type_2_bottom li{
+        margin-top: 19px;
+        line-height: 100%;
+        font-size: 14px;
+        width: 100%;
+    }
+    .type_2_bottom li a{
+        display: block;
+        color: #555555;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .type_2_bottom li a:hover{
+        color: #34D8A8;
+    }
+    .news_content:after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .news_box .lazy{
+        margin: 40px 0;
+    }
+
+    /*底部数据的样式*/
+    .special{
+        background: url(../image/bottom_bg.jpg) no-repeat;
+        background-size: auto;
+        padding-bottom: 55px;
+    }
+    .special_box{
+        width: 1190px;
+        margin: 0 auto;
+    }
+    .date_list li{
+        color: #fff;
+        display: inline-block;
+        text-align: center;
+        width: 225px;
+        height: 80px;
+        padding-top: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 50px;
+        line-height: 28px;
+    }
+    .special_box .num{
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .special_box .text{
+        font-size: 14px;
+        font-weight: lighter;
+        letter-spacing: 1px;
+    }
+    .date_detail{
+        background-color: rgba(255,255,255,.3);
+    }
+    .date_list img{
+        height: 25px;
+    }
+    .date_detail .detail p{
+        width: 1010px;
+        color: #444;
+        margin: 0 auto;
+        position: relative;
+        font-size: 16px;
+        line-height: 29px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .family_icon .icon{
+        display: inline-block;
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin-left: 53px;
+        border-radius: 50%;
+    }
+    .family_icon .logo_icon{
+        display: inline-block;
+        overflow: hidden;
+        margin-left: 60px;
+        width: 130px;
+        height: 46px;
+        margin-bottom: 8px;
+    }
+    .family_icon{
+        padding-bottom: 30px;
+    }
+
+
+
+
+

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="usergroup">
+	<!-- CircleManager -->
+	<sql id="addCircleColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CIRCLEID "> CIRCLEID,</if>
+		<if test="null!=CIRCLENAME "> CIRCLENAME,</if>
+		<if test="null!=CREATORID "> CREATORID,</if>
+		<if test="null!=CREATETIME "> CREATETIME,</if>
+		<if test="null!=CIRCLEDESC "> CIRCLEDESC,</if>
+		<if test="null!=ISDELETE "> ISDELETE,</if>
+	</trim>
+	</sql>
+	<sql id="addCircleValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CIRCLEID "> #{CIRCLEID},</if>
+		<if test="null!=CIRCLENAME "> #{CIRCLENAME},</if>
+		<if test="null!=CREATORID "> #{CREATORID},</if>
+		<if test="null!=CREATETIME "> #{CREATETIME},</if>
+		<if test="null!=CIRCLEDESC "> #{CIRCLEDESC},</if>
+		<if test="null!=ISDELETE "> #{ISDELETE},</if>
+	</trim>
+	</sql>
+	<insert id="addCircle" parameterType="map">
+		insert into DP_UG_CIRCLE
+		(<include refid="addCircleColumn"/>)
+		values(<include refid="addCircleValue"/>)
+	</insert>
+	
+	<update id="removeCircle" parameterType="map">
+		update DP_UG_CIRCLE   
+		<set>
+			<if test="null!=ISDELETE">                      
+				ISDELETE=#{ISDELETE}
+			</if>                      
+		</set>
+		 where CIRCLEID=#{AREA}
+	</update>
+	
+	<delete id="deleteCircle" parameterType="map">
+		delete from DP_UG_CIRCLE  where CIRCLEID=#{CIRCLEID}
+	</delete>
+	
+	<update id="modifyCircle" parameterType="map">
+		update DP_UG_CIRCLE   
+		<set>
+			<if test="null!=CIRCLEID "> CIRCLEID=#{CIRCLEID},</if>
+			<if test="null!=CIRCLENAME "> CIRCLENAME=#{CIRCLENAME},</if>
+			<if test="null!=CREATORID "> CREATORID=#{CREATORID},</if>
+			<if test="null!=CREATETIME "> CREATETIME=#{CREATETIME},</if>
+			<if test="null!=CIRCLEDESC "> CIRCLEDESC=#{CIRCLEDESC},</if>
+			<if test="null!=ISDELETE "> ISDELETE=#{ISDELETE},</if>                    
+		</set>
+		 where CIRCLEID=#{CIRCLEID}
+	</update>
+	
+	<select id="queryCirclesByPage" parameterType="map" resultType="com.talkweb.twdpe.base.usergroup.pojo.CircleInfo">
+		select CIRCLEID,CIRCLENAME,CREATORID,CREATETIME,CIRCLEDESC as circleDescription 
+		from DP_UG_CIRCLE where ISDELETE=0 
+			<if test="null!=CircleId">
+				and CircleId = #{CircleId}
+			</if>
+			<if test="null!=CircleName and ''!=CircleName">
+				and CircleName like '%${CircleName}%'
+			</if>
+			<if test="null!=CreatorId and ''!=CreatorId">
+				and CreatorId = #{CreatorId}
+			</if>
+			<if test="null!=CircleDescription and ''!=CircleDescription">
+				and CircleDescription like '%${CircleDescription}%'
+			</if>
+			order by CIRCLEID
+	</select>
+	
+	<select id="getCircleByCircleId" parameterType="int" resultType="com.talkweb.twdpe.base.usergroup.pojo.CircleInfo">
+		select CIRCLEID,CIRCLENAME,CREATORID,CREATETIME,CIRCLEDESC as circleDescription 
+		from DP_UG_CIRCLE	where	CIRCLEID = #{circleId}
+	</select>
+	
+	<select id="getNewCircleId" resultType="int">
+		select SEQ_UG.Nextval from dual
+	</select>
+	
+	<!-- CircleUserManager -->
+	<sql id="addCircleUserColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CIRCLEID"> CIRCLEID,</if>
+		<if test="null!=USERID"> USERID,</if>
+	</trim>
+	</sql>
+	<sql id="addCircleUserValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=CIRCLEID"> #{CIRCLEID},</if>
+		<if test="null!=USERID"> #{USERID},</if>
+	</trim>
+	</sql>
+	<insert id="addCircleUser" parameterType="map">
+		insert into DP_UG_CIRCLEUSER
+		(<include refid="addCircleUserColumn"/>)
+		values(<include refid="addCircleUserValue"/>)
+	</insert>
+	
+	<delete id="deleteCircleUser" parameterType="map">
+		delete from DP_UG_CIRCLEUSER  where CIRCLEID=#{CIRCLEID} and USERID=#{USERID}
+	</delete>
+	
+	<delete id="deleteCircleUsersByCircleId" parameterType="map">
+		delete from DP_UG_CIRCLEUSER  where CIRCLEID=#{CIRCLEID} 
+	</delete>
+	
+	<delete id="deleteCircleUsersByUserId" parameterType="map">
+		delete from DP_UG_CIRCLEUSER  where USERID=#{USERID}
+	</delete>
+	
+	<select id="queryCircleUsersByPage" parameterType="map" resultType="com.talkweb.twdpe.base.usergroup.pojo.CircleUserInfo">
+		select CIRCLEID,USERID from DP_UG_CIRCLEUSER 
+		<where>
+			<if test="null!=CircleId">
+				CircleId = #{CircleId}
+			</if>
+			<if test="null!=UserId and ''!=UserId">
+				and UserId = #{UserId}
+			</if>
+		</where>			
+	</select>
+	
+	<!-- QueryFieldManager -->
+	<select id="getQueryFields" parameterType="map" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryFieldInfo">
+		select FIELDID,TABLECODE,FIELDCODE,FIELDNAME,FIELDTYPE,RELATIONTYPE,RELATIONSQL 
+		from DP_UG_QUERYFIELD 
+	</select>
+	
+	<select id="getQueryField" parameterType="int" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryFieldInfo">
+		select FIELDID,TABLECODE,FIELDCODE,FIELDNAME,FIELDTYPE,RELATIONTYPE,RELATIONSQL 
+		from DP_UG_QUERYFIELD 
+		<where>
+			<if test="null!=fieldId and ''!=fieldId">
+				 fieldId = #{fieldId}
+			</if>
+		</where>			
+	</select>
+	
+	<select id="getSourceListItems" parameterType="string" resultType="com.talkweb.twdpe.base.usergroup.pojo.SourceListItemInfo">
+		#{sql}
+	</select>
+	
+	<select id="getSourceTreeItems" parameterType="string" resultType="com.talkweb.twdpe.base.usergroup.pojo.SourceTreeItemInfo">
+		#{sql}
+	</select>
+	
+	<!-- QueryItemManager -->
+	<sql id="addQueryItemColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=QUERYID "> QUERYID,</if>
+		<if test="null!=ITEMID "> ITEMID,</if>
+		<if test="null!=FIELDID "> FIELDID,</if>
+		<if test="null!=OPERATORID "> OPERATORID,</if>
+		<if test="null!=ITEMVALUE "> ITEMVALUE,</if>
+		<if test="null!=ITEMTEXT "> ITEMTEXT,</if>
+	</trim>
+	</sql>
+	<sql id="addQueryItemValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=QUERYID "> #{QUERYID},</if>
+		<if test="null!=ITEMID "> #{ITEMID},</if>
+		<if test="null!=FIELDID "> #{FIELDID},</if>
+		<if test="null!=OPERATORID "> #{OPERATORID},</if>
+		<if test="null!=ITEMVALUE "> #{ITEMVALUE},</if>
+		<if test="null!=ITEMTEXT "> #{ITEMTEXT},</if>
+	</trim>
+	</sql>
+	<insert id="addQueryItem" parameterType="map">
+		insert into DP_UG_QUERYITEM
+		(<include refid="addQueryItemColumn"/>)
+		values(<include refid="addQueryItemValue"/>)
+	</insert>
+	
+	<delete id="deleteQueryItem" parameterType="map">
+		delete from DP_UG_QUERYITEM  where ITEMID=#{ITEMID} 
+	</delete>
+	
+	<delete id="deleteQueryItems" parameterType="map">
+		delete from DP_UG_QUERYITEM  where QUERYID=#{QUERYID} 
+	</delete>
+	
+	<update id="modifyQueryItem" parameterType="map">
+		update DP_UG_QUERYITEM   
+		<set>
+			<if test="null!=QUERYID "> QUERYID  =#{QUERYID},</if>
+			<if test="null!=ITEMID "> ITEMID  =#{ITEMID},</if>
+			<if test="null!=FIELDID "> FIELDID  =#{FIELDID},</if>
+			<if test="null!=OPERATORID "> OPERATORID  =#{OPERATORID},</if>
+			<if test="null!=ITEMVALUE "> ITEMVALUE  =#{ITEMVALUE},</if>
+			<if test="null!=ITEMTEXT "> ITEMTEXT  =#{ITEMTEXT},</if>                  
+		</set>
+		 where QUERYID  =#{QUERYID}
+	</update>
+	
+	<select id="getQueryItems" parameterType="int" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryItemInfo">
+		select QUERYID,ITEMID,FIELDID,OPERATORID,ITEMVALUE from DP_UG_QUERYITEM 
+		where QUERYID = #{queryId}
+	</select>
+	
+	<select id="getNewQueryItemId" resultType="int">
+		select SEQ_UG.Nextval from dual
+	</select>
+	
+	<!-- QueryManager -->
+	<sql id="addQueryColumn">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=QUERYID "> QUERYID,</if>
+		<if test="null!=QUERYNAME "> QUERYNAME,</if>
+		<if test="null!=CREATORID "> CREATORID,</if>
+		<if test="null!=CREATETIME "> CREATETIME,</if>
+		<if test="null!=QUERYDESC "> QUERYDESC,</if>
+	</trim>
+	</sql>
+	<sql id="addQueryValue">
+	<trim suffix="" suffixOverrides=",">
+		<if test="null!=QUERYID "> #{QUERYID},</if>
+		<if test="null!=QUERYNAME "> #{QUERYNAME},</if>
+		<if test="null!=CREATORID "> #{CREATORID},</if>
+		<if test="null!=CREATETIME "> #{CREATETIME},</if>
+		<if test="null!=QUERYDESC "> #{QUERYDESC},</if>
+	</trim>
+	</sql>
+	<insert id="addQuery" parameterType="map">
+		insert into DP_UG_QUERY
+		(<include refid="addQueryColumn"/>)
+		values(<include refid="addQueryValue"/>)
+	</insert>
+	
+	<delete id="deleteQuery" parameterType="map">
+		delete from DP_UG_QUERY  where QUERYID=#{QUERYID} 
+	</delete>
+	
+	<update id="modifyQuery" parameterType="map">
+		update DP_UG_QUERY   
+		<set>
+			<if test="null!=QUERYID "> QUERYID  =#{QUERYID},</if>
+			<if test="null!=QUERYNAME "> QUERYNAME  =#{QUERYNAME},</if>
+			<if test="null!=QUERYDESC "> QUERYDESC  =#{QUERYDESC},</if>
+		</set>
+		 where QUERYID  =#{QUERYID}
+	</update>
+	
+	<select id="queryQueriesByPage" parameterType="map" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryInfo">
+		select QUERYID,QUERYNAME,CREATORID,CREATETIME,QUERYDESC as queryDescription 
+		from DP_UG_QUERY 
+		<where>
+			<if test="null!=QueryId">
+				 QUERYID = #{QueryId}
+			</if>
+			<if test="null!=QueryName and ''!=QueryName">
+				 and QueryName like '%${QueryName}%'
+			</if>
+			<if test="null!=CreatorId and ''!=CreatorId">
+				 and CreatorId = #{CreatorId}
+			</if>
+			<if test="null!=QueryDescription and ''!=QueryDescription">
+				 and QueryDescription like '%${QueryDescription}%'
+			</if>
+		</where>
+			order by CREATETIME desc			
+	</select>
+	
+	<select id="getQuery" parameterType="int" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryInfo">
+		select QUERYID,QUERYNAME,CREATORID,to_char(CREATETIME,'yyyy-mm-dd hh:mm:ss') as CREATETIME,QUERYDESC as queryDescription 
+		from DP_UG_QUERY
+		<where>
+			<if test="null!=queryId">
+				 QUERYID = #{queryId}
+			</if>
+		</where>
+	</select>
+		
+	<select id="getQueryUsers" parameterType="map" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryUserInfo">
+		#{SQL}
+	</select>
+	
+	<select id="getNewQueryId" resultType="int">
+		select SEQ_UG.Nextval from dual
+	</select>
+	
+	<!-- QueryOperatorManager -->
+	<select id="getQueryOperators" parameterType="int" resultType="com.talkweb.twdpe.base.usergroup.pojo.QueryOperatorInfo">
+		select OPERATORID,OPERATORNAME from DP_UG_QUERYOPERATOR 
+	</select>
+
+</mapper>

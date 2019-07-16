@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+}
+body h1,h2,h3,h4,h5,ul,li,a,img,dl,dt,dd,p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.iim{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background:url("../image/develop.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+}
+.center{
+    width: 1200px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.center span{
+    font-size: 44px;
+    color: #ff9700;
+    position: absolute;
+    right: 36%;
+    top: 51%;
+}

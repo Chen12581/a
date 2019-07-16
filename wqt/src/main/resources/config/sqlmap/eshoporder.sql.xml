@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eshopOrder"> 
+       
+       <!--查询网店转让的订单-->
+	   <select id="selectEShopOrderList" 
+		        parameterType="com.wqt.user.pojo.UEShopOrder" 
+		        resultType="com.wqt.user.pojo.UEShopOrder">
+		    select 
+             a.*
+             from v_eshop_order  a
+             where 1=1
+			<if test="null!= orderid and ''!= orderid">
+			    and  a.orderid=#{orderid}
+			</if>
+			<if test="null!= ordercode and ''!= ordercode">
+			    and  a.ordercode=#{ordercode}
+			</if>
+			<if test="null!= ordershopid and ''!= ordershopid">
+			   and  a.ordershopid=#{ordershopid}
+			</if>
+			<if test="null!= sellerid and ''!= sellerid">
+			   and  a.sellerid=#{sellerid}
+			</if>
+			<if test="null!= buyerid and ''!= buyerid">
+			   and  a.buyerid=#{buyerid}
+			</if>
+			<if test="null!= orderstate and ''!= orderstate">
+			   and  a.orderstate=#{orderstate}
+			</if>
+	   </select>
+	   
+	   <select id="selectOneEShopOrder" 
+	           parameterType="com.wqt.eshop.pojo.EShopOrder" 
+	           resultType="com.wqt.eshop.pojo.EShopOrder" >
+		      select a.*,
+		          b.deposittype,
+		          b.depositmoney,
+		          b.techfee,
+		          b.returntechfee,
+		          b.techfeeratio,
+		          (select malltypename from eshop_malltype where id=b.malltypeid) malltypename,
+	              (select brandcategoryname from eshop_brandcategory where id=b.brandcategoryid) brandcategoryname,
+	              (select brandkindname from eshop_brandkind where id=b.brandkind) brandkindname,
+	              d.creditlevel creditname,
+	              c.categoryname maincategoryname,
+                  b.plateformcode,
+                  b.shopcode,
+                  b.maincategoryid,
+                  b.shoptitle
+		        from eshop_order a,eshop_shop b,eshop_credit d ,eshop_category c
+		        where  a.shopid=b.id  and b.creditid=d.id and b.maincategoryid=c.id
+				<if test="id != null and id != ''">
+				    and a.id =#{id}
+				</if>
+				<if test="ordercode != null and ordercode != ''">
+				    and a.ordercode =#{ordercode}
+				</if>
+				<if test="buyerid != null and buyerid != ''">
+				    and a.buyerid =#{buyerid}
+				</if>
+	   </select>
+	   
+	  <!--修改网店转让订单-->
+	  <update id="updateEShopOrder" parameterType="com.wqt.eshop.pojo.EShopOrder">
+		update eshop_order
+		<set>
+			<trim suffix="" suffixOverrides=",">
+				<if test="null!= state and ''!= state">state=#{state},</if>
+			</trim>
+		</set>
+		where id=#{id}
+	   </update>
+</mapper>
