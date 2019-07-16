@@ -1,17 +1,16 @@
-$(function () {
-    $(".content .content_lf div h4").each(function () {
-        var _this = $(this).attr("data-item");
-        if (_this == "true") {
+$(function() {
+    $(".content .content_lf div h4").each(function(index, val) {
+        if (!pageItems[index]) {
             $(this).next().show();
             $(this).find("i").attr("class", "active");
         }
-        $(this).on("click", function () {
+        $(this).on("click", function() {
             $(this).next().toggle();
             if ($(this).next().is(":hidden")) {
-                $(this).attr("data-item", "false");
+                pageItems[index] = true;
                 $(this).find("i").attr("class", "item");
             } else {
-                $(this).attr("data-item", "true");
+                pageItems[index] = false;
                 $(this).find("i").attr("class", "active");
             }
         })
@@ -33,26 +32,27 @@ function stopDefault(e) {
 }
 //弹出层 num:icon图片—6成功5失败   msg：错误提示
 function comfirm_add(num, msg) {
-    layui.use('layer', function () {
+    layui.use('layer', function() {
         var layer = layui.layer;
-        layer.open(
-            {
-                type: 0,
-                title: false,
-                icon: num,
-                content: msg,
-                skin: "layui-layer-lan",
-                btn: false,
-                closeBtn: 0,
-                shade: 0.5,
-                shadeClose: true,
-                time: 1500,
-                anim: 1
-            }
-        )
+        layer.open({
+            type: 0,
+            title: false,
+            icon: num,
+            content: msg,
+            skin: "layui-layer-lan",
+            btn: false,
+            closeBtn: 0,
+            shade: 0.5,
+            shadeClose: true,
+            time: 1500,
+            anim: 1
+        })
     })
 }
-var oDiv, oOption, proviceId, cityId, nowTime = 0, proviceB = false, cityB = false, areaB = false,
+var oDiv, oOption, proviceId, cityId, nowTime = 0,
+    proviceB = false,
+    cityB = false,
+    areaB = false,
     objData = {
         'bankid': '0',
         'provincename': '请选择省份',
@@ -65,7 +65,7 @@ var oDiv, oOption, proviceId, cityId, nowTime = 0, proviceB = false, cityB = fal
     $province_3 = $('.area');
 
 // /*******************默认选项的地址*********************/
-$('.information').on("click", ".select", function (e) {
+$('.information').on("click", ".select", function(e) {
     if (!$(this).is(".active")) {
         stopDefault(e);
         //改变原来默认地址
@@ -80,18 +80,18 @@ $('.information').on("click", ".select", function (e) {
         var nid = $(this).children("a").attr("data-uid");
         def(nid, 1);
         $('.confirm').show();
-        setTimeout(function () {
+        setTimeout(function() {
             $('.confirm').hide();
         }, 1000)
     }
 });
 // /*********弹窗的弹出设置********/
-$('.addBtn a').click(function (e) {
+$('.addBtn a').click(function(e) {
     e.preventDefault();
     $('.pop').show();
     $('#add').show().siblings('.add_detail').hide();
 });
-$('.information').on("click", ".modification", function (e) {
+$('.information').on("click", ".modification", function(e) {
     e.preventDefault();
     //d动态绑定修改保存的事件
     var did = $(this).parent().next(".select").children("a").attr("data-uid");
@@ -100,7 +100,7 @@ $('.information').on("click", ".modification", function (e) {
     $('#modify').show().siblings('.add_detail').hide();
 });
 /************弹窗关闭的设置*********/
-$('.stop').click(function (e) {
+$('.stop').click(function(e) {
     e.preventDefault();
     $('.pop').hide();
 });
@@ -110,12 +110,11 @@ $.ajax({
     type: 'post',
     url: wqturl + '/getProvince.action',
     dataType: 'json',
-    data: {
-    },
-    error: function (XmlHttpRequest, textStatus, errorThrown) {
+    data: {},
+    error: function(XmlHttpRequest, textStatus, errorThrown) {
         console.log(XmlHttpRequest.status);
     },
-    success: function (data) {
+    success: function(data) {
         $province_1.html('<option value="请选择省份">请选择省份</option>');
         for (var i = 0, len = data.length; i < len; i++) {
             oOption = $('<option value=' + data[i].provincename + ' name=' + data[i].id + '>' + data[i].provincename + '</option>');
@@ -124,8 +123,9 @@ $.ajax({
     }
 });
 //监听省份框
-$province_1.on('change', function () {
-    cityB = false; areaB = false;
+$province_1.on('change', function() {
+    cityB = false;
+    areaB = false;
     var index = this.selectedIndex + 1;
     proviceId = $('.province option:nth-child(' + index + ')').attr('name');
     console.log(proviceId);
@@ -142,10 +142,10 @@ $province_1.on('change', function () {
             type: 'post',
             url: wqturl + '/getCity.action?provinceid=' + proviceId,
             dataType: 'json',
-            error: function (XmlHttpRequest, textStatus, errorThrown) {
+            error: function(XmlHttpRequest, textStatus, errorThrown) {
                 console.log(XmlHttpRequest.status);
             },
-            success: function (data) {
+            success: function(data) {
                 if (data.length == 0) {
                     cityB = true;
                     areaB = true;
@@ -163,7 +163,7 @@ $province_1.on('change', function () {
     $province_3.html('');
 });
 //监听地市框
-$province_2.on('change', function () {
+$province_2.on('change', function() {
     areaB = false;
     var index = this.selectedIndex + 1;
     cityId = $('.city option:nth-child(' + index + ')').attr('name');
@@ -178,10 +178,10 @@ $province_2.on('change', function () {
             type: 'post',
             url: wqturl + '/getArea.action?cityid=' + cityId,
             dataType: 'json',
-            error: function (XmlHttpRequest, textStatus, errorThrown) {
+            error: function(XmlHttpRequest, textStatus, errorThrown) {
                 console.log(XmlHttpRequest.status);
             },
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 if (data.length === 0) {
                     areaB = true;
@@ -198,7 +198,7 @@ $province_2.on('change', function () {
     }
 });
 //监听区县框
-$province_3.on('change', function () {
+$province_3.on('change', function() {
     objData.area = $(this).val();
     areaB = objData.area == '请选择区县' ? false : true;
     console.log(areaB);
@@ -264,7 +264,15 @@ $province_3.on('change', function () {
 
 // /*************新增收件地址************/
 function add() {
-    var uName = '', address = '', phone = '', aa = '', bb = '', cc = '', dd = '', ee = '', ff = '';
+    var uName = '',
+        address = '',
+        phone = '',
+        aa = '',
+        bb = '',
+        cc = '',
+        dd = '',
+        ee = '',
+        ff = '';
     aa += $('#add_uName').val();
     bb += $('#add_address').val();
     cc += $('#add_tel').val();
@@ -299,13 +307,13 @@ function add() {
             url: wqturl + '/saveUserPost.action',
             data: {
                 'wqtUserPost.recvname': aa,
-                'wqtUserPost.recvprovice': dd,   //收件省
-                'wqtUserPost.recvcity': ee,   //收件市
-                'wqtUserPost.recvarea': ff,   //收件区县
-                'wqtUserPost.recvaddr': bb,   //收件详细地址
-                'wqtUserPost.connecttel': cc   //联系电话
+                'wqtUserPost.recvprovice': dd, //收件省
+                'wqtUserPost.recvcity': ee, //收件市
+                'wqtUserPost.recvarea': ff, //收件区县
+                'wqtUserPost.recvaddr': bb, //收件详细地址
+                'wqtUserPost.connecttel': cc //联系电话
             },
-            success: function (data) {
+            success: function(data) {
                 if (data.result == 1) {
                     alert("添加成功");
                     window.location.reload();
@@ -346,7 +354,15 @@ function add() {
 
 //修改用户寄件地址
 function update(addrId) {
-    var uName = '', address = '', phone = '', aa = '', bb = '', cc = '', dd = '', ee = '', ff = '';
+    var uName = '',
+        address = '',
+        phone = '',
+        aa = '',
+        bb = '',
+        cc = '',
+        dd = '',
+        ee = '',
+        ff = '';
     aa += $('#modify_uName').val();
     bb += $('#modify_address').val();
     cc += $('#modify_tel').val();
@@ -381,14 +397,14 @@ function update(addrId) {
             url: wqturl + '/updateUserPost.action',
             data: {
                 'wqtUserPost.recvname': aa,
-                'wqtUserPost.recvprovice': dd,   //收件省
-                'wqtUserPost.recvcity': ee,   //收件市
-                'wqtUserPost.recvarea': ff,   //收件区县
-                'wqtUserPost.recvaddr': bb,   //收件详细地址
-                'wqtUserPost.connecttel': cc,  //联系电话
-                'wqtUserPost.id': addrId   //地址id
+                'wqtUserPost.recvprovice': dd, //收件省
+                'wqtUserPost.recvcity': ee, //收件市
+                'wqtUserPost.recvarea': ff, //收件区县
+                'wqtUserPost.recvaddr': bb, //收件详细地址
+                'wqtUserPost.connecttel': cc, //联系电话
+                'wqtUserPost.id': addrId //地址id
             },
-            success: function (data) {
+            success: function(data) {
                 if (data.result == 1) {
                     alert("修改成功");
                     window.location.reload();
@@ -396,7 +412,7 @@ function update(addrId) {
                     window.location.href = wqturl + "/casLogin?service=" + data.msg;
                 }
             },
-            error: function () {
+            error: function() {
                 console.log("error");
             }
         })
@@ -412,7 +428,7 @@ function delAddr(addrId, event) {
             'type': 'post',
             'dataType': 'json',
             'url': wqturl + '/delUserPost.action?id=' + addrId,
-            success: function (data) {
+            success: function(data) {
                 if (data.result == 1) {
                     window.location.reload();
                 } else if (data.result == 2) {
@@ -427,12 +443,13 @@ function delAddr(addrId, event) {
 function modify(id) {
     //先除掉原先点击产生的selected
     $('#modify_province').children().removeAttr("selected");
-    var aa = "", bb = "";
+    var aa = "",
+        bb = "";
     $.ajax({
         'type': 'post',
         'dataType': 'json',
         'url': wqturl + '/onePostInfo.action?id=' + id,
-        success: function (data) {
+        success: function(data) {
             var data = data.msg;
             $('#modify_uName').val(data.recvname);
             $('#modify_province').val(data.recvprovice);
@@ -441,7 +458,7 @@ function modify(id) {
                 $.ajax({
                     type: 'post',
                     url: wqturl + '/getCity.action?provinceid=' + proviceId,
-                    success: function (citydata) {
+                    success: function(citydata) {
                         for (var i = 0, len = citydata.length; i < len; i++) {
                             aa += '<option value=' + citydata[i].cityname + ' name=' + citydata[i].id + '>' + citydata[i].cityname + '</option>';
                         };
@@ -454,7 +471,7 @@ function modify(id) {
                             $.ajax({
                                 type: 'post',
                                 url: wqturl + '/getArea.action?cityid=' + city,
-                                success: function (areadata) {
+                                success: function(areadata) {
                                     for (var i = 0, len = areadata.length; i < len; i++) {
                                         bb += '<option name=' + areadata[i].id + ' value=' + areadata[i].areaname + '>' + areadata[i].areaname + '</option>';
                                     }
@@ -485,19 +502,20 @@ function def(id, i) {
             'wqtUserPost.id': id,
             'wqtUserPost.isdefault': i
         },
-        success: function (data) {
+        success: function(data) {
             console.log(data);
         }
     })
 }
 
-$(function () {
+$(function() {
     /* 定义变量 */
     var sUrl = wqturl + '/postlist.action',
         oData = {},
         oStr = '';
     /* fn */
     ajaxFn(sUrl, oData);
+
     function ajaxFn(url, Data) {
         pagesize = parseInt(Data.pagesize || '10');
         currpage = parseInt(Data.currpage || '1');
@@ -509,10 +527,10 @@ $(function () {
                 'pagination.size': 10,
                 'pagination.currPage': currpage
             },
-            error: function (XmlHttpRequest, textStatus, errorThrown) {
+            error: function(XmlHttpRequest, textStatus, errorThrown) {
                 console.log(XmlHttpRequest.status);
             },
-            success: function (data) {
+            success: function(data) {
                 var c = ''; //判断市是否为null
                 var a = ''; //判断区是否为null
                 var total = parseInt(data.msg.total);
@@ -590,9 +608,9 @@ $(function () {
     }
     /* 页标js */
     function pageJsFn(url) {
-        var $allPageV = parseInt($('#allPage2').html()),    //总页数
-            $pagesNA = $("span.pagesN a"),                 //页码标签
-            $nowPage2V = parseInt($("#nowPage2").html());//当前页
+        var $allPageV = parseInt($('#allPage2').html()), //总页数
+            $pagesNA = $("span.pagesN a"), //页码标签
+            $nowPage2V = parseInt($("#nowPage2").html()); //当前页
         /* 当前页高亮显示 */
         if ($allPageV <= 8) {
             $pagesNA.eq($nowPage2V - 1).addClass("active").siblings().removeClass("active");
@@ -606,7 +624,7 @@ $(function () {
             }
         };
         /* 点击跳到第一页 */
-        $("#firstPage").on('click', function (e) {
+        $("#firstPage").on('click', function(e) {
             stopDefault(e);
             $nowPage2V = 1;
             $('#nowPage2').html($nowPage2V);
@@ -614,8 +632,8 @@ $(function () {
             ajaxFn(url, oData);
         });
         /* 点击页标a标签 */
-        $pagesNA.each(function () {
-            $(this).on('click', function (e) {
+        $pagesNA.each(function() {
+            $(this).on('click', function(e) {
                 stopDefault(e);
                 $nowPage2V = $(this).html();
                 $('#nowPage2').html($nowPage2V);
@@ -624,7 +642,7 @@ $(function () {
             });
         });
         /* 点击跳到尾页 */
-        $("#nextPage").on('click', function (e) {
+        $("#nextPage").on('click', function(e) {
             stopDefault(e);
             $nowPage2V = $allPageV;
             $('#nowPage2').html($nowPage2V);
@@ -635,9 +653,9 @@ $(function () {
         $("#prevA").click(prevFn);
         $('#nextA').click(nextFn);
         /* input输值跳转 */
-        $('#pages').on('keydown', function (e) {
+        $('#pages').on('keydown', function(e) {
             var e = e || event;
-            if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || (e.keyCode == 9) || (e.keyCode == 8) || (e.keyCode == 116) || (e.keyCode == 13))) stopDefault(e);//阻止默认事件，去掉move的时候选中文本;
+            if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || (e.keyCode == 9) || (e.keyCode == 8) || (e.keyCode == 116) || (e.keyCode == 13))) stopDefault(e); //阻止默认事件，去掉move的时候选中文本;
             if (e.keyCode == 13) inputFn();
         });
         $('#btn').click(inputFn);
@@ -681,9 +699,9 @@ $(function () {
 });
 
 // 标题伸缩 个人资料，我是买家等
-$(".content .content_lf div h4").each(function () {
+$(".content .content_lf div h4").each(function() {
     $(this).next().hide();
-    $(this).on("click", function () {
+    $(this).on("click", function() {
         $(this).next().toggle();
         if ($(this).is(":hidden")) {
             $(this).find("i").attr("class", "active");
@@ -692,21 +710,3 @@ $(".content .content_lf div h4").each(function () {
         }
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
