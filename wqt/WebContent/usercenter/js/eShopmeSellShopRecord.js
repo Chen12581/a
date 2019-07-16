@@ -42,3 +42,12 @@ $(".prove input[type='checkbox']").each(function() {
         }
     })
 })
+
+// 出售店铺我同意 
+$(".sellshop .row .btn input[type='checkbox']").on("change", function() {
+    if ($(this).is(":checked")) {
+        $(this).next().css("backgroundPositionY", "0")
+    } else {
+        $(this).next().css("backgroundPositionY", "-14px")
+    }
+})
